@@ -13,3 +13,11 @@
     -fx-text-fill: #FFFFFF;
     -fx-font-weight: bold;
   }
+.text-field {
+    -fx-background-radius: 40px;
+}
+.underkategori{
+    -fx-font-color: #857777;
+    -fx-font-size: 20px;
+    -fx-font-family: "Amiko";
+}

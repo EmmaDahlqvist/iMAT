@@ -5,6 +5,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 
 import javax.swing.text.html.ImageView;
@@ -20,6 +21,8 @@ public class HeaderController extends AnchorPane {
     private AnchorPane varuKorgen;
     @FXML
     private ImageView logo;
+    @FXML
+    private TextField searchBar;
 
     public HeaderController() {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("header.fxml"));
@@ -29,4 +32,11 @@ public class HeaderController extends AnchorPane {
         } catch (IOException exception) {
             throw new RuntimeException(exception);
         }
-    }}
+    }
+        @FXML
+        public void initialize() {
+            this.searchBar.setPromptText("Sök...");
+            // searchBar.setArcHeight(10);
+            // searchBar.setArcWidth(10);
+        }
+    }
