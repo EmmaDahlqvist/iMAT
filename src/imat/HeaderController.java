@@ -23,15 +23,10 @@ public class HeaderController extends AnchorPane {
 
     public HeaderController() {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("header.fxml"));
-        fxmlLoader.setRoot(this);
-        fxmlLoader.setController(this);
-
-
         try {
-            fxmlLoader.load();
+            Node node = fxmlLoader.load();
+            this.getChildren().add(node);
         } catch (IOException exception) {
             throw new RuntimeException(exception);
         }
-
-    }
-}
+    }}

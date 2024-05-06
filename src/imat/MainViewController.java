@@ -16,8 +16,8 @@ public class MainViewController implements Initializable {
 
     @FXML
     Label pathLabel;
-//    @FXML
-//    private AnchorPane anchorHeader;
+    @FXML
+    private AnchorPane anchorHeader;
 
 
     IMatDataHandler iMatDataHandler = IMatDataHandler.getInstance();
@@ -27,7 +27,7 @@ public class MainViewController implements Initializable {
         String iMatDirectory = iMatDataHandler.imatDirectory();
 
         pathLabel.setText(iMatDirectory);
-//        anchorHeader.getChildren().add(new HeaderController()); TODO: Fixa så att min header faktiskt laddas in
+        anchorHeader.getChildren().add(new HeaderController());
 
         for(Product product : iMatDataHandler.getProducts()) {
             System.out.println(product);
