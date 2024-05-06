@@ -5,25 +5,25 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="118.0" prefWidth="1440.0" styleClass="header-colour" stylesheets="@imat_app.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="imat.HeaderController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="118.0" prefWidth="1440.0" styleClass="header-colour" stylesheets="@imat_app.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <AnchorPane layoutX="14.0" layoutY="9.0">
          <children>
             <ImageView fx:id="logo" fitHeight="101.0" fitWidth="104.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../Downloads/Placeholder%20Logga.png" />
+                  <Image url="@fxmlPictures/Placeholder Logga.png" />
                </image>
             </ImageView>
             <AnchorPane fx:id="tidigareKopAnchor" layoutX="1046.0" layoutY="18.0">
                <children>
                   <ImageView fitHeight="65.0" fitWidth="65.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../Downloads/Ellipse%2021.png" />
+                        <Image url="@fxmlPictures/Ellipse 21.png" />
                      </image>
                   </ImageView>
                   <ImageView fitHeight="50.0" fitWidth="50.0" layoutX="8.0" layoutY="8.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../Downloads/baseline_person_outline_black_24dp%202.png" />
+                        <Image url="@fxmlPictures/baseline_person_outline_black_24dp%202.png" />
                      </image>
                   </ImageView>
                </children>
@@ -32,12 +32,12 @@
                <children>
                   <ImageView fitHeight="65.0" fitWidth="65.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../Downloads/Ellipse%2021.png" />
+                        <Image url="@fxmlPictures/Ellipse 21.png" />
                      </image>
                   </ImageView>
                   <ImageView fitHeight="50.0" fitWidth="50.0" layoutX="8.0" layoutY="8.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../Downloads/baseline_person_outline_black_24dp%201.png" />
+                        <Image url="@fxmlPictures/baseline_person_outline_black_24dp 1.png" />
                      </image>
                   </ImageView>
                </children>
@@ -46,12 +46,12 @@
                <children>
                   <ImageView fitHeight="65.0" fitWidth="101.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../Downloads/Rectangle%2039.png" />
+                        <Image url="@fxmlPictures/Rectangle 39.png" />
                      </image>
                   </ImageView>
                   <ImageView fitHeight="50.0" fitWidth="50.0" layoutX="26.0" layoutY="8.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../Downloads/baseline_shopping_cart_black_24dp%201.png" />
+                        <Image url="@fxmlPictures/baseline_shopping_cart_black_24dp 1.png" />
                      </image>
                   </ImageView>
                </children>
