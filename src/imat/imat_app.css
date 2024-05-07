@@ -1,17 +1,17 @@
 .text-sample{
-      -fx-font-size: 16px;
-      -fx-font-family: "Arial";
-      -fx-font-weight: bold;
+    -fx-font-size: 16px;
+    -fx-font-family: "Arial";
+    -fx-font-weight: bold;
 }
 
 .header-colour{
-      -fx-background-color: #2E3F98;
+    -fx-background-color: #2E3F98;
 }
 
 .item-Undertext{
-      -fx-font-size: 18px;
-      -fx-font-family: "Amiko";
-      -fx-font-color: #FFFFFF;
+    -fx-font-size: 18px;
+    -fx-font-family: "Amiko";
+    -fx-font-color: #FFFFFF;
     -fx-text-fill: #FFFFFF;
     -fx-font-weight: bold;
 }
