@@ -27,8 +27,7 @@ public class iMatApp extends Application {
         double width = screenSize.getWidth();
         double height = screenSize.getHeight();
         
-        Scene scene = new Scene(root, 1440, 700);
-        stage.setMaximized(true);
+        Scene scene = new Scene(root, 1440, 1024);
         stage.setTitle(bundle.getString("application.name"));
         stage.setScene(scene);
         stage.show();
