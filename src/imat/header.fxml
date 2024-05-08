@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.String?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
@@ -75,23 +74,18 @@
                   <Image url="@fxmlPictures/search_24px.png" />
                </image>
             </ImageView>
-            <GridPane fx:id="container" layoutX="482.0" layoutY="2.0" prefHeight="242.0" prefWidth="477.0">
+            <GridPane fx:id="container" layoutX="470.0" layoutY="1.0" prefHeight="242.0" prefWidth="477.0" styleClass="vbox-round">
               <columnConstraints>
-                <ColumnConstraints hgrow="SOMETIMES" maxWidth="463.0" minWidth="10.0" prefWidth="445.0" />
-                <ColumnConstraints hgrow="SOMETIMES" maxWidth="232.5" minWidth="10.0" prefWidth="32.0" />
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="477.0" minWidth="10.0" prefWidth="477.0" />
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="232.5" minWidth="0.0" prefWidth="0.0" />
               </columnConstraints>
               <rowConstraints>
-                <RowConstraints maxHeight="162.0" minHeight="10.0" prefHeight="70.0" vgrow="SOMETIMES" />
-                <RowConstraints maxHeight="166.0" minHeight="0.0" prefHeight="124.0" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="162.0" minHeight="10.0" prefHeight="90.5" vgrow="SOMETIMES" />
+                <RowConstraints maxHeight="166.0" minHeight="0.0" prefHeight="106.5" vgrow="SOMETIMES" />
                 <RowConstraints maxHeight="47.5" minHeight="0.0" prefHeight="45.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <VBox fx:id="dropDownMenu" prefHeight="125.0" prefWidth="347.0" GridPane.rowIndex="1" GridPane.valignment="TOP">
-                     <styleClass>
-                        <String fx:value="text-field" />
-                        <String fx:value="item-Undertext" />
-                     </styleClass>
-                  </VBox>
+                  <VBox fx:id="dropDownMenu" prefHeight="88.0" prefWidth="471.0" styleClass="vbox-round" GridPane.rowIndex="1" GridPane.valignment="TOP" />
                </children>
             </GridPane>
          </children>
