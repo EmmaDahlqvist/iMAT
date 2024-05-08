@@ -3,6 +3,7 @@ package imat;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Pos;
+import javafx.geometry.VPos;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
@@ -37,7 +38,6 @@ public class HeaderController extends AnchorPane {
         fxmlLoader.setController(this);
         try {
             fxmlLoader.load();
-//            this.getChildren().add(node);
         } catch (IOException exception) {
             throw new RuntimeException(exception);
         }
@@ -49,51 +49,48 @@ public class HeaderController extends AnchorPane {
     @FXML
     public void initialize() {
         this.searchBar.setPromptText("Sök...");
-        List<Product> products = iMatDataHandler.getProducts(); // getProducts() should return your list of products
+        List<Product> products = iMatDataHandler.getProducts();
 
         searchBar.textProperty().addListener((observable, oldValue, newValue) -> {
-            if (container.getChildren().size() > 1) { // if already contains a drop-down menu -> remove it
+            if (container.getChildren().size() > 1) {
                 container.getChildren().remove(1);
             }
-            container.add(populateDropDownMenu(newValue, products), 0, 1); // then add the populated drop-down menu to the second row in the grid pane
+            VBox dropDownMenu = populateDropDownMenu(newValue, products);
+            container.add(dropDownMenu, 0, 1);
+            GridPane.setValignment(dropDownMenu, VPos.TOP); // Align the VBox to the top of the row
         });
         searchBar.focusedProperty().addListener((observable, oldValue, newValue) -> {
             if (newValue) {
-                // If the TextField is focused, show the VBox
                 container.setVisible(true);
             } else {
-                // If the TextField is not focused, hide the VBox
                 container.setVisible(false);
             }
         });
-
     }
 
     public static VBox populateDropDownMenu(String text, List<Product> products) {
         VBox dropDownMenu = new VBox();
-        dropDownMenu.setBackground(new Background(new BackgroundFill(Color.WHITE, null, null))); // colors just for example
-        dropDownMenu.setAlignment(Pos.TOP_LEFT); // align to the top left
-        dropDownMenu.setMaxHeight(200); // set the maximum height
-        dropDownMenu.setMinHeight(100); // set the minimum height
+        dropDownMenu.setBackground(new Background(new BackgroundFill(Color.WHITE, null, null)));
+        dropDownMenu.setAlignment(Pos.TOP_LEFT);
 
-        int counter = 0; // initialize a counter
+        int counter = 0;
 
-        for (Product product : products) { // loop through every Product in the list
-            // if the given text is not empty and doesn't consists of spaces only, as well as it's a part of one (or more) of the product names
+        for (Product product : products) {
             if (!text.replace(" ", "").isEmpty() && product.getName().toUpperCase().contains(text.toUpperCase())) {
-                if (counter >= 5) { // if counter is 5 or more, stop adding items
+                if (counter >= 5) {
                     break;
                 }
-                Label label = new Label(product.getName()); // create a label and set the text to the product's name
-                label.setFont(new Font("Amiko", 16)); // set the font and size of the text
-                dropDownMenu.setAlignment(Pos.TOP_LEFT); // align the label to the top left
-                // you can add listener to the label here if you want
-                // your user to be able to click on the options in the drop-down menu
-                dropDownMenu.getChildren().add(label); // add the label to the VBox
-                counter++; // increment the counter
+                Label label = new Label(product.getName());
+                label.setFont(new Font("Amiko", 16));
+                dropDownMenu.setAlignment(Pos.TOP_LEFT);
+                dropDownMenu.getChildren().add(label);
+                counter++;
             }
         }
 
-        return dropDownMenu; // at the end return the VBox (i.e. drop-down menu)
+        // Set the VBox's max height to be its preferred height
+        dropDownMenu.setMaxHeight(Region.USE_PREF_SIZE);
+
+        return dropDownMenu;
     }
 }
