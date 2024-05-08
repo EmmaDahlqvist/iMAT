@@ -26,6 +26,7 @@ public class HeaderController extends AnchorPane {
 
     public HeaderController() {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("header.fxml"));
+        System.out.println("LOL BRANCH TEST");
         try {
             Node node = fxmlLoader.load();
             this.getChildren().add(node);
