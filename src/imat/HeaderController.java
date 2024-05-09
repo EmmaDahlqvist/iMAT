@@ -18,6 +18,7 @@ import javafx.scene.input.MouseEvent;
 
 
 import java.io.IOException;
+import java.util.Arrays;
 import java.util.List;
 
 public class HeaderController extends AnchorPane {
@@ -29,7 +30,7 @@ public class HeaderController extends AnchorPane {
     @FXML
     private AnchorPane varuKorgen;
     @FXML
-    private ImageView lgo;
+    private Button lgo;
     @FXML
     private TextField searchBar;
     @FXML
@@ -41,6 +42,12 @@ public class HeaderController extends AnchorPane {
     private Button dinUppgifterButton;
     @FXML
     private Button varukorgenButton;
+    @FXML
+    private ImageView tidigareKopBild;
+    @FXML
+    private ImageView dinaUppgifterBild;
+    @FXML
+    private ImageView varukorgenBild;
 
     public HeaderController() {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("header.fxml"));
@@ -73,7 +80,10 @@ public class HeaderController extends AnchorPane {
         searchBar.focusedProperty().addListener((observable, oldValue, newValue) -> {
             container.setVisible(newValue);
         });
-
+        List<ImageView> imageViews = Arrays.asList(tidigareKopBild, dinaUppgifterBild, varukorgenBild);
+        for (ImageView imageView : imageViews) {
+            imageView.setMouseTransparent(true);
+        }
     }
 
 
