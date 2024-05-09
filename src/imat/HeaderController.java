@@ -18,6 +18,7 @@ import javafx.scene.input.MouseEvent;
 
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -92,20 +93,25 @@ public class HeaderController extends AnchorPane {
         dropDownMenu.setBackground(new Background(new BackgroundFill(Color.WHITE, null, null)));
         dropDownMenu.setAlignment(Pos.TOP_LEFT);
 
-        int counter = 0;
+        List<Label> exactMatches = new ArrayList<>();
+        List<Label> containsMatches = new ArrayList<>();
 
         for (Product product : products) {
-            if (!text.replace(" ", "").isEmpty() && product.getName().toUpperCase().contains(text.toUpperCase())) {
-                if (counter >= 5) {
-                    break;
-                }
+            if (!text.replace(" ", "").isEmpty()) {
                 Label label = new Label(product.getName());
                 label.setFont(new Font("Amiko", 16));
-                dropDownMenu.setAlignment(Pos.TOP_LEFT);
-                dropDownMenu.getChildren().add(label);
-                counter++;
+
+                if (product.getName().equalsIgnoreCase(text)) {
+                    exactMatches.add(label);
+                } else if (product.getName().toUpperCase().contains(text.toUpperCase())) {
+                    containsMatches.add(label);
+                }
             }
         }
+
+        // Add the exact matches first, then the contains matches
+        dropDownMenu.getChildren().addAll(exactMatches);
+        dropDownMenu.getChildren().addAll(containsMatches);
 
         // Set the VBox's max height to be its preferred height
         dropDownMenu.setMaxHeight(Region.USE_PREF_SIZE);
