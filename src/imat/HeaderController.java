@@ -93,18 +93,31 @@ public class HeaderController extends AnchorPane {
         dropDownMenu.setBackground(new Background(new BackgroundFill(Color.WHITE, null, null)));
         dropDownMenu.setAlignment(Pos.TOP_LEFT);
 
-        List<Label> exactMatches = new ArrayList<>();
-        List<Label> containsMatches = new ArrayList<>();
+        List<HBox> exactMatches = new ArrayList<>();
+        List<HBox> containsMatches = new ArrayList<>();
 
         for (Product product : products) {
             if (!text.replace(" ", "").isEmpty()) {
                 Label label = new Label(product.getName());
                 label.setFont(new Font("Amiko", 16));
 
+                // Wrap the label in a HBox
+                HBox hbox = new HBox(label);
+                hbox.getStyleClass().add("hover-label");
+                hbox.setFillHeight(true);
+                hbox.setAlignment(Pos.CENTER_LEFT);
+
+                // Add a mouse click event to the HBox
+                hbox.setOnMouseClicked(event -> {
+                    String labelText = label.getText();
+                    // Save labelText to a variable or use it directly here
+                    System.out.println("Clicked on label: " + labelText);
+                });
+
                 if (product.getName().equalsIgnoreCase(text)) {
-                    exactMatches.add(label);
+                    exactMatches.add(hbox);
                 } else if (product.getName().toUpperCase().contains(text.toUpperCase())) {
-                    containsMatches.add(label);
+                    containsMatches.add(hbox);
                 }
             }
         }
