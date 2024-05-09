@@ -56,3 +56,39 @@
     -fx-font-size: 20px;
     -fx-font-family: "Amiko";
 }
+
+.vara-avlang {
+    -fx-font-size: 16px;
+    -fx-font-family: "Amiko";
+}
+
+.vara-avlang-bold {
+    -fx-font-size: 16px;
+    -fx-font-family: "Amiko";
+    -fx-font-weight: bold;
+}
+
+.scroll-pane {
+    -fx-background-color: transparent;
+}
+
+.plus-minus-button {
+    -fx-background-color: #DBEEFF;
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+    -fx-border-color: #3125C1;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.25), 3, 0, 0, 3);
+    -fx-background-insets: 0;
+    -fx-background-radius: 22px;
+    -fx-border-radius: 22px;
+}
+
+.plus-minus-button:hover {
+    -fx-background-color: #B0D3F2;
+}
+
+.amount-textfield {
+    -fx-background-color: transparent;
+    -fx-font-size: 16px;
+    -fx-font-family: "Amiko";
+}
