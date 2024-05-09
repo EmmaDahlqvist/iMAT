@@ -61,6 +61,21 @@
     -fx-background-radius: 100px;
     -fx-border-radius: 100px;
 }
-.button:hover {
+.buttons:hover {
     -fx-cursor: hand;
+    -fx-background-color: #CCCCCC;
+}
+.buttons {
+    transition: all 0.7s ease;
+    -fx-background-color: #FFFFFF;
+}
+.mainButton{
+    transition: all 0.7s ease;
+    -fx-background-color:  #5266D1;
+    -fx-text-fill: #FFFFFF;
+}
+.mainButton:hover{
+    -fx-cursor: hand;
+    -fx-text-fill: #CCCCCC;
+    -fx-background-color: #6F7DEA;
 }
