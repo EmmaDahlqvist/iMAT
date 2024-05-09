@@ -4,6 +4,8 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Pos;
 import javafx.geometry.VPos;
+import javafx.scene.control.Button;
+import javafx.scene.control.ButtonBar;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
@@ -12,6 +14,8 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import se.chalmers.cse.dat216.project.IMatDataHandler;
 import se.chalmers.cse.dat216.project.Product;
+import javafx.scene.input.MouseEvent;
+
 
 import java.io.IOException;
 import java.util.List;
@@ -31,6 +35,12 @@ public class HeaderController extends AnchorPane {
     @FXML
     GridPane container;
     IMatDataHandler iMatDataHandler = IMatDataHandler.getInstance();
+    @FXML
+    private Button tidigareKopButton;
+    @FXML
+    private Button dinUppgifterButton;
+    @FXML
+    private Button varukorgenButton;
 
     public HeaderController() {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("header.fxml"));
@@ -44,11 +54,12 @@ public class HeaderController extends AnchorPane {
         this.requestFocus();
 
         this.initialize();
+
+
     }
 
     @FXML
     public void initialize() {
-        this.searchBar.setPromptText("Sök...");
         List<Product> products = iMatDataHandler.getProducts();
 
         searchBar.textProperty().addListener((observable, oldValue, newValue) -> {
@@ -60,13 +71,11 @@ public class HeaderController extends AnchorPane {
             GridPane.setValignment(dropDownMenu, VPos.TOP); // Align the VBox to the top of the row
         });
         searchBar.focusedProperty().addListener((observable, oldValue, newValue) -> {
-            if (newValue) {
-                container.setVisible(true);
-            } else {
-                container.setVisible(false);
-            }
+            container.setVisible(newValue);
         });
+
     }
+
 
     public static VBox populateDropDownMenu(String text, List<Product> products) {
         VBox dropDownMenu = new VBox();
@@ -93,4 +102,7 @@ public class HeaderController extends AnchorPane {
 
         return dropDownMenu;
     }
+
+//mouse pressed, exited och entered.
+
 }
