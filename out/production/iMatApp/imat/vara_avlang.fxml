@@ -11,9 +11,9 @@
 <?import javafx.scene.text.Font?>
 
 
-<fx:root prefHeight="113.0" prefWidth="455.0" style="-fx-background-color: #FFFFFF;" stylesheets="@imat_app.css" type="javafx.scene.layout.AnchorPane" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+<fx:root maxWidth="554.0" minWidth="554.0" prefHeight="113.0" prefWidth="554.0" style="-fx-background-color: #FFFFFF;" stylesheets="@imat_app.css" type="javafx.scene.layout.AnchorPane" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <ImageView fx:id="productImage" fitHeight="104.0" fitWidth="126.0" layoutX="5.0" layoutY="9.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="productImage" fitHeight="99.0" fitWidth="131.0" layoutX="5.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../../../../../../.dat215/imat/images/product_1.jpg" />
          </image>
@@ -21,17 +21,17 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </ImageView>
-      <Label fx:id="productName" layoutX="135.0" layoutY="26.0" styleClass="vara-avlang" text="Produktnamn" />
-      <Label fx:id="productPrice" layoutX="135.0" layoutY="56.0" prefHeight="25.0" prefWidth="109.0" styleClass="vara-avlang-bold" text="180kr" />
-      <Line endX="18.000030517578125" endY="49.66667938232422" layoutX="359.0" layoutY="48.0" startX="18.000030517578125" startY="-33.66666793823242" />
-      <Label fx:id="totalPrice" alignment="CENTER" layoutX="377.0" layoutY="44.0" prefHeight="25.0" prefWidth="78.0" styleClass="vara-avlang-bold" text="Label" AnchorPane.rightAnchor="0.0" />
-      <Line endX="250.00003051757812" endY="109.38101959228516" layoutX="205.0" layoutY="113.0" startX="-205.00001525878906" startY="109.75245666503906" AnchorPane.bottomAnchor="0.0" />
-      <Button fx:id="removeButton" alignment="CENTER" contentDisplay="CENTER" graphicTextGap="0.0" layoutX="247.0" layoutY="36.0" mnemonicParsing="false" onMouseClicked="#removeProduct" styleClass="plus-minus-button" text=" - " textAlignment="CENTER">
+      <Label fx:id="productName" layoutX="141.0" layoutY="26.0" styleClass="vara-avlang" text="Produktnamn" />
+      <Label fx:id="productPrice" layoutX="141.0" layoutY="56.0" prefHeight="25.0" prefWidth="109.0" styleClass="vara-avlang-bold" text="180kr" />
+      <Line endX="18.000030517578125" endY="49.66667938232422" layoutX="417.0" layoutY="48.0" startX="18.000030517578125" startY="-33.66666793823242" style="-fx-stroke: #2E3F98;" />
+      <Label fx:id="totalPrice" alignment="CENTER" layoutX="458.3737589518229" layoutY="44.0" prefHeight="25.0" prefWidth="120.0" styleClass="vara-avlang-bold" text="Label" AnchorPane.rightAnchor="0.0" />
+      <Line endX="348.2928771972656" endY="109.55928802490234" layoutX="205.0" layoutY="113.0" startX="-205.00001525878906" startY="109.75245666503906" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
+      <Button fx:id="removeButton" alignment="CENTER" contentDisplay="CENTER" graphicTextGap="0.0" layoutX="282.0" layoutY="36.0" mnemonicParsing="false" onMouseClicked="#removeProduct" styleClass="plus-minus-button" text=" - " textAlignment="CENTER">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>
       </Button>
-      <Button fx:id="addButton" alignment="CENTER" contentDisplay="CENTER" graphicTextGap="0.0" layoutX="331.0" layoutY="36.0" mnemonicParsing="false" onMouseClicked="#addProduct" styleClass="plus-minus-button" text="+" textAlignment="CENTER">
+      <Button fx:id="addButton" alignment="CENTER" contentDisplay="CENTER" graphicTextGap="0.0" layoutX="377.0" layoutY="36.0" mnemonicParsing="false" onMouseClicked="#addProduct" styleClass="plus-minus-button" text="+" textAlignment="CENTER">
          <font>
             <Font name="Amiko Bold" size="12.0" />
          </font>
@@ -39,7 +39,6 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </Button>
-      <Label fx:id="unitLabel" alignment="CENTER" layoutX="286.0" layoutY="58.0" prefHeight="25.0" prefWidth="43.0" styleClass="vara-avlang" text="st" />
-      <TextField fx:id="amountTextField" alignment="CENTER" layoutX="283.0" layoutY="35.0" prefHeight="36.0" prefWidth="49.0" styleClass="amount-textfield" text="170" />
+      <TextField fx:id="amountTextField" alignment="CENTER" layoutX="316.0" layoutY="38.0" prefHeight="36.0" prefWidth="65.0" styleClass="amount-textfield" text="3" />
    </children>
 </fx:root>

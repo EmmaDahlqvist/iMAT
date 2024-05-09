@@ -29,6 +29,8 @@ public class VaraAvlang extends AnchorPane{
     @FXML private Button addButton;
     @FXML private Button removeButton;
 
+
+
     @FXML private TextField amountTextField;
 
     private Product product;
@@ -64,7 +66,7 @@ public class VaraAvlang extends AnchorPane{
 
         updateAmountTextField();
 
-        double r = 19;
+        double r = 20;
         removeButton.setShape(new Circle(r));
         removeButton.setMinSize(2*r, 2*r);
         removeButton.setMaxSize(2*r, 2*r);
@@ -72,6 +74,10 @@ public class VaraAvlang extends AnchorPane{
         addButton.setShape(new Circle(r));
         addButton.setMinSize(2*r, 2*r);
         addButton.setMaxSize(2*r, 2*r);
+
+
+
+
     }
 
     private void setProductName() {
@@ -88,12 +94,14 @@ public class VaraAvlang extends AnchorPane{
     private void updateAmount() {
         setProductAmount();
         setTotalPrice();
+        parentController.updateTotalPrice();
     }
 
     private void setProductAmount() {
 
         System.out.println("setting amount " + shoppingItem.getAmount());
         this.amountTextField.setText(String.valueOf((int) shoppingItem.getAmount()));
+
     }
 
     private void setTotalPrice() {

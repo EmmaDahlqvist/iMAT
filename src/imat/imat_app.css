@@ -1,3 +1,7 @@
+.background-color {
+    -fx-background-color: #F7FAFF;
+}
+
 .text-sample{
     -fx-font-size: 16px;
     -fx-font-family: "Arial";
@@ -68,13 +72,18 @@
     -fx-font-weight: bold;
 }
 
+.varu-korg-popup {
+    -fx-background-color: #F7FAFF;
+    -fx-effect: dropshadow(three-pass-box, grey, 10, 0, 0, 0, 0, 100, 10);
+}
+
 .scroll-pane {
     -fx-background-color: transparent;
 }
 
 .plus-minus-button {
     -fx-background-color: #DBEEFF;
-    -fx-font-size: 16px;
+    -fx-font-size: 17px;
     -fx-font-weight: bold;
     -fx-border-color: #3125C1;
     -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.25), 3, 0, 0, 3);
@@ -91,4 +100,23 @@
     -fx-background-color: transparent;
     -fx-font-size: 16px;
     -fx-font-family: "Amiko";
+}
+
+.trettitvopx {
+    -fx-font-size: 32px;
+    -fx-font-family: "Amiko";
+    -fx-font-weight: 600;
+}
+
+.tjufyrapxbold {
+    -fx-font-size: 24px;
+    -fx-font-family: "Amiko";
+    -fx-font-weight: bold;
+}
+
+.till-varukogen-button {
+    -fx-font-size: 38px;
+    -fx-font-family: "Amiko";
+    -fx-background-color: #3125C1;
+    -fx-text-fill: #FFFFFF;
 }
