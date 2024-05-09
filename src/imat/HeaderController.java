@@ -18,6 +18,8 @@ import javafx.scene.input.MouseEvent;
 
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class HeaderController extends AnchorPane {
@@ -29,7 +31,7 @@ public class HeaderController extends AnchorPane {
     @FXML
     private AnchorPane varuKorgen;
     @FXML
-    private ImageView lgo;
+    private Button lgo;
     @FXML
     private TextField searchBar;
     @FXML
@@ -41,6 +43,12 @@ public class HeaderController extends AnchorPane {
     private Button dinUppgifterButton;
     @FXML
     private Button varukorgenButton;
+    @FXML
+    private ImageView tidigareKopBild;
+    @FXML
+    private ImageView dinaUppgifterBild;
+    @FXML
+    private ImageView varukorgenBild;
 
     public HeaderController() {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("header.fxml"));
@@ -73,7 +81,10 @@ public class HeaderController extends AnchorPane {
         searchBar.focusedProperty().addListener((observable, oldValue, newValue) -> {
             container.setVisible(newValue);
         });
-
+        List<ImageView> imageViews = Arrays.asList(tidigareKopBild, dinaUppgifterBild, varukorgenBild);
+        for (ImageView imageView : imageViews) {
+            imageView.setMouseTransparent(true);
+        }
     }
 
 
@@ -82,20 +93,25 @@ public class HeaderController extends AnchorPane {
         dropDownMenu.setBackground(new Background(new BackgroundFill(Color.WHITE, null, null)));
         dropDownMenu.setAlignment(Pos.TOP_LEFT);
 
-        int counter = 0;
+        List<Label> exactMatches = new ArrayList<>();
+        List<Label> containsMatches = new ArrayList<>();
 
         for (Product product : products) {
-            if (!text.replace(" ", "").isEmpty() && product.getName().toUpperCase().contains(text.toUpperCase())) {
-                if (counter >= 5) {
-                    break;
-                }
+            if (!text.replace(" ", "").isEmpty()) {
                 Label label = new Label(product.getName());
                 label.setFont(new Font("Amiko", 16));
-                dropDownMenu.setAlignment(Pos.TOP_LEFT);
-                dropDownMenu.getChildren().add(label);
-                counter++;
+
+                if (product.getName().equalsIgnoreCase(text)) {
+                    exactMatches.add(label);
+                } else if (product.getName().toUpperCase().contains(text.toUpperCase())) {
+                    containsMatches.add(label);
+                }
             }
         }
+
+        // Add the exact matches first, then the contains matches
+        dropDownMenu.getChildren().addAll(exactMatches);
+        dropDownMenu.getChildren().addAll(containsMatches);
 
         // Set the VBox's max height to be its preferred height
         dropDownMenu.setMaxHeight(Region.USE_PREF_SIZE);
