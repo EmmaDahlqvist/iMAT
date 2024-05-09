@@ -11,25 +11,30 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
 <fx:root maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="118.0" prefWidth="1440.0" styleClass="header-colour" stylesheets="@imat_app.css" type="javafx.scene.layout.AnchorPane" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <AnchorPane layoutY="4.0">
          <children>
-            <ImageView fx:id="lgo" fitHeight="101.0" fitWidth="104.0" layoutX="11.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true" styleClass="button">
-               <image>
-                  <Image url="@fxmlPictures/Placeholder Logga.png" />
-               </image>
-            </ImageView>
+            <Button fx:id="lgo" layoutX="14.0" layoutY="5.0" mnemonicParsing="false" prefHeight="101.0" prefWidth="101.0" text="iMat" textFill="WHITE">
+               <font>
+                  <Font name="Cooper Black" size="27.0" />
+               </font>
+               <styleClass>
+                  <String fx:value="header-buttons" />
+                  <String fx:value="mainButton" />
+               </styleClass>
+            </Button>
             <AnchorPane fx:id="tidigareKopAnchor" layoutX="1046.0" layoutY="18.0" prefHeight="19.0" prefWidth="11.0">
                <children>
                   <Button fx:id="tidigareKopButton" layoutX="-1.0" mnemonicParsing="false" prefHeight="66.0" prefWidth="72.0">
                      <styleClass>
                         <String fx:value="header-buttons" />
-                        <String fx:value="button" />
+                        <String fx:value="buttons" />
                      </styleClass>
                   </Button>
-                  <ImageView fitHeight="50.0" fitWidth="50.0" layoutX="10.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true" styleClass="button">
+                  <ImageView fx:id="tidigareKopBild" fitHeight="50.0" fitWidth="50.0" layoutX="10.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true" styleClass="buttons">
                      <image>
                         <Image url="@fxmlPictures/clock2.png" />
                      </image>
@@ -41,10 +46,10 @@
                   <Button fx:id="dinaUppgifterButton" mnemonicParsing="false" prefHeight="66.0" prefWidth="72.0">
                      <styleClass>
                         <String fx:value="header-buttons" />
-                        <String fx:value="button" />
+                        <String fx:value="buttons" />
                      </styleClass>
                   </Button>
-                  <ImageView fitHeight="50.0" fitWidth="50.0" layoutX="11.0" layoutY="8.0" pickOnBounds="true" preserveRatio="true" styleClass="button">
+                  <ImageView fx:id="dinaUppgifterBild" fitHeight="50.0" fitWidth="50.0" layoutX="11.0" layoutY="8.0" pickOnBounds="true" preserveRatio="true" styleClass="buttons">
                      <image>
                         <Image url="@fxmlPictures/baseline_person_outline_black_24dp 1.png" />
                      </image>
@@ -53,8 +58,12 @@
             </AnchorPane>
             <AnchorPane fx:id="varukorg" layoutX="1296.0" layoutY="18.0">
                <children>
-                  <Button fx:id="varukorgenButton" mnemonicParsing="false" prefHeight="65.0" prefWidth="101.0" style="-fx-border-radius: 20; -fx-background-color: #FFFFFF; -fx-background-radius: 20;" />
-                  <ImageView fitHeight="50.0" fitWidth="50.0" layoutX="26.0" layoutY="8.0" pickOnBounds="true" preserveRatio="true" styleClass="button">
+                  <Button fx:id="varukorgenButton" mnemonicParsing="false" prefHeight="65.0" prefWidth="101.0" style="-fx-border-radius: 20; -fx-background-radius: 20;">
+                     <styleClass>
+                        <String fx:value="header-buttons" />
+                        <String fx:value="buttons" />
+                     </styleClass></Button>
+                  <ImageView fx:id="varukorgenBild" fitHeight="50.0" fitWidth="50.0" layoutX="26.0" layoutY="8.0" pickOnBounds="true" preserveRatio="true" styleClass="buttons">
                      <image>
                         <Image url="@fxmlPictures/baseline_shopping_cart_black_24dp 1.png" />
                      </image>
