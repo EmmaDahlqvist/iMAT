@@ -50,10 +50,13 @@ public class HeaderController extends AnchorPane {
     @FXML
     private ImageView varukorgenBild;
 
-    public HeaderController() {
+    private MainViewController mainViewController;
+
+    public HeaderController(MainViewController mainViewController) {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("header.fxml"));
         fxmlLoader.setRoot(this);
         fxmlLoader.setController(this);
+        this.mainViewController = mainViewController;
         try {
             fxmlLoader.load();
         } catch (IOException exception) {
@@ -85,7 +88,10 @@ public class HeaderController extends AnchorPane {
         for (ImageView imageView : imageViews) {
             imageView.setMouseTransparent(true);
         }
+
+        prepareMenuSlideAnimation();
     }
+
 
 
     public static VBox populateDropDownMenu(String text, List<Product> products) {
@@ -133,5 +139,9 @@ public class HeaderController extends AnchorPane {
     }
 
 //mouse pressed, exited och entered.
+
+    private void prepareMenuSlideAnimation() {
+        mainViewController.prepareSlideMenuAnimation(mainViewController.varukorgCloseButton, varukorgenButton);
+    }
 
 }

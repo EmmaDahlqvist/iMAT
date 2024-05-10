@@ -4,12 +4,12 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.Tooltip?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
-
 
 <fx:root maxWidth="554.0" minWidth="554.0" prefHeight="113.0" prefWidth="554.0" style="-fx-background-color: #FFFFFF;" stylesheets="@imat_app.css" type="javafx.scene.layout.AnchorPane" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
    <children>
@@ -30,6 +30,9 @@
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>
+         <tooltip>
+            <Tooltip text="Ta bort vara" />
+         </tooltip>
       </Button>
       <Button fx:id="addButton" alignment="CENTER" contentDisplay="CENTER" graphicTextGap="0.0" layoutX="377.0" layoutY="36.0" mnemonicParsing="false" onMouseClicked="#addProduct" styleClass="plus-minus-button" text="+" textAlignment="CENTER">
          <font>
@@ -38,6 +41,9 @@
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>
+         <tooltip>
+            <Tooltip text="Addera vara" />
+         </tooltip>
       </Button>
       <TextField fx:id="amountTextField" alignment="CENTER" layoutX="316.0" layoutY="38.0" prefHeight="36.0" prefWidth="65.0" styleClass="amount-textfield" text="3" />
    </children>

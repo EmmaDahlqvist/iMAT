@@ -2,17 +2,19 @@
 package imat;
 
 import java.net.URL;
-import java.time.LocalDateTime;
-import java.util.List;
 import java.util.ResourceBundle;
 
+import javafx.animation.TranslateTransition;
+import javafx.event.ActionEvent;
+import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.ScrollBar;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.FlowPane;
+import javafx.util.Duration;
 import se.chalmers.cse.dat216.project.*;
 
 public class MainViewController implements Initializable {
@@ -22,13 +24,19 @@ public class MainViewController implements Initializable {
     @FXML
     private AnchorPane anchorHeader;
 
-    @FXML private FlowPane varaAvlangFlowPane;
+    @FXML
+    private FlowPane varaAvlangFlowPane;
 
-    @FXML private ScrollPane varaAvlangScrollpane;
+    @FXML
+    private ScrollPane varaAvlangScrollpane;
 
-    @FXML private Label totalPrice;
+    @FXML
+    private Label totalPrice;
 
+    @FXML
+    protected Button varukorgCloseButton;
 
+    @FXML private AnchorPane varukorgPopupAnchor;
     IMatDataHandler iMatDataHandler = IMatDataHandler.getInstance();
 
     public void initialize(URL url, ResourceBundle rb) {
@@ -36,28 +44,29 @@ public class MainViewController implements Initializable {
         String iMatDirectory = iMatDataHandler.imatDirectory();
 
         pathLabel.setText(iMatDirectory);
-        anchorHeader.getChildren().add(new HeaderController());
+        anchorHeader.getChildren().add(new HeaderController(this));
 
 
         setUpShoppingCart();
         updateVaraAvlang();
         updateTotalPrice();
 
-
-        for(Product product : iMatDataHandler.getProducts()) {
-            System.out.println(product);
-
-        }
-
+        closeVarukorg(); // håll den stängd som default
     }
 
     private void setUpShoppingCart() {
-        //lite test
+        //lite test för o fylla varukurgen kan tas bort sen
         iMatDataHandler.getShoppingCart().addItem(new ShoppingItem(iMatDataHandler.getProduct(1), 3));
         iMatDataHandler.getShoppingCart().addItem(new ShoppingItem(iMatDataHandler.getProduct(2), 2));
         iMatDataHandler.getShoppingCart().addItem(new ShoppingItem(iMatDataHandler.getProduct(4), 2));
         iMatDataHandler.getShoppingCart().addItem(new ShoppingItem(iMatDataHandler.getProduct(3), 1));
         iMatDataHandler.getShoppingCart().addItem(new ShoppingItem(iMatDataHandler.getProduct(10), 2));
+        iMatDataHandler.getShoppingCart().addItem(new ShoppingItem(iMatDataHandler.getProduct(11), 2));
+        iMatDataHandler.getShoppingCart().addItem(new ShoppingItem(iMatDataHandler.getProduct(12), 2));
+        iMatDataHandler.getShoppingCart().addItem(new ShoppingItem(iMatDataHandler.getProduct(13), 2));
+        iMatDataHandler.getShoppingCart().addItem(new ShoppingItem(iMatDataHandler.getProduct(14), 2));
+        iMatDataHandler.getShoppingCart().addItem(new ShoppingItem(iMatDataHandler.getProduct(15), 2));
+        iMatDataHandler.getShoppingCart().addItem(new ShoppingItem(iMatDataHandler.getProduct(16), 2));
 
     }
 
@@ -74,6 +83,55 @@ public class MainViewController implements Initializable {
         totalPrice.setText(String.valueOf(iMatDataHandler.getShoppingCart().getTotal() + " kr"));
     }
 
+    @FXML //stäng varukorgen
+    private void closeVarukorg() {
+        varukorgPopupAnchor.setVisible(false);
+        varukorgPopupAnchor.setManaged(false);
+    }
+
+    @FXML
+    protected void openVarukorg() {
+        varukorgPopupAnchor.setVisible(true);
+        varukorgPopupAnchor.setManaged(true);
+    }
+
+    @FXML //används i varukorgen för att kunna klicka utanför o stänga fönstret
+    public void mouseTrap(Event event) {
+        event.consume();
+    }
+
+    @FXML private AnchorPane varukorgPopup;
+
+
+    private boolean firstPrepare = true;
+    protected void prepareSlideMenuAnimation(Button closeButton, Button openButton) {
+        TranslateTransition openNav=new TranslateTransition(new Duration(350), varukorgPopup);
+        openNav.setToX(0);
+        TranslateTransition closeNav=new TranslateTransition(new Duration(350), varukorgPopup);
+
+        if(firstPrepare) {
+            varukorgPopup.setTranslateX(554); //behöver ändras första gången
+            firstPrepare = false;
+        }
+
+        closeButton.setOnAction((ActionEvent evt) ->{
+            if(!(varukorgPopup.getTranslateX() != 0)) {
+                closeNav.setToX(+(varukorgPopup.getWidth()));
+                closeNav.setOnFinished(event -> closeVarukorg());
+                closeNav.play();
+            }
+        }) ;
+
+        openButton.setOnAction((ActionEvent evt)->{
+            System.out.println(varukorgPopup.getTranslateX());
+            openVarukorg();
+            if(varukorgPopup.getTranslateX()!=0){
+                System.out.println("opening");
+                openVarukorg();
+                openNav.play();
+            }
+        });
+    }
 
 
 }
