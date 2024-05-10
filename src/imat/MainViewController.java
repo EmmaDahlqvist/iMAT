@@ -90,6 +90,14 @@ public class MainViewController implements Initializable {
     }
 
     @FXML
+    private void closeVarukorgAnimation(){
+        TranslateTransition closeNav=new TranslateTransition(new Duration(350), varukorgPopup);
+        closeNav.setToX(+(varukorgPopup.getWidth()));
+        closeNav.setOnFinished(event -> closeVarukorg());
+        closeNav.play();
+    }
+
+    @FXML
     protected void openVarukorg() {
         varukorgPopupAnchor.setVisible(true);
         varukorgPopupAnchor.setManaged(true);
@@ -101,6 +109,8 @@ public class MainViewController implements Initializable {
     }
 
     @FXML private AnchorPane varukorgPopup;
+
+
 
 
     private boolean firstPrepare = true;
