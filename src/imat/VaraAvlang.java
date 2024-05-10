@@ -30,7 +30,6 @@ public class VaraAvlang extends AnchorPane{
     @FXML private Button removeButton;
 
 
-
     @FXML private TextField amountTextField;
 
     private Product product;
@@ -74,10 +73,6 @@ public class VaraAvlang extends AnchorPane{
         addButton.setShape(new Circle(r));
         addButton.setMinSize(2*r, 2*r);
         addButton.setMaxSize(2*r, 2*r);
-
-
-
-
     }
 
     private void setProductName() {
@@ -98,8 +93,6 @@ public class VaraAvlang extends AnchorPane{
     }
 
     private void setProductAmount() {
-
-        System.out.println("setting amount " + shoppingItem.getAmount());
         this.amountTextField.setText(String.valueOf((int) shoppingItem.getAmount()));
 
     }
@@ -116,7 +109,6 @@ public class VaraAvlang extends AnchorPane{
 
     @FXML
     private void removeProduct() {
-        System.out.println(shoppingItem.getAmount());
         if(shoppingItem.getAmount() > 1 ) {
             shoppingItem.setAmount(shoppingItem.getAmount() - 1); //minska amount
         } else {
@@ -127,7 +119,6 @@ public class VaraAvlang extends AnchorPane{
     }
 
     private void updateAmountTextField() {
-        System.out.println("here");
         amountTextField.focusedProperty().addListener(new ChangeListener<Boolean>() {
 
             @Override
@@ -137,10 +128,13 @@ public class VaraAvlang extends AnchorPane{
                 } else {
                     try { // testa om de är en int
                         Integer value = Integer.valueOf(amountTextField.getText());
-                        shoppingItem.setAmount(value);
+                        if(value >= 0) {
+                            shoppingItem.setAmount(value);
+                        }
                         if(value == 0) {
                             removeProduct();
                         }
+
                         updateAmount();
                     } catch (Exception ex) {
                         System.out.println("det är ine en int hörru");
