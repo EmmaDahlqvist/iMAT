@@ -47,6 +47,8 @@ public class MainViewController implements Initializable {
         anchorHeader.getChildren().add(new HeaderController(this));
 
 
+
+
         setUpShoppingCart();
         updateVaraAvlang();
         updateTotalPrice();
