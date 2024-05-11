@@ -247,6 +247,7 @@
     -fx-font-family: "Amiko";
     -fx-text-fill: #FFFFFF;
     -fx-background-insets: 0;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.25), 10, 0, 0, 4);
 }
 
 .menyMainKategori:hover {
@@ -268,25 +269,25 @@
 }
 
 .menyMainKategori-toogle:hover .arrow {
-    -fx-scale-x: 2;
-    -fx-scale-y: 2;
+    -fx-scale-x: 1.2;
+    -fx-scale-y: 1.2;
 }
 
 .menyMainKategori-toogle:selected .arrow {
     -fx-rotate: 90;
 }
 
-.menyMainKategori-toogle:selected .menyMainKategori {
+/*.menyMainKategori-toogle:selected .menyMainKategori {
     -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.25), 10, 0, 0, 4);
-}
+}*/
 
 #menyMainKategori-top {
     -fx-background-radius: 3px 3px 0px 0px;
 }
 
-#menyMainKategori-bottom {
+/*#menyMainKategori-bottom {
     -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.25), 10, 0, 0, 4);
-}
+}*/
 
 .menyListItem {
     -fx-background-radius: 0px;
@@ -297,6 +298,7 @@
     -fx-background-insets: 0;
     -fx-alignment: center-left;
     -fx-padding: 0px 0px 0px 34px;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.25), 10, 0, 0, 4);
 }
 
 .menyListItem:hover {

@@ -37,6 +37,9 @@ public class MainViewController implements Initializable {
     protected Button varukorgCloseButton;
 
     @FXML private AnchorPane varukorgPopupAnchor;
+
+    @FXML private AnchorPane anchorMeny;
+
     IMatDataHandler iMatDataHandler = IMatDataHandler.getInstance();
 
     public void initialize(URL url, ResourceBundle rb) {
@@ -45,7 +48,7 @@ public class MainViewController implements Initializable {
 
         pathLabel.setText(iMatDirectory);
         anchorHeader.getChildren().add(new HeaderController(this));
-
+        anchorMeny.getChildren().add(new MenyController(this));
 
 
 

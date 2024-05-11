@@ -14,6 +14,7 @@
       <Label layoutX="306.0" layoutY="147.0" prefHeight="17.0" prefWidth="389.0" text="Sökväg till mappen där programmet hämtar och sparar data:" />
       <Label fx:id="pathLabel" alignment="CENTER" layoutX="115.0" layoutY="190.0" prefHeight="17.0" prefWidth="771.0" styleClass="text-sample" text="Label" AnchorPane.leftAnchor="115.0" AnchorPane.rightAnchor="114.0" />
       <AnchorPane fx:id="anchorHeader" layoutX="1.0" prefHeight="110.0" prefWidth="1437.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
+      <AnchorPane fx:id="anchorMeny" layoutX="10.0" layoutY="118.0" maxHeight="-Infinity" maxWidth="-Infinity" minWidth="-Infinity" prefHeight="906.0" prefWidth="255.0" />
       <AnchorPane fx:id="varukorgPopupAnchor" layoutX="223.0" layoutY="412.0" onMouseClicked="#closeVarukorgAnimation" prefHeight="342.0" prefWidth="362.0" styleClass="transp-varukorg-pane" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
             <AnchorPane fx:id="varukorgPopup" onMouseClicked="#mouseTrap" prefHeight="1024.0" prefWidth="554.0" styleClass="varukorg-popup" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">

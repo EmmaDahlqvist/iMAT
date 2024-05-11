@@ -8,33 +8,40 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.shape.Line?>
 
-<AnchorPane maxWidth="-Infinity" minWidth="-Infinity" prefHeight="906.0" prefWidth="255.0" stylesheets="@imat_app.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="imat.MenyController">
-   <children>
-      <AnchorPane layoutY="47.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="47.0" prefWidth="255.0" stylesheets="@imat_app.css" AnchorPane.leftAnchor="0.0">
-         <children>
-            <Line endY="35.0" layoutX="19.0" layoutY="0.5" styleClass="menyListItemLine" AnchorPane.leftAnchor="18.5" />
-            <Line endY="40.0" layoutX="19.0" layoutY="6.5" styleClass="menyListItemLine" AnchorPane.leftAnchor="18.5" />
-            <Button graphicTextGap="0.0" layoutX="35.0" layoutY="11.0" mnemonicParsing="false" prefHeight="47.0" prefWidth="255.0" styleClass="menyListItem" text="Kryddor" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-               <opaqueInsets>
-                  <Insets />
-               </opaqueInsets>
-            </Button>
-            <Line endY="46.0" layoutX="19.0" layoutY="0.5" styleClass="menyListItemLine" AnchorPane.leftAnchor="18.5" />
-         </children>
-      </AnchorPane>
-      <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="47.0" prefWidth="255.0" AnchorPane.leftAnchor="0.0">
-         <children>
-            <Button id="menyMainKategori-bottom" alignment="TOP_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="47.0" prefWidth="255.0" styleClass="menyMainKategori" text="Fisk och skaldjur" AnchorPane.bottomAnchor="-0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
-            <ToggleButton contentDisplay="CENTER" graphicTextGap="20.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefWidth="40.0" styleClass="menyMainKategori-toogle" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-               <graphic>
-                  <ImageView fitHeight="22.0" fitWidth="94.0" pickOnBounds="true" preserveRatio="true" styleClass="arrow">
-                     <image>
-                        <Image url="@fxmlPictures/arrow_right.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
-            </ToggleButton>
-         </children>
-      </AnchorPane>
-   </children>
-</AnchorPane>
+<fx:root maxHeight="-Infinity" maxWidth="-Infinity" minWidth="-Infinity" prefHeight="906.0" prefWidth="255.0" stylesheets="@imat_app.css" type="javafx.scene.layout.AnchorPane" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+   <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minWidth="-Infinity" prefHeight="906.0" prefWidth="255.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <children>
+         <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="47.0" prefWidth="255.0" AnchorPane.bottomAnchor="861.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <children>
+               <Button id="menyMainKategori-top" fx:id="showAllButton" alignment="TOP_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="47.0" prefWidth="255.0" styleClass="menyMainKategori" text="Visa alla varor" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+            </children>
+         </AnchorPane>
+         <AnchorPane layoutY="94.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="47.0" prefWidth="255.0" stylesheets="@imat_app.css" AnchorPane.bottomAnchor="767.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="94.0">
+            <children>
+               <Line endY="35.0" layoutX="19.0" layoutY="0.5" styleClass="menyListItemLine" AnchorPane.leftAnchor="18.5" />
+               <Line endY="40.0" layoutX="19.0" layoutY="6.5" styleClass="menyListItemLine" AnchorPane.leftAnchor="18.5" />
+               <Button graphicTextGap="0.0" layoutX="35.0" layoutY="11.0" mnemonicParsing="false" prefHeight="47.0" prefWidth="255.0" styleClass="menyListItem" text="Kryddor" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                  <opaqueInsets>
+                     <Insets />
+                  </opaqueInsets>
+               </Button>
+               <Line endY="46.0" layoutX="19.0" layoutY="0.5" styleClass="menyListItemLine" AnchorPane.leftAnchor="18.5" />
+            </children>
+         </AnchorPane>
+         <AnchorPane layoutY="47.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="47.0" prefWidth="255.0" AnchorPane.bottomAnchor="814.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="47.0">
+            <children>
+               <Button alignment="TOP_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="47.0" prefWidth="255.0" styleClass="menyMainKategori" text="Fisk och skaldjur" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+               <ToggleButton contentDisplay="CENTER" graphicTextGap="20.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefWidth="40.0" styleClass="menyMainKategori-toogle" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                  <graphic>
+                     <ImageView fitHeight="22.0" fitWidth="94.0" pickOnBounds="true" preserveRatio="true" styleClass="arrow">
+                        <image>
+                           <Image url="@fxmlPictures/arrow_right.png" />
+                        </image>
+                     </ImageView>
+                  </graphic>
+               </ToggleButton>
+            </children>
+         </AnchorPane>
+      </children>
+   </AnchorPane>
+</fx:root>
