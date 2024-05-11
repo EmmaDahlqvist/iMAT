@@ -230,3 +230,83 @@
     -fx-background-insets : 2.0, 0.0, 0.0;
     -fx-background-radius : 2.0em;
 }
+
+
+.menyMainKategori-text {
+    -fx-font-size: 23px;
+    -fx-font-family: "Amiko";
+    -fx-text-fill: #FFFFFF;
+}
+
+.menyMainKategori {
+    -fx-background-radius: 0px;
+    -fx-background-color: #5266D0;
+    -fx-border-width: 0px 0px 1px 0px;
+    -fx-border-color: #2E3F98;
+    -fx-font-size: 23px;
+    -fx-font-family: "Amiko";
+    -fx-text-fill: #FFFFFF;
+    -fx-background-insets: 0;
+}
+
+.menyMainKategori:hover {
+    -fx-font-weight: bold;
+}
+
+.menyMainKategori:pressed {
+    -fx-background-color: #3125C1;
+}
+
+.arrow {
+
+}
+
+.menyMainKategori-toogle {
+    -fx-background-radius: 0px;
+    -fx-background-color: none;
+    -fx-background-insets: 0;
+}
+
+.menyMainKategori-toogle:hover .arrow {
+    -fx-scale-x: 2;
+    -fx-scale-y: 2;
+}
+
+.menyMainKategori-toogle:selected .arrow {
+    -fx-rotate: 90;
+}
+
+.menyMainKategori-toogle:selected .menyMainKategori {
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.25), 10, 0, 0, 4);
+}
+
+#menyMainKategori-top {
+    -fx-background-radius: 3px 3px 0px 0px;
+}
+
+#menyMainKategori-bottom {
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.25), 10, 0, 0, 4);
+}
+
+.menyListItem {
+    -fx-background-radius: 0px;
+    -fx-background-color: #DBEEFF;
+    -fx-font-size: 20px;
+    -fx-font-family: "Amiko";
+    -fx-text-fill: #2E3F98;
+    -fx-background-insets: 0;
+    -fx-alignment: center-left;
+    -fx-padding: 0px 0px 0px 34px;
+}
+
+.menyListItem:hover {
+    -fx-font-weight: bold;
+}
+
+.menyListItem:pressed {
+    -fx-background-color: #B0D3F2;
+}
+
+.menyListItemLine {
+    -fx-stroke: #2E3F98;
+}
