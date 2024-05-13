@@ -8,6 +8,5 @@
       <Label layoutX="306.0" layoutY="147.0" prefHeight="17.0" prefWidth="389.0" text="Sökväg till mappen där programmet hämtar och sparar data:" />
       <Label fx:id="pathLabel" alignment="CENTER" layoutX="115.0" layoutY="190.0" prefHeight="17.0" prefWidth="771.0" styleClass="text-sample" text="Label" AnchorPane.leftAnchor="115.0" AnchorPane.rightAnchor="114.0" />
       <AnchorPane fx:id="anchorHeader" layoutX="1.0" prefHeight="110.0" prefWidth="1000.0" />
-      <AnchorPane fx:id="wizardAnchor" layoutX="38.0" layoutY="593.0" prefHeight="70.0" prefWidth="200.0" />
    </children>
 </AnchorPane>
