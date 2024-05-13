@@ -37,6 +37,8 @@ public class MainViewController implements Initializable {
     protected Button varukorgCloseButton;
 
     @FXML private AnchorPane varukorgPopupAnchor;
+
+    @FXML private AnchorPane utcheckning;
     IMatDataHandler iMatDataHandler = IMatDataHandler.getInstance();
 
     public void initialize(URL url, ResourceBundle rb) {
@@ -47,11 +49,15 @@ public class MainViewController implements Initializable {
         anchorHeader.getChildren().add(new HeaderController(this));
 
 
+
         setUpShoppingCart();
         updateVaraAvlang();
         updateTotalPrice();
 
         closeVarukorg(); // håll den stängd som default
+
+        utcheckning.getChildren().add(new UtcheckningController(this));
+
     }
 
     private void setUpShoppingCart() {
@@ -90,6 +96,14 @@ public class MainViewController implements Initializable {
     }
 
     @FXML
+    private void closeVarukorgAnimation(){
+        TranslateTransition closeNav=new TranslateTransition(new Duration(350), varukorgPopup);
+        closeNav.setToX(+(varukorgPopup.getWidth()));
+        closeNav.setOnFinished(event -> closeVarukorg());
+        closeNav.play();
+    }
+
+    @FXML
     protected void openVarukorg() {
         varukorgPopupAnchor.setVisible(true);
         varukorgPopupAnchor.setManaged(true);
@@ -101,6 +115,8 @@ public class MainViewController implements Initializable {
     }
 
     @FXML private AnchorPane varukorgPopup;
+
+
 
 
     private boolean firstPrepare = true;
