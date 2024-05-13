@@ -46,7 +46,7 @@ public class MainViewController implements Initializable {
 
         String iMatDirectory = iMatDataHandler.imatDirectory();
 
-        pathLabel.setText(iMatDirectory);
+
         anchorHeader.getChildren().add(new HeaderController(this));
 
 
