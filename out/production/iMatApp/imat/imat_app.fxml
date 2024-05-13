@@ -31,6 +31,7 @@
       <Button layoutX="404.0" layoutY="553.0" mnemonicParsing="false" prefHeight="99.0" prefWidth="980.0" text="Börja handla">
          <styleClass>
             <String fx:value="big-button" />
+            <String fx:value="buttons" />
             <String fx:value="title-text" />
          </styleClass></Button>
       <AnchorPane fx:id="anchorHeader" layoutX="1.0" prefHeight="110.0" prefWidth="1437.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
