@@ -412,10 +412,17 @@
 .big-button{
     -fx-background-color: #3125c1;
     -fx-background-radius: 50px;
-    -fx-border-radius: 50px;
     -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.25), 10, 0, 0, 10);
     -fx-background-insets: 0;
 }
+
+.big-button:hover {
+    -fx-background-color: #4736d4;
+    -fx-border-radius: 50px;
+    -fx-border: 2px;
+    -fx-border-color: #111111;
+}
+
 .title-text{
     -fx-font-size: 38px;
     -fx-font-family: "Amiko";
