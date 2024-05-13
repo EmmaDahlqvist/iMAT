@@ -8,6 +8,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import se.chalmers.cse.dat216.project.Product;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -27,8 +28,8 @@ public class iMatApp extends Application {
         double width = screenSize.getWidth();
         double height = screenSize.getHeight();
         
-        Scene scene = new Scene(root, 1440, 700);
-        stage.setMaximized(true);
+        Scene scene = new Scene(root, 1440, 1024);
+//        stage.setMaximized(true);
         stage.setTitle(bundle.getString("application.name"));
         stage.setScene(scene);
         stage.show();
