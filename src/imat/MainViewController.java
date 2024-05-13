@@ -40,6 +40,11 @@ public class MainViewController implements Initializable {
     protected Button varukorgCloseButton;
 
     @FXML private AnchorPane varukorgPopupAnchor;
+
+    @FXML protected Label sokResultatLabel;
+    @FXML protected AnchorPane sokResultatAnchor;
+
+
     IMatDataHandler iMatDataHandler = IMatDataHandler.getInstance();
 
     public void initialize(URL url, ResourceBundle rb) {

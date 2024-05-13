@@ -110,7 +110,7 @@ public class HeaderController extends AnchorPane {
 
 
 
-    public static VBox populateDropDownMenu(String text, List<Product> products) {
+    public VBox populateDropDownMenu(String text, List<Product> products) {
         VBox dropDownMenu = new VBox();
         dropDownMenu.setBackground(new Background(new BackgroundFill(Color.WHITE, null, null)));
         dropDownMenu.setAlignment(Pos.TOP_LEFT);
@@ -133,7 +133,8 @@ public class HeaderController extends AnchorPane {
                 hbox.setOnMouseClicked(event -> {
                     String labelText = label.getText();
                     // Save labelText to a variable or use it directly here
-                    System.out.println("Clicked on label: " + labelText);
+                    this.mainViewController.sokResultatLabel.setText("Sökresultat för " + '"' + labelText.toLowerCase() + '"');
+                    searchBar.setText("");
                 });
 
                 if (product.getName().equalsIgnoreCase(text)) {
