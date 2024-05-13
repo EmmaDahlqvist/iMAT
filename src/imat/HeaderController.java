@@ -52,8 +52,18 @@ public class HeaderController extends AnchorPane {
 
     private MainViewController mainViewController;
 
-    public HeaderController(MainViewController mainViewController) {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("header.fxml"));
+    public HeaderController(MainViewController mainViewController, String headerType) {
+        String fxmlFile;
+        switch (headerType) {
+            case "withoutVarukorgButton":
+                fxmlFile = "header_without_varukorgbutton.fxml";
+                break;
+            case "withImatMainButton":
+                fxmlFile = "header_with_imatmainbutton.fxml";
+                break;
+            default:
+                fxmlFile = "header.fxml";
+        }        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(fxmlFile));
         fxmlLoader.setRoot(this);
         fxmlLoader.setController(this);
         this.mainViewController = mainViewController;
@@ -64,7 +74,8 @@ public class HeaderController extends AnchorPane {
         }
         this.requestFocus();
 
-        this.initialize();
+        if (fxmlFile != "withImatMainButton"){this.initialize();}
+
 
 
     }
@@ -73,20 +84,25 @@ public class HeaderController extends AnchorPane {
     public void initialize() {
         List<Product> products = iMatDataHandler.getProducts();
 
-        searchBar.textProperty().addListener((observable, oldValue, newValue) -> {
-            if (container.getChildren().size() > 1) {
-                container.getChildren().remove(1);
-            }
-            VBox dropDownMenu = populateDropDownMenu(newValue, products);
-            container.add(dropDownMenu, 0, 1);
-            GridPane.setValignment(dropDownMenu, VPos.TOP); // Align the VBox to the top of the row
-        });
-        searchBar.focusedProperty().addListener((observable, oldValue, newValue) -> {
-            container.setVisible(newValue);
-        });
+        if (searchBar != null) {
+            searchBar.textProperty().addListener((observable, oldValue, newValue) -> {
+                if (container.getChildren().size() > 1) {
+                    container.getChildren().remove(1);
+                }
+                VBox dropDownMenu = populateDropDownMenu(newValue, products);
+                container.add(dropDownMenu, 0, 1);
+                GridPane.setValignment(dropDownMenu, VPos.TOP); // Align the VBox to the top of the row
+            });
+            searchBar.focusedProperty().addListener((observable, oldValue, newValue) -> {
+                container.setVisible(newValue);
+            });
+        }
+
         List<ImageView> imageViews = Arrays.asList(tidigareKopBild, dinaUppgifterBild, varukorgenBild);
         for (ImageView imageView : imageViews) {
-            imageView.setMouseTransparent(true);
+            if (imageView != null) {
+                imageView.setMouseTransparent(true);
+            }
         }
 
         prepareMenuSlideAnimation();

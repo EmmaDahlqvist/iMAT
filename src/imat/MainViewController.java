@@ -23,6 +23,9 @@ public class MainViewController implements Initializable {
     Label pathLabel;
     @FXML
     private AnchorPane anchorHeader;
+    @FXML
+    Button beginShoppingButton;
+
 
     @FXML
     private FlowPane varaAvlangFlowPane;
@@ -45,8 +48,12 @@ public class MainViewController implements Initializable {
 
         String iMatDirectory = iMatDataHandler.imatDirectory();
 
-        pathLabel.setText(iMatDirectory);
-        anchorHeader.getChildren().add(new HeaderController(this));
+
+        anchorHeader.getChildren().add(new HeaderController(this, "self"));
+//        anchorHeader.getChildren().add(new HeaderController(this, "withoutVarukorgButton")); //kan itne ha actionlistener på varukorgbutton om man ska ha denna
+//        anchorHeader.getChildren().add(new HeaderController(this, "withImatMainButton"));
+
+
 
 
 
