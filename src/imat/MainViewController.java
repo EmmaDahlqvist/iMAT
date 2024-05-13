@@ -20,7 +20,7 @@ import se.chalmers.cse.dat216.project.*;
 public class MainViewController implements Initializable {
 
     @FXML
-    Label pathLabel;
+    private FlowPane productCardTest;
     @FXML
     private AnchorPane anchorHeader;
     @FXML
@@ -51,6 +51,7 @@ public class MainViewController implements Initializable {
 //        anchorHeader.getChildren().add(new HeaderController(this, "withoutVarukorgButton")); //kan itne ha actionlistener på varukorgbutton om man ska ha denna
 //        anchorHeader.getChildren().add(new HeaderController(this, "withImatMainButton"));
 
+        productCardTest.getChildren().add(new ProductCard(iMatDataHandler.getProduct(1)));
 
 
 
