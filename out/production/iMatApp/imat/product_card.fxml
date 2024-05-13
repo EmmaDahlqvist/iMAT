@@ -1,17 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.String?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-
-<fx:root prefHeight="361.0" prefWidth="290.0" type="javafx.scene.layout.AnchorPane" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+<fx:root prefHeight="361.0" prefWidth="290.0" styleClass="product-card" stylesheets="@imat_app.css" type="javafx.scene.layout.AnchorPane" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Button fx:id="purchaseButton" layoutX="75.0" layoutY="294.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="146.0" />
-      <Label fx:id="priceLabel" layoutX="128.0" layoutY="269.0" text="100" />
-      <Label layoutX="150.0" layoutY="269.0" text="kr" />
-      <ImageView fx:id="productImage" fitHeight="193.0" fitWidth="207.0" layoutX="41.0" layoutY="42.0" pickOnBounds="true" preserveRatio="true" />
-      <Label fx:id="productNameLabel" layoutX="125.0" layoutY="251.0" text="Olivolja" />
+      <Label fx:id="priceLabel" alignment="CENTER" layoutX="85.0" layoutY="261.0" prefHeight="30.0" prefWidth="120.0" styleClass="item-Undertext-black" text="100" />
+      <ImageView fx:id="productImage" fitHeight="193.0" fitWidth="207.0" layoutX="41.0" layoutY="25.0" pickOnBounds="true" preserveRatio="true" />
+      <Label fx:id="productNameLabel" alignment="CENTER" layoutX="60.0" layoutY="227.0" prefHeight="34.0" prefWidth="170.0" styleClass="item-main-text" text="Olivolja" />
+      <Button fx:id="purchaseButton" layoutX="52.0" layoutY="299.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="184.0" text="KÖP">
+         <styleClass>
+            <String fx:value="item-button" />
+            <String fx:value="item-button-text" />
+         </styleClass>
+      </Button>
    </children>
 </fx:root>
