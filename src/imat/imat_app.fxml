@@ -46,7 +46,7 @@
          </children>
       </AnchorPane>
       <AnchorPane fx:id="anchorHeader" prefHeight="110.0" prefWidth="1437.0" />
-      <AnchorPane fx:id="varukorgPopupAnchor" onMouseClicked="#closeVarukorgAnimation" prefHeight="1024.0" prefWidth="554.0" styleClass="transp-varukorg-pane" visible="false">
+      <AnchorPane fx:id="varukorgPopupAnchor" layoutX="890.0" onMouseClicked="#closeVarukorgAnimation" prefHeight="1024.0" prefWidth="1440.0" styleClass="transp-varukorg-pane" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
             <AnchorPane fx:id="varukorgPopup" onMouseClicked="#mouseTrap" prefHeight="1024.0" prefWidth="554.0" styleClass="varukorg-popup" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <children>
