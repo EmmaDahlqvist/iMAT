@@ -20,6 +20,7 @@ public class MainViewController implements Initializable {
     private AnchorPane anchorHeader;
 
 
+
     IMatDataHandler iMatDataHandler = IMatDataHandler.getInstance();
 
     public void initialize(URL url, ResourceBundle rb) {
@@ -35,5 +36,4 @@ public class MainViewController implements Initializable {
         }
 
     }
-
 }
