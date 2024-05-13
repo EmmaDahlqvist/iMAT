@@ -105,7 +105,7 @@
     -fx-background-radius: 100px;
     -fx-border-radius: 100px;
 }
-.button:hover {
+.buttons:hover {
     -fx-cursor: hand;
 }
 
@@ -351,13 +351,13 @@
     -fx-stroke: #2E3F98;
 }
 
-.button {
-    -fx-background-radius: 22px;
-    -fx-background-insets: 0;
-    -fx-font-family: "Amiko";
-    -fx-font-size: 20px;
-    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.15), 10, 0, 0, 10);
-}
+/*.button {*/
+/*    -fx-background-radius: 22px;*/
+/*    -fx-background-insets: 0;*/
+/*    -fx-font-family: "Amiko";*/
+/*    -fx-font-size: 20px;*/
+/*    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.15), 10, 0, 0, 10);*/
+/*}*/
 
 .wizard-button {
     -fx-background-color: #DBEEFF;
