@@ -23,6 +23,9 @@ public class MainViewController implements Initializable {
     Label pathLabel;
     @FXML
     private AnchorPane anchorHeader;
+    @FXML
+    Button beginShoppingButton;
+
 
     @FXML
     private FlowPane varaAvlangFlowPane;
@@ -45,6 +48,8 @@ public class MainViewController implements Initializable {
 
         pathLabel.setText(iMatDirectory);
         anchorHeader.getChildren().add(new HeaderController(this));
+
+
 
 
         setUpShoppingCart();
