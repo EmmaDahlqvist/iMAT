@@ -3,14 +3,33 @@
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.Tooltip?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.layout.FlowPane?>
 <?import javafx.scene.shape.Line?>
 
-<AnchorPane minHeight="700.0" minWidth="1000.0" prefHeight="1024.0" prefWidth="1440.0" styleClass="background-color" stylesheets="@imat_app.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="imat.MainViewController">
+<AnchorPane maxHeight="1024.0" maxWidth="1440.0" minHeight="1024.0" minWidth="1440.0" prefHeight="1024.0" prefWidth="1440.0" stylesheets="@imat_app.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="imat.MainViewController">
    <children>
+
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#5266d0" height="350.0" layoutX="404.0" layoutY="139.0" stroke="#2e3f98" strokeType="INSIDE" width="980.0" />
+      <Label layoutX="411.0" layoutY="147.0" prefHeight="76.0" prefWidth="702.0" styleClass="big-title-white" text="Olja, kraften bakom rörelse" />
+      <ImageView fitHeight="176.0" fitWidth="143.0" layoutX="411.0" layoutY="306.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@fxmlPictures/feature_asset_1.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="381.0" fitWidth="475.0" layoutX="909.0" layoutY="124.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@fxmlPictures/feature_asset_2.png" />
+         </image>
+      </ImageView>
+      <Button layoutX="404.0" layoutY="553.0" mnemonicParsing="false" prefHeight="99.0" prefWidth="980.0" text="Börja handla">
+
+      </Button>
       <Label layoutX="306.0" layoutY="147.0" prefHeight="17.0" prefWidth="389.0" text="Sökväg till mappen där programmet hämtar och sparar data:" />
       <Label fx:id="pathLabel" alignment="CENTER" layoutX="115.0" layoutY="190.0" prefHeight="17.0" prefWidth="771.0" styleClass="text-sample" text="Label" AnchorPane.leftAnchor="115.0" AnchorPane.rightAnchor="114.0" />
       <AnchorPane fx:id="anchorHeader" layoutX="1.0" prefHeight="110.0" prefWidth="1437.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
