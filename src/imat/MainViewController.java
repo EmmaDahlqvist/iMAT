@@ -43,6 +43,7 @@ public class MainViewController implements Initializable {
 
     @FXML protected Label sokResultatLabel;
     @FXML protected AnchorPane sokResultatAnchor;
+    @FXML protected AnchorPane homePageAnchor;
 
 
     IMatDataHandler iMatDataHandler = IMatDataHandler.getInstance();
@@ -154,6 +155,25 @@ public class MainViewController implements Initializable {
                 openNav.play();
             }
         });
+    }
+
+
+    protected void sokPageToFront(){
+        sokResultatAnchor.toFront();
+        sokResultatAnchor.setVisible(true);
+    }
+
+    protected void sokPageToBack(){
+        sokResultatAnchor.toBack();
+        sokResultatAnchor.setVisible(false);
+    }
+
+    protected void homePageToFront(){
+        homePageAnchor.toFront();
+    }
+
+    protected void homePageToBack(){
+        homePageAnchor.toBack();
     }
 
 
