@@ -11,20 +11,23 @@ import se.chalmers.cse.dat216.project.IMatDataHandler;
 import se.chalmers.cse.dat216.project.Product;
 
 
-public class ProductCard extends AnchorPane
+public class ProductCardInc extends AnchorPane
 {
     @FXML private ImageView productImage;
     @FXML private Label productNameLabel;
     @FXML private Label priceLabel;
-    @FXML private Button purchaseButton;
+    @FXML private Label numberOfItemsLabel;
+    @FXML private Button addItemButton;
+    @FXML private Button removeItemButton;
+
 
     private Product product;
     private IMatDataHandler imatDataHandler;
+    private int currentNumberOfItems;
 
-
-    public ProductCard(Product product)
+    public ProductCardInc(Product product)
     {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("product_card.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("product_card_inc.fxml"));
         fxmlLoader.setRoot(this);
         fxmlLoader.setController(this);
 
@@ -43,13 +46,24 @@ public class ProductCard extends AnchorPane
 
     private void initialize_product()
     {
+        currentNumberOfItems = 1;
+        numberOfItemsLabel.setText(Integer.toString(currentNumberOfItems) + " st");
         productNameLabel.setText(product.getName());
         priceLabel.setText(String.format("%.2f", product.getPrice()) + " kr");
 
         Image image = imatDataHandler.getFXImage(product, 207, 193);
         productImage.setImage(image);
-
     }
 
+    private void incrementNumberOfItems()
+    {
+        currentNumberOfItems++;
+        numberOfItemsLabel.setText(Integer.toString(currentNumberOfItems));
+    }
+    private void decrementNumberOfItems()
+    {
+        currentNumberOfItems--;
+        numberOfItemsLabel.setText(Integer.toString(currentNumberOfItems));
+    }
 
 }

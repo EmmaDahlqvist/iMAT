@@ -23,6 +23,9 @@ public class MainViewController implements Initializable {
     Label pathLabel;
     @FXML
     private AnchorPane anchorHeader;
+    @FXML
+    Button beginShoppingButton;
+
 
     @FXML
     private FlowPane varaAvlangFlowPane;
