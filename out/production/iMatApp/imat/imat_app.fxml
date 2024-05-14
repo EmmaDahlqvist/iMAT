@@ -40,7 +40,7 @@
                   <Image url="@fxmlPictures/feature_asset_2.png" />
                </image>
             </ImageView>
-            <Button layoutX="404.0" layoutY="562.0" mnemonicParsing="false" prefHeight="99.0" prefWidth="980.0" text="Börja handla">
+            <Button fx:id="beginShoppingButton" layoutX="404.0" layoutY="562.0" mnemonicParsing="false" prefHeight="99.0" prefWidth="980.0" text="Börja handla">
                <styleClass>
                   <String fx:value="big-button" />
                   <String fx:value="buttons" />
