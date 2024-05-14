@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.FlowPane?>
+
+<fx:root prefHeight="463.0" prefWidth="734.0" stylesheets="@imat_app.css" type="javafx.scene.layout.AnchorPane" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <FlowPane fx:id="productCardFlowPane" layoutX="37.0" layoutY="51.0" prefHeight="361.0" prefWidth="290.0" />
+      <Label fx:id="productNameLabel" layoutX="367.0" layoutY="51.0" prefHeight="32.0" prefWidth="121.0" text="Olivolja" />
+      <Label fx:id="ecoLabel" layoutX="365.0" layoutY="92.0" prefHeight="17.0" prefWidth="104.0" text="eco" />
+      <Label fx:id="priceLabel" layoutX="365.0" layoutY="124.0" prefHeight="17.0" prefWidth="104.0" text="189kr/st" />
+      <TextField layoutX="365.0" layoutY="164.0" prefHeight="209.0" prefWidth="242.0" text="Extra info" />
+   </children>
+</fx:root>
