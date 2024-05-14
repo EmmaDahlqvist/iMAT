@@ -54,7 +54,7 @@ public class MainViewController implements Initializable {
 
 
         anchorHeader.getChildren().add(new HeaderController(this, "self"));
-//        anchorHeader.getChildren().add(new HeaderController(this, "withoutVarukorgButton")); //kan itne ha actionlistener på varukorgbutton om man ska ha denna
+//        anchorHeader.getChildren().add(new HeaderController(this, "withoutVarukorgButton"));
 //        anchorHeader.getChildren().add(new HeaderController(this, "withImatMainButton"));
 
         productCardTest.getChildren().add(new ProductCard(iMatDataHandler.getProduct(1)));
@@ -146,16 +146,17 @@ public class MainViewController implements Initializable {
             }
         }) ;
 
-        openButton.setOnAction((ActionEvent evt)->{
-            System.out.println(varukorgPopup.getTranslateX());
-            openVarukorg();
-            if(varukorgPopup.getTranslateX()!=0){
-                System.out.println("opening");
+        if (openButton != null){
+            openButton.setOnAction((ActionEvent evt)->{
+                System.out.println(varukorgPopup.getTranslateX());
                 openVarukorg();
-                openNav.play();
-            }
+                if(varukorgPopup.getTranslateX()!=0){
+                    System.out.println("opening");
+                    openVarukorg();
+                    openNav.play();
+                }
         });
-    }
+    }}
 
 
     protected void sokPageToFront(){
