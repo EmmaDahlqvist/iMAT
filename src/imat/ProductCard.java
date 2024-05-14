@@ -11,7 +11,7 @@ import javafx.scene.shape.Circle;
 import se.chalmers.cse.dat216.project.*;
 
 
-public class ProductCard extends AnchorPane implements ShoppingCartListener
+public class ProductCard extends AnchorPane
 {
     @FXML private ImageView productImage;
     @FXML private Label productNameLabel;
@@ -144,18 +144,7 @@ public class ProductCard extends AnchorPane implements ShoppingCartListener
 
     }
 
-    public void shoppingCartChanged(CartEvent evt)
-    {
-        if (shoppingItem.getAmount() == 0)
-        {
-            showPurchaseButton();
-        }
-        else
-        {
-            showIncrementButtons();
-        }
-        numberOfItemsLabel.setText(String.valueOf((int) shoppingItem.getAmount()));
-    }
+
 
 
 }

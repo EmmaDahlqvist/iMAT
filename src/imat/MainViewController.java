@@ -57,9 +57,8 @@ public class MainViewController implements Initializable {
 //        anchorHeader.getChildren().add(new HeaderController(this, "withoutVarukorgButton")); //kan itne ha actionlistener på varukorgbutton om man ska ha denna
 //        anchorHeader.getChildren().add(new HeaderController(this, "withImatMainButton"));
 
-        ProductCard testCard = new ProductCard(this, new ShoppingItem(iMatDataHandler.getProduct(1), 1));
-        productCardTest.getChildren().add(testCard);
-        iMatDataHandler.getShoppingCart().addShoppingCartListener(testCard);
+        productCardTest.getChildren().add(new ProductCard(this, new ShoppingItem(iMatDataHandler.getProduct(1), 1)));
+
 
         setUpShoppingCart();
         updateVaraAvlang();
