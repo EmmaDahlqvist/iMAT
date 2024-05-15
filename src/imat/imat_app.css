@@ -107,6 +107,13 @@
     -fx-font-size: 20px;
     -fx-font-family: "Amiko";
 }
+
+.underkategori-svart{
+    -fx-font-color: #000000;
+    -fx-font-size: 20px;
+    -fx-font-family: "Amiko";
+}
+
 .header-buttons{
     -fx-background-color: #FFFFFF;
     -fx-background-radius: 100px;
@@ -437,6 +444,31 @@
     -fx-text-fill: #FFFFFF;
     -fx-font-weight: bold;
 }
+
+.title-text-black{
+    -fx-font-size: 38px;
+    -fx-font-family: "Amiko";
+    -fx-font-color: #000000;
+    -fx-text-fill: #000000;
+    -fx-font-weight: bold;
+}
+
+.text-detailed-product{
+    -fx-font-size: 20px;
+    -fx-font-family: "Amiko";
+    -fx-font-color: #000000;
+    -fx-text-fill: #000000;
+    -fx-font-weight: bold;
+}
+
+.text-area .content {
+    -fx-background-color: #F7FAFF;
+}
+
+.text-area  {
+    -fx-background-color: #F7FAFF;
+}
+
 .sok-resultat-kategori-label {
     -fx-font-size: 38px;
     -fx-font-family: "Amiko";
