@@ -69,5 +69,11 @@
             </AnchorPane>
          </children>
       </AnchorPane>
+      <AnchorPane prefHeight="1026.0" prefWidth="1441.0" styleClass="wizard-button-filled">
+         <children>
+            <AnchorPane fx:id="wizardAnchor" layoutX="146.0" layoutY="99.0" prefHeight="80.0" prefWidth="1140.0" styleClass="wizard-button" />
+            <AnchorPane fx:id="wizardPagesAnchor" layoutX="145.0" layoutY="255.0" prefHeight="700.0" prefWidth="1140.0" />
+         </children>
+      </AnchorPane>
    </children>
 </AnchorPane>

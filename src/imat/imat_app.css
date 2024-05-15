@@ -351,17 +351,14 @@
     -fx-stroke: #2E3F98;
 }
 
-/*.button {*/
-/*    -fx-background-radius: 22px;*/
-/*    -fx-background-insets: 0;*/
-/*    -fx-font-family: "Amiko";*/
-/*    -fx-font-size: 20px;*/
-/*    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.15), 10, 0, 0, 10);*/
-/*}*/
-
 .wizard-button {
     -fx-background-color: #DBEEFF;
     -fx-text-fill: #5266d0;
+    -fx-background-radius: 22px;
+    -fx-background-insets: 0;
+    -fx-font-family: "Amiko";
+    -fx-font-size: 20px;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.15), 10, 0, 0, 10);
 }
 
 .wizard-button-hoverable:hover {
@@ -373,6 +370,11 @@
 .wizard-button-filled {
     -fx-background-color: #5266D1;
     -fx-text-fill: white;
+    -fx-background-radius: 22px;
+    -fx-background-insets: 0;
+    -fx-font-family: "Amiko";
+    -fx-font-size: 20px;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.15), 10, 0, 0, 10);
 }
 
 .wizard-undertext {
