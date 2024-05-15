@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" stylesheets="@imat_app.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="imat.WizardPages">
+
+    <AnchorPane prefHeight="1026.0" prefWidth="1441.0" styleClass="wizard-button-filled">
+        <children>
+            <AnchorPane fx:id="wizardAnchor" layoutX="146.0" layoutY="99.0" prefHeight="80.0" prefWidth="1140.0" styleClass="wizard-button" />
+            <AnchorPane fx:id="squareOne" layoutX="237.0" layoutY="291.0" prefHeight="366.0" prefWidth="438.0" styleClass="wizard-button">
+            <children>
+               <TextField layoutX="137.0" layoutY="40.0" />
+               <TextField layoutX="136.0" layoutY="220.0" />
+               <TextField layoutX="136.0" layoutY="160.0" />
+               <TextField layoutX="137.0" layoutY="100.0" />
+            </children></AnchorPane>
+            <AnchorPane fx:id="SquareTwo" layoutX="717.0" layoutY="288.0" prefHeight="366.0" prefWidth="438.0" styleClass="wizard-button" />
+         <TextField layoutX="850.0" layoutY="331.0" />
+         <TextField layoutX="849.0" layoutY="511.0" />
+         <TextField layoutX="849.0" layoutY="451.0" />
+         <TextField layoutX="850.0" layoutY="391.0" />
+         <TextField layoutX="849.0" layoutY="570.0" />
+        </children>
+    </AnchorPane>
+
+</AnchorPane>
