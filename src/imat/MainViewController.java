@@ -41,8 +41,12 @@ public class MainViewController implements Initializable {
 
     @FXML private AnchorPane varukorgPopupAnchor;
 
-    @FXML
-    private AnchorPane wizardAnchor;
+    @FXML protected Label sokResultatLabel;
+    @FXML protected AnchorPane sokResultatAnchor;
+    @FXML protected AnchorPane homePageAnchor;
+    @FXML private FlowPane productCardTest;
+
+
     IMatDataHandler iMatDataHandler = IMatDataHandler.getInstance();
 
     public void initialize(URL url, ResourceBundle rb) {
@@ -51,10 +55,10 @@ public class MainViewController implements Initializable {
 
 
         anchorHeader.getChildren().add(new HeaderController(this, "self"));
-//        anchorHeader.getChildren().add(new HeaderController(this, "withoutVarukorgButton")); //kan itne ha actionlistener på varukorgbutton om man ska ha denna
+//        anchorHeader.getChildren().add(new HeaderController(this, "withoutVarukorgButton"));
 //        anchorHeader.getChildren().add(new HeaderController(this, "withImatMainButton"));
-        wizardAnchor.getChildren().add(new WizardController());
 
+        productCardTest.getChildren().add(new ProductCard(iMatDataHandler.getProduct(1)));
 
 
 
@@ -143,15 +147,35 @@ public class MainViewController implements Initializable {
             }
         }) ;
 
-        openButton.setOnAction((ActionEvent evt)->{
-            System.out.println(varukorgPopup.getTranslateX());
-            openVarukorg();
-            if(varukorgPopup.getTranslateX()!=0){
-                System.out.println("opening");
+        if (openButton != null){
+            openButton.setOnAction((ActionEvent evt)->{
+                System.out.println(varukorgPopup.getTranslateX());
                 openVarukorg();
-                openNav.play();
-            }
+                if(varukorgPopup.getTranslateX()!=0){
+                    System.out.println("opening");
+                    openVarukorg();
+                    openNav.play();
+                }
         });
+    }}
+
+
+    protected void sokPageToFront(){
+        sokResultatAnchor.toFront();
+        sokResultatAnchor.setVisible(true);
+    }
+
+    protected void sokPageToBack(){
+        sokResultatAnchor.toBack();
+        sokResultatAnchor.setVisible(false);
+    }
+
+    protected void homePageToFront(){
+        homePageAnchor.toFront();
+    }
+
+    protected void homePageToBack(){
+        homePageAnchor.toBack();
     }
 
 
