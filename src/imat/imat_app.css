@@ -430,3 +430,11 @@
     -fx-text-fill: #FFFFFF;
     -fx-font-weight: bold;
 }
+.sok-resultat-kategori-label {
+    -fx-font-size: 38px;
+    -fx-font-family: "Amiko";
+    -fx-text-fill: #000000;
+}
+.hoverable-button-pointer:hover {
+    -fx-cursor: hand;
+}

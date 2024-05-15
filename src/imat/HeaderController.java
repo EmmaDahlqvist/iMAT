@@ -9,6 +9,7 @@ import javafx.scene.control.ButtonBar;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.KeyCode;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
@@ -97,6 +98,13 @@ public class HeaderController extends AnchorPane {
                 container.setVisible(newValue);
             });
         }
+        if (searchBar != null) {
+            searchBar.setOnKeyPressed(event -> {
+                if (event.getCode() == KeyCode.ENTER) {
+                    onSearch(new Label(searchBar.getText()));
+                }
+            });
+        }
 
         List<ImageView> imageViews = Arrays.asList(tidigareKopBild, dinaUppgifterBild, varukorgenBild);
         for (ImageView imageView : imageViews) {
@@ -104,13 +112,19 @@ public class HeaderController extends AnchorPane {
                 imageView.setMouseTransparent(true);
             }
         }
+        if (lgo != null) {
+            lgo.setOnMouseClicked(event -> {
+                this.mainViewController.homePageAnchor.setVisible(true);
+                this.mainViewController.sokResultatAnchor.setVisible(false);
+            });
+        }
 
         prepareMenuSlideAnimation();
     }
 
 
 
-    public static VBox populateDropDownMenu(String text, List<Product> products) {
+    public VBox populateDropDownMenu(String text, List<Product> products) {
         VBox dropDownMenu = new VBox();
         dropDownMenu.setBackground(new Background(new BackgroundFill(Color.WHITE, null, null)));
         dropDownMenu.setAlignment(Pos.TOP_LEFT);
@@ -131,9 +145,7 @@ public class HeaderController extends AnchorPane {
 
                 // Add a mouse click event to the HBox
                 hbox.setOnMouseClicked(event -> {
-                    String labelText = label.getText();
-                    // Save labelText to a variable or use it directly here
-                    System.out.println("Clicked on label: " + labelText);
+                    onSearch(label);
                 });
 
                 if (product.getName().equalsIgnoreCase(text)) {
@@ -145,13 +157,32 @@ public class HeaderController extends AnchorPane {
         }
 
         // Add the exact matches first, then the contains matches
-        dropDownMenu.getChildren().addAll(exactMatches);
-        dropDownMenu.getChildren().addAll(containsMatches);
+        // But only add up to 5 matches in total
+        int count = 0;
+        for (HBox match : exactMatches) {
+            if (count >= 5) break;
+            dropDownMenu.getChildren().add(match);
+            count++;
+        }
+        for (HBox match : containsMatches) {
+            if (count >= 5) break;
+            dropDownMenu.getChildren().add(match);
+            count++;
+        }
 
         // Set the VBox's max height to be its preferred height
         dropDownMenu.setMaxHeight(Region.USE_PREF_SIZE);
 
         return dropDownMenu;
+    }
+
+    private void onSearch(Label label) {
+        String labelText = label.getText();
+        // Save labelText to a variable or use it directly here
+        this.mainViewController.sokResultatLabel.setText("Sökresultat för " + '"' + labelText.toLowerCase() + '"');
+        searchBar.setText("");
+        this.mainViewController.sokResultatAnchor.setVisible(true);
+        this.mainViewController.homePageAnchor.setVisible(false);
     }
 
 //mouse pressed, exited och entered.
