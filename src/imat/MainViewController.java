@@ -44,6 +44,7 @@ public class MainViewController implements Initializable {
     @FXML protected Label sokResultatLabel;
     @FXML protected AnchorPane sokResultatAnchor;
     @FXML protected AnchorPane homePageAnchor;
+    @FXML private FlowPane productCardTest;
 
 
     IMatDataHandler iMatDataHandler = IMatDataHandler.getInstance();
