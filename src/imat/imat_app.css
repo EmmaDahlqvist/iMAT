@@ -243,7 +243,7 @@
     -fx-background-color: #5266D0;
     -fx-border-width: 0px 0px 1px 0px;
     -fx-border-color: #2E3F98;
-    -fx-font-size: 23px;
+    -fx-font-size: 21px;
     -fx-font-family: "Amiko";
     -fx-text-fill: #FFFFFF;
     -fx-background-insets: 0;
@@ -269,8 +269,8 @@
 }
 
 .menyMainKategori-toogle:hover .arrow {
-    -fx-scale-x: 1.2;
-    -fx-scale-y: 1.2;
+    -fx-scale-x: 1.1;
+    -fx-scale-y: 1.1;
 }
 
 .menyMainKategori-toogle:selected .arrow {
