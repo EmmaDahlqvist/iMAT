@@ -11,7 +11,7 @@ import javafx.scene.shape.Circle;
 import se.chalmers.cse.dat216.project.*;
 
 
-public class ProductCard extends AnchorPane
+public class ProductCard extends AnchorPane implements ShoppingCartListener
 {
     @FXML private ImageView productImage;
     @FXML private Label productNameLabel;
@@ -23,11 +23,12 @@ public class ProductCard extends AnchorPane
 
     private ShoppingItem shoppingItem;
     private Product product;
-    private IMatDataHandler imatDataHandler;
+    private IMatDataHandler iMatDataHandler;
     private MainViewController parentController;
 
 
-    public ProductCard(MainViewController parentController, ShoppingItem shoppingItem)
+
+    public ProductCard(ShoppingItem shoppingItem)
     {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("product_card.fxml"));
         fxmlLoader.setRoot(this);
@@ -39,8 +40,7 @@ public class ProductCard extends AnchorPane
             throw new RuntimeException(exception);
         }
 
-        imatDataHandler = IMatDataHandler.getInstance();
-        this.parentController = parentController;
+        iMatDataHandler = IMatDataHandler.getInstance();
         this.shoppingItem = shoppingItem;
         this.product = shoppingItem.getProduct();
         this.shoppingItem.setAmount(0);
@@ -56,7 +56,7 @@ public class ProductCard extends AnchorPane
         productNameLabel.setText(product.getName());
         priceLabel.setText(String.format("%.2f", product.getPrice()) + " kr");
 
-        Image image = imatDataHandler.getFXImage(product, 207, 193);
+        Image image = iMatDataHandler.getFXImage(product, 207, 193);
         productImage.setImage(image);
 
         double r = 20;
@@ -119,31 +119,46 @@ public class ProductCard extends AnchorPane
     {
         if (shoppingItem.getAmount() == 0)
         {
-            imatDataHandler.getShoppingCart().addItem(shoppingItem);
+            iMatDataHandler.getShoppingCart().addItem(shoppingItem);
             shoppingItem.setAmount(shoppingItem.getAmount() + 1);
         }
         else
         {
-            shoppingItem.setAmount(shoppingItem.getAmount() + 1);
+            iMatDataHandler.getShoppingCart().addItem(new ShoppingItem(product, 1));
         }
 
     }
 
     private void removeFromShoppingCart()
     {
-        if(shoppingItem.getAmount() > 1 )
+        if (shoppingItem.getAmount() > 1 )
         {
             shoppingItem.setAmount(shoppingItem.getAmount() - 1);
+            iMatDataHandler.getShoppingCart().removeItem(shoppingItem);  // tag bort och lägg till
+            iMatDataHandler.getShoppingCart().addItem(shoppingItem);     // så att lyssnare hör
         }
 
         else
         {
             shoppingItem.setAmount(shoppingItem.getAmount() - 1);
-            imatDataHandler.getShoppingCart().removeItem(shoppingItem);
+            iMatDataHandler.getShoppingCart().removeItem(shoppingItem);
         }
 
     }
 
+
+    public void shoppingCartChanged(CartEvent evt)
+    {
+        if (shoppingItem.getAmount() == 0)
+        {
+            showPurchaseButton();
+        }
+        else
+        {
+            showIncrementButtons();
+            numberOfItemsLabel.setText(String.valueOf((int) shoppingItem.getAmount()));
+        }
+    }
 
 
 
