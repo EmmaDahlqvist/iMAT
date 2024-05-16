@@ -22,7 +22,7 @@ public class MainViewController implements Initializable {
     @FXML
     Label pathLabel;
     @FXML
-    private AnchorPane anchorHeader;
+    protected AnchorPane anchorHeader;
     @FXML
     Button beginShoppingButton;
 
@@ -39,12 +39,18 @@ public class MainViewController implements Initializable {
     @FXML
     protected Button varukorgCloseButton;
 
-    @FXML private AnchorPane varukorgPopupAnchor;
+    @FXML protected AnchorPane varukorgPopupAnchor;
 
     @FXML protected Label sokResultatLabel;
     @FXML protected AnchorPane sokResultatAnchor;
     @FXML protected AnchorPane homePageAnchor;
     @FXML private FlowPane productCardTest;
+
+    @FXML private AnchorPane uppgifterAnchor;
+
+    protected HeaderController mainHeader;
+    protected HeaderController iMatButtonHeader;
+    protected HeaderController withoutVarukorgHeader;
 
 
     IMatDataHandler iMatDataHandler = IMatDataHandler.getInstance();
@@ -53,20 +59,32 @@ public class MainViewController implements Initializable {
 
         String iMatDirectory = iMatDataHandler.imatDirectory();
 
+        mainHeader = new HeaderController(this, "self");
+        iMatButtonHeader = new HeaderController(this, "withImatMainButton");
+        withoutVarukorgHeader = new HeaderController(this, "withoutVarukorgButton");
 
-        anchorHeader.getChildren().add(new HeaderController(this, "self"));
-//        anchorHeader.getChildren().add(new HeaderController(this, "withoutVarukorgButton"));
-//        anchorHeader.getChildren().add(new HeaderController(this, "withImatMainButton"));
+        anchorHeader.getChildren().add(mainHeader);
 
         productCardTest.getChildren().add(new ProductCard(iMatDataHandler.getProduct(1)));
 
-
+        uppgifterAnchor.getChildren().add(new UppgifterController(this));
 
         setUpShoppingCart();
         updateVaraAvlang();
         updateTotalPrice();
 
         closeVarukorg(); // håll den stängd som default
+    }
+
+    protected void backToHomePage() {
+        this.homePageAnchor.toFront();
+        this.anchorHeader.toFront();
+        this.varukorgPopupAnchor.toFront();
+    }
+
+    protected void openUppgifter() {
+        uppgifterAnchor.toFront();
+        withoutVarukorgHeader.dinaUppgifterButton.getStyleClass().add("chosen-header-button");
     }
 
     private void setUpShoppingCart() {
@@ -82,7 +100,6 @@ public class MainViewController implements Initializable {
         iMatDataHandler.getShoppingCart().addItem(new ShoppingItem(iMatDataHandler.getProduct(14), 2));
         iMatDataHandler.getShoppingCart().addItem(new ShoppingItem(iMatDataHandler.getProduct(15), 2));
         iMatDataHandler.getShoppingCart().addItem(new ShoppingItem(iMatDataHandler.getProduct(16), 2));
-
     }
 
     //körs för att uppdatera vara avlång listan

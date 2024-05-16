@@ -109,6 +109,12 @@
     -fx-cursor: hand;
 }
 
+.chosen-header-button {
+    -fx-background-color: #B0D3F2 !important;
+    -fx-background-radius: 100px;
+    -fx-border-radius: 100px;
+}
+
 
 .vara-avlang {
     -fx-font-size: 16px;
@@ -181,7 +187,7 @@
 }
 .buttons:hover {
     -fx-cursor: hand;
-    -fx-background-color: #CCCCCC;
+    -fx-background-color: #CCCCCC !important;
 }
 .buttons {
     transition: all 0.7s ease;

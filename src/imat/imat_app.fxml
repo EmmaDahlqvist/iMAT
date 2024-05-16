@@ -15,6 +15,7 @@
 
 <AnchorPane maxHeight="1024.0" maxWidth="1440.0" minHeight="1024.0" minWidth="1440.0" prefHeight="1024.0" prefWidth="1440.0" stylesheets="@imat_app.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="imat.MainViewController">
    <children>
+      <AnchorPane fx:id="uppgifterAnchor" prefHeight="1024.0" prefWidth="1440.0" styleClass="background-color" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
       <AnchorPane fx:id="sokResultatAnchor" layoutY="118.0" prefHeight="906.0" prefWidth="1440.0" style="-fx-background-color: #FFFFFF;" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="118.0">
          <children>
             <Label fx:id="sokResultatLabel" layoutX="373.0" layoutY="225.0" styleClass="sok-resultat-kategori-label" />
@@ -25,7 +26,7 @@
             </ScrollPane>
          </children>
       </AnchorPane>
-      <AnchorPane fx:id="homePageAnchor" layoutY="-9.0" prefHeight="1024.0" prefWidth="1440.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <AnchorPane fx:id="homePageAnchor" layoutY="-9.0" prefHeight="1024.0" prefWidth="1440.0" styleClass="background-color" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
 
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#5266d0" height="350.0" layoutX="404.0" layoutY="148.0" stroke="#2e3f98" strokeType="INSIDE" width="980.0" />
