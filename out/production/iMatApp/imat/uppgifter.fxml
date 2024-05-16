@@ -16,7 +16,7 @@
                   <String fx:value="item-button-text" />
                </styleClass>
             </Button>
-            <Label layoutX="557.0" layoutY="150.0" styleClass="sok-resultat-kategori-label" text="Personuppgifter" />
+            <Label layoutX="565.0" layoutY="150.0" styleClass="sok-resultat-kategori-label" text="Personuppgifter" />
             <AnchorPane layoutX="258.0" layoutY="242.0" prefHeight="301.0" prefWidth="438.0" styleClass="ruta-personuppgifter">
                <children>
                   <Label alignment="TOP_RIGHT" layoutX="1.0" layoutY="50.0" prefHeight="29.0" prefWidth="149.0" styleClass="personuppgifter-text" text="Namn:" />
@@ -54,5 +54,26 @@
          </children>
       </AnchorPane>
       <AnchorPane fx:id="anchorHeader" prefHeight="118.0" prefWidth="1440.0" />
+      <AnchorPane fx:id="areYouSureAboutDat" prefHeight="200.0" prefWidth="200.0" styleClass="transp-varukorg-pane" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <AnchorPane layoutX="436.0" layoutY="271.0" prefHeight="313.0" prefWidth="504.0" styleClass="ruta-personuppgifter">
+               <children>
+                  <Label prefHeight="248.0" prefWidth="504.0" styleClass="sok-resultat-kategori-label" text="Vill du spara dina ändringar?" textAlignment="CENTER" textOverrun="CLIP" wrapText="true" />
+                  <Button fx:id="saveButton1" layoutX="365.0" layoutY="229.0" mnemonicParsing="false" onMouseClicked="#saveAndClose" prefHeight="41.0" prefWidth="99.0" text="Spara">
+                     <styleClass>
+                        <String fx:value="item-button" />
+                        <String fx:value="item-button-text" />
+                     </styleClass>
+                  </Button>
+                  <Button fx:id="saveButton11" layoutX="218.0" layoutY="229.0" mnemonicParsing="false" text="Spara inte">
+                     <styleClass>
+                        <String fx:value="spara-inte-button" />
+                        <String fx:value="item-button-text" />
+                     </styleClass>
+                  </Button>
+               </children>
+            </AnchorPane>
+         </children>
+      </AnchorPane>
    </children>
 </fx:root>

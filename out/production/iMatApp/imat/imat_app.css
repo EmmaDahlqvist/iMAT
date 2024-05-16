@@ -74,9 +74,24 @@
 .item-button{
     -fx-background-color: #3125c1;
     -fx-background-radius: 30px;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.17), 10, 0, 0, 10);
+    -fx-background-insets: 0;
+}
+
+.spara-inte-button {
+    -fx-background-color: #93A0CF;
+    -fx-background-radius: 30px;
     -fx-border-radius: 30px;
     -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.17), 10, 0, 0, 10);
     -fx-background-insets: 0;
+}
+
+.item-button:hover {
+    -fx-background-color: #4736d4;
+    -fx-border-radius: 30px;
+    -fx-border: 2px;
+    -fx-border-color: #111111;
+    -fx-cursor: hand;
 }
 
 .big-button{
@@ -100,6 +115,13 @@
     -fx-font-size: 20px;
     -fx-font-family: "Amiko";
 }
+
+.underkategori-svart{
+    -fx-font-color: #000000;
+    -fx-font-size: 20px;
+    -fx-font-family: "Amiko";
+}
+
 .header-buttons{
     -fx-background-color: #FFFFFF;
     -fx-background-radius: 100px;
@@ -289,10 +311,11 @@
     -fx-background-color: #5266D0;
     -fx-border-width: 0px 0px 1px 0px;
     -fx-border-color: #2E3F98;
-    -fx-font-size: 23px;
+    -fx-font-size: 21px;
     -fx-font-family: "Amiko";
     -fx-text-fill: #FFFFFF;
     -fx-background-insets: 0;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.25), 10, 0, 0, 4);
 }
 
 .menyMainKategori:hover {
@@ -314,25 +337,25 @@
 }
 
 .menyMainKategori-toogle:hover .arrow {
-    -fx-scale-x: 2;
-    -fx-scale-y: 2;
+    -fx-scale-x: 1.1;
+    -fx-scale-y: 1.1;
 }
 
 .menyMainKategori-toogle:selected .arrow {
     -fx-rotate: 90;
 }
 
-.menyMainKategori-toogle:selected .menyMainKategori {
+/*.menyMainKategori-toogle:selected .menyMainKategori {
     -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.25), 10, 0, 0, 4);
-}
+}*/
 
 #menyMainKategori-top {
     -fx-background-radius: 3px 3px 0px 0px;
 }
 
-#menyMainKategori-bottom {
+/*#menyMainKategori-bottom {
     -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.25), 10, 0, 0, 4);
-}
+}*/
 
 .menyListItem {
     -fx-background-radius: 0px;
@@ -343,6 +366,7 @@
     -fx-background-insets: 0;
     -fx-alignment: center-left;
     -fx-padding: 0px 0px 0px 34px;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.25), 10, 0, 0, 4);
 }
 
 .menyListItem:hover {
@@ -438,6 +462,31 @@
     -fx-text-fill: #FFFFFF;
     -fx-font-weight: bold;
 }
+
+.title-text-black{
+    -fx-font-size: 38px;
+    -fx-font-family: "Amiko";
+    -fx-font-color: #000000;
+    -fx-text-fill: #000000;
+    -fx-font-weight: bold;
+}
+
+.text-detailed-product{
+    -fx-font-size: 20px;
+    -fx-font-family: "Amiko";
+    -fx-font-color: #000000;
+    -fx-text-fill: #000000;
+    -fx-font-weight: bold;
+}
+
+.text-area .content {
+    -fx-background-color: #F7FAFF;
+}
+
+.text-area  {
+    -fx-background-color: #F7FAFF;
+}
+
 .sok-resultat-kategori-label {
     -fx-font-size: 38px;
     -fx-font-family: "Amiko";
@@ -467,4 +516,10 @@
 
 .personuppgifter-textfield:focused {
 	-fx-background-color: #3125C1, white;
+}
+
+.rubriker-i-wizard {
+    -fx-font-family: "Amiko";
+    -fx-font-size: 38px;
+    -fx-text-alignment: center;
 }
