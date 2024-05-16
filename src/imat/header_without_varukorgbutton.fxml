@@ -44,7 +44,7 @@
                 <AnchorPane layoutX="1022.0" layoutY="81.0">
                     <children>
                         <Label layoutX="272.0" styleClass="item-Undertext" />
-                        <Label fx:id="tidigareKopLabel" layoutX="117.0" layoutY="-1.0" styleClass="item-Undertext" text="Tidigare Köp" />
+                        <Label fx:id="tidigareKopLabel" layoutX="117.0" layoutY="4.0" styleClass="item-Undertext" text="Tidigare Köp" />
                     </children>
                 </AnchorPane>
                 <TextField fx:id="searchBar" layoutX="470.0" layoutY="26.0" prefHeight="58.0" prefWidth="477.0" promptText="Sök efter varor!" styleClass="underkategori" />
