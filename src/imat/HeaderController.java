@@ -51,6 +51,7 @@ public class HeaderController extends AnchorPane {
     @FXML
     private ImageView varukorgenBild;
 
+
     private MainViewController mainViewController;
 
     public HeaderController(MainViewController mainViewController, String headerType) {
@@ -183,6 +184,7 @@ public class HeaderController extends AnchorPane {
         searchBar.setText("");
         this.mainViewController.sokResultatAnchor.setVisible(true);
         this.mainViewController.homePageAnchor.setVisible(false);
+        this.mainViewController.searchAnchor.getChildren().add(new ProductScrollpaneController(this.iMatDataHandler.findProducts(labelText)));
     }
 
 //mouse pressed, exited och entered.
