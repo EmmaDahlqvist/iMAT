@@ -26,7 +26,7 @@ public class MainViewController implements Initializable {
     @FXML
     Button beginShoppingButton;
 
-
+    @FXML protected AnchorPane searchAnchor;
     @FXML
     private FlowPane varaAvlangFlowPane;
 
