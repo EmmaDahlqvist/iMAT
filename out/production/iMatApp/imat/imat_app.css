@@ -123,6 +123,12 @@
     -fx-cursor: hand;
 }
 
+.chosen-header-button {
+    -fx-background-color: #B0D3F2 !important;
+    -fx-background-radius: 100px;
+    -fx-border-radius: 100px;
+}
+
 
 .vara-avlang {
     -fx-font-size: 16px;
@@ -195,7 +201,7 @@
 }
 .buttons:hover {
     -fx-cursor: hand;
-    -fx-background-color: #CCCCCC;
+    -fx-background-color: #CCCCCC !important;
 }
 .buttons {
     transition: all 0.7s ease;
@@ -478,4 +484,20 @@
 }
 .hoverable-button-pointer:hover {
     -fx-cursor: hand;
+}
+
+.ruta-personuppgifter {
+    -fx-background-color: DBEEFF;
+    -fx-background-radius: 15px;
+}
+
+.personuppgifter-text {
+    -fx-font-family: "Amiko";
+    -fx-font-size: 18px;
+}
+
+.rubriker-i-wizard {
+    -fx-font-family: "Amiko";
+    -fx-font-size: 38px;
+    -fx-text-alignment: center;
 }

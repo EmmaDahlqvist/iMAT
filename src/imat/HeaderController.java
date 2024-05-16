@@ -28,7 +28,7 @@ public class HeaderController extends AnchorPane {
     @FXML
     private AnchorPane tidigareKop;
     @FXML
-    private AnchorPane dinaUppgifter;
+    protected AnchorPane dinaUppgifter;
     @FXML
     private AnchorPane varuKorgen;
     @FXML
@@ -41,7 +41,7 @@ public class HeaderController extends AnchorPane {
     @FXML
     private Button tidigareKopButton;
     @FXML
-    private Button dinUppgifterButton;
+    protected Button dinaUppgifterButton;
     @FXML
     private Button varukorgenButton;
     @FXML
@@ -51,8 +51,14 @@ public class HeaderController extends AnchorPane {
     @FXML
     private ImageView varukorgenBild;
 
-
     private MainViewController mainViewController;
+
+    private HeaderController headerInstance;
+//    protected HeaderController getHeaderInstance() {
+//        if(headerInstance != null) {
+//            return new HeaderController(mainViewController, "")
+//        }
+//    }
 
     public HeaderController(MainViewController mainViewController, String headerType) {
         String fxmlFile;
@@ -115,12 +121,21 @@ public class HeaderController extends AnchorPane {
         }
         if (lgo != null) {
             lgo.setOnMouseClicked(event -> {
-                this.mainViewController.homePageAnchor.setVisible(true);
-                this.mainViewController.sokResultatAnchor.setVisible(false);
+                backToHomePage();
             });
         }
 
         prepareMenuSlideAnimation();
+    }
+
+    @FXML
+    private void backToHomePage() {
+        mainViewController.backToHomePage();
+    }
+
+    @FXML
+    private void openUppgifter() {
+        mainViewController.openUppgifter();
     }
 
 
@@ -182,8 +197,11 @@ public class HeaderController extends AnchorPane {
         // Save labelText to a variable or use it directly here
         this.mainViewController.sokResultatLabel.setText("Sökresultat för " + '"' + labelText.toLowerCase() + '"');
         searchBar.setText("");
+        this.mainViewController.sokResultatAnchor.toFront();
+        this.mainViewController.anchorHeader.toFront();
+        this.mainViewController.varukorgPopupAnchor.toFront();
         this.mainViewController.sokResultatAnchor.setVisible(true);
-        this.mainViewController.homePageAnchor.setVisible(false);
+        this.mainViewController.homePageAnchor.setVisible(true);
         this.mainViewController.searchAnchor.getChildren().add(new ProductScrollpaneController(this.iMatDataHandler.findProducts(labelText)));
     }
 

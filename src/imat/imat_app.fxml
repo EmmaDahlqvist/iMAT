@@ -15,6 +15,7 @@
 
 <AnchorPane maxHeight="1024.0" maxWidth="1440.0" minHeight="1024.0" minWidth="1440.0" prefHeight="1024.0" prefWidth="1440.0" styleClass="background-color" stylesheets="@imat_app.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="imat.MainViewController">
    <children>
+      <AnchorPane fx:id="uppgifterAnchor" prefHeight="1024.0" prefWidth="1440.0" styleClass="background-color" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
       <AnchorPane fx:id="sokResultatAnchor" layoutY="118.0" prefHeight="906.0" prefWidth="1440.0" styleClass="background-color" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="118.0">
          <children>
             <AnchorPane fx:id="searchAnchor" layoutX="384.0" layoutY="206.0" prefHeight="829.0" prefWidth="958.0" styleClass="background-color" />
@@ -85,5 +86,6 @@
             </AnchorPane>
          </children>
       </AnchorPane>
+      <AnchorPane fx:id="utcheckningAnchor" prefHeight="200.0" prefWidth="200.0" />
    </children>
 </AnchorPane>

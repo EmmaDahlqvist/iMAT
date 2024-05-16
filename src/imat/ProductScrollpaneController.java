@@ -32,6 +32,7 @@ public class ProductScrollpaneController extends AnchorPane {
             shoppingItemList.add(new ShoppingItem(product));
         }
 
+
         try {
             fxmlLoader.load();
         } catch (IOException exception) {
