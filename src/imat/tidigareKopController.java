@@ -2,6 +2,7 @@ package imat;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.FlowPane;
@@ -21,6 +22,7 @@ public class tidigareKopController extends AnchorPane {
     @FXML
     protected ScrollPane tidigareKopScroll;
     protected IMatDataHandler iMatDataHandler = IMatDataHandler.getInstance();
+    @FXML protected AnchorPane menuAnchor;
 
 
     public tidigareKopController(MainViewController mainViewController) {
@@ -52,6 +54,7 @@ public class tidigareKopController extends AnchorPane {
         for (Product product : this.iMatDataHandler.getProducts()){
             productCardCarousel.getChildren().add(new ProductCard(product));
         }
+        menuAnchor.getChildren().add(new MenyController());
 
 
 //        this.productCardCarousel.getChildren().add(new ProductScrollpaneController(
