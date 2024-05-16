@@ -28,7 +28,7 @@ public class HeaderController extends AnchorPane {
     @FXML
     private AnchorPane tidigareKop;
     @FXML
-    private AnchorPane dinaUppgifter;
+    protected AnchorPane dinaUppgifter;
     @FXML
     private AnchorPane varuKorgen;
     @FXML
@@ -83,6 +83,8 @@ public class HeaderController extends AnchorPane {
         this.requestFocus();
 
         if (fxmlFile != "withImatMainButton"){this.initialize();}
+
+
 
     }
 
@@ -200,6 +202,7 @@ public class HeaderController extends AnchorPane {
         this.mainViewController.varukorgPopupAnchor.toFront();
         this.mainViewController.sokResultatAnchor.setVisible(true);
         this.mainViewController.homePageAnchor.setVisible(true);
+        this.mainViewController.searchAnchor.getChildren().add(new ProductScrollpaneController(this.iMatDataHandler.findProducts(labelText)));
     }
 
 //mouse pressed, exited och entered.
