@@ -24,6 +24,7 @@ public class MainViewController implements Initializable {
     Label pathLabel;
     @FXML
     protected AnchorPane anchorHeader;
+    @FXML protected AnchorPane anchorMeny;
     @FXML
     Button beginShoppingButton;
 
@@ -67,6 +68,8 @@ public class MainViewController implements Initializable {
         withoutVarukorgHeader = new HeaderController(this, "withoutVarukorgButton");
 
         anchorHeader.getChildren().add(mainHeader);
+
+        anchorMeny.getChildren().add(new MenyController(this));
 
 
         ProductCard productCard = new ProductCard(new ShoppingItem(iMatDataHandler.getProduct(1), 1));
