@@ -46,6 +46,8 @@ public class MainViewController implements Initializable {
     @FXML protected AnchorPane homePageAnchor;
     @FXML private FlowPane productCardTest;
 
+    @FXML private AnchorPane utcheckningAnchor;
+
 
     IMatDataHandler iMatDataHandler = IMatDataHandler.getInstance();
 
@@ -59,7 +61,6 @@ public class MainViewController implements Initializable {
 //        anchorHeader.getChildren().add(new HeaderController(this, "withImatMainButton"));
 
         productCardTest.getChildren().add(new ProductCard(iMatDataHandler.getProduct(1)));
-
 
 
         setUpShoppingCart();
