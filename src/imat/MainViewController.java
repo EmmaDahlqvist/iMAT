@@ -55,6 +55,8 @@ public class MainViewController implements Initializable {
 
     IMatDataHandler iMatDataHandler = IMatDataHandler.getInstance();
 
+    private UppgifterController uppgifterController;
+
     public void initialize(URL url, ResourceBundle rb) {
 
         String iMatDirectory = iMatDataHandler.imatDirectory();
@@ -62,12 +64,13 @@ public class MainViewController implements Initializable {
         mainHeader = new HeaderController(this, "self");
         iMatButtonHeader = new HeaderController(this, "withImatMainButton");
         withoutVarukorgHeader = new HeaderController(this, "withoutVarukorgButton");
+        uppgifterController = new UppgifterController(this);
 
         anchorHeader.getChildren().add(mainHeader);
 
         productCardTest.getChildren().add(new ProductCard(iMatDataHandler.getProduct(1)));
 
-        uppgifterAnchor.getChildren().add(new UppgifterController(this));
+        uppgifterAnchor.getChildren().add(uppgifterController);
 
         setUpShoppingCart();
         updateVaraAvlang();
@@ -85,6 +88,7 @@ public class MainViewController implements Initializable {
     protected void openUppgifter() {
         uppgifterAnchor.toFront();
         withoutVarukorgHeader.dinaUppgifterButton.getStyleClass().add("chosen-header-button");
+        uppgifterController.fillInDefaults();
     }
 
     private void setUpShoppingCart() {
