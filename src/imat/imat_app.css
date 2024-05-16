@@ -450,3 +450,9 @@
     -fx-font-family: "Amiko";
     -fx-font-size: 18px;
 }
+
+.rubriker-i-wizard {
+    -fx-font-family: "Amiko";
+    -fx-font-size: 38px;
+    -fx-text-alignment: center;
+}

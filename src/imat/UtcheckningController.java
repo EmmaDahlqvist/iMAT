@@ -10,12 +10,19 @@ import java.io.IOException;
 public class UtcheckningController extends AnchorPane {
 
     @FXML private AnchorPane headerAnchor;
+    @FXML private AnchorPane wizardAnchor;
 
     @FXML private AnchorPane personuppgifterAnchor;
     @FXML private TextField firstNameTextField;
     @FXML private TextField lastNameTextField;
     @FXML private TextField phonenumberTextField;
     @FXML private TextField epostTextField;
+    @FXML private TextField adressTextField;
+    @FXML private TextField postnummerTextField;
+    @FXML private TextField coTextField;
+    @FXML private TextField portkodTextField;
+
+    @FXML private AnchorPane leveransuppgifterAnchor;
 
     private MainViewController mainViewController;
 

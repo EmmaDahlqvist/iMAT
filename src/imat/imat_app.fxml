@@ -89,5 +89,6 @@
             </AnchorPane>
          </children>
       </AnchorPane>
+      <AnchorPane fx:id="utcheckningAnchor" prefHeight="200.0" prefWidth="200.0" />
    </children>
 </AnchorPane>
