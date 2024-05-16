@@ -1,9 +1,115 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.String?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.text.Font?>
 
-<fx:root prefHeight="1024.0" prefWidth="1440.0" styleClass="background-color" stylesheets="@imat_app.css" type="javafx.scene.layout.AnchorPane" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+<fx:root prefHeight="1024.0" prefWidth="1440.0" style="-fx-background-color: white;" stylesheets="@imat_app.css" type="javafx.scene.layout.AnchorPane" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <AnchorPane fx:id="headerAnchor" layoutX="96.0" layoutY="1.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
    </children>
+   <AnchorPane prefHeight="1026.0" prefWidth="1441.0">
+      <children>
+         <AnchorPane fx:id="wizardAnchor" layoutX="151.0" layoutY="102.0" prefHeight="80.0" prefWidth="1140.0" styleClass="wizard-button" />
+      </children>
+   </AnchorPane>
+   <AnchorPane fx:id="personuppgifterAnchor" layoutX="146.0" layoutY="217.0" prefHeight="613.0" prefWidth="1140.0" style="-fx-background-color: red;">
+      <children>
+         <AnchorPane layoutX="109.0" layoutY="120.0" prefHeight="366.0" prefWidth="438.0">
+            <children>
+               <TextField fx:id="firstNameTextField" layoutX="212.0" layoutY="40.0" prefHeight="40.0" prefWidth="193.0" />
+               <Label layoutX="121.0" layoutY="46.0" text="Förnamn:" />
+               <Label layoutX="109.0" layoutY="107.0" text="Efternamn:" />
+               <Label layoutX="76.0" layoutY="168.0" text="Mobilnummer:" />
+               <Label layoutX="151.0" layoutY="227.0" text="Epost:" />
+               <TextField fx:id="lastNameTextField" layoutX="212.0" layoutY="103.0" prefHeight="40.0" prefWidth="193.0" />
+               <TextField fx:id="phonenumberTextField" layoutX="213.0" layoutY="163.0" prefHeight="40.0" prefWidth="193.0" />
+               <TextField fx:id="epostTextField" layoutX="213.0" layoutY="223.0" prefHeight="40.0" prefWidth="193.0" />
+            </children>
+            <styleClass>
+               <String fx:value="ruta-personuppgifter" />
+               <String fx:value="personuppgifter-text" />
+            </styleClass>
+         </AnchorPane>
+         <Button fx:id="wizardNextButton" layoutX="1017.0" layoutY="528.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="109.0" text="Nästa" textFill="WHITE">
+            <font>
+               <Font size="18.0" />
+            </font>
+            <styleClass>
+               <String fx:value="wizard-back-next-non-clickable" />
+               <String fx:value="wizard-back-next-text" />
+               <String fx:value="wizard-back-next-button" />
+            </styleClass>
+            <cursor>
+               <Cursor fx:constant="HAND" />
+            </cursor>
+         </Button>
+         <AnchorPane layoutX="595.0" layoutY="120.0" prefHeight="366.0" prefWidth="438.0">
+            <children>
+               <TextField fx:id="adressTextField" layoutX="212.0" layoutY="40.0" prefHeight="40.0" prefWidth="193.0" />
+               <Label layoutX="141.0" layoutY="44.0" text="Adress:" />
+               <Label layoutX="86.0" layoutY="107.0" text="Postnummer:" />
+               <Label layoutX="172.0" layoutY="167.0" text="Ort:" />
+               <Label layoutX="166.0" layoutY="227.0" text="C/O:" />
+               <TextField fx:id="postnummerTextField" layoutX="212.0" layoutY="103.0" prefHeight="40.0" prefWidth="193.0" />
+               <TextField fx:id="ortTextField" layoutX="213.0" layoutY="163.0" prefHeight="40.0" prefWidth="193.0" />
+               <TextField fx:id="coTextField" layoutX="213.0" layoutY="223.0" prefHeight="40.0" prefWidth="193.0" />
+               <Label layoutX="133.0" layoutY="286.0" text="Portkod:" />
+               <TextField fx:id="portkodTextField" layoutX="213.0" layoutY="282.0" prefHeight="40.0" prefWidth="193.0" />
+            </children>
+            <styleClass>
+               <String fx:value="ruta-personuppgifter" />
+               <String fx:value="personuppgifter-text" />
+            </styleClass>
+         </AnchorPane>
+         <Label layoutX="438.0" layoutY="36.0" prefHeight="59.0" prefWidth="314.0" styleClass="rubriker-i-wizard" text="Personuppgifter" />
+      </children>
+   </AnchorPane>
+   <AnchorPane fx:id="leveransuppgifterAnchor" layoutX="146.0" layoutY="217.0" prefHeight="613.0" prefWidth="1140.0" style="-fx-background-color: gray;">
+      <children>
+         <AnchorPane layoutX="98.0" layoutY="120.0" prefHeight="334.0" prefWidth="451.0">
+            <styleClass>
+               <String fx:value="ruta-personuppgifter" />
+               <String fx:value="personuppgifter-text" />
+            </styleClass>
+            <children>
+               <Label layoutX="16.0" layoutY="23.0" text="Leveransdag:" />
+               <Label layoutX="16.0" layoutY="76.0" text="Leveranstid:" />
+               <ComboBox layoutX="139.0" layoutY="18.0" prefHeight="40.0" prefWidth="117.0" />
+               <Region layoutX="139.0" layoutY="77.0" prefHeight="244.0" prefWidth="290.0" style="-fx-background-color: ffffff;" />
+            </children>
+         </AnchorPane>
+         <Button fx:id="wizardNextButton1" layoutX="1018.0" layoutY="537.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="109.0" text="Nästa" textFill="WHITE">
+            <font>
+               <Font size="18.0" />
+            </font>
+            <styleClass>
+               <String fx:value="wizard-back-next-non-clickable" />
+               <String fx:value="wizard-back-next-text" />
+               <String fx:value="wizard-back-next-button" />
+            </styleClass>
+            <cursor>
+               <Cursor fx:constant="HAND" />
+            </cursor>
+         </Button>
+         <AnchorPane layoutX="584.0" layoutY="120.0" prefHeight="255.0" prefWidth="438.0">
+            <styleClass>
+               <String fx:value="ruta-personuppgifter" />
+               <String fx:value="personuppgifter-text" />
+            </styleClass>
+            <children>
+               <TextArea layoutX="37.0" layoutY="62.0" prefHeight="160.0" prefWidth="364.0" />
+               <Label layoutX="37.0" layoutY="25.0" styleClass="personuppgifter-text" text="Meddelande till chauffören:         (valfritt)" />
+            </children>
+         </AnchorPane>
+         <Label layoutX="482.0" layoutY="36.0" prefHeight="59.0" prefWidth="176.0" styleClass="rubriker-i-wizard" text="Leverans" />
+      </children>
+   </AnchorPane>
 </fx:root>

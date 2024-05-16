@@ -43,7 +43,7 @@
             </AnchorPane>
             <AnchorPane fx:id="dinaUppgifter" layoutX="1179.0" layoutY="18.0">
                <children>
-                  <Button fx:id="dinaUppgifterButton" mnemonicParsing="false" prefHeight="66.0" prefWidth="72.0">
+                  <Button fx:id="dinaUppgifterButton" mnemonicParsing="false" onMouseClicked="#openUppgifter" prefHeight="66.0" prefWidth="72.0">
                      <styleClass>
                         <String fx:value="header-buttons" />
                         <String fx:value="buttons" />

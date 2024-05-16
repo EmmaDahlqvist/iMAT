@@ -2,6 +2,7 @@
 package imat;
 
 import java.net.URL;
+import java.util.List;
 import java.util.ResourceBundle;
 
 import javafx.animation.TranslateTransition;
@@ -22,7 +23,7 @@ public class MainViewController implements Initializable {
     @FXML
     Label pathLabel;
     @FXML
-    private AnchorPane anchorHeader;
+    protected AnchorPane anchorHeader;
     @FXML
     Button beginShoppingButton;
 
@@ -39,13 +40,20 @@ public class MainViewController implements Initializable {
     @FXML
     protected Button varukorgCloseButton;
 
-    @FXML private AnchorPane varukorgPopupAnchor;
+    @FXML protected AnchorPane varukorgPopupAnchor;
 
     @FXML protected Label sokResultatLabel;
     @FXML protected AnchorPane sokResultatAnchor;
     @FXML protected AnchorPane homePageAnchor;
     @FXML private FlowPane productCardTest;
-    @FXML protected AnchorPane tidigareKopAnchor;
+
+    @FXML private AnchorPane uppgifterAnchor;
+
+    protected HeaderController mainHeader;
+    protected HeaderController iMatButtonHeader;
+    protected HeaderController withoutVarukorgHeader;
+
+    @FXML private AnchorPane utcheckningAnchor;
 
 
     IMatDataHandler iMatDataHandler = IMatDataHandler.getInstance();
@@ -54,15 +62,20 @@ public class MainViewController implements Initializable {
 
         String iMatDirectory = iMatDataHandler.imatDirectory();
 
+        mainHeader = new HeaderController(this, "self");
+        iMatButtonHeader = new HeaderController(this, "withImatMainButton");
+        withoutVarukorgHeader = new HeaderController(this, "withoutVarukorgButton");
 
-        anchorHeader.getChildren().add(new HeaderController(this, "self"));
-//        anchorHeader.getChildren().add(new HeaderController(this, "withoutVarukorgButton"));
-//        anchorHeader.getChildren().add(new HeaderController(this, "withImatMainButton"));
+        anchorHeader.getChildren().add(mainHeader);
 
-        productCardTest.getChildren().add(new ProductCard(iMatDataHandler.getProduct(1)));
-        this.tidigareKopAnchor.getChildren().add(new tidigareKopController(this));
-        this.tidigareKopAnchor.toFront();
-        this.anchorHeader.toFront();
+
+        ProductCard productCard = new ProductCard(new ShoppingItem(iMatDataHandler.getProduct(1), 1));
+        productCardTest.getChildren().add(productCard);
+        iMatDataHandler.getShoppingCart().addShoppingCartListener(productCard);
+
+
+
+        uppgifterAnchor.getChildren().add(new UppgifterController(this));
 
         setUpShoppingCart();
         updateVaraAvlang();
@@ -71,19 +84,31 @@ public class MainViewController implements Initializable {
         closeVarukorg(); // håll den stängd som default
     }
 
+    protected void backToHomePage() {
+        this.homePageAnchor.toFront();
+        this.anchorHeader.toFront();
+        this.varukorgPopupAnchor.toFront();
+    }
+
+    protected void openUppgifter() {
+        uppgifterAnchor.toFront();
+        withoutVarukorgHeader.dinaUppgifterButton.getStyleClass().add("chosen-header-button");
+    }
+
     private void setUpShoppingCart() {
         //lite test för o fylla varukurgen kan tas bort sen
-        iMatDataHandler.getShoppingCart().addItem(new ShoppingItem(iMatDataHandler.getProduct(1), 3));
-        iMatDataHandler.getShoppingCart().addItem(new ShoppingItem(iMatDataHandler.getProduct(2), 2));
-        iMatDataHandler.getShoppingCart().addItem(new ShoppingItem(iMatDataHandler.getProduct(4), 2));
-        iMatDataHandler.getShoppingCart().addItem(new ShoppingItem(iMatDataHandler.getProduct(3), 1));
-        iMatDataHandler.getShoppingCart().addItem(new ShoppingItem(iMatDataHandler.getProduct(10), 2));
-        iMatDataHandler.getShoppingCart().addItem(new ShoppingItem(iMatDataHandler.getProduct(11), 2));
-        iMatDataHandler.getShoppingCart().addItem(new ShoppingItem(iMatDataHandler.getProduct(12), 2));
-        iMatDataHandler.getShoppingCart().addItem(new ShoppingItem(iMatDataHandler.getProduct(13), 2));
-        iMatDataHandler.getShoppingCart().addItem(new ShoppingItem(iMatDataHandler.getProduct(14), 2));
-        iMatDataHandler.getShoppingCart().addItem(new ShoppingItem(iMatDataHandler.getProduct(15), 2));
-        iMatDataHandler.getShoppingCart().addItem(new ShoppingItem(iMatDataHandler.getProduct(16), 2));
+
+//        iMatDataHandler.getShoppingCart().addItem(new ShoppingItem(iMatDataHandler.getProduct(1), 3));
+//        iMatDataHandler.getShoppingCart().addItem(new ShoppingItem(iMatDataHandler.getProduct(2), 2));
+//        iMatDataHandler.getShoppingCart().addItem(new ShoppingItem(iMatDataHandler.getProduct(4), 2));
+//        iMatDataHandler.getShoppingCart().addItem(new ShoppingItem(iMatDataHandler.getProduct(3), 1));
+//        iMatDataHandler.getShoppingCart().addItem(new ShoppingItem(iMatDataHandler.getProduct(10), 2));
+//        iMatDataHandler.getShoppingCart().addItem(new ShoppingItem(iMatDataHandler.getProduct(11), 2));
+//        iMatDataHandler.getShoppingCart().addItem(new ShoppingItem(iMatDataHandler.getProduct(12), 2));
+//        iMatDataHandler.getShoppingCart().addItem(new ShoppingItem(iMatDataHandler.getProduct(13), 2));
+//        iMatDataHandler.getShoppingCart().addItem(new ShoppingItem(iMatDataHandler.getProduct(14), 2));
+//        iMatDataHandler.getShoppingCart().addItem(new ShoppingItem(iMatDataHandler.getProduct(15), 2));
+//        iMatDataHandler.getShoppingCart().addItem(new ShoppingItem(iMatDataHandler.getProduct(16), 2));
 
     }
 
@@ -116,6 +141,7 @@ public class MainViewController implements Initializable {
 
     @FXML
     protected void openVarukorg() {
+        updateVaraAvlang();
         varukorgPopupAnchor.setVisible(true);
         varukorgPopupAnchor.setManaged(true);
     }

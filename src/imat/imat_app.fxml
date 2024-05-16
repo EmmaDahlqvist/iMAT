@@ -15,6 +15,7 @@
 
 <AnchorPane maxHeight="1024.0" maxWidth="1440.0" minHeight="1024.0" minWidth="1440.0" prefHeight="1024.0" prefWidth="1440.0" styleClass="background-color" stylesheets="@imat_app.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="imat.MainViewController">
    <children>
+      <AnchorPane fx:id="uppgifterAnchor" prefHeight="1024.0" prefWidth="1440.0" styleClass="background-color" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
       <AnchorPane fx:id="sokResultatAnchor" layoutY="118.0" prefHeight="906.0" prefWidth="1440.0" styleClass="background-color" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="118.0">
          <children>
             <AnchorPane fx:id="searchAnchor" layoutX="384.0" layoutY="206.0" prefHeight="829.0" prefWidth="958.0" styleClass="background-color" />
@@ -36,14 +37,14 @@
                   <Image url="@fxmlPictures/feature_asset_2.png" />
                </image>
             </ImageView>
-            <Button layoutX="404.0" layoutY="562.0" mnemonicParsing="false" prefHeight="99.0" prefWidth="980.0" text="Börja handla">
+            <Button fx:id="beginShoppingButton" layoutX="404.0" layoutY="562.0" mnemonicParsing="false" prefHeight="99.0" prefWidth="980.0" text="Börja handla">
                <styleClass>
                   <String fx:value="big-button" />
                   <String fx:value="buttons" />
                   <String fx:value="title-text" />
                </styleClass>
             </Button>
-            <FlowPane fx:id="productCardTest" layoutX="39.0" layoutY="167.0" prefHeight="414.0" prefWidth="297.0" />
+            <FlowPane fx:id="productCardTest" layoutX="39.0" layoutY="167.0" prefHeight="474.0" prefWidth="766.0" />
          </children>
       </AnchorPane>
       <AnchorPane fx:id="anchorHeader" prefHeight="113.0" prefWidth="1437.0" />
@@ -85,6 +86,6 @@
             </AnchorPane>
          </children>
       </AnchorPane>
-      <AnchorPane fx:id="tidigareKopAnchor" prefHeight="1024.0" prefWidth="1440.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+      <AnchorPane fx:id="utcheckningAnchor" prefHeight="200.0" prefWidth="200.0" />
    </children>
 </AnchorPane>

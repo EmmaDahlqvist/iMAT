@@ -9,8 +9,7 @@ import java.io.IOException;
 
 public class WizardController extends AnchorPane {
 
-    //@FXML
-    //private AnchorPane wizardAnchor;
+    //@FXML private AnchorPane wizardAnchor;
     //wizardAnchor.getChildren().add(new WizardController());
 
     @FXML
