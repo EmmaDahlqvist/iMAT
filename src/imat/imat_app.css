@@ -30,6 +30,15 @@
 }
 
 
+.big-title-white{
+    -fx-font-size: 48px;
+    -fx-font-family: "Amiko";
+    -fx-font-color: #FFFFFF;
+    -fx-text-fill: #FFFFFF;
+    -fx-font-weight: bold;
+}
+
+
 .item-main-text{
     -fx-font-size: 22px;
     -fx-font-family: "Amiko";
@@ -46,6 +55,44 @@
 
 }
 
+.item-button-text{
+    -fx-font-size: 18px;
+    -fx-font-family: "Amiko";
+    -fx-font-color: #FFFFFF;
+    -fx-text-fill: #FFFFFF;
+    -fx-font-weight: bold;
+}
+
+.title-text{
+    -fx-font-size: 38px;
+    -fx-font-family: "Amiko";
+    -fx-font-color: #FFFFFF;
+    -fx-text-fill: #FFFFFF;
+    -fx-font-weight: bold;
+}
+
+.item-button{
+    -fx-background-color: #3125c1;
+    -fx-background-radius: 30px;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.17), 10, 0, 0, 10);
+    -fx-background-insets: 0;
+}
+
+.item-button:hover {
+    -fx-background-color: #4736d4;
+    -fx-border-radius: 30px;
+    -fx-border: 2px;
+    -fx-border-color: #111111;
+    -fx-cursor: hand;
+}
+
+.big-button{
+    -fx-background-color: #3125c1;
+    -fx-background-radius: 50px;
+    -fx-border-radius: 50px;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.25), 10, 0, 0, 10);
+    -fx-background-insets: 0;
+}
 
 .text-field {
     -fx-background-radius: 15px;
@@ -60,13 +107,26 @@
     -fx-font-size: 20px;
     -fx-font-family: "Amiko";
 }
+
+.underkategori-svart{
+    -fx-font-color: #000000;
+    -fx-font-size: 20px;
+    -fx-font-family: "Amiko";
+}
+
 .header-buttons{
     -fx-background-color: #FFFFFF;
     -fx-background-radius: 100px;
     -fx-border-radius: 100px;
 }
-.button:hover {
+.buttons:hover {
     -fx-cursor: hand;
+}
+
+.chosen-header-button {
+    -fx-background-color: #B0D3F2 !important;
+    -fx-background-radius: 100px;
+    -fx-border-radius: 100px;
 }
 
 
@@ -141,7 +201,7 @@
 }
 .buttons:hover {
     -fx-cursor: hand;
-    -fx-background-color: #CCCCCC;
+    -fx-background-color: #CCCCCC !important;
 }
 .buttons {
     transition: all 0.7s ease;
@@ -311,4 +371,135 @@
 
 .menyListItemLine {
     -fx-stroke: #2E3F98;
+}
+
+.wizard-button {
+    -fx-background-color: #DBEEFF;
+    -fx-text-fill: #5266d0;
+    -fx-background-radius: 22px;
+    -fx-background-insets: 0;
+    -fx-font-family: "Amiko";
+    -fx-font-size: 20px;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.15), 10, 0, 0, 10);
+}
+
+.wizard-button-hoverable:hover {
+    -fx-border-color: #2E3F98;
+    -fx-border-width: 1px;
+    -fx-border-radius: 22px;
+}
+
+.wizard-button-filled {
+    -fx-background-color: #5266D1;
+    -fx-text-fill: white;
+    -fx-background-radius: 22px;
+    -fx-background-insets: 0;
+    -fx-font-family: "Amiko";
+    -fx-font-size: 20px;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.15), 10, 0, 0, 10);
+}
+
+.wizard-undertext {
+    -fx-font-size: 16px;
+    -fx-text-fill: #2E3F98;
+    -fx-font-family: "Amiko";
+}
+
+.wizard-back-next-button {
+    -fx-background-radius: 22px;
+    -fx-background-color: #3125C1;
+    -fx-background-insets: 0;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.25), 10, 0, 0, 10);
+}
+
+.wizard-back-next-text {
+    -fx-font-family: "Amiko";
+    -fx-font-size: 18px;
+    -fx-text-fill: #FFFFFF;
+}
+
+.wizard-back-next:hover {
+    -fx-background-color: #4736d4;
+    -fx-border-radius: 22px;
+    -fx-border: 2px;
+    -fx-border-color: #111111;
+}
+
+.wizard-back-next-non-clickable {
+    -fx-background-color: #6C7D8D;
+    -fx-background-radius: 22px;
+    -fx-background-insets: 0;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.25), 10, 0, 0, 10);
+}
+
+
+.big-button{
+    -fx-background-color: #3125c1;
+    -fx-background-radius: 50px;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.25), 10, 0, 0, 10);
+    -fx-background-insets: 0;
+}
+
+.big-button:hover {
+    -fx-background-color: #4736d4;
+    -fx-border-radius: 50px;
+    -fx-border: 2px;
+    -fx-border-color: #111111;
+}
+
+.title-text{
+    -fx-font-size: 38px;
+    -fx-font-family: "Amiko";
+    -fx-font-color: #FFFFFF;
+    -fx-text-fill: #FFFFFF;
+    -fx-font-weight: bold;
+}
+
+.title-text-black{
+    -fx-font-size: 38px;
+    -fx-font-family: "Amiko";
+    -fx-font-color: #000000;
+    -fx-text-fill: #000000;
+    -fx-font-weight: bold;
+}
+
+.text-detailed-product{
+    -fx-font-size: 20px;
+    -fx-font-family: "Amiko";
+    -fx-font-color: #000000;
+    -fx-text-fill: #000000;
+    -fx-font-weight: bold;
+}
+
+.text-area .content {
+    -fx-background-color: #F7FAFF;
+}
+
+.text-area  {
+    -fx-background-color: #F7FAFF;
+}
+
+.sok-resultat-kategori-label {
+    -fx-font-size: 38px;
+    -fx-font-family: "Amiko";
+    -fx-text-fill: #000000;
+}
+.hoverable-button-pointer:hover {
+    -fx-cursor: hand;
+}
+
+.ruta-personuppgifter {
+    -fx-background-color: DBEEFF;
+    -fx-background-radius: 15px;
+}
+
+.personuppgifter-text {
+    -fx-font-family: "Amiko";
+    -fx-font-size: 18px;
+}
+
+.rubriker-i-wizard {
+    -fx-font-family: "Amiko";
+    -fx-font-size: 38px;
+    -fx-text-alignment: center;
 }

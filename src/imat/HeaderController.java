@@ -9,6 +9,7 @@ import javafx.scene.control.ButtonBar;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.KeyCode;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
@@ -27,7 +28,7 @@ public class HeaderController extends AnchorPane {
     @FXML
     private AnchorPane tidigareKop;
     @FXML
-    private AnchorPane dinaUppgifter;
+    protected AnchorPane dinaUppgifter;
     @FXML
     private AnchorPane varuKorgen;
     @FXML
@@ -40,7 +41,7 @@ public class HeaderController extends AnchorPane {
     @FXML
     private Button tidigareKopButton;
     @FXML
-    private Button dinUppgifterButton;
+    protected Button dinaUppgifterButton;
     @FXML
     private Button varukorgenButton;
     @FXML
@@ -52,8 +53,25 @@ public class HeaderController extends AnchorPane {
 
     private MainViewController mainViewController;
 
-    public HeaderController(MainViewController mainViewController) {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("header.fxml"));
+    private HeaderController headerInstance;
+//    protected HeaderController getHeaderInstance() {
+//        if(headerInstance != null) {
+//            return new HeaderController(mainViewController, "")
+//        }
+//    }
+
+    public HeaderController(MainViewController mainViewController, String headerType) {
+        String fxmlFile;
+        switch (headerType) {
+            case "withoutVarukorgButton":
+                fxmlFile = "header_without_varukorgbutton.fxml";
+                break;
+            case "withImatMainButton":
+                fxmlFile = "header_with_imatmainbutton.fxml";
+                break;
+            default:
+                fxmlFile = "header.fxml";
+        }        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(fxmlFile));
         fxmlLoader.setRoot(this);
         fxmlLoader.setController(this);
         this.mainViewController = mainViewController;
@@ -64,7 +82,8 @@ public class HeaderController extends AnchorPane {
         }
         this.requestFocus();
 
-        this.initialize();
+        if (fxmlFile != "withImatMainButton"){this.initialize();}
+
 
 
     }
@@ -73,28 +92,55 @@ public class HeaderController extends AnchorPane {
     public void initialize() {
         List<Product> products = iMatDataHandler.getProducts();
 
-        searchBar.textProperty().addListener((observable, oldValue, newValue) -> {
-            if (container.getChildren().size() > 1) {
-                container.getChildren().remove(1);
-            }
-            VBox dropDownMenu = populateDropDownMenu(newValue, products);
-            container.add(dropDownMenu, 0, 1);
-            GridPane.setValignment(dropDownMenu, VPos.TOP); // Align the VBox to the top of the row
-        });
-        searchBar.focusedProperty().addListener((observable, oldValue, newValue) -> {
-            container.setVisible(newValue);
-        });
+        if (searchBar != null) {
+            searchBar.textProperty().addListener((observable, oldValue, newValue) -> {
+                if (container.getChildren().size() > 1) {
+                    container.getChildren().remove(1);
+                }
+                VBox dropDownMenu = populateDropDownMenu(newValue, products);
+                container.add(dropDownMenu, 0, 1);
+                GridPane.setValignment(dropDownMenu, VPos.TOP); // Align the VBox to the top of the row
+            });
+            searchBar.focusedProperty().addListener((observable, oldValue, newValue) -> {
+                container.setVisible(newValue);
+            });
+        }
+        if (searchBar != null) {
+            searchBar.setOnKeyPressed(event -> {
+                if (event.getCode() == KeyCode.ENTER) {
+                    onSearch(new Label(searchBar.getText()));
+                }
+            });
+        }
+
         List<ImageView> imageViews = Arrays.asList(tidigareKopBild, dinaUppgifterBild, varukorgenBild);
         for (ImageView imageView : imageViews) {
-            imageView.setMouseTransparent(true);
+            if (imageView != null) {
+                imageView.setMouseTransparent(true);
+            }
+        }
+        if (lgo != null) {
+            lgo.setOnMouseClicked(event -> {
+                backToHomePage();
+            });
         }
 
         prepareMenuSlideAnimation();
     }
 
+    @FXML
+    private void backToHomePage() {
+        mainViewController.backToHomePage();
+    }
+
+    @FXML
+    private void openUppgifter() {
+        mainViewController.openUppgifter();
+    }
 
 
-    public static VBox populateDropDownMenu(String text, List<Product> products) {
+
+    public VBox populateDropDownMenu(String text, List<Product> products) {
         VBox dropDownMenu = new VBox();
         dropDownMenu.setBackground(new Background(new BackgroundFill(Color.WHITE, null, null)));
         dropDownMenu.setAlignment(Pos.TOP_LEFT);
@@ -115,9 +161,7 @@ public class HeaderController extends AnchorPane {
 
                 // Add a mouse click event to the HBox
                 hbox.setOnMouseClicked(event -> {
-                    String labelText = label.getText();
-                    // Save labelText to a variable or use it directly here
-                    System.out.println("Clicked on label: " + labelText);
+                    onSearch(label);
                 });
 
                 if (product.getName().equalsIgnoreCase(text)) {
@@ -129,13 +173,36 @@ public class HeaderController extends AnchorPane {
         }
 
         // Add the exact matches first, then the contains matches
-        dropDownMenu.getChildren().addAll(exactMatches);
-        dropDownMenu.getChildren().addAll(containsMatches);
+        // But only add up to 5 matches in total
+        int count = 0;
+        for (HBox match : exactMatches) {
+            if (count >= 5) break;
+            dropDownMenu.getChildren().add(match);
+            count++;
+        }
+        for (HBox match : containsMatches) {
+            if (count >= 5) break;
+            dropDownMenu.getChildren().add(match);
+            count++;
+        }
 
         // Set the VBox's max height to be its preferred height
         dropDownMenu.setMaxHeight(Region.USE_PREF_SIZE);
 
         return dropDownMenu;
+    }
+
+    private void onSearch(Label label) {
+        String labelText = label.getText();
+        // Save labelText to a variable or use it directly here
+        this.mainViewController.sokResultatLabel.setText("Sökresultat för " + '"' + labelText.toLowerCase() + '"');
+        searchBar.setText("");
+        this.mainViewController.sokResultatAnchor.toFront();
+        this.mainViewController.anchorHeader.toFront();
+        this.mainViewController.varukorgPopupAnchor.toFront();
+        this.mainViewController.sokResultatAnchor.setVisible(true);
+        this.mainViewController.homePageAnchor.setVisible(true);
+        this.mainViewController.searchAnchor.getChildren().add(new ProductScrollpaneController(this.iMatDataHandler.findProducts(labelText)));
     }
 
 //mouse pressed, exited och entered.
