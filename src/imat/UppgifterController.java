@@ -31,7 +31,8 @@ public class UppgifterController extends AnchorPane {
 
     }
 
-    @FXML private void saveAndClose() {
+    @FXML
+    private void saveAndClose() {
         mainViewController.backToHomePage();
     }
 }

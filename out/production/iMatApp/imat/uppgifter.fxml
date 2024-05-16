@@ -4,6 +4,7 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Rectangle?>
 
 
 <fx:root prefHeight="1024.0" prefWidth="1440.0" stylesheets="@imat_app.css" type="javafx.scene.layout.AnchorPane" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
@@ -16,10 +17,10 @@
                   <String fx:value="item-button-text" />
                </styleClass>
             </Button>
-            <Label layoutX="557.0" layoutY="169.0" styleClass="sok-resultat-kategori-label" text="Personuppgifter" />
-            <AnchorPane layoutX="258.0" layoutY="242.0" prefHeight="366.0" prefWidth="438.0" styleClass="ruta-personuppgifter" />
-            <AnchorPane layoutX="258.0" layoutY="641.0" prefHeight="248.0" prefWidth="438.0" styleClass="ruta-personuppgifter" />
-            <AnchorPane layoutX="744.0" layoutY="242.0" prefHeight="366.0" prefWidth="438.0" styleClass="ruta-personuppgifter" />
+            <Label layoutX="557.0" layoutY="154.0" styleClass="sok-resultat-kategori-label" text="Personuppgifter" />
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="200.0" layoutX="875.0" layoutY="288.0" stroke="BLACK" strokeType="INSIDE" width="200.0" />
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="200.0" layoutX="301.0" layoutY="655.0" stroke="BLACK" strokeType="INSIDE" width="200.0" />
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="200.0" layoutX="302.0" layoutY="303.0" stroke="BLACK" strokeType="INSIDE" width="200.0" />
          </children>
       </AnchorPane>
       <AnchorPane fx:id="anchorHeader" prefHeight="118.0" prefWidth="1440.0" />
