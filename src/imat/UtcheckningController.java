@@ -2,6 +2,7 @@ package imat;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 
 import java.io.IOException;
@@ -9,6 +10,12 @@ import java.io.IOException;
 public class UtcheckningController extends AnchorPane {
 
     @FXML private AnchorPane headerAnchor;
+
+    @FXML private AnchorPane personuppgifterAnchor;
+    @FXML private TextField firstNameTextField;
+    @FXML private TextField lastNameTextField;
+    @FXML private TextField phonenumberTextField;
+    @FXML private TextField epostTextField;
 
     private MainViewController mainViewController;
 
