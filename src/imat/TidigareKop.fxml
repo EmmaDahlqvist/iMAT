@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.FlowPane?>
+
+<fx:root prefHeight="1024.0" prefWidth="1440.0" styleClass="background-color" stylesheets="@imat_app.css" type="javafx.scene.layout.AnchorPane" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <AnchorPane fx:id="anchorHeader" layoutX="5.0" maxHeight="111.0" minHeight="107.0" prefHeight="111.0" prefWidth="1442.0" AnchorPane.bottomAnchor="913.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+      <Label fx:id="sokResultatLabel" layoutX="337.0" layoutY="165.0" styleClass="sok-resultat-kategori-label" text="Tidigare Köp" />
+      <FlowPane layoutX="337.0" layoutY="249.0" prefHeight="779.0" prefWidth="1103.0">
+         <children>
+            <AnchorPane>
+               <children>
+                  <Label fx:id="datumLabel" style="-fx-font-family: &quot;Amiko&quot;; -fx-text-fill: #000000; -fx-font-size: 28px;" text="25 Mars 2024" />
+                  <Button layoutX="261.0" layoutY="1.0" mnemonicParsing="false" text="Kopiera till Varukorg">
+                     <styleClass>
+                        <String fx:value="item-button" />
+                        <String fx:value="item-button-text" />
+                        <String fx:value="hoverable-button-pointer" />
+                     </styleClass>
+                  </Button>
+                  <Label fx:id="priceLabel" layoutX="524.0" style="-fx-font-family: &quot;Amiko&quot;; -fx-text-fill: #000000; -fx-font-size: 28px;" text="2456 kr" />
+                  <ScrollPane fitToWidth="true" layoutX="-20.0" layoutY="56.0" prefHeight="455.0" prefWidth="1083.0" styleClass="background-color">
+                     <content>
+                        <FlowPane fx:id="productCardCarousel" hgap="60.0" prefHeight="458.0" prefWidth="1081.0" styleClass="background-color" vgap="30.0">
+                           <opaqueInsets>
+                              <Insets left="20.0" />
+                           </opaqueInsets>
+                           <padding>
+                              <Insets left="20.0" />
+                           </padding>
+                        </FlowPane>
+                     </content>
+                  </ScrollPane>
+                  <FlowPane prefHeight="200.0" prefWidth="200.0" />
+               </children>
+            </AnchorPane>
+         </children>
+      </FlowPane>
+      <AnchorPane fx:id="menuAnchor" layoutX="14.0" layoutY="24.0" prefHeight="200.0" prefWidth="200.0" />
+   </children>
+</fx:root>
