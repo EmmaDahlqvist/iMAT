@@ -3,25 +3,77 @@
 <?import java.lang.String?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
-
 
 <fx:root prefHeight="1024.0" prefWidth="1440.0" stylesheets="@imat_app.css" type="javafx.scene.layout.AnchorPane" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <AnchorPane prefHeight="200.0" prefWidth="200.0" styleClass="background-color" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <Button fx:id="saveButton" layoutX="1096.0" layoutY="868.0" mnemonicParsing="false" onMouseClicked="#saveAndClose" text="Spara och stäng">
+            <Button fx:id="saveButton" layoutX="1014.0" layoutY="799.0" mnemonicParsing="false" onMouseClicked="#saveAndClose" text="Spara och stäng">
                <styleClass>
                   <String fx:value="item-button" />
                   <String fx:value="item-button-text" />
                </styleClass>
             </Button>
-            <Label layoutX="557.0" layoutY="169.0" styleClass="sok-resultat-kategori-label" text="Personuppgifter" />
-            <AnchorPane layoutX="258.0" layoutY="242.0" prefHeight="366.0" prefWidth="438.0" styleClass="ruta-personuppgifter" />
-            <AnchorPane layoutX="258.0" layoutY="641.0" prefHeight="248.0" prefWidth="438.0" styleClass="ruta-personuppgifter" />
-            <AnchorPane layoutX="744.0" layoutY="242.0" prefHeight="366.0" prefWidth="438.0" styleClass="ruta-personuppgifter" />
+            <Label layoutX="565.0" layoutY="150.0" styleClass="sok-resultat-kategori-label" text="Personuppgifter" />
+            <AnchorPane layoutX="258.0" layoutY="242.0" prefHeight="301.0" prefWidth="438.0" styleClass="ruta-personuppgifter">
+               <children>
+                  <Label alignment="TOP_RIGHT" layoutX="1.0" layoutY="50.0" prefHeight="29.0" prefWidth="149.0" styleClass="personuppgifter-text" text="Namn:" />
+                  <Label alignment="TOP_RIGHT" layoutY="100.0" prefHeight="29.0" prefWidth="149.0" styleClass="personuppgifter-text" text="Efternamn:" AnchorPane.leftAnchor="0.0" />
+                  <Label alignment="TOP_RIGHT" layoutY="150.0" prefHeight="29.0" prefWidth="149.0" styleClass="personuppgifter-text" text="Mobilnummer:" AnchorPane.leftAnchor="0.0" />
+                  <Label alignment="TOP_RIGHT" layoutY="200.0" prefHeight="29.0" prefWidth="149.0" styleClass="personuppgifter-text" text="Epost:" AnchorPane.leftAnchor="0.0" />
+                  <TextField fx:id="name" layoutX="155.0" layoutY="50.0" styleClass="personuppgifter-textfield" AnchorPane.leftAnchor="160.0" />
+                  <TextField fx:id="lastname" layoutX="160.0" layoutY="100.0" styleClass="personuppgifter-textfield" AnchorPane.leftAnchor="160.0" />
+                  <TextField fx:id="phonenumber" layoutX="165.0" layoutY="150.0" styleClass="personuppgifter-textfield" AnchorPane.leftAnchor="160.0" />
+                  <TextField fx:id="epost" layoutX="165.0" layoutY="200.0" styleClass="personuppgifter-textfield" AnchorPane.leftAnchor="160.0" />
+               </children></AnchorPane>
+            <AnchorPane layoutX="258.0" layoutY="592.0" prefHeight="248.0" prefWidth="438.0" styleClass="ruta-personuppgifter">
+               <children>
+                  <Label alignment="TOP_RIGHT" layoutX="50.0" layoutY="50.0" prefHeight="29.0" prefWidth="149.0" styleClass="personuppgifter-text" text="Kortnummer:" AnchorPane.leftAnchor="0.0" />
+                  <Label alignment="TOP_RIGHT" layoutX="14.0" layoutY="100.0" prefHeight="29.0" prefWidth="149.0" styleClass="personuppgifter-text" text="Giltigt till:" AnchorPane.leftAnchor="0.0" />
+                  <Label alignment="TOP_RIGHT" layoutX="7.0" layoutY="150.0" prefHeight="29.0" prefWidth="149.0" styleClass="personuppgifter-text" text="CVC:" AnchorPane.leftAnchor="0.0" />
+                  <TextField fx:id="kortnummer1" layoutX="121.0" layoutY="50.0" prefHeight="35.0" prefWidth="63.0" promptText="1234" styleClass="personuppgifter-textfield" AnchorPane.leftAnchor="160.0" />
+                  <TextField fx:id="kortnummer2" layoutX="228.0" layoutY="50.0" prefHeight="35.0" prefWidth="63.0" promptText="1234" styleClass="personuppgifter-textfield" AnchorPane.leftAnchor="228.0" />
+                  <TextField fx:id="kortnummer3" layoutX="293.0" layoutY="50.0" prefHeight="35.0" prefWidth="63.0" promptText="1234" styleClass="personuppgifter-textfield" AnchorPane.leftAnchor="296.0" />
+                  <TextField fx:id="kortnummer4" layoutX="306.0" layoutY="50.0" prefHeight="35.0" prefWidth="63.0" promptText="1234" styleClass="personuppgifter-textfield" AnchorPane.leftAnchor="364.0" />
+                  <TextField fx:id="datemonth" layoutX="170.0" layoutY="100.0" prefHeight="35.0" prefWidth="42.0" promptText="04" styleClass="personuppgifter-textfield" AnchorPane.leftAnchor="160.0" />
+                  <TextField fx:id="dateyear" layoutX="223.0" layoutY="100.0" prefHeight="35.0" prefWidth="42.0" promptText="28" styleClass="personuppgifter-textfield" />
+                  <Label layoutX="207.0" layoutY="100.0" styleClass="item-main-text" text="/" />
+                  <TextField fx:id="cvc" layoutX="181.0" layoutY="150.0" prefHeight="35.0" prefWidth="49.0" promptText="205" styleClass="personuppgifter-textfield" AnchorPane.leftAnchor="160.0" />
+               </children></AnchorPane>
+            <AnchorPane layoutX="744.0" layoutY="242.0" prefHeight="301.0" prefWidth="438.0" styleClass="ruta-personuppgifter">
+               <children>
+                  <Label alignment="TOP_RIGHT" layoutX="76.0" layoutY="50.0" prefHeight="29.0" prefWidth="149.0" styleClass="personuppgifter-text" text="Address:" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="50.0" />
+                  <Label alignment="TOP_RIGHT" layoutX="14.0" layoutY="79.0" prefHeight="29.0" prefWidth="149.0" styleClass="personuppgifter-text" text="Postnummer:" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="100.0" />
+                  <Label alignment="TOP_RIGHT" layoutX="10.0" layoutY="210.0" prefHeight="29.0" prefWidth="149.0" styleClass="personuppgifter-text" text="Portkod:" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="150.0" />
+                  <TextField fx:id="adress" layoutX="154.0" layoutY="53.0" styleClass="personuppgifter-textfield" AnchorPane.leftAnchor="160.0" AnchorPane.topAnchor="50.0" />
+                  <TextField fx:id="postnummer" layoutX="170.0" layoutY="60.0" styleClass="personuppgifter-textfield" AnchorPane.leftAnchor="160.0" AnchorPane.topAnchor="100.0" />
+                  <TextField fx:id="portkod" layoutX="164.0" layoutY="247.0" styleClass="personuppgifter-textfield" AnchorPane.leftAnchor="160.0" AnchorPane.topAnchor="150.0" />
+               </children></AnchorPane>
          </children>
       </AnchorPane>
       <AnchorPane fx:id="anchorHeader" prefHeight="118.0" prefWidth="1440.0" />
+      <AnchorPane fx:id="areYouSureAboutDat" prefHeight="200.0" prefWidth="200.0" styleClass="transp-varukorg-pane" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <AnchorPane layoutX="436.0" layoutY="271.0" prefHeight="313.0" prefWidth="504.0" styleClass="ruta-personuppgifter">
+               <children>
+                  <Label prefHeight="248.0" prefWidth="504.0" styleClass="sok-resultat-kategori-label" text="Vill du spara dina ändringar?" textAlignment="CENTER" textOverrun="CLIP" wrapText="true" />
+                  <Button fx:id="saveButton1" layoutX="365.0" layoutY="229.0" mnemonicParsing="false" onMouseClicked="#saveAndClose" prefHeight="41.0" prefWidth="99.0" text="Spara">
+                     <styleClass>
+                        <String fx:value="item-button" />
+                        <String fx:value="item-button-text" />
+                     </styleClass>
+                  </Button>
+                  <Button fx:id="saveButton11" layoutX="218.0" layoutY="229.0" mnemonicParsing="false" text="Spara inte">
+                     <styleClass>
+                        <String fx:value="spara-inte-button" />
+                        <String fx:value="item-button-text" />
+                     </styleClass>
+                  </Button>
+               </children>
+            </AnchorPane>
+         </children>
+      </AnchorPane>
    </children>
 </fx:root>

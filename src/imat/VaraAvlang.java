@@ -103,15 +103,18 @@ public class VaraAvlang extends AnchorPane{
 
     @FXML
     private void addProduct() {
-        shoppingItem.setAmount(shoppingItem.getAmount() + 1);
+        iMatDataHandler.getShoppingCart().addItem(new ShoppingItem(product));
         updateAmount();
     }
 
     @FXML
     private void removeProduct() {
         if(shoppingItem.getAmount() > 1 ) {
-            shoppingItem.setAmount(shoppingItem.getAmount() - 1); //minska amount
+            shoppingItem.setAmount(shoppingItem.getAmount() - 1);
+            iMatDataHandler.getShoppingCart().removeItem(shoppingItem); // tag bort och lägg till
+            iMatDataHandler.getShoppingCart().addItem(shoppingItem);    // så att lyssnare hör
         } else {
+            shoppingItem.setAmount(shoppingItem.getAmount() - 1);
             iMatDataHandler.getShoppingCart().removeItem(shoppingItem); //ta bort varan
             parentController.updateVaraAvlang();
         }
@@ -130,8 +133,11 @@ public class VaraAvlang extends AnchorPane{
                         Integer value = Integer.valueOf(amountTextField.getText());
                         if(value >= 0) {
                             shoppingItem.setAmount(value);
+                            iMatDataHandler.getShoppingCart().removeItem(shoppingItem);
+                            iMatDataHandler.getShoppingCart().addItem(shoppingItem);
                         }
                         if(value == 0) {
+                            shoppingItem.setAmount(1);
                             removeProduct();
                         }
 

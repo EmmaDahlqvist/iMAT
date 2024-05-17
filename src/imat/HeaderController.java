@@ -33,7 +33,7 @@ public class HeaderController extends AnchorPane {
     private AnchorPane varuKorgen;
     @FXML
     private Button lgo;
-    @FXML
+@FXML
     private TextField searchBar;
     @FXML
     GridPane container;
