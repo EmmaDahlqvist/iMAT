@@ -41,7 +41,7 @@ public class MenyItem extends AnchorPane {
         this.parentController = menyController;
         String lineAdjustment = "first";
         for (String childCategory : childCategoryList) {
-            if (childCategory.equals(childCategoryList.getLast())) {
+            if (childCategory.equals(childCategoryList.get(childCategoryList.size() - 1))) { //bytte ut getLast mot detta
                 lineAdjustment = "last";
             }
             MenyListItem menyListItem = new MenyListItem(category, childCategory, lineAdjustment, parentController);
