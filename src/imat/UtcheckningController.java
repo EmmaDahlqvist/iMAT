@@ -2,6 +2,7 @@ package imat;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 
@@ -23,6 +24,9 @@ public class UtcheckningController extends AnchorPane {
     @FXML private TextField portkodTextField;
 
     @FXML private AnchorPane leveransuppgifterAnchor;
+    @FXML private RadioButton leveranstidTenRadioButton;
+    @FXML private RadioButton leveranstidElevenRadioButton;
+    @FXML private RadioButton leveranstidTwelveRadioButton;
 
     private MainViewController mainViewController;
 

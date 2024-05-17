@@ -529,3 +529,16 @@
     -fx-background-radius: 10px;
 }
 
+.leveranstid-radiobutton{
+    -fx-font-size: 16px;
+}
+
+.betalning-rubrik {
+    -fx-font-size:24px;
+    -fx-font-weight:bold;
+
+}
+
+.betalning-vanlig-text{
+    -fx-font-size: 20px;
+}
