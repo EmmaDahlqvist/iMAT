@@ -40,11 +40,10 @@
             <Button fx:id="beginShoppingButton" layoutX="404.0" layoutY="562.0" mnemonicParsing="false" prefHeight="99.0" prefWidth="980.0" text="Börja handla">
                <styleClass>
                   <String fx:value="big-button" />
-                  <String fx:value="buttons" />
                   <String fx:value="title-text" />
                </styleClass>
             </Button>
-            <FlowPane fx:id="productCardTest" layoutX="39.0" layoutY="167.0" prefHeight="474.0" prefWidth="766.0" />
+            <FlowPane fx:id="productCardTest" layoutX="39.0" layoutY="167.0" prefHeight="474.0" prefWidth="342.0" />
          </children>
       </AnchorPane>
       <AnchorPane fx:id="anchorHeader" prefHeight="113.0" prefWidth="1437.0" />

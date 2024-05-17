@@ -202,7 +202,7 @@ public class HeaderController extends AnchorPane {
         this.mainViewController.varukorgPopupAnchor.toFront();
         this.mainViewController.sokResultatAnchor.setVisible(true);
         this.mainViewController.homePageAnchor.setVisible(true);
-        this.mainViewController.searchAnchor.getChildren().add(new ProductScrollpaneController(this.iMatDataHandler.findProducts(labelText)));
+        this.mainViewController.searchAnchor.getChildren().add(new ProductScrollpaneController(mainViewController, this.iMatDataHandler.findProducts(labelText)));
     }
 
 //mouse pressed, exited och entered.
