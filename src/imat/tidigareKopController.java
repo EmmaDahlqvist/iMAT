@@ -12,6 +12,7 @@ import se.chalmers.cse.dat216.project.Product;
 import se.chalmers.cse.dat216.project.ShoppingItem;
 
 import java.io.IOException;
+import java.util.concurrent.Flow;
 
 public class tidigareKopController extends AnchorPane {
 
@@ -23,6 +24,10 @@ public class tidigareKopController extends AnchorPane {
     protected ScrollPane tidigareKopScroll;
     protected IMatDataHandler iMatDataHandler = IMatDataHandler.getInstance();
     @FXML protected AnchorPane menuAnchor;
+    @FXML protected AnchorPane tidigareKopItemAnchor;
+    @FXML protected FlowPane  flowpane;
+
+
 
 
     public tidigareKopController(MainViewController mainViewController) {
@@ -41,26 +46,27 @@ public class tidigareKopController extends AnchorPane {
 
     }
 
-    private void simulatePreviousOrders(){
+//TODO detta ska till main.
+//    this.tidigareKopAnchor.getChildren().add(new tidigareKopController(this));
+//        this.tidigareKopAnchor.toFront();
+//        anchorHeader.toFront();
 
-//TODO göra sepparat klass
-    }
+
     private void initalize() {
-        for (Order order : iMatDataHandler.getOrders()){
-            for (ShoppingItem shoppingItem : order.getItems()){
-                productCardCarousel.getChildren().add(new ProductCard(shoppingItem.getProduct()));
-            }
-        }
-        for (Product product : this.iMatDataHandler.getProducts()){
-            productCardCarousel.getChildren().add(new ProductCard(product));
-        }
-        menuAnchor.getChildren().add(new MenyController());
 
+        //TEST
+        for (int i = 0; i < 10; i++) {
+            iMatDataHandler.getShoppingCart().addProduct(iMatDataHandler.getProducts().get(i), 1);
+        }
 
-//        this.productCardCarousel.getChildren().add(new ProductScrollpaneController(
+        iMatDataHandler.placeOrder();
+        //slut av test
+
+        this.menuAnchor.getChildren().add(new MenyController(this.mainViewController));
+          for (Order order : iMatDataHandler.getOrders()){
+            this.flowpane.getChildren().add(new tidigareKopItemController(this.mainViewController, order));
+
+        }
+
     }
-//    private void simulateTidigareKop{
-//
-//    }
-
 }
