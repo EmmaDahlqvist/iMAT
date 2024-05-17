@@ -58,6 +58,8 @@ public class MainViewController implements Initializable {
     @FXML private AnchorPane utcheckningAnchor;
     @FXML private Button toShoppingCartButton;
 
+    @FXML protected AnchorPane tidigareKopAnchor;
+
 
     IMatDataHandler iMatDataHandler = IMatDataHandler.getInstance();
 
@@ -80,6 +82,7 @@ public class MainViewController implements Initializable {
         productCardTest.getChildren().add(productCard);
         iMatDataHandler.getShoppingCart().addShoppingCartListener(productCard);
 
+        this.tidigareKopAnchor.getChildren().add(new tidigareKopController(this));
 
 
         uppgifterAnchor.getChildren().add(uppgifterController);

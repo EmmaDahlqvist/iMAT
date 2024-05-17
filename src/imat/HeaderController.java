@@ -106,6 +106,7 @@ public class HeaderController extends AnchorPane {
                     onSearch();
                 }
             });
+
         }
 
         List<ImageView> imageViews = Arrays.asList(tidigareKopBild, dinaUppgifterBild, varukorgenBild);
@@ -117,6 +118,13 @@ public class HeaderController extends AnchorPane {
         if (lgo != null) {
             lgo.setOnMouseClicked(event -> {
                 backToHomePage();
+            });
+        }
+        if (tidigareKopButton != null) {
+            tidigareKopButton.setOnMouseClicked(event -> {
+                this.mainViewController.tidigareKopAnchor.toFront();
+                this.mainViewController.anchorHeader.toFront();
+                this.mainViewController.varukorgPopupAnchor.toFront();
             });
         }
 
