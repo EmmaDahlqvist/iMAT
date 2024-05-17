@@ -540,8 +540,8 @@
     -fx-text-alignment: center;
 }
 
-.error-msg {
-    -fx-font-family: "Amiko";
-    -fx-font-size: 20px;
-    -fx-text-fill: red;
+.leveranstid-box{
+    -fx-background-color: #FFFFFF;
+    -fx-background-radius: 10px;
 }
+

@@ -8,19 +8,14 @@
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.Region?>
 <?import javafx.scene.text.Font?>
 
-<fx:root prefHeight="1024.0" prefWidth="1440.0" style="-fx-background-color: white;" stylesheets="@imat_app.css" type="javafx.scene.layout.AnchorPane" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+<fx:root prefHeight="1024.0" prefWidth="1440.0" styleClass="background-color" stylesheets="@imat_app.css" type="javafx.scene.layout.AnchorPane" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <AnchorPane fx:id="headerAnchor" layoutX="96.0" layoutY="1.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
    </children>
-   <AnchorPane prefHeight="1026.0" prefWidth="1441.0">
-      <children>
-         <AnchorPane fx:id="wizardAnchor" layoutX="151.0" layoutY="102.0" prefHeight="80.0" prefWidth="1140.0" styleClass="wizard-button" />
-      </children>
-   </AnchorPane>
-   <AnchorPane fx:id="personuppgifterAnchor" layoutX="146.0" layoutY="217.0" prefHeight="613.0" prefWidth="1140.0" style="-fx-background-color: red;">
+   <AnchorPane fx:id="wizardAnchor" layoutX="137.0" layoutY="176.0" prefHeight="80.0" prefWidth="1140.0" styleClass="wizard-button" />
+   <AnchorPane fx:id="personuppgifterAnchor" layoutX="136.0" layoutY="284.0" prefHeight="613.0" prefWidth="1140.0" style="-fx-background-color: red;">
       <children>
          <AnchorPane layoutX="109.0" layoutY="120.0" prefHeight="366.0" prefWidth="438.0">
             <children>
@@ -72,7 +67,7 @@
          <Label layoutX="438.0" layoutY="36.0" prefHeight="59.0" prefWidth="314.0" styleClass="rubriker-i-wizard" text="Personuppgifter" />
       </children>
    </AnchorPane>
-   <AnchorPane fx:id="leveransuppgifterAnchor" layoutX="146.0" layoutY="217.0" prefHeight="613.0" prefWidth="1140.0" style="-fx-background-color: gray;">
+   <AnchorPane fx:id="leveransuppgifterAnchor" layoutX="136.0" layoutY="284.0" prefHeight="613.0" prefWidth="1140.0" style="-fx-background-color: gray;">
       <children>
          <AnchorPane layoutX="98.0" layoutY="120.0" prefHeight="334.0" prefWidth="451.0">
             <styleClass>
@@ -81,9 +76,9 @@
             </styleClass>
             <children>
                <Label layoutX="16.0" layoutY="23.0" text="Leveransdag:" />
-               <Label layoutX="16.0" layoutY="76.0" text="Leveranstid:" />
+               <Label layoutX="16.0" layoutY="72.0" text="Leveranstid:" />
                <ComboBox layoutX="139.0" layoutY="18.0" prefHeight="40.0" prefWidth="117.0" />
-               <Region layoutX="139.0" layoutY="77.0" prefHeight="244.0" prefWidth="290.0" style="-fx-background-color: ffffff;" />
+               <AnchorPane layoutX="133.0" layoutY="77.0" prefHeight="244.0" prefWidth="290.0" styleClass="leveranstid-box" />
             </children>
          </AnchorPane>
          <Button fx:id="wizardNextButton1" layoutX="1018.0" layoutY="537.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="109.0" text="Nästa" textFill="WHITE">
@@ -112,4 +107,5 @@
          <Label layoutX="482.0" layoutY="36.0" prefHeight="59.0" prefWidth="176.0" styleClass="rubriker-i-wizard" text="Leverans" />
       </children>
    </AnchorPane>
+   <AnchorPane fx:id="anchorHeader" layoutX="26.0" prefHeight="133.0" prefWidth="1440.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
 </fx:root>

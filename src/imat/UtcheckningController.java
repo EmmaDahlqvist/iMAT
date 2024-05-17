@@ -9,7 +9,7 @@ import java.io.IOException;
 
 public class UtcheckningController extends AnchorPane {
 
-    @FXML private AnchorPane headerAnchor;
+    @FXML private AnchorPane anchorHeader;
     @FXML private AnchorPane wizardAnchor;
 
     @FXML private AnchorPane personuppgifterAnchor;
@@ -39,5 +39,7 @@ public class UtcheckningController extends AnchorPane {
             throw new RuntimeException(exception);
         }
 
+        wizardAnchor.getChildren().add(new WizardController());
+        this.anchorHeader.getChildren().add(mainViewController.withoutVarukorgHeaderUtcheckning);
     }
 }

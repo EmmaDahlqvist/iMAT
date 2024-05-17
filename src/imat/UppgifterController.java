@@ -60,8 +60,8 @@ public class UppgifterController extends AnchorPane {
             throw new RuntimeException(exception);
         }
 
-        this.anchorHeader.getChildren().add(mainViewController.withoutVarukorgHeader);
-        mainViewController.withoutVarukorgHeader.addButtonPushedListener(this); // lyssna efter att en knapp i headern trycks på
+        this.anchorHeader.getChildren().add(mainViewController.withoutVarukorgHeaderUppgifter);
+        mainViewController.withoutVarukorgHeaderUppgifter.addButtonPushedListener(this); // lyssna efter att en knapp i headern trycks på
 
         fillInDefaults();
 
@@ -116,19 +116,19 @@ public class UppgifterController extends AnchorPane {
 
     protected boolean interruptionTriggered = false;
     private void continueAfterClick() {
-        if(mainViewController.withoutVarukorgHeader.methodInterrupted.equals("backToHomePage")) {
-            mainViewController.withoutVarukorgHeader.methodInterrupted = "";
-            mainViewController.withoutVarukorgHeader.backToHomePage();
+        if(mainViewController.withoutVarukorgHeaderUppgifter.methodInterrupted.equals("backToHomePage")) {
+            mainViewController.withoutVarukorgHeaderUppgifter.methodInterrupted = "";
+            mainViewController.withoutVarukorgHeaderUppgifter.backToHomePage();
         }
 
-        if(mainViewController.withoutVarukorgHeader.methodInterrupted.equals("onSearch")) {
-            mainViewController.withoutVarukorgHeader.methodInterrupted = "";
-            mainViewController.withoutVarukorgHeader.onSearch();
+        if(mainViewController.withoutVarukorgHeaderUppgifter.methodInterrupted.equals("onSearch")) {
+            mainViewController.withoutVarukorgHeaderUppgifter.methodInterrupted = "";
+            mainViewController.withoutVarukorgHeaderUppgifter.onSearch();
         }
 
         //FIXA FÖR TIDIGARE KÖP OXÅ
-        if(mainViewController.withoutVarukorgHeader.methodInterrupted.equals("tidigareKop")) {
-            mainViewController.withoutVarukorgHeader.methodInterrupted = "";
+        if(mainViewController.withoutVarukorgHeaderUppgifter.methodInterrupted.equals("tidigareKop")) {
+            mainViewController.withoutVarukorgHeaderUppgifter.methodInterrupted = "";
             //
         }
     }

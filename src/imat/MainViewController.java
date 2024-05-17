@@ -51,9 +51,12 @@ public class MainViewController implements Initializable {
 
     protected HeaderController mainHeader;
     protected HeaderController iMatButtonHeader;
-    protected HeaderController withoutVarukorgHeader;
+    protected HeaderController withoutVarukorgHeaderUppgifter;
+    protected HeaderController withoutVarukorgHeaderUtcheckning;
+
 
     @FXML private AnchorPane utcheckningAnchor;
+    @FXML private Button toShoppingCartButton;
 
 
     IMatDataHandler iMatDataHandler = IMatDataHandler.getInstance();
@@ -66,7 +69,8 @@ public class MainViewController implements Initializable {
 
         mainHeader = new HeaderController(this, "self");
         iMatButtonHeader = new HeaderController(this, "withImatMainButton");
-        withoutVarukorgHeader = new HeaderController(this, "withoutVarukorgButton");
+        withoutVarukorgHeaderUppgifter = new HeaderController(this, "withoutVarukorgButton");
+        withoutVarukorgHeaderUtcheckning = new HeaderController(this, "withoutVarukorgButton");
         uppgifterController = new UppgifterController(this);
 
         anchorHeader.getChildren().add(mainHeader);
@@ -79,6 +83,8 @@ public class MainViewController implements Initializable {
 
 
         uppgifterAnchor.getChildren().add(uppgifterController);
+
+        utcheckningAnchor.getChildren().add(new UtcheckningController(this));
 
         setUpShoppingCart();
         updateVaraAvlang();
@@ -95,7 +101,7 @@ public class MainViewController implements Initializable {
 
     protected void openUppgifter() {
         uppgifterAnchor.toFront();
-        withoutVarukorgHeader.dinaUppgifterButton.getStyleClass().add("chosen-header-button");
+        withoutVarukorgHeaderUppgifter.dinaUppgifterButton.getStyleClass().add("chosen-header-button");
         uppgifterController.fillInDefaults();
     }
 
@@ -135,6 +141,12 @@ public class MainViewController implements Initializable {
         updateVaraAvlang();
         varukorgPopupAnchor.setVisible(true);
         varukorgPopupAnchor.setManaged(true);
+    }
+
+    @FXML
+    public void openUtcheckning() {
+        utcheckningAnchor.toFront();
+        closeVarukorg();
     }
 
     @FXML //används i varukorgen för att kunna klicka utanför o stänga fönstret
