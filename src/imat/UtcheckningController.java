@@ -2,6 +2,7 @@ package imat;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 
@@ -9,7 +10,7 @@ import java.io.IOException;
 
 public class UtcheckningController extends AnchorPane {
 
-    @FXML private AnchorPane headerAnchor;
+    @FXML private AnchorPane anchorHeader;
     @FXML private AnchorPane wizardAnchor;
 
     @FXML private AnchorPane personuppgifterAnchor;
@@ -23,6 +24,9 @@ public class UtcheckningController extends AnchorPane {
     @FXML private TextField portkodTextField;
 
     @FXML private AnchorPane leveransuppgifterAnchor;
+    @FXML private RadioButton leveranstidTenRadioButton;
+    @FXML private RadioButton leveranstidElevenRadioButton;
+    @FXML private RadioButton leveranstidTwelveRadioButton;
 
     private MainViewController mainViewController;
 
@@ -39,5 +43,7 @@ public class UtcheckningController extends AnchorPane {
             throw new RuntimeException(exception);
         }
 
+        wizardAnchor.getChildren().add(new WizardController());
+        this.anchorHeader.getChildren().add(mainViewController.withoutVarukorgHeaderUtcheckning);
     }
 }

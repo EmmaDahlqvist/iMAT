@@ -53,13 +53,6 @@ public class HeaderController extends AnchorPane {
 
     private MainViewController mainViewController;
 
-    private HeaderController headerInstance;
-//    protected HeaderController getHeaderInstance() {
-//        if(headerInstance != null) {
-//            return new HeaderController(mainViewController, "")
-//        }
-//    }
-
     public HeaderController(MainViewController mainViewController, String headerType) {
         String fxmlFile;
         switch (headerType) {
@@ -88,6 +81,7 @@ public class HeaderController extends AnchorPane {
 
     }
 
+    private Label searchLabel;
     @FXML
     public void initialize() {
         List<Product> products = iMatDataHandler.getProducts();
@@ -108,9 +102,11 @@ public class HeaderController extends AnchorPane {
         if (searchBar != null) {
             searchBar.setOnKeyPressed(event -> {
                 if (event.getCode() == KeyCode.ENTER) {
-                    onSearch(new Label(searchBar.getText()));
+                    searchLabel = new Label(searchBar.getText());
+                    onSearch();
                 }
             });
+
         }
 
         List<ImageView> imageViews = Arrays.asList(tidigareKopBild, dinaUppgifterBild, varukorgenBild);
@@ -124,13 +120,54 @@ public class HeaderController extends AnchorPane {
                 backToHomePage();
             });
         }
+        if (tidigareKopButton != null) {
+            tidigareKopButton.setOnMouseClicked(event -> {
+                this.mainViewController.tidigareKopAnchor.toFront();
+                this.mainViewController.anchorHeader.toFront();
+                this.mainViewController.varukorgPopupAnchor.toFront();
+            });
+        }
 
         prepareMenuSlideAnimation();
     }
 
+    UppgifterController uppgifterController;
+    protected void addButtonPushedListener(UppgifterController uppgifterController) {
+        this.uppgifterController = uppgifterController;
+    }
+
+    private void buttonPushedNotification() {
+        if(this.uppgifterController != null ) {
+            uppgifterController.villDuSpara();
+        }
+    }
+
+    protected String methodInterrupted = "";
+
     @FXML
-    private void backToHomePage() {
-        mainViewController.backToHomePage();
+    protected void backToHomePage() {
+        if(checkForInterruption()) {
+            buttonPushedNotification();
+            methodInterrupted = "backToHomePage";
+        } else {
+            switchInterruptionTrigger();
+            mainViewController.backToHomePage();
+        }
+    }
+
+    private boolean checkForInterruption() {
+        if(uppgifterController != null && !uppgifterController.interruptionTriggered) {
+            switchInterruptionTrigger();
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    private void switchInterruptionTrigger() {
+        if(uppgifterController != null) {
+            uppgifterController.interruptionTriggered = !uppgifterController.interruptionTriggered;
+        }
     }
 
     @FXML
@@ -161,7 +198,8 @@ public class HeaderController extends AnchorPane {
 
                 // Add a mouse click event to the HBox
                 hbox.setOnMouseClicked(event -> {
-                    onSearch(label);
+                    searchLabel = label;
+                    onSearch();
                 });
 
                 if (product.getName().equalsIgnoreCase(text)) {
@@ -192,17 +230,23 @@ public class HeaderController extends AnchorPane {
         return dropDownMenu;
     }
 
-    private void onSearch(Label label) {
-        String labelText = label.getText();
-        // Save labelText to a variable or use it directly here
-        this.mainViewController.sokResultatLabel.setText("Sökresultat för " + '"' + labelText.toLowerCase() + '"');
-        searchBar.setText("");
-        this.mainViewController.sokResultatAnchor.toFront();
-        this.mainViewController.anchorHeader.toFront();
-        this.mainViewController.varukorgPopupAnchor.toFront();
-        this.mainViewController.sokResultatAnchor.setVisible(true);
-        this.mainViewController.homePageAnchor.setVisible(true);
-        this.mainViewController.searchAnchor.getChildren().add(new ProductScrollpaneController(this.iMatDataHandler.findProducts(labelText)));
+    protected void onSearch() {
+        if(checkForInterruption()) {
+            buttonPushedNotification();
+            methodInterrupted = "onSearch";
+        } else {
+            switchInterruptionTrigger();
+            String labelText = searchLabel.getText();
+            // Save labelText to a variable or use it directly here
+            this.mainViewController.sokResultatLabel.setText("Sökresultat för " + '"' + labelText.toLowerCase() + '"');
+            searchBar.setText("");
+            this.mainViewController.sokResultatAnchor.toFront();
+            this.mainViewController.anchorHeader.toFront();
+            this.mainViewController.varukorgPopupAnchor.toFront();
+            this.mainViewController.sokResultatAnchor.setVisible(true);
+            this.mainViewController.homePageAnchor.setVisible(true);
+            this.mainViewController.searchAnchor.getChildren().add(new ProductScrollpaneController(this.iMatDataHandler.findProducts(labelText)));
+        }
     }
 
 //mouse pressed, exited och entered.

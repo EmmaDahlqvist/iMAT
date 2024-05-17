@@ -8,6 +8,27 @@
 
 <fx:root prefHeight="1024.0" prefWidth="1440.0" stylesheets="@imat_app.css" type="javafx.scene.layout.AnchorPane" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
    <children>
+      <AnchorPane fx:id="areYouSureAboutDat" prefHeight="200.0" prefWidth="200.0" styleClass="transp-varukorg-pane" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <AnchorPane layoutX="436.0" layoutY="271.0" prefHeight="313.0" prefWidth="504.0" styleClass="ruta-personuppgifter">
+               <children>
+                  <Label prefHeight="248.0" prefWidth="504.0" styleClass="sok-resultat-kategori-label" text="Vill du spara dina ändringar?" textAlignment="CENTER" textOverrun="CLIP" wrapText="true" />
+                  <Button fx:id="saveButton1" layoutX="365.0" layoutY="229.0" mnemonicParsing="false" onMouseClicked="#saveAndContinue" prefHeight="41.0" prefWidth="99.0" text="Spara">
+                     <styleClass>
+                        <String fx:value="item-button" />
+                        <String fx:value="item-button-text" />
+                     </styleClass>
+                  </Button>
+                  <Button fx:id="saveButton11" layoutX="218.0" layoutY="229.0" mnemonicParsing="false" onMouseClicked="#dontSaveContinue" text="Spara inte">
+                     <styleClass>
+                        <String fx:value="spara-inte-button" />
+                        <String fx:value="item-button-text" />
+                     </styleClass>
+                  </Button>
+               </children>
+            </AnchorPane>
+         </children>
+      </AnchorPane>
       <AnchorPane prefHeight="200.0" prefWidth="200.0" styleClass="background-color" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
             <Button fx:id="saveButton" layoutX="1014.0" layoutY="799.0" mnemonicParsing="false" onMouseClicked="#saveAndClose" text="Spara och stäng">
@@ -51,29 +72,9 @@
                   <TextField fx:id="postnummer" layoutX="170.0" layoutY="60.0" styleClass="personuppgifter-textfield" AnchorPane.leftAnchor="160.0" AnchorPane.topAnchor="100.0" />
                   <TextField fx:id="portkod" layoutX="164.0" layoutY="247.0" styleClass="personuppgifter-textfield" AnchorPane.leftAnchor="160.0" AnchorPane.topAnchor="150.0" />
                </children></AnchorPane>
+            <Label fx:id="errorMsg" alignment="TOP_LEFT" layoutX="744.0" layoutY="602.0" prefHeight="186.0" prefWidth="438.0" styleClass="error-msg" visible="false" wrapText="true" />
          </children>
       </AnchorPane>
       <AnchorPane fx:id="anchorHeader" prefHeight="118.0" prefWidth="1440.0" />
-      <AnchorPane fx:id="areYouSureAboutDat" prefHeight="200.0" prefWidth="200.0" styleClass="transp-varukorg-pane" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-         <children>
-            <AnchorPane layoutX="436.0" layoutY="271.0" prefHeight="313.0" prefWidth="504.0" styleClass="ruta-personuppgifter">
-               <children>
-                  <Label prefHeight="248.0" prefWidth="504.0" styleClass="sok-resultat-kategori-label" text="Vill du spara dina ändringar?" textAlignment="CENTER" textOverrun="CLIP" wrapText="true" />
-                  <Button fx:id="saveButton1" layoutX="365.0" layoutY="229.0" mnemonicParsing="false" onMouseClicked="#saveAndClose" prefHeight="41.0" prefWidth="99.0" text="Spara">
-                     <styleClass>
-                        <String fx:value="item-button" />
-                        <String fx:value="item-button-text" />
-                     </styleClass>
-                  </Button>
-                  <Button fx:id="saveButton11" layoutX="218.0" layoutY="229.0" mnemonicParsing="false" text="Spara inte">
-                     <styleClass>
-                        <String fx:value="spara-inte-button" />
-                        <String fx:value="item-button-text" />
-                     </styleClass>
-                  </Button>
-               </children>
-            </AnchorPane>
-         </children>
-      </AnchorPane>
    </children>
 </fx:root>

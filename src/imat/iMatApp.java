@@ -8,6 +8,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import se.chalmers.cse.dat216.project.IMatDataHandler;
 import se.chalmers.cse.dat216.project.Product;
 
 /*
@@ -34,6 +35,12 @@ public class iMatApp extends Application {
         stage.setScene(scene);
         stage.show();
         System.out.println("hej");
+
+        Runtime.getRuntime().addShutdownHook(new Thread(new Runnable() {
+            public void run() {
+                IMatDataHandler.getInstance().shutDown();
+            }
+        }));
 
     }
 
