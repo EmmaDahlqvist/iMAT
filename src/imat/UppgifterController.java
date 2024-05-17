@@ -6,15 +6,18 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
+import org.w3c.dom.Text;
 import se.chalmers.cse.dat216.project.CreditCard;
 import se.chalmers.cse.dat216.project.Customer;
 import se.chalmers.cse.dat216.project.IMatDataHandler;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 public class UppgifterController extends AnchorPane {
 
@@ -58,6 +61,7 @@ public class UppgifterController extends AnchorPane {
         }
 
         this.anchorHeader.getChildren().add(mainViewController.withoutVarukorgHeader);
+        mainViewController.withoutVarukorgHeader.addButtonPushedListener(this); // lyssna efter att en knapp i headern trycks på
 
         fillInDefaults();
 
@@ -85,10 +89,48 @@ public class UppgifterController extends AnchorPane {
 
     }
 
+
+
+
     @FXML
     private void saveAndClose() {
         mainViewController.backToHomePage();
         saveUppgifter();
+    }
+
+    protected void villDuSpara() {
+        areYouSureAboutDat.toFront();
+    }
+
+
+    @FXML private void saveAndContinue() {
+        saveUppgifter();
+        areYouSureAboutDat.toBack();
+        continueAfterClick();
+    }
+    @FXML
+    private void dontSaveContinue() {
+        areYouSureAboutDat.toBack();
+        continueAfterClick();
+    }
+
+    protected boolean interruptionTriggered = false;
+    private void continueAfterClick() {
+        if(mainViewController.withoutVarukorgHeader.methodInterrupted.equals("backToHomePage")) {
+            mainViewController.withoutVarukorgHeader.methodInterrupted = "";
+            mainViewController.withoutVarukorgHeader.backToHomePage();
+        }
+
+        if(mainViewController.withoutVarukorgHeader.methodInterrupted.equals("onSearch")) {
+            mainViewController.withoutVarukorgHeader.methodInterrupted = "";
+            mainViewController.withoutVarukorgHeader.onSearch();
+        }
+
+        //FIXA FÖR TIDIGARE KÖP OXÅ
+        if(mainViewController.withoutVarukorgHeader.methodInterrupted.equals("tidigareKop")) {
+            mainViewController.withoutVarukorgHeader.methodInterrupted = "";
+            //
+        }
     }
 
     private Customer customer = iMatDataHandler.getCustomer();
@@ -108,22 +150,30 @@ public class UppgifterController extends AnchorPane {
             adress.setText(customer.getAddress());
         }
         if(customer.getPhoneNumber() != null) {
-            name.setText(customer.getPhoneNumber());
+            phonenumber.setText(customer.getPhoneNumber());
         }
         if(customer.getPostCode() != null) {
             portkod.setText(customer.getPostCode());
         }
         if(customer.getPostAddress() != null) {
-            postnummer.setText(customer.getPostCode());
+            postnummer.setText(customer.getPostAddress());
         }
 
         if(creditCard.getCardNumber() != null){
             String[] number = creditCard.getCardNumber().split(" ");
-            if(number.length == 4) {
-                kortnummer1.setText(number[0]);
-                kortnummer2.setText(number[1]);
-                kortnummer1.setText(number[2]);
-                kortnummer1.setText(number[3]);
+            int amount = 0;
+            for(String num : number) {
+                if(amount == 0) {
+                    kortnummer1.setText(num);
+                } else if(amount == 1) {
+                    kortnummer2.setText(num);
+                } else if(amount == 2) {
+                    kortnummer3.setText(num);
+                } else if (amount == 3) {
+                    kortnummer4.setText(num);
+                    amount = -1;
+                }
+                amount++;
             }
         }
 
@@ -203,7 +253,6 @@ public class UppgifterController extends AnchorPane {
                 }
             }
         });
-
     }
 
 }

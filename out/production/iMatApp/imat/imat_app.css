@@ -86,6 +86,14 @@
     -fx-background-insets: 0;
 }
 
+.spara-inte-button:hover {
+    -fx-background-color: #A9B3D7;
+    -fx-border-radius: 30px;
+    -fx-border: 2px;
+    -fx-border-color: #111111;
+    -fx-cursor: hand;
+}
+
 .item-button:hover {
     -fx-background-color: #4736d4;
     -fx-border-radius: 30px;
@@ -514,6 +522,14 @@
     -fx-font-size: 16px;
 }
 
+.personuppgifter-textfield-error {
+    -fx-font-family: "Amiko";
+    -fx-background-radius: 1px;
+    -fx-background-insets: 0, 0 0 1 0;
+    -fx-background-color: red, white;
+    -fx-font-size: 16px;
+}
+
 .personuppgifter-textfield:focused {
 	-fx-background-color: #3125C1, white;
 }
@@ -522,4 +538,10 @@
     -fx-font-family: "Amiko";
     -fx-font-size: 38px;
     -fx-text-alignment: center;
+}
+
+.error-msg {
+    -fx-font-family: "Amiko";
+    -fx-font-size: 20px;
+    -fx-text-fill: red;
 }
