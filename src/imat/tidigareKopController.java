@@ -46,15 +46,13 @@ public class tidigareKopController extends AnchorPane {
 
     }
 
-//TODO detta ska till main.
-//    this.tidigareKopAnchor.getChildren().add(new tidigareKopController(this));
-//        this.tidigareKopAnchor.toFront();
-//        anchorHeader.toFront();
+
 
 
     private void initalize() {
 
         //TEST
+        iMatDataHandler.getOrders().clear();
         for (int i = 0; i < 10; i++) {
             iMatDataHandler.getShoppingCart().addProduct(iMatDataHandler.getProducts().get(i), 1);
         }
