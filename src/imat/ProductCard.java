@@ -28,7 +28,7 @@ public class ProductCard extends AnchorPane implements ShoppingCartListener
 
 
 
-    public ProductCard(ShoppingItem shoppingItem)
+    public ProductCard(MainViewController parentController, ShoppingItem shoppingItem)
     {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("product_card.fxml"));
         fxmlLoader.setRoot(this);
@@ -40,10 +40,10 @@ public class ProductCard extends AnchorPane implements ShoppingCartListener
             throw new RuntimeException(exception);
         }
 
+        this.parentController = parentController;
         iMatDataHandler = IMatDataHandler.getInstance();
         this.shoppingItem = shoppingItem;
         this.product = shoppingItem.getProduct();
-        this.shoppingItem.setAmount(0);
         initializeProduct();
 
 
@@ -51,7 +51,7 @@ public class ProductCard extends AnchorPane implements ShoppingCartListener
 
     private void initializeProduct()
     {
-        showPurchaseButton();
+        updateShoppingItem();
 
         productNameLabel.setText(product.getName());
         priceLabel.setText(String.format("%.2f", product.getPrice()) + " kr");
@@ -159,6 +159,32 @@ public class ProductCard extends AnchorPane implements ShoppingCartListener
             numberOfItemsLabel.setText(String.valueOf((int) shoppingItem.getAmount()));
         }
     }
+
+    public void updateShoppingItem()
+    {
+        if (shoppingItem.getAmount() == 0)
+        {
+            showPurchaseButton();
+        }
+        else
+        {
+            showIncrementButtons();
+            numberOfItemsLabel.setText(String.valueOf((int) shoppingItem.getAmount()));
+        }
+    }
+
+    public ShoppingItem getShoppingItem()
+    {
+        return shoppingItem;
+    }
+
+    @FXML
+    public void showDetailPane()
+    {
+        parentController.showDetailPane(this);
+    }
+
+
 
 
 

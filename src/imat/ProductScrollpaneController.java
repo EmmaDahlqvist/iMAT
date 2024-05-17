@@ -18,20 +18,13 @@ public class ProductScrollpaneController extends AnchorPane {
     private FlowPane productsFlowpane;
 
     private List<Product> productList;
-    private List<ShoppingItem> shoppingItemList;
     private IMatDataHandler iMatDataHandler = IMatDataHandler.getInstance();
 
-    public ProductScrollpaneController(List<Product> productList) {
+    public ProductScrollpaneController(MainViewController mainViewController, List<Product> productList) {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("productScrollpane.fxml"));
         fxmlLoader.setRoot(this);
         fxmlLoader.setController(this);
         this.productList = productList;
-        this.shoppingItemList = new ArrayList<ShoppingItem>();
-
-        for (Product product : productList) {
-            shoppingItemList.add(new ShoppingItem(product));
-        }
-
 
         try {
             fxmlLoader.load();
@@ -39,10 +32,8 @@ public class ProductScrollpaneController extends AnchorPane {
             throw new RuntimeException(exception);
         }
 
-        for(ShoppingItem shoppingItem : shoppingItemList) {
-            ProductCard currentProductCard = new ProductCard(shoppingItem);
-            productsFlowpane.getChildren().add(currentProductCard);
-            iMatDataHandler.getShoppingCart().addShoppingCartListener(currentProductCard);
+        for(Product product : productList) {
+            productsFlowpane.getChildren().add(mainViewController.getProductMap().get(product.getProductId()));
         }
     }
 }

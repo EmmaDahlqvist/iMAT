@@ -75,7 +75,7 @@ public class tidigareKopItemController extends AnchorPane {
             price += shoppingItem.getTotal();
 
 
-            productCardCarousel.getChildren().add(new ProductCard(shoppingItem));
+            productCardCarousel.getChildren().add(new ProductCard(mainViewController, shoppingItem));
             productCardCarousel.setMinWidth(350 * productCardCarousel.getChildren().size() + 10*productCardCarousel.getChildren().size());}
 
         priceLabel.setText(price + " kr");
