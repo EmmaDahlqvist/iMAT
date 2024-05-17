@@ -27,7 +27,7 @@ public class UppgifterController extends AnchorPane {
             throw new RuntimeException(exception);
         }
 
-        this.anchorHeader.getChildren().add(mainViewController.withoutVarukorgHeader);
+        this.anchorHeader.getChildren().add(mainViewController.withoutVarukorgHeaderUppgifter);
 
     }
 

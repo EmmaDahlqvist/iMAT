@@ -462,3 +462,9 @@
     -fx-font-size: 38px;
     -fx-text-alignment: center;
 }
+
+.leveranstid-box{
+    -fx-background-color: #FFFFFF;
+    -fx-background-radius: 10px;
+}
+

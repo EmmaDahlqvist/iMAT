@@ -15,6 +15,7 @@
 
 <AnchorPane maxHeight="1024.0" maxWidth="1440.0" minHeight="1024.0" minWidth="1440.0" prefHeight="1024.0" prefWidth="1440.0" styleClass="background-color" stylesheets="@imat_app.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="imat.MainViewController">
    <children>
+      <AnchorPane fx:id="utcheckningAnchor" prefHeight="200.0" prefWidth="200.0" />
       <AnchorPane fx:id="uppgifterAnchor" prefHeight="1024.0" prefWidth="1440.0" styleClass="background-color" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
       <AnchorPane fx:id="sokResultatAnchor" layoutY="118.0" prefHeight="906.0" prefWidth="1440.0" styleClass="background-color" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="118.0">
          <children>
@@ -65,7 +66,7 @@
                   <Line endX="178.6666259765625" endY="-6.103515625E-5" layoutX="309.0" layoutY="846.0" startX="-212.0" startY="-6.103515625E-5" style="-fx-stroke: #2E3F98;" />
                   <Label layoutX="116.0" layoutY="862.0" styleClass="tjufyrapxbold" text="Totalt" />
                   <Label fx:id="totalPrice" alignment="CENTER_RIGHT" layoutX="325.0" layoutY="860.0" prefHeight="37.0" prefWidth="143.0" styleClass="tjufyrapxbold" text="1000kr" />
-                  <Button layoutX="2.0" layoutY="924.0" mnemonicParsing="false" prefHeight="113.0" prefWidth="553.0" styleClass="till-varukogen-button" text="Till Varukorgen" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+                  <Button fx:id="toShoppingCartButton" layoutX="2.0" layoutY="924.0" mnemonicParsing="false" onMouseClicked="#openUtcheckning" prefHeight="113.0" prefWidth="553.0" styleClass="till-varukogen-button" text="Till Varukorgen" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor>
@@ -86,6 +87,5 @@
             </AnchorPane>
          </children>
       </AnchorPane>
-      <AnchorPane fx:id="utcheckningAnchor" prefHeight="200.0" prefWidth="200.0" />
    </children>
 </AnchorPane>
