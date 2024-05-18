@@ -558,3 +558,7 @@
 .betalning-vanlig-text{
     -fx-font-size: 20px;
 }
+
+.varukorg-bold-text{
+    -fx-font-weight:bold;
+}

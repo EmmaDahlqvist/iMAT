@@ -3,11 +3,11 @@ package imat;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.control.RadioButton;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.FlowPane;
 import se.chalmers.cse.dat216.project.CreditCard;
 import se.chalmers.cse.dat216.project.Customer;
 import se.chalmers.cse.dat216.project.IMatDataHandler;
@@ -19,6 +19,15 @@ public class UtcheckningController extends AnchorPane {
     @FXML private AnchorPane anchorHeader;
     @FXML private AnchorPane wizardAnchor;
 
+    // varukorgs page
+    @FXML private AnchorPane varukorgWizardAnchor;
+    @FXML private ScrollPane varukorgScrollPaneUtcheckning;
+    @FXML private FlowPane varukorgFlowPaneUtcheckning;
+    @FXML private Label varukorgTotalVarukostnadLabel;
+    @FXML private Label varukorgTotalKostnadLabel;
+    @FXML private Button varukorgNextButton;
+
+    // personuppgifter page
     @FXML private AnchorPane personuppgifterAnchor;
     @FXML private TextField firstNameTextField;
     @FXML private TextField lastNameTextField;
@@ -27,14 +36,24 @@ public class UtcheckningController extends AnchorPane {
     @FXML private TextField adressTextField;
     @FXML private TextField postnummerTextField;
     @FXML private TextField portkodTextField;
+    @FXML private Button personuppgifterNextButton;
 
+    // leverans page
     @FXML private AnchorPane leveransuppgifterAnchor;
+    @FXML private ComboBox leveransdagComboBox;
     @FXML private RadioButton leveranstidTenRadioButton;
     @FXML private RadioButton leveranstidElevenRadioButton;
     @FXML private RadioButton leveranstidTwelveRadioButton;
+    @FXML private RadioButton leveranstidOneRadioButton;
+    @FXML private RadioButton leveranstidTwoRadioButton;
+    @FXML private RadioButton leveranstidThreeRadioButton;
+    @FXML private RadioButton leveranstidFourRadioButton;
+    @FXML private RadioButton leveranstidFiveRadioButton;
+    @FXML private TextArea meddelandeTextArea;
+    @FXML private Button leveransNextButton;
 
-    private MainViewController mainViewController;
 
+    // betalnings page
     @FXML private TextField kortnummer1;
     @FXML private TextField kortnummer2;
     @FXML private TextField kortnummer3;
@@ -43,8 +62,12 @@ public class UtcheckningController extends AnchorPane {
     @FXML private TextField dateMonth;
     @FXML private TextField dateYear;
     @FXML private TextField cvc;
+    @FXML private Label betalningTotalVarukostnadLabel;
+    @FXML private Label betalningTotalKostnadLabel;
+    @FXML private Button betalningNextButton;
 
     private WizardController wizardController;
+    private MainViewController mainViewController;
 
     public UtcheckningController(MainViewController mainViewController) {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("utcheckning.fxml"));
