@@ -479,6 +479,13 @@
     -fx-font-weight: bold;
 }
 
+.title-text-black-notbold {
+    -fx-font-size: 38px;
+    -fx-font-family: "Amiko";
+    -fx-font-color: #000000;
+    -fx-text-fill: #000000;
+}
+
 .text-detailed-product{
     -fx-font-size: 20px;
     -fx-font-family: "Amiko";
@@ -543,5 +550,10 @@
 .leveranstid-box{
     -fx-background-color: #FFFFFF;
     -fx-background-radius: 10px;
+}
+
+.complete-button{
+    -fx-font-size: 24px;
+    -fx-text-fill: #ffffff;
 }
 
