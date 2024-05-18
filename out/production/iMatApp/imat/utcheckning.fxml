@@ -10,6 +10,7 @@
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.FlowPane?>
 <?import javafx.scene.layout.Region?>
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
@@ -40,7 +41,7 @@
                      <Font name="System Bold" size="12.0" />
                   </font>
                </Label>
-               <Label fx:id="betalningTotalKostnadLabel1" layoutX="341.0" layoutY="173.0" styleClass="betalning-rubrik" text="999kr">
+               <Label fx:id="varukorgTotalKostnadLabel" layoutX="341.0" layoutY="173.0" styleClass="betalning-rubrik" text="999kr">
                   <font>
                      <Font name="System Bold" size="12.0" />
                   </font>
@@ -51,7 +52,7 @@
                      <Font name="System Bold" size="12.0" />
                   </font>
                </Label>
-               <Label fx:id="betalningTotalVarukostnadLabel1" layoutX="351.0" layoutY="68.0" styleClass="betalning-vanlig-text" text="949kr">
+               <Label fx:id="varukorgTotalVarukostnadLabel" layoutX="351.0" layoutY="68.0" styleClass="betalning-vanlig-text" text="949kr">
                   <font>
                      <Font name="System Bold" size="12.0" />
                   </font>
@@ -78,14 +79,14 @@
                      <Font name="System Bold" size="12.0" />
                   </font>
                </Label>
-               <ScrollPane fx:id="varukorgScrollUtcheckning" blendMode="SRC_ATOP" fitToWidth="true" hbarPolicy="NEVER" hmax="0.0" layoutX="2.0" layoutY="54.0" prefHeight="477.0" prefWidth="515.0">
-                 <content>
-                   <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="200.0" prefWidth="200.0" />
-                 </content>
+               <ScrollPane fx:id="varukorgScrollPaneUtcheckning" blendMode="SRC_ATOP" fitToWidth="true" hbarPolicy="NEVER" hmax="0.0" layoutX="8.0" layoutY="57.0" opacity="0.1" prefHeight="474.0" prefWidth="504.0">
+                  <content>
+                     <FlowPane fx:id="varukorgFlowPaneUtcheckning" prefHeight="200.0" prefWidth="200.0" />
+                  </content>
                </ScrollPane>
             </children>
          </AnchorPane>
-         <Button fx:id="wizardNextButton3" layoutX="1017.0" layoutY="528.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="109.0" text="Nästa" textFill="WHITE">
+         <Button fx:id="varukorgNextButton" layoutX="1017.0" layoutY="528.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="109.0" text="Nästa" textFill="WHITE">
             <font>
                <Font size="18.0" />
             </font>
@@ -101,7 +102,7 @@
          <Label layoutX="484.0" layoutY="8.0" prefHeight="59.0" prefWidth="180.0" styleClass="rubriker-i-wizard" text="Varukorg" />
       </children>
    </AnchorPane>
-   <AnchorPane fx:id="personuppgifterAnchor" layoutX="136.0" layoutY="284.0" prefHeight="613.0" prefWidth="1140.0" style="-fx-background-color: red;" visible="false">
+   <AnchorPane fx:id="personuppgifterAnchor" layoutX="136.0" layoutY="284.0" prefHeight="613.0" prefWidth="1140.0" style="-fx-background-color: red;">
       <children>
          <AnchorPane layoutX="109.0" layoutY="120.0" prefHeight="310.0" prefWidth="438.0">
             <children>
@@ -119,7 +120,7 @@
                <String fx:value="personuppgifter-text" />
             </styleClass>
          </AnchorPane>
-         <Button fx:id="wizardNextButton" layoutX="1017.0" layoutY="528.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="109.0" text="Nästa" textFill="WHITE">
+         <Button fx:id="personuppgifterNextButton" layoutX="1017.0" layoutY="528.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="109.0" text="Nästa" textFill="WHITE">
             <font>
                <Font size="18.0" />
             </font>
@@ -149,7 +150,7 @@
          <Label layoutX="438.0" layoutY="36.0" prefHeight="59.0" prefWidth="314.0" styleClass="rubriker-i-wizard" text="Personuppgifter" />
       </children>
    </AnchorPane>
-   <AnchorPane fx:id="leveransuppgifterAnchor" layoutX="136.0" layoutY="284.0" prefHeight="613.0" prefWidth="1140.0" style="-fx-background-color: gray;" visible="false">
+   <AnchorPane fx:id="leveransuppgifterAnchor" layoutX="136.0" layoutY="284.0" prefHeight="613.0" prefWidth="1140.0" style="-fx-background-color: gray;">
       <children>
          <AnchorPane layoutX="98.0" layoutY="120.0" prefHeight="255.0" prefWidth="451.0">
             <styleClass>
@@ -159,10 +160,10 @@
             <children>
                <Label layoutX="16.0" layoutY="23.0" text="Leveransdag:" />
                <Label layoutX="16.0" layoutY="72.0" text="Leveranstid:" />
-               <ComboBox layoutX="141.0" layoutY="18.0" prefHeight="40.0" prefWidth="117.0" />
+               <ComboBox fx:id="leveransdagComboBox" layoutX="141.0" layoutY="18.0" prefHeight="40.0" prefWidth="117.0" />
             </children>
          </AnchorPane>
-         <Button fx:id="wizardNextButton1" layoutX="1017.0" layoutY="528.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="109.0" text="Nästa" textFill="WHITE">
+         <Button fx:id="leveransNextButton" layoutX="1017.0" layoutY="528.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="109.0" text="Nästa" textFill="WHITE">
             <font>
                <Font size="18.0" />
             </font>
@@ -181,7 +182,7 @@
                <String fx:value="personuppgifter-text" />
             </styleClass>
             <children>
-               <TextArea layoutX="37.0" layoutY="62.0" prefHeight="169.0" prefWidth="364.0" />
+               <TextArea fx:id="meddelandeTextArea" layoutX="37.0" layoutY="62.0" prefHeight="169.0" prefWidth="364.0" />
                <Label layoutX="37.0" layoutY="25.0" styleClass="personuppgifter-text" text="Meddelande till chauffören:         (valfritt)" />
             </children>
          </AnchorPane>
@@ -197,7 +198,7 @@
          <RadioButton fx:id="leveranstidFiveRadioButton" layoutX="392.0" layoutY="312.0" mnemonicParsing="false" styleClass="leveranstid-radiobutton" text="17:00-17:30" />
       </children>
    </AnchorPane>
-   <AnchorPane fx:id="betalningAnchor" layoutX="136.0" layoutY="284.0" prefHeight="613.0" prefWidth="1140.0" style="-fx-background-color: red;" visible="false">
+   <AnchorPane fx:id="betalningAnchor" layoutX="136.0" layoutY="284.0" prefHeight="613.0" prefWidth="1140.0" style="-fx-background-color: red;">
       <children>
          <AnchorPane layoutX="109.0" layoutY="120.0" prefHeight="248.0" prefWidth="438.0">
             <children>
@@ -218,7 +219,7 @@
                <String fx:value="personuppgifter-text" />
             </styleClass>
          </AnchorPane>
-         <Button fx:id="wizardNextButton2" layoutX="1017.0" layoutY="528.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="109.0" text="Nästa" textFill="WHITE">
+         <Button fx:id="betalningNextButton" layoutX="1017.0" layoutY="528.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="109.0" text="Nästa" textFill="WHITE">
             <font>
                <Font size="18.0" />
             </font>
