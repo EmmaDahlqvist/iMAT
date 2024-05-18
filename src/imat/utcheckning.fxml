@@ -17,19 +17,20 @@
    <children>
       <AnchorPane fx:id="headerAnchor" layoutX="96.0" layoutY="1.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
    </children>
-   <AnchorPane fx:id="wizardAnchor" layoutX="137.0" layoutY="176.0" prefHeight="80.0" prefWidth="1140.0" styleClass="wizard-button" />
+   <AnchorPane fx:id="anchorHeader" layoutX="26.0" prefHeight="133.0" prefWidth="1440.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+   <AnchorPane fx:id="wizardAnchor" layoutX="137.0" layoutY="176.0" prefHeight="80.0" prefWidth="1140.0" style="-fx-background-color: purple;" />
    <AnchorPane fx:id="personuppgifterAnchor" layoutX="136.0" layoutY="284.0" prefHeight="613.0" prefWidth="1140.0" style="-fx-background-color: red;">
       <children>
-         <AnchorPane layoutX="109.0" layoutY="120.0" prefHeight="366.0" prefWidth="438.0">
+         <AnchorPane layoutX="109.0" layoutY="120.0" prefHeight="310.0" prefWidth="438.0">
             <children>
-               <TextField fx:id="firstNameTextField" layoutX="212.0" layoutY="40.0" prefHeight="40.0" prefWidth="193.0" />
+               <TextField fx:id="firstNameTextField" layoutX="212.0" layoutY="40.0" prefHeight="40.0" prefWidth="193.0" styleClass="personuppgifter-textfield" />
                <Label layoutX="121.0" layoutY="46.0" text="Förnamn:" />
                <Label layoutX="109.0" layoutY="107.0" text="Efternamn:" />
                <Label layoutX="76.0" layoutY="168.0" text="Mobilnummer:" />
                <Label layoutX="151.0" layoutY="227.0" text="Epost:" />
-               <TextField fx:id="lastNameTextField" layoutX="212.0" layoutY="103.0" prefHeight="40.0" prefWidth="193.0" />
-               <TextField fx:id="phonenumberTextField" layoutX="213.0" layoutY="163.0" prefHeight="40.0" prefWidth="193.0" />
-               <TextField fx:id="epostTextField" layoutX="213.0" layoutY="223.0" prefHeight="40.0" prefWidth="193.0" />
+               <TextField fx:id="lastNameTextField" layoutX="212.0" layoutY="103.0" prefHeight="40.0" prefWidth="193.0" styleClass="personuppgifter-textfield" />
+               <TextField fx:id="phonenumberTextField" layoutX="213.0" layoutY="163.0" prefHeight="40.0" prefWidth="193.0" styleClass="personuppgifter-textfield" />
+               <TextField fx:id="epostTextField" layoutX="213.0" layoutY="223.0" prefHeight="40.0" prefWidth="193.0" styleClass="personuppgifter-textfield" />
             </children>
             <styleClass>
                <String fx:value="ruta-personuppgifter" />
@@ -49,18 +50,14 @@
                <Cursor fx:constant="HAND" />
             </cursor>
          </Button>
-         <AnchorPane layoutX="595.0" layoutY="120.0" prefHeight="366.0" prefWidth="438.0">
+         <AnchorPane layoutX="595.0" layoutY="120.0" prefHeight="310.0" prefWidth="438.0">
             <children>
-               <TextField fx:id="adressTextField" layoutX="212.0" layoutY="40.0" prefHeight="40.0" prefWidth="193.0" />
+               <TextField fx:id="adressTextField" layoutX="212.0" layoutY="40.0" prefHeight="40.0" prefWidth="193.0" styleClass="personuppgifter-textfield" />
                <Label layoutX="141.0" layoutY="44.0" text="Adress:" />
                <Label layoutX="86.0" layoutY="107.0" text="Postnummer:" />
-               <Label layoutX="172.0" layoutY="167.0" text="Ort:" />
-               <Label layoutX="166.0" layoutY="227.0" text="C/O:" />
-               <TextField fx:id="postnummerTextField" layoutX="212.0" layoutY="103.0" prefHeight="40.0" prefWidth="193.0" />
-               <TextField fx:id="ortTextField" layoutX="213.0" layoutY="163.0" prefHeight="40.0" prefWidth="193.0" />
-               <TextField fx:id="coTextField" layoutX="213.0" layoutY="223.0" prefHeight="40.0" prefWidth="193.0" />
-               <Label layoutX="133.0" layoutY="286.0" text="Portkod:" />
-               <TextField fx:id="portkodTextField" layoutX="213.0" layoutY="282.0" prefHeight="40.0" prefWidth="193.0" />
+               <TextField fx:id="postnummerTextField" layoutX="212.0" layoutY="103.0" prefHeight="40.0" prefWidth="193.0" styleClass="personuppgifter-textfield" />
+               <Label layoutX="133.0" layoutY="168.0" text="Portkod:" />
+               <TextField fx:id="portkodTextField" layoutX="213.0" layoutY="164.0" prefHeight="40.0" prefWidth="193.0" styleClass="personuppgifter-textfield" />
             </children>
             <styleClass>
                <String fx:value="ruta-personuppgifter" />
@@ -70,7 +67,7 @@
          <Label layoutX="438.0" layoutY="36.0" prefHeight="59.0" prefWidth="314.0" styleClass="rubriker-i-wizard" text="Personuppgifter" />
       </children>
    </AnchorPane>
-   <AnchorPane fx:id="leveransuppgifterAnchor" layoutX="136.0" layoutY="284.0" prefHeight="613.0" prefWidth="1140.0" style="-fx-background-color: gray;">
+   <AnchorPane fx:id="leveransuppgifterAnchor" layoutX="136.0" layoutY="284.0" prefHeight="613.0" prefWidth="1140.0" style="-fx-background-color: gray;" visible="false">
       <children>
          <AnchorPane layoutX="98.0" layoutY="120.0" prefHeight="255.0" prefWidth="451.0">
             <styleClass>
@@ -118,19 +115,21 @@
          <RadioButton fx:id="leveranstidFiveRadioButton" layoutX="392.0" layoutY="312.0" mnemonicParsing="false" styleClass="leveranstid-radiobutton" text="17:00-17:30" />
       </children>
    </AnchorPane>
-   <AnchorPane fx:id="anchorHeader" layoutX="26.0" prefHeight="133.0" prefWidth="1440.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
-   <AnchorPane fx:id="betalningAnchor" layoutX="136.0" layoutY="284.0" prefHeight="613.0" prefWidth="1140.0" style="-fx-background-color: red;">
+   <AnchorPane fx:id="betalningAnchor" layoutX="136.0" layoutY="284.0" prefHeight="613.0" prefWidth="1140.0" style="-fx-background-color: red;" visible="false">
       <children>
          <AnchorPane layoutX="109.0" layoutY="120.0" prefHeight="248.0" prefWidth="438.0">
             <children>
-               <TextField fx:id="firstNameTextField1" layoutX="186.0" layoutY="40.0" prefHeight="40.0" prefWidth="201.0" />
-               <Label layoutX="62.0" layoutY="46.0" text="Kortnummer:" />
-               <Label layoutX="91.0" layoutY="107.0" text="Giltigt till:" />
-               <Label layoutX="136.0" layoutY="168.0" text="CVC:" />
-               <TextField fx:id="lastNameTextField1" layoutX="186.0" layoutY="103.0" prefHeight="40.0" prefWidth="50.0" />
-               <TextField fx:id="phonenumberTextField1" layoutX="187.0" layoutY="163.0" prefHeight="40.0" prefWidth="66.0" />
-               <TextField fx:id="lastNameTextField11" layoutX="253.0" layoutY="102.0" prefHeight="40.0" prefWidth="50.0" />
-               <Label layoutX="242.0" layoutY="105.0" text="/" />
+               <Label layoutX="28.0" layoutY="47.0" text="Kortnummer:" />
+               <Label layoutX="57.0" layoutY="108.0" text="Giltigt till:" />
+               <Label layoutX="102.0" layoutY="169.0" text="CVC:" />
+               <TextField fx:id="dateMonth" layoutX="152.0" layoutY="104.0" prefHeight="40.0" prefWidth="50.0" promptText="04" styleClass="personuppgifter-textfield" />
+               <TextField fx:id="cvc" layoutX="152.0" layoutY="164.0" prefHeight="40.0" prefWidth="58.0" promptText="205" styleClass="personuppgifter-textfield" />
+               <TextField fx:id="dateYear" layoutX="219.0" layoutY="103.0" prefHeight="40.0" prefWidth="50.0" promptText="28" styleClass="personuppgifter-textfield" />
+               <Label layoutX="208.0" layoutY="106.0" text="/" />
+               <TextField fx:id="kortnummer1" layoutX="151.0" layoutY="44.0" prefHeight="35.0" prefWidth="63.0" promptText="1234" styleClass="personuppgifter-textfield" />
+               <TextField fx:id="kortnummer2" layoutX="216.0" layoutY="44.0" prefHeight="35.0" prefWidth="63.0" promptText="1234" styleClass="personuppgifter-textfield" />
+               <TextField fx:id="kortnummer4" layoutX="345.0" layoutY="44.0" prefHeight="35.0" prefWidth="63.0" promptText="1234" styleClass="personuppgifter-textfield" />
+               <TextField fx:id="kortnummer3" layoutX="281.0" layoutY="44.0" prefHeight="35.0" prefWidth="63.0" promptText="1234" styleClass="personuppgifter-textfield" />
             </children>
             <styleClass>
                <String fx:value="ruta-personuppgifter" />
