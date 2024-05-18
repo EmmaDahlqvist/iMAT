@@ -12,7 +12,7 @@
 <fx:root prefHeight="361.0" prefWidth="290.0" styleClass="product-card" stylesheets="@imat_app.css" type="javafx.scene.layout.AnchorPane" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <Label fx:id="priceLabel" alignment="CENTER" layoutX="85.0" layoutY="261.0" prefHeight="30.0" prefWidth="120.0" styleClass="item-Undertext-black" text="100" />
-      <ImageView fx:id="productImage" fitHeight="193.0" fitWidth="207.0" layoutX="41.0" layoutY="25.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="productImage" fitHeight="193.0" fitWidth="207.0" layoutX="41.0" layoutY="25.0" onMouseClicked="#showDetailPane" pickOnBounds="true" preserveRatio="true" style="-fx-cursor: hand;" />
       <Label fx:id="productNameLabel" alignment="CENTER" layoutX="60.0" layoutY="227.0" prefHeight="34.0" prefWidth="170.0" styleClass="item-main-text" text="Olivolja" />
       <Button fx:id="purchaseButton" layoutX="52.0" layoutY="299.0" mnemonicParsing="false" onMouseClicked="#incrementNumberOfItems" prefHeight="46.0" prefWidth="184.0" text="KÖP">
          <styleClass>

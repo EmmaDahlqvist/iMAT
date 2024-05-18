@@ -17,6 +17,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.FlowPane;
 import javafx.util.Duration;
 import se.chalmers.cse.dat216.project.*;
+import java.util.HashMap;
 
 public class MainViewController implements Initializable {
 
@@ -58,14 +59,20 @@ public class MainViewController implements Initializable {
     @FXML private AnchorPane utcheckningAnchor;
     @FXML private Button toShoppingCartButton;
 
+    @FXML protected AnchorPane tidigareKopAnchor;
+
+    private HashMap<Integer, ProductCard> productCardHashMap;
 
     IMatDataHandler iMatDataHandler = IMatDataHandler.getInstance();
 
     private UppgifterController uppgifterController;
 
+
     public void initialize(URL url, ResourceBundle rb) {
 
         String iMatDirectory = iMatDataHandler.imatDirectory();
+
+        init_productCardHashMap();
 
         mainHeader = new HeaderController(this, "self");
         iMatButtonHeader = new HeaderController(this, "withImatMainButton");
@@ -76,10 +83,12 @@ public class MainViewController implements Initializable {
         anchorHeader.getChildren().add(mainHeader);
 
 
-        ProductCard productCard = new ProductCard(new ShoppingItem(iMatDataHandler.getProduct(1), 1));
-        productCardTest.getChildren().add(productCard);
-        iMatDataHandler.getShoppingCart().addShoppingCartListener(productCard);
 
+        productCardTest.getChildren().add(productCardHashMap.get(1)); // test
+
+
+
+        this.tidigareKopAnchor.getChildren().add(new tidigareKopController(this));
 
 
         uppgifterAnchor.getChildren().add(uppgifterController);
@@ -91,6 +100,25 @@ public class MainViewController implements Initializable {
         updateTotalPrice();
 
         closeVarukorg(); // håll den stängd som default
+    }
+
+
+    private void init_productCardHashMap()
+    {
+        productCardHashMap = new HashMap<Integer, ProductCard>();
+
+        for(Product product : iMatDataHandler.getProducts())
+        {
+            ProductCard productCard = new ProductCard(this, new ShoppingItem(product, 0));
+            productCardHashMap.put(product.getProductId(), productCard);
+            iMatDataHandler.getShoppingCart().addShoppingCartListener(productCard);
+        }
+
+    }
+
+    public HashMap<Integer, ProductCard> getProductMap()
+    {
+        return productCardHashMap;
     }
 
     protected void backToHomePage() {
@@ -107,6 +135,16 @@ public class MainViewController implements Initializable {
 
     private void setUpShoppingCart() {
 
+    }
+
+    public void showDetailPane(ProductCard productCard)
+    {
+        // kod för att lägga fram detailplanen
+    }
+
+    public void hideDetailPane()
+    {
+        // kod för att ta bort detailplanen
     }
 
     //körs för att uppdatera vara avlång listan

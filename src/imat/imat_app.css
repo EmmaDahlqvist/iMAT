@@ -110,6 +110,15 @@
     -fx-background-insets: 0;
 }
 
+.big-button:hover{
+    -fx-background-color: #4736d4;
+    -fx-background-radius: 50px;
+    -fx-border-radius: 50px;
+    -fx-border: 2px;
+    -fx-border-color: #111111;
+    -fx-cursor: hand;
+}
+
 .text-field {
     -fx-background-radius: 15px;
 }
@@ -552,8 +561,25 @@
     -fx-background-radius: 10px;
 }
 
+.leveranstid-radiobutton{
+    -fx-font-size: 16px;
+}
+
+.betalning-rubrik {
+    -fx-font-size:24px;
+    -fx-font-weight:bold;
 .complete-button{
     -fx-font-size: 24px;
     -fx-text-fill: #ffffff;
 }
 
+
+}
+
+.betalning-vanlig-text{
+    -fx-font-size: 20px;
+}
+
+.varukorg-bold-text{
+    -fx-font-weight:bold;
+}
