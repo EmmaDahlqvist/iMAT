@@ -67,6 +67,8 @@ public class MainViewController implements Initializable {
 
     private UppgifterController uppgifterController;
 
+    private UtcheckningController utcheckningController;
+
 
     public void initialize(URL url, ResourceBundle rb) {
 
@@ -93,7 +95,8 @@ public class MainViewController implements Initializable {
 
         uppgifterAnchor.getChildren().add(uppgifterController);
 
-        utcheckningAnchor.getChildren().add(new UtcheckningController(this));
+        utcheckningController = new UtcheckningController(this);
+        utcheckningAnchor.getChildren().add(utcheckningController);
 
         setUpShoppingCart();
         updateVaraAvlang();
@@ -177,6 +180,7 @@ public class MainViewController implements Initializable {
     @FXML
     protected void openVarukorg() {
         updateVaraAvlang();
+        updateTotalPrice();
         varukorgPopupAnchor.setVisible(true);
         varukorgPopupAnchor.setManaged(true);
     }
@@ -184,6 +188,7 @@ public class MainViewController implements Initializable {
     @FXML
     public void openUtcheckning() {
         utcheckningAnchor.toFront();
+        utcheckningController.updateVarukorgFlowpane();
         closeVarukorg();
     }
 

@@ -8,13 +8,12 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.FlowPane;
-import se.chalmers.cse.dat216.project.CreditCard;
-import se.chalmers.cse.dat216.project.Customer;
-import se.chalmers.cse.dat216.project.IMatDataHandler;
+import se.chalmers.cse.dat216.project.*;
 
 import java.io.IOException;
+import java.math.BigDecimal;
 
-public class UtcheckningController extends AnchorPane {
+public class UtcheckningController extends AnchorPane implements ShoppingCartListener{
 
     @FXML private AnchorPane anchorHeader;
     @FXML private AnchorPane wizardAnchor;
@@ -109,7 +108,37 @@ public class UtcheckningController extends AnchorPane {
         setFocusNextButton(kortnummer4, dateMonth);
         setFocusNextButton(dateMonth, dateYear);
         setFocusNextButton(dateYear, cvc);
+        IMatDataHandler.getInstance().getShoppingCart().addShoppingCartListener(this);
+
     }
+
+    public void shoppingCartChanged(CartEvent evt)
+    {
+        updateVarukorgFlowpane();
+    }
+
+    private void addToVarukorgFlowpane(ShoppingItem shoppingItem) {
+        varukorgFlowPaneUtcheckning.getChildren().add(new VaraAvlang(shoppingItem, mainViewController));
+    }
+
+    protected void updateVarukorgFlowpane() {
+        varukorgFlowPaneUtcheckning.getChildren().clear();
+        for (ShoppingItem shoppingItem : IMatDataHandler.getInstance().getShoppingCart().getItems()) {
+            varukorgFlowPaneUtcheckning.getChildren().add(new VaraAvlang(shoppingItem, mainViewController));
+        }
+
+        varukorgTotalVarukostnadLabel.setText(roundDouble(IMatDataHandler.getInstance().getShoppingCart().getTotal()) + " kr");
+        if(IMatDataHandler.getInstance().getShoppingCart().getTotal() == 0) {
+            varukorgTotalKostnadLabel.setText( 0 + " kr");
+        } else {
+            varukorgTotalKostnadLabel.setText(roundDouble(IMatDataHandler.getInstance().getShoppingCart().getTotal() + 50) + " kr");
+        }
+    }
+
+    private String roundDouble(Double s) {
+        return(String.format("%.2f", s));
+    }
+
 
     private Customer customer = IMatDataHandler.getInstance().getCustomer();
     private CreditCard creditCard = IMatDataHandler.getInstance().getCreditCard();

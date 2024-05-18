@@ -175,6 +175,10 @@
     -fx-background-color: transparent;
 }
 
+.scroll-pane > .viewport {
+   -fx-background-color: transparent;
+}
+
 .plus-minus-button {
     -fx-background-color: #DBEEFF;
     -fx-font-size: 17px;
@@ -568,12 +572,12 @@
 .betalning-rubrik {
     -fx-font-size:24px;
     -fx-font-weight:bold;
+
+}
+
 .complete-button{
     -fx-font-size: 24px;
     -fx-text-fill: #ffffff;
-}
-
-
 }
 
 .betalning-vanlig-text{
@@ -582,4 +586,12 @@
 
 .varukorg-bold-text{
     -fx-font-weight:bold;
+}
+
+.white-background {
+    -fx-background-color: #FFFFFF;
+}
+
+.blue-scrollpane {
+    -fx-background-color: DBEEFF;
 }
