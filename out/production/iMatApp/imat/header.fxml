@@ -68,6 +68,11 @@
                         <Image url="@fxmlPictures/baseline_shopping_cart_black_24dp 1.png" />
                      </image>
                   </ImageView>
+                  <AnchorPane fx:id="varaNotification" layoutX="65.0" layoutY="-18.0" prefHeight="45.0" prefWidth="37.0" styleClass="vara-notification">
+                     <children>
+                        <Label fx:id="totalVarorLabel" alignment="CENTER" prefHeight="45.0" prefWidth="50.0" styleClass="vara-notification-text" text="10" textAlignment="CENTER" />
+                     </children>
+                  </AnchorPane>
                </children>
             </AnchorPane>
             <AnchorPane layoutX="1022.0" layoutY="81.0">

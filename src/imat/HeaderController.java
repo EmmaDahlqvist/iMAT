@@ -12,9 +12,9 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
+import javafx.scene.shape.Circle;
 import javafx.scene.text.Font;
-import se.chalmers.cse.dat216.project.IMatDataHandler;
-import se.chalmers.cse.dat216.project.Product;
+import se.chalmers.cse.dat216.project.*;
 import javafx.scene.input.MouseEvent;
 
 
@@ -23,7 +23,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class HeaderController extends AnchorPane {
+public class HeaderController extends AnchorPane implements ShoppingCartListener {
 
     @FXML
     private AnchorPane tidigareKop;
@@ -53,8 +53,13 @@ public class HeaderController extends AnchorPane {
 
     private MainViewController mainViewController;
 
+    @FXML private AnchorPane varaNotification;
+    @FXML private Label totalVarorLabel;
+
+    private String headerType;
     public HeaderController(MainViewController mainViewController, String headerType) {
         String fxmlFile;
+        this.headerType = headerType;
         switch (headerType) {
             case "withoutVarukorgButton":
                 fxmlFile = "header_without_varukorgbutton.fxml";
@@ -77,7 +82,7 @@ public class HeaderController extends AnchorPane {
 
         if (fxmlFile != "withImatMainButton"){this.initialize();}
 
-
+        iMatDataHandler.getShoppingCart().addShoppingCartListener(this);
 
     }
 
@@ -255,4 +260,21 @@ public class HeaderController extends AnchorPane {
         mainViewController.prepareSlideMenuAnimation(mainViewController.varukorgCloseButton, varukorgenButton);
     }
 
+    @Override
+    public void shoppingCartChanged(CartEvent cartEvent) {
+        if(!headerType.equals("withoutVarukorgButton") && !headerType.equals("withImatMainButton")) {
+            int amount = 0;
+            for(ShoppingItem shoppingItem : iMatDataHandler.getShoppingCart().getItems()) {
+                amount += shoppingItem.getAmount();
+            }
+            if(amount != 0) {
+                totalVarorLabel.setText(String.valueOf(amount));
+                varaNotification.setVisible(true);
+            } else {
+
+                varaNotification.setVisible(false);
+            }
+
+        }
+    }
 }

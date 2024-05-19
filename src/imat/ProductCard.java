@@ -119,8 +119,8 @@ public class ProductCard extends AnchorPane implements ShoppingCartListener
     {
         if (shoppingItem.getAmount() == 0)
         {
-            iMatDataHandler.getShoppingCart().addItem(shoppingItem);
             shoppingItem.setAmount(shoppingItem.getAmount() + 1);
+            iMatDataHandler.getShoppingCart().addItem(shoppingItem);
         }
         else
         {

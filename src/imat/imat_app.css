@@ -595,3 +595,14 @@
 .blue-scrollpane {
     -fx-background-color: DBEEFF;
 }
+
+.vara-notification {
+    -fx-background-color: red;
+    -fx-background-radius: 20px;
+}
+
+.vara-notification-text {
+    -fx-font-family: "Amiko";
+    -fx-text-fill: #FFFFFF;
+    -fx-font-size: 28px;
+}
