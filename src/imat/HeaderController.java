@@ -123,6 +123,8 @@ public class HeaderController extends AnchorPane {
         if (tidigareKopButton != null) {
             tidigareKopButton.setOnMouseClicked(event -> {
                 this.mainViewController.tidigareKopAnchor.toFront();
+                tidigareKopController kopController = (tidigareKopController) this.mainViewController.tidigareKopAnchor.getChildren().get(0);
+                kopController.updateTidigareKop();
                 this.mainViewController.anchorHeader.toFront();
                 this.mainViewController.varukorgPopupAnchor.toFront();
             });

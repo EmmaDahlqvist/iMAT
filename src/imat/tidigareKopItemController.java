@@ -31,7 +31,7 @@ public class tidigareKopItemController extends AnchorPane {
     @FXML protected Label priceLabel;
     @FXML protected ScrollPane scrollpane;
     @FXML protected Button kopieraTillVarukorgButton;
-
+    Order order;
 
 
 
@@ -48,7 +48,7 @@ public class tidigareKopItemController extends AnchorPane {
             throw new RuntimeException(exception);
         }
 
-
+        this.order = order;
         initalize(order);
 
     }
@@ -65,22 +65,31 @@ public class tidigareKopItemController extends AnchorPane {
         datumLabel.setText(formattedDate);
         int price = 0;
 
-        kopieraTillVarukorgButton.addEventFilter(javafx.scene.input.MouseEvent.MOUSE_CLICKED, event -> {
-            for (ShoppingItem shoppingItem : order.getItems()){
-                iMatDataHandler.getShoppingCart().addProduct(shoppingItem.getProduct(), shoppingItem.getAmount());
-            }
-        });
+
 
         for (ShoppingItem shoppingItem : order.getItems()){
             price += shoppingItem.getTotal();
 
 
-            productCardCarousel.getChildren().add(new ProductCard(mainViewController, shoppingItem));
+            productCardCarousel.getChildren().add(mainViewController.getProductMap().get(shoppingItem.getProduct().getProductId()));
             productCardCarousel.setMinWidth(350 * productCardCarousel.getChildren().size() + 10*productCardCarousel.getChildren().size());}
 
         priceLabel.setText(price + " kr");
 
 
+        kopieraTillVarukorgButton.addEventFilter(javafx.scene.input.MouseEvent.MOUSE_CLICKED, event -> {
+            for (ShoppingItem shoppingItem : order.getItems()){
+                // iMatDataHandler.getShoppingCart().addItem(new ShoppingItem(shoppingItem.getProduct(), shoppingItem.getAmount()));
+
+                for (int i = 0; i < shoppingItem.getAmount(); i++)
+                {
+                    mainViewController.getProductMap().get(shoppingItem.getProduct().getProductId()).addToShoppingCart();
+                }
+
+
+
+            }
+        });
 
 
         //TODO gör så att den öppnas vid klick av tidigare köp
@@ -88,6 +97,18 @@ public class tidigareKopItemController extends AnchorPane {
 
 //        this.productCardCarousel.getChildren().add(new ProductScrollpaneController(
     }
+
+    public void updateTidigareKopItem()
+    {
+        productCardCarousel.getChildren().clear();
+
+        for (ShoppingItem shoppingItem : order.getItems()){
+            productCardCarousel.getChildren().add(mainViewController.getProductMap().get(shoppingItem.getProduct().getProductId()));
+            productCardCarousel.setMinWidth(350 * productCardCarousel.getChildren().size() + 10*productCardCarousel.getChildren().size());}
+    }
+
+
+
 //    private void simulateTidigareKop{
 //
 //    }

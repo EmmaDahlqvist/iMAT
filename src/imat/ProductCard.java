@@ -115,7 +115,7 @@ public class ProductCard extends AnchorPane implements ShoppingCartListener
     }
 
 
-    private void addToShoppingCart()
+    public void addToShoppingCart()
     {
         if (shoppingItem.getAmount() == 0)
         {
