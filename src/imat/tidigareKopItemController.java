@@ -79,11 +79,11 @@ public class tidigareKopItemController extends AnchorPane {
 
         kopieraTillVarukorgButton.addEventFilter(javafx.scene.input.MouseEvent.MOUSE_CLICKED, event -> {
             for (ShoppingItem shoppingItem : order.getItems()){
-                // iMatDataHandler.getShoppingCart().addItem(new ShoppingItem(shoppingItem.getProduct(), shoppingItem.getAmount()));
 
                 for (int i = 0; i < shoppingItem.getAmount(); i++)
                 {
                     mainViewController.getProductMap().get(shoppingItem.getProduct().getProductId()).addToShoppingCart();
+                    mainViewController.getProductMap().get(shoppingItem.getProduct().getProductId()).updateShoppingItem();
                 }
 
 

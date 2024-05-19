@@ -112,8 +112,16 @@ public class MainViewController implements Initializable {
 
         for(Product product : iMatDataHandler.getProducts())
         {
+
             ProductCard productCard = new ProductCard(this, new ShoppingItem(product, 0));
             productCardHashMap.put(product.getProductId(), productCard);
+            iMatDataHandler.getShoppingCart().addShoppingCartListener(productCard);
+
+        }
+        for (ShoppingItem shoppingItem : iMatDataHandler.getShoppingCart().getItems())
+        {
+            ProductCard productCard = new ProductCard(this, shoppingItem);
+            productCardHashMap.put(shoppingItem.getProduct().getProductId(), productCard);
             iMatDataHandler.getShoppingCart().addShoppingCartListener(productCard);
         }
 
