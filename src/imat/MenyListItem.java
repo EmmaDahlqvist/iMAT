@@ -49,4 +49,9 @@ public class MenyListItem extends AnchorPane {
         }
 
     }
+
+    @FXML
+    public void buttonOnClick() {
+        parentController.menyListItemClicked(parentCategory, category);
+    }
 }

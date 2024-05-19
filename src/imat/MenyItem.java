@@ -71,10 +71,10 @@ public class MenyItem extends AnchorPane {
         }
     }
 
-//    @FXML
-//    public void buttonOnClick() {
-//
-//    }
+    @FXML
+    public void buttonOnClick() {
+        parentController.menyItemClicked(category);
+    }
 
 
 }

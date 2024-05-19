@@ -29,6 +29,8 @@ public class MainViewController implements Initializable {
     Button beginShoppingButton;
 
     @FXML protected AnchorPane searchAnchor;
+    @FXML protected AnchorPane showProductsAnchor;
+    protected ShowProductController showProductController;
     @FXML
     private FlowPane varaAvlangFlowPane;
 
@@ -69,7 +71,9 @@ public class MainViewController implements Initializable {
 
         anchorHeader.getChildren().add(mainHeader);
 
-        anchorMeny.getChildren().add(new MenyController(this));
+        showProductController = new ShowProductController(this);
+        showProductsAnchor.getChildren().add(showProductController);
+        anchorMeny.getChildren().add(new MenyController(this, showProductController));
 
 
         ProductCard productCard = new ProductCard(new ShoppingItem(iMatDataHandler.getProduct(1), 1));

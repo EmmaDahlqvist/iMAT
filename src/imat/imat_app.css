@@ -303,10 +303,12 @@
     -fx-background-color: #5266D0;
     -fx-border-width: 0px 0px 1px 0px;
     -fx-border-color: #2E3F98;
-    -fx-font-size: 21px;
+    -fx-font-size: 23px;
     -fx-font-family: "Amiko";
     -fx-text-fill: #FFFFFF;
     -fx-background-insets: 0;
+    -fx-alignment: CENTER_LEFT;
+    -fx-padding: 0px 0px 0px 10px;
     -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.25), 10, 0, 0, 4);
 }
 
@@ -502,4 +504,27 @@
     -fx-font-family: "Amiko";
     -fx-font-size: 38px;
     -fx-text-alignment: center;
+}
+
+.breadCrumbButton {
+    -fx-background-color: none;
+    -fx-background-radius: 0px;
+    -fx-font-size: 20px;
+    -fx-font-family: "Amiko";
+    -fx-padding: 0px 5px 0px 0px;
+}
+
+.breadCrumbText {
+    -fx-text-fill: #3125C1;
+    -fx-font-size: 20px;
+    -fx-font-family: "Amiko";
+}
+
+.breadCrumbButton:hover {
+    -fx-font-weight: bold;
+}
+
+.showProductText {
+    -fx-font-size: 38px;
+    -fx-font-family: "Amiko";
 }
