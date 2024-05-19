@@ -128,6 +128,8 @@ public class HeaderController extends AnchorPane implements ShoppingCartListener
         if (tidigareKopButton != null) {
             tidigareKopButton.setOnMouseClicked(event -> {
                 this.mainViewController.tidigareKopAnchor.toFront();
+                tidigareKopController kopController = (tidigareKopController) this.mainViewController.tidigareKopAnchor.getChildren().get(0);
+                kopController.updateTidigareKop();
                 this.mainViewController.anchorHeader.toFront();
                 this.mainViewController.varukorgPopupAnchor.toFront();
             });
@@ -267,6 +269,7 @@ public class HeaderController extends AnchorPane implements ShoppingCartListener
             for(ShoppingItem shoppingItem : iMatDataHandler.getShoppingCart().getItems()) {
                 amount += shoppingItem.getAmount();
             }
+            System.out.println(amount);
             if(amount != 0) {
                 totalVarorLabel.setText(String.valueOf(amount));
                 varaNotification.setVisible(true);

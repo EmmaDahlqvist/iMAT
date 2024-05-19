@@ -12,6 +12,7 @@ import se.chalmers.cse.dat216.project.Product;
 import se.chalmers.cse.dat216.project.ShoppingItem;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.concurrent.Flow;
 
 public class tidigareKopController extends AnchorPane {
@@ -27,7 +28,7 @@ public class tidigareKopController extends AnchorPane {
     @FXML protected AnchorPane tidigareKopItemAnchor;
     @FXML protected FlowPane  flowpane;
 
-
+    private ArrayList<tidigareKopItemController> tidigareKopItemList;
 
 
     public tidigareKopController(MainViewController mainViewController) {
@@ -42,6 +43,7 @@ public class tidigareKopController extends AnchorPane {
             throw new RuntimeException(exception);
         }
 
+
         initalize();
 
     }
@@ -51,20 +53,37 @@ public class tidigareKopController extends AnchorPane {
 
     private void initalize() {
 
+        tidigareKopItemList = new ArrayList<>();
+
+        /*
         //TEST
-        iMatDataHandler.getOrders().clear();
-        for (int i = 0; i < 10; i++) {
+
+        for (int i = 0; i < 5; i++) {
             iMatDataHandler.getShoppingCart().addProduct(iMatDataHandler.getProducts().get(i), 1);
         }
 
         iMatDataHandler.placeOrder();
         //slut av test
+        */
+
 
         this.menuAnchor.getChildren().add(new MenyController(this.mainViewController));
           for (Order order : iMatDataHandler.getOrders()){
-            this.flowpane.getChildren().add(new tidigareKopItemController(this.mainViewController, order));
+              tidigareKopItemController itemController = new tidigareKopItemController(this.mainViewController, order);
+              this.tidigareKopItemList.add(itemController);
+              this.flowpane.getChildren().add(itemController);
 
         }
+
+    }
+
+    public void updateTidigareKop()
+    {
+        for (tidigareKopItemController item : tidigareKopItemList)
+        {
+            item.updateTidigareKopItem();
+        }
+
 
     }
 }

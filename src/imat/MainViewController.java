@@ -74,7 +74,7 @@ public class MainViewController implements Initializable {
 
         String iMatDirectory = iMatDataHandler.imatDirectory();
 
-        init_productCardHashMap();
+        initProductCardHashMap();
 
         mainHeader = new HeaderController(this, "self");
         iMatButtonHeader = new HeaderController(this, "withImatMainButton");
@@ -106,14 +106,22 @@ public class MainViewController implements Initializable {
     }
 
 
-    private void init_productCardHashMap()
+    private void initProductCardHashMap()
     {
         productCardHashMap = new HashMap<Integer, ProductCard>();
 
         for(Product product : iMatDataHandler.getProducts())
         {
+
             ProductCard productCard = new ProductCard(this, new ShoppingItem(product, 0));
             productCardHashMap.put(product.getProductId(), productCard);
+            iMatDataHandler.getShoppingCart().addShoppingCartListener(productCard);
+
+        }
+        for (ShoppingItem shoppingItem : iMatDataHandler.getShoppingCart().getItems())
+        {
+            ProductCard productCard = new ProductCard(this, shoppingItem);
+            productCardHashMap.put(shoppingItem.getProduct().getProductId(), productCard);
             iMatDataHandler.getShoppingCart().addShoppingCartListener(productCard);
         }
 
