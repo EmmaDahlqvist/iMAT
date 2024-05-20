@@ -125,8 +125,9 @@ public class UppgifterController extends AnchorPane {
         }
 
         //FIXA FÖR TIDIGARE KÖP OXÅ
-        if(mainViewController.withoutVarukorgHeaderUppgifter.methodInterrupted.equals("tidigareKop")) {
+        if(mainViewController.withoutVarukorgHeaderUppgifter.methodInterrupted.equals("openTidigareKop")) {
             mainViewController.withoutVarukorgHeaderUppgifter.methodInterrupted = "";
+            mainViewController.withoutVarukorgHeaderUppgifter.openTidigareKop();
             //
         }
     }
