@@ -154,8 +154,7 @@ public class HeaderController extends AnchorPane implements ShoppingCartListener
             this.mainViewController.tidigareKopAnchor.toFront();
             tidigareKopController kopController = (tidigareKopController) this.mainViewController.tidigareKopAnchor.getChildren().get(0);
             kopController.updateTidigareKop();
-            this.mainViewController.anchorHeader.toFront();
-            this.mainViewController.varukorgPopupAnchor.toFront();
+            this.mainViewController.headerMenyVarukorgToFront();
         }
     }
 
@@ -273,8 +272,7 @@ public class HeaderController extends AnchorPane implements ShoppingCartListener
                 this.mainViewController.sokResultatLabel.setText("Sökresultat för " + '"' + labelText.toLowerCase() + '"');
                 searchBar.setText("");
                 this.mainViewController.sokResultatAnchor.toFront();
-                this.mainViewController.anchorHeader.toFront();
-                this.mainViewController.varukorgPopupAnchor.toFront();
+                this.mainViewController.headerMenyVarukorgToFront();
                 this.mainViewController.sokResultatAnchor.setVisible(true);
                 this.mainViewController.homePageAnchor.setVisible(true);
                 this.mainViewController.searchAnchor.getChildren().add(new ProductScrollpaneController(mainViewController, this.iMatDataHandler.findProducts(labelText)));

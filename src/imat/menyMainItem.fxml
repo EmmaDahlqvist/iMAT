@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.String?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ToggleButton?>
 <?import javafx.scene.image.Image?>
@@ -11,8 +12,12 @@
    <VBox fx:id="menyListItemsVBox" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="255.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="47.0" />
    <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="47.0" prefWidth="260.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
       <children>
-         <Button fx:id="menyItemButton" alignment="TOP_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onMouseClicked="#buttonOnClick" prefHeight="47.0" prefWidth="260.0" styleClass="menyMainKategori" text="Fisk och skaldjur" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
-         <ToggleButton fx:id="menyItemToggle" contentDisplay="CENTER" graphicTextGap="20.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onMouseClicked="#toggleOnClick" prefHeight="47.0" prefWidth="40.0" styleClass="menyMainKategori-toogle" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <Button fx:id="menyItemButton" alignment="TOP_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onMouseClicked="#buttonOnClick" prefHeight="47.0" prefWidth="260.0" text="Fisk och skaldjur" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <styleClass>
+               <String fx:value="menyMainKategori" />
+               <String fx:value="hoverable-button-pointer" />
+            </styleClass></Button>
+         <ToggleButton fx:id="menyItemToggle" contentDisplay="CENTER" graphicTextGap="20.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onMouseClicked="#toggleOnClick" prefHeight="47.0" prefWidth="40.0" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
             <graphic>
                <ImageView fitHeight="22.0" fitWidth="90.0" pickOnBounds="true" preserveRatio="true" styleClass="arrow">
                   <image>
@@ -20,6 +25,10 @@
                   </image>
                </ImageView>
             </graphic>
+            <styleClass>
+               <String fx:value="menyMainKategori-toogle" />
+               <String fx:value="hoverable-button-pointer" />
+            </styleClass>
          </ToggleButton>
       </children>
    </AnchorPane>

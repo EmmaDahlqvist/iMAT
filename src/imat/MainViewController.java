@@ -91,7 +91,7 @@ public class MainViewController implements Initializable {
 
 
 
-        productCardTest.getChildren().add(productCardHashMap.get(1)); // test
+//        productCardTest.getChildren().add(productCardHashMap.get(1)); // test
 
 
 
@@ -108,6 +108,11 @@ public class MainViewController implements Initializable {
         updateTotalPrice();
 
         closeVarukorg(); // håll den stängd som default
+
+        this.homePageAnchor.toFront();
+        this.anchorHeader.toFront();
+        this.anchorMeny.toFront();
+        this.varukorgPopupAnchor.toFront();
     }
 
 
@@ -140,6 +145,13 @@ public class MainViewController implements Initializable {
     protected void backToHomePage() {
         this.homePageAnchor.toFront();
         this.anchorHeader.toFront();
+        this.anchorMeny.toFront();
+        this.varukorgPopupAnchor.toFront();
+    }
+
+    protected void headerMenyVarukorgToFront() {
+        this.anchorHeader.toFront();
+        this.anchorMeny.toFront();
         this.varukorgPopupAnchor.toFront();
     }
 

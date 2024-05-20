@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.String?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.StackPane?>
-
 
 <fx:root maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="894.0" prefWidth="1160.0" styleClass="background-color" stylesheets="@imat_app.css" type="javafx.scene.layout.AnchorPane" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
    <children>
@@ -13,14 +13,26 @@
          <children>
             <HBox fx:id="oneButtonHBox" alignment="CENTER_LEFT" layoutX="10.0" layoutY="10.0" styleClass="background-color">
                <children>
-                  <Button fx:id="toStartButton1" contentDisplay="TOP" graphicTextGap="0.0" minHeight="-Infinity" mnemonicParsing="false" onMouseClicked="#startButtonOnClick" styleClass="breadCrumbButton" text="Start &gt;" />
+                  <Button fx:id="toStartButton1" contentDisplay="TOP" graphicTextGap="0.0" minHeight="-Infinity" mnemonicParsing="false" onMouseClicked="#startButtonOnClick" text="Start &gt;">
+                     <styleClass>
+                        <String fx:value="breadCrumbButton" />
+                        <String fx:value="hoverable-button-pointer" />
+                     </styleClass></Button>
                   <Label fx:id="categoryLabel1" styleClass="breadCrumbText" text="Grönt &amp; kryddor" />
                </children>
             </HBox>
             <HBox fx:id="twoButtonHBox" alignment="CENTER_LEFT" styleClass="background-color">
                <children>
-                  <Button fx:id="toStartButton2" mnemonicParsing="false" onMouseClicked="#startButtonOnClick" styleClass="breadCrumbButton" text="Start &gt;" />
-                  <Button fx:id="toMainCategoryButton" mnemonicParsing="false" onMouseClicked="#toParentCategoryOnClick" styleClass="breadCrumbButton" text="Grönt &amp; kryddor &gt;" />
+                  <Button fx:id="toStartButton2" mnemonicParsing="false" onMouseClicked="#startButtonOnClick" text="Start &gt;">
+                     <styleClass>
+                        <String fx:value="breadCrumbButton" />
+                        <String fx:value="hoverable-button-pointer" />
+                     </styleClass></Button>
+                  <Button fx:id="toMainCategoryButton" mnemonicParsing="false" onMouseClicked="#toParentCategoryOnClick" text="Grönt &amp; kryddor &gt;">
+                     <styleClass>
+                        <String fx:value="breadCrumbButton" />
+                        <String fx:value="hoverable-button-pointer" />
+                     </styleClass></Button>
                   <Label fx:id="categoryLabel2" styleClass="breadCrumbText" text="Grönsaker" />
                </children>
             </HBox>

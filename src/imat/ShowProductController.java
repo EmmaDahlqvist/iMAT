@@ -58,6 +58,8 @@ public class ShowProductController extends AnchorPane {
         setLabels(title);
         oneButtonHBox.toFront();
         anchorScroll.getChildren().add(new ProductScrollpaneController(mainViewController, iMatDataHandler.getProducts()));
+        mainViewController.showProductsAnchor.toFront();
+        mainViewController.headerMenyVarukorgToFront();
     }
 
     public void showProducts(String title, List<ProductCategory> productCategoryList) {
@@ -68,6 +70,8 @@ public class ShowProductController extends AnchorPane {
             productList.addAll(iMatDataHandler.getProducts(productCategory));
         }
         anchorScroll.getChildren().add(new ProductScrollpaneController(mainViewController, productList));
+        mainViewController.showProductsAnchor.toFront();
+        mainViewController.headerMenyVarukorgToFront();
     }
 
     public void showProducts(String mainCategory, String title, ProductCategory productCategory) {
@@ -76,6 +80,8 @@ public class ShowProductController extends AnchorPane {
         toMainCategoryButton.setText(mainCategory + " >");
         twoButtonHBox.toFront();
         anchorScroll.getChildren().add(new ProductScrollpaneController(mainViewController, iMatDataHandler.getProducts(productCategory)));
+        mainViewController.showProductsAnchor.toFront();
+        mainViewController.headerMenyVarukorgToFront();
     }
 
     @FXML
