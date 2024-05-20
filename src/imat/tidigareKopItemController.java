@@ -66,30 +66,22 @@ public class tidigareKopItemController extends AnchorPane {
         int price = 0;
 
         kopieraTillVarukorgButton.addEventFilter(javafx.scene.input.MouseEvent.MOUSE_CLICKED, event -> {
-            for (ShoppingItem shoppingItem : order.getItems()){
+            for (ShoppingItem shoppingItem : order.getItems()) {
                 iMatDataHandler.getShoppingCart().addProduct(shoppingItem.getProduct(), shoppingItem.getAmount());
             }
         });
 
-        for (ShoppingItem shoppingItem : order.getItems()){
+        for (ShoppingItem shoppingItem : order.getItems()) {
             price += shoppingItem.getTotal();
 
 
             productCardCarousel.getChildren().add(new ProductCard(mainViewController, shoppingItem));
-            productCardCarousel.setMinWidth(350 * productCardCarousel.getChildren().size() + 10*productCardCarousel.getChildren().size());}
+            productCardCarousel.setMinWidth(350 * productCardCarousel.getChildren().size() + 10 * productCardCarousel.getChildren().size());
+        }
 
         priceLabel.setText(price + " kr");
 
 
-
-
-        //TODO gör så att den öppnas vid klick av tidigare köp
-
-
-//        this.productCardCarousel.getChildren().add(new ProductScrollpaneController(
     }
-//    private void simulateTidigareKop{
-//
-//    }
 
 }

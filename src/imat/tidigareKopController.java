@@ -54,7 +54,7 @@ public class tidigareKopController extends AnchorPane {
         //TEST
         iMatDataHandler.getOrders().clear();
         for (int i = 0; i < 10; i++) {
-            iMatDataHandler.getShoppingCart().addProduct(iMatDataHandler.getProducts().get(i), 1);
+            iMatDataHandler.getShoppingCart().addProduct(iMatDataHandler.getProducts().get(i), i);
         }
 
         iMatDataHandler.placeOrder();
