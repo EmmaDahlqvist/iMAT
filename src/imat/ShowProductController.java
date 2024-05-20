@@ -26,6 +26,7 @@ public class ShowProductController extends AnchorPane {
     @FXML private Label titleLabel;
     @FXML private HBox oneButtonHBox;
     @FXML private HBox twoButtonHBox;
+    private String parentCategory;
 
     public ShowProductController(MainViewController mainViewController) {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("showProducts.fxml"));
@@ -70,11 +71,21 @@ public class ShowProductController extends AnchorPane {
     }
 
     public void showProducts(String mainCategory, String title, ProductCategory productCategory) {
+        parentCategory = mainCategory;
         setLabels(title);
         toMainCategoryButton.setText(mainCategory + " >");
         twoButtonHBox.toFront();
         anchorScroll.getChildren().add(new ProductScrollpaneController(iMatDataHandler.getProducts(productCategory)));
     }
 
+    @FXML
+    private void startButtonOnClick() {
+        mainViewController.backToHomePage();
+    }
+
+    @FXML
+    private void toParentCategoryOnClick() {
+        mainViewController.menyController.menyItemClicked(parentCategory);
+    }
 
 }

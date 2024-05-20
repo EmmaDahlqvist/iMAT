@@ -13,14 +13,14 @@
          <children>
             <HBox fx:id="oneButtonHBox" alignment="CENTER_LEFT" layoutX="10.0" layoutY="10.0" styleClass="background-color">
                <children>
-                  <Button fx:id="toStartButton1" contentDisplay="TOP" graphicTextGap="0.0" minHeight="-Infinity" mnemonicParsing="false" styleClass="breadCrumbButton" text="Start &gt;" />
+                  <Button fx:id="toStartButton1" contentDisplay="TOP" graphicTextGap="0.0" minHeight="-Infinity" mnemonicParsing="false" onMouseClicked="#startButtonOnClick" styleClass="breadCrumbButton" text="Start &gt;" />
                   <Label fx:id="categoryLabel1" styleClass="breadCrumbText" text="Grönt &amp; kryddor" />
                </children>
             </HBox>
             <HBox fx:id="twoButtonHBox" alignment="CENTER_LEFT" styleClass="background-color">
                <children>
-                  <Button fx:id="toStartButton2" mnemonicParsing="false" styleClass="breadCrumbButton" text="Start &gt;" />
-                  <Button fx:id="toMainCategoryButton" mnemonicParsing="false" styleClass="breadCrumbButton" text="Grönt &amp; kryddor &gt;" />
+                  <Button fx:id="toStartButton2" mnemonicParsing="false" onMouseClicked="#startButtonOnClick" styleClass="breadCrumbButton" text="Start &gt;" />
+                  <Button fx:id="toMainCategoryButton" mnemonicParsing="false" onMouseClicked="#toParentCategoryOnClick" styleClass="breadCrumbButton" text="Grönt &amp; kryddor &gt;" />
                   <Label fx:id="categoryLabel2" styleClass="breadCrumbText" text="Grönsaker" />
                </children>
             </HBox>

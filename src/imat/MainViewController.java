@@ -20,28 +20,25 @@ import se.chalmers.cse.dat216.project.*;
 
 public class MainViewController implements Initializable {
 
-    @FXML
-    Label pathLabel;
-    @FXML
-    protected AnchorPane anchorHeader;
-    @FXML protected AnchorPane anchorMeny;
-    @FXML
-    Button beginShoppingButton;
+    @FXML Label pathLabel;
+    @FXML protected AnchorPane anchorHeader;
 
+    @FXML protected AnchorPane anchorMeny;
+    protected MenyController menyController;
+
+    @FXML Button beginShoppingButton;
     @FXML protected AnchorPane searchAnchor;
+
     @FXML protected AnchorPane showProductsAnchor;
     protected ShowProductController showProductController;
-    @FXML
-    private FlowPane varaAvlangFlowPane;
 
-    @FXML
-    private ScrollPane varaAvlangScrollpane;
+    @FXML private FlowPane varaAvlangFlowPane;
 
-    @FXML
-    private Label totalPrice;
+    @FXML private ScrollPane varaAvlangScrollpane;
 
-    @FXML
-    protected Button varukorgCloseButton;
+    @FXML private Label totalPrice;
+
+    @FXML protected Button varukorgCloseButton;
 
     @FXML protected AnchorPane varukorgPopupAnchor;
 
@@ -73,7 +70,8 @@ public class MainViewController implements Initializable {
 
         showProductController = new ShowProductController(this);
         showProductsAnchor.getChildren().add(showProductController);
-        anchorMeny.getChildren().add(new MenyController(this, showProductController));
+        menyController = new MenyController(this, showProductController);
+        anchorMeny.getChildren().add(menyController);
 
 
         ProductCard productCard = new ProductCard(new ShoppingItem(iMatDataHandler.getProduct(1), 1));

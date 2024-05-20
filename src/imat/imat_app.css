@@ -320,9 +320,6 @@
     -fx-background-color: #3125C1;
 }
 
-.arrow {
-
-}
 
 .menyMainKategori-toogle {
     -fx-background-radius: 0px;
@@ -522,6 +519,11 @@
 
 .breadCrumbButton:hover {
     -fx-font-weight: bold;
+}
+
+.breadCrumbButton:pressed {
+    -fx-background-color: rgba(128, 128, 128, 0.3);
+    -fx-background-radius: 4px;
 }
 
 .showProductText {
