@@ -67,7 +67,7 @@ public class tidigareKopController extends AnchorPane {
         */
 
 
-        this.menuAnchor.getChildren().add(new MenyController(this.mainViewController));
+//        this.menuAnchor.getChildren().add(new MenyController(this.mainViewController));
           for (Order order : iMatDataHandler.getOrders()){
               tidigareKopItemController itemController = new tidigareKopItemController(this.mainViewController, order);
               this.tidigareKopItemList.add(itemController);
