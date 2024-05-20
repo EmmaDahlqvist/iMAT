@@ -21,25 +21,25 @@ import java.util.HashMap;
 
 public class MainViewController implements Initializable {
 
-    @FXML
-    Label pathLabel;
-    @FXML
-    protected AnchorPane anchorHeader;
-    @FXML
-    Button beginShoppingButton;
+    @FXML Label pathLabel;
+    @FXML protected AnchorPane anchorHeader;
 
+    @FXML protected AnchorPane anchorMeny;
+    protected MenyController menyController;
+
+    @FXML Button beginShoppingButton;
     @FXML protected AnchorPane searchAnchor;
-    @FXML
-    private FlowPane varaAvlangFlowPane;
 
-    @FXML
-    private ScrollPane varaAvlangScrollpane;
+    @FXML protected AnchorPane showProductsAnchor;
+    protected ShowProductController showProductController;
 
-    @FXML
-    private Label totalPrice;
+    @FXML private FlowPane varaAvlangFlowPane;
 
-    @FXML
-    protected Button varukorgCloseButton;
+    @FXML private ScrollPane varaAvlangScrollpane;
+
+    @FXML private Label totalPrice;
+
+    @FXML protected Button varukorgCloseButton;
 
     @FXML protected AnchorPane varukorgPopupAnchor;
 
@@ -83,6 +83,11 @@ public class MainViewController implements Initializable {
         uppgifterController = new UppgifterController(this);
 
         anchorHeader.getChildren().add(mainHeader);
+
+        showProductController = new ShowProductController(this);
+        showProductsAnchor.getChildren().add(showProductController);
+        menyController = new MenyController(this, showProductController);
+        anchorMeny.getChildren().add(menyController);
 
 
 

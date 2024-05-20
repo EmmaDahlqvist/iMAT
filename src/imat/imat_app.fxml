@@ -49,6 +49,7 @@
          </children>
       </AnchorPane>
       <AnchorPane fx:id="anchorHeader" prefHeight="113.0" prefWidth="1437.0" />
+      <AnchorPane fx:id="anchorMeny" layoutX="10.0" layoutY="118.0" maxHeight="-Infinity" maxWidth="-Infinity" minWidth="-Infinity" prefHeight="894.0" prefWidth="260.0" AnchorPane.leftAnchor="12.0" AnchorPane.topAnchor="130.0" />
       <AnchorPane fx:id="varukorgPopupAnchor" layoutX="890.0" onMouseClicked="#closeVarukorgAnimation" prefHeight="1024.0" prefWidth="1440.0" styleClass="transp-varukorg-pane" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
             <AnchorPane fx:id="varukorgPopup" onMouseClicked="#mouseTrap" prefHeight="1024.0" prefWidth="554.0" styleClass="varukorg-popup" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
@@ -87,5 +88,6 @@
             </AnchorPane>
          </children>
       </AnchorPane>
+      <AnchorPane fx:id="showProductsAnchor" layoutX="267.0" layoutY="120.0" prefHeight="894.0" prefWidth="1160.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="280.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="130.0" />
    </children>
 </AnchorPane>

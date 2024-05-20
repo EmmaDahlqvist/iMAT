@@ -52,11 +52,12 @@ public class MenyController extends AnchorPane {
         categoryEnumMap.put("Baljväxter", ProductCategory.POD);
         categoryEnumMap.put("Nötter & frön", ProductCategory.NUTS_AND_SEEDS);
     }
-
-    public MenyController(MainViewController mainViewController) {
+    private ShowProductController showProductController;
+    public MenyController(MainViewController mainViewController, ShowProductController showProductController) {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("meny.fxml"));
         fxmlLoader.setRoot(this);
         fxmlLoader.setController(this);
+        this.showProductController = showProductController;
         this.mainViewController = mainViewController;
         try {
             fxmlLoader.load();
@@ -76,6 +77,23 @@ public class MenyController extends AnchorPane {
 //            System.out.println(categoryEnumMap.get("Kött"));
             menyItemsVBox.getChildren().add(new MenyItem(mainCategory, categoryRelationMap.get(mainCategory), this));
         }
+    }
+
+    @FXML
+    private void allProductsOnClick() {
+        showProductController.showProducts("Alla varor");
+    }
+
+    protected void menyItemClicked(String mainCategory) {
+        List<ProductCategory> productCategoryList = new ArrayList<ProductCategory>();
+        for (String childCategory : categoryRelationMap.get(mainCategory)) {
+            productCategoryList.add(categoryEnumMap.get(childCategory));
+        }
+        showProductController.showProducts(mainCategory, productCategoryList);
+    }
+
+    protected void menyListItemClicked(String mainCategory, String category) {
+        showProductController.showProducts(mainCategory, category, categoryEnumMap.get(category));
     }
 
 }
