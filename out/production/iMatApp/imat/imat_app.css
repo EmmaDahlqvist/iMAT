@@ -105,6 +105,7 @@
 .big-button{
     -fx-background-color: #3125c1;
     -fx-background-radius: 50px;
+    -fx-border-radius: 50px;
     -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.25), 10, 0, 0, 10);
     -fx-background-insets: 0;
 }
@@ -172,6 +173,10 @@
 
 .scroll-pane {
     -fx-background-color: transparent;
+}
+
+.scroll-pane > .viewport {
+   -fx-background-color: transparent;
 }
 
 .plus-minus-button {
@@ -327,10 +332,12 @@
     -fx-background-color: #5266D0;
     -fx-border-width: 0px 0px 1px 0px;
     -fx-border-color: #2E3F98;
-    -fx-font-size: 21px;
+    -fx-font-size: 23px;
     -fx-font-family: "Amiko";
     -fx-text-fill: #FFFFFF;
     -fx-background-insets: 0;
+    -fx-alignment: CENTER_LEFT;
+    -fx-padding: 0px 0px 0px 10px;
     -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.25), 10, 0, 0, 4);
 }
 
@@ -342,9 +349,6 @@
     -fx-background-color: #3125C1;
 }
 
-.arrow {
-
-}
 
 .menyMainKategori-toogle {
     -fx-background-radius: 0px;
@@ -487,6 +491,13 @@
     -fx-font-weight: bold;
 }
 
+.title-text-black-notbold {
+    -fx-font-size: 38px;
+    -fx-font-family: "Amiko";
+    -fx-font-color: #000000;
+    -fx-text-fill: #000000;
+}
+
 .text-detailed-product{
     -fx-font-size: 20px;
     -fx-font-family: "Amiko";
@@ -563,6 +574,62 @@
 
 }
 
+.complete-button{
+    -fx-font-size: 24px;
+    -fx-text-fill: #ffffff;
+}
+
 .betalning-vanlig-text{
     -fx-font-size: 20px;
+}
+
+.varukorg-bold-text{
+    -fx-font-weight:bold;
+}
+
+.white-background {
+    -fx-background-color: #FFFFFF;
+}
+
+.blue-scrollpane {
+    -fx-background-color: DBEEFF;
+}
+
+.vara-notification {
+    -fx-background-color: red;
+    -fx-background-radius: 20px;
+}
+
+.vara-notification-text {
+    -fx-font-family: "Amiko";
+    -fx-text-fill: #FFFFFF;
+    -fx-font-size: 28px;
+}
+
+.breadCrumbButton {
+    -fx-background-color: none;
+    -fx-background-radius: 0px;
+    -fx-font-size: 20px;
+    -fx-font-family: "Amiko";
+    -fx-padding: 0px 5px 0px 0px;
+}
+
+.breadCrumbText {
+    -fx-text-fill: #3125C1;
+    -fx-font-size: 20px;
+    -fx-font-family: "Amiko";
+}
+
+.breadCrumbButton:hover {
+    -fx-font-weight: bold;
+}
+
+.breadCrumbButton:pressed {
+    -fx-background-color: rgba(128, 128, 128, 0.3);
+    -fx-background-radius: 4px;
+}
+
+.showProductText {
+    -fx-font-size: 38px;
+    -fx-font-family: "Amiko";
 }

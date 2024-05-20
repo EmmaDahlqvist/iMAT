@@ -21,25 +21,25 @@ import java.util.HashMap;
 
 public class MainViewController implements Initializable {
 
-    @FXML
-    Label pathLabel;
-    @FXML
-    protected AnchorPane anchorHeader;
-    @FXML
-    Button beginShoppingButton;
+    @FXML Label pathLabel;
+    @FXML protected AnchorPane anchorHeader;
 
+    @FXML protected AnchorPane anchorMeny;
+    protected MenyController menyController;
+
+    @FXML Button beginShoppingButton;
     @FXML protected AnchorPane searchAnchor;
-    @FXML
-    private FlowPane varaAvlangFlowPane;
 
-    @FXML
-    private ScrollPane varaAvlangScrollpane;
+    @FXML protected AnchorPane showProductsAnchor;
+    protected ShowProductController showProductController;
 
-    @FXML
-    private Label totalPrice;
+    @FXML private FlowPane varaAvlangFlowPane;
 
-    @FXML
-    protected Button varukorgCloseButton;
+    @FXML private ScrollPane varaAvlangScrollpane;
+
+    @FXML private Label totalPrice;
+
+    @FXML protected Button varukorgCloseButton;
 
     @FXML protected AnchorPane varukorgPopupAnchor;
 
@@ -67,12 +67,14 @@ public class MainViewController implements Initializable {
 
     private UppgifterController uppgifterController;
 
+    private UtcheckningController utcheckningController;
+
 
     public void initialize(URL url, ResourceBundle rb) {
 
         String iMatDirectory = iMatDataHandler.imatDirectory();
 
-        init_productCardHashMap();
+        initProductCardHashMap();
 
         mainHeader = new HeaderController(this, "self");
         iMatButtonHeader = new HeaderController(this, "withImatMainButton");
@@ -81,6 +83,11 @@ public class MainViewController implements Initializable {
         uppgifterController = new UppgifterController(this);
 
         anchorHeader.getChildren().add(mainHeader);
+
+        showProductController = new ShowProductController(this);
+        showProductsAnchor.getChildren().add(showProductController);
+        menyController = new MenyController(this, showProductController);
+        anchorMeny.getChildren().add(menyController);
 
 
 
@@ -93,7 +100,8 @@ public class MainViewController implements Initializable {
 
         uppgifterAnchor.getChildren().add(uppgifterController);
 
-        utcheckningAnchor.getChildren().add(new UtcheckningController(this));
+        utcheckningController = new UtcheckningController(this);
+        utcheckningAnchor.getChildren().add(utcheckningController);
 
         setUpShoppingCart();
         updateVaraAvlang();
@@ -103,14 +111,22 @@ public class MainViewController implements Initializable {
     }
 
 
-    private void init_productCardHashMap()
+    private void initProductCardHashMap()
     {
         productCardHashMap = new HashMap<Integer, ProductCard>();
 
         for(Product product : iMatDataHandler.getProducts())
         {
+
             ProductCard productCard = new ProductCard(this, new ShoppingItem(product, 0));
             productCardHashMap.put(product.getProductId(), productCard);
+            iMatDataHandler.getShoppingCart().addShoppingCartListener(productCard);
+
+        }
+        for (ShoppingItem shoppingItem : iMatDataHandler.getShoppingCart().getItems())
+        {
+            ProductCard productCard = new ProductCard(this, shoppingItem);
+            productCardHashMap.put(shoppingItem.getProduct().getProductId(), productCard);
             iMatDataHandler.getShoppingCart().addShoppingCartListener(productCard);
         }
 
@@ -177,6 +193,7 @@ public class MainViewController implements Initializable {
     @FXML
     protected void openVarukorg() {
         updateVaraAvlang();
+        updateTotalPrice();
         varukorgPopupAnchor.setVisible(true);
         varukorgPopupAnchor.setManaged(true);
     }
@@ -184,6 +201,7 @@ public class MainViewController implements Initializable {
     @FXML
     public void openUtcheckning() {
         utcheckningAnchor.toFront();
+        utcheckningController.updateVarukorgFlowpane();
         closeVarukorg();
     }
 
