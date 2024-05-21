@@ -19,6 +19,12 @@ import java.util.ArrayList;
 
 public class UppgifterController extends AnchorPane {
 
+    private ArrayList<UppgifterListener> uppgifterListeners;
+
+    protected void addUppgifterListener(UppgifterListener uppgifterListener) {
+        uppgifterListeners.add(uppgifterListener);
+    }
+
 
     @FXML private AnchorPane anchorHeader;
 
@@ -204,6 +210,10 @@ public class UppgifterController extends AnchorPane {
         creditCard.setValidMonth(Integer.parseInt(datemonth.getText()));
         creditCard.setValidYear(Integer.parseInt(dateyear.getText()));
         creditCard.setVerificationCode(Integer.parseInt(cvc.getText()));
+
+        for(UppgifterListener uppgifterListener : uppgifterListeners) {
+            uppgifterListener.updateUppgifter();
+        }
 
     }
 
