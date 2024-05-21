@@ -142,6 +142,7 @@ public class MainViewController implements Initializable {
             productCardHashMap.put(product.getProductId(), productCard);
             detailedProductCardHashMap.put(product.getProductId(), detailedProductCard);
             iMatDataHandler.getShoppingCart().addShoppingCartListener(productCard);
+            iMatDataHandler.getShoppingCart().addShoppingCartListener(tmpProductCard);
 
         }
         for (ShoppingItem shoppingItem : iMatDataHandler.getShoppingCart().getItems())
@@ -152,6 +153,7 @@ public class MainViewController implements Initializable {
             productCardHashMap.put(shoppingItem.getProduct().getProductId(), productCard);
             detailedProductCardHashMap.put(shoppingItem.getProduct().getProductId(), detailedProductCard);
             iMatDataHandler.getShoppingCart().addShoppingCartListener(productCard);
+            iMatDataHandler.getShoppingCart().addShoppingCartListener(tmpProductCard);
         }
 
     }

@@ -21,8 +21,6 @@ public class DetailedProductCard extends AnchorPane
     @FXML
     private Label productNameLabel;
     @FXML
-    private Label priceLabel;
-    @FXML
     private Label ecoLabel;
     @FXML
     private Button closeButton;
@@ -68,7 +66,6 @@ public class DetailedProductCard extends AnchorPane
 
 
         productNameLabel.setText(product.getName());
-        priceLabel.setText(String.format("%.2f", product.getPrice()) + product.getUnit());
         ecoLabel.setText(product.isEcological() ? "Ekologisk" : "Ej ekologisk");
 
 
