@@ -13,13 +13,14 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
+import javafx.scene.control.Tooltip;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.FlowPane;
 import javafx.util.Duration;
 import se.chalmers.cse.dat216.project.*;
 import java.util.HashMap;
 
-public class MainViewController implements Initializable {
+public class MainViewController implements Initializable, ShoppingCartListener{
 
     @FXML Label pathLabel;
     @FXML protected AnchorPane anchorHeader;
@@ -69,6 +70,10 @@ public class MainViewController implements Initializable {
 
     protected UtcheckningController utcheckningController;
 
+    @FXML protected AnchorPane completionAnchor;
+
+    @FXML protected Button toUtcheckningButton;
+    @FXML protected Tooltip tooltipVarukorgPopUP;
 
     public void initialize(URL url, ResourceBundle rb) {
 
@@ -91,6 +96,7 @@ public class MainViewController implements Initializable {
 
 
 
+
 //        productCardTest.getChildren().add(productCardHashMap.get(1)); // test
 
 
@@ -103,6 +109,8 @@ public class MainViewController implements Initializable {
         utcheckningController = new UtcheckningController(this);
         utcheckningAnchor.getChildren().add(utcheckningController);
 
+        uppgifterController.addUppgifterListener(utcheckningController);
+
         setUpShoppingCart();
         updateVaraAvlang();
         updateTotalPrice();
@@ -113,8 +121,13 @@ public class MainViewController implements Initializable {
         this.anchorHeader.toFront();
         this.anchorMeny.toFront();
         this.varukorgPopupAnchor.toFront();
+
+        iMatDataHandler.getShoppingCart().addShoppingCartListener(this);
     }
 
+    public void backToOGPage(){
+        utcheckningAnchor.toBack();
+    }
 
     private void initProductCardHashMap()
     {
@@ -166,7 +179,6 @@ public class MainViewController implements Initializable {
         showProductController.showProducts("Alla varor");
     }
     private void setUpShoppingCart() {
-
     }
 
     public void showDetailPane(ProductCard productCard)
@@ -216,9 +228,12 @@ public class MainViewController implements Initializable {
 
     @FXML
     public void openUtcheckning() {
-        utcheckningAnchor.toFront();
-        utcheckningController.updateVarukorgFlowpane();
-        closeVarukorg();
+        if(!iMatDataHandler.getShoppingCart().getItems().isEmpty()) {
+            utcheckningAnchor.toFront();
+            utcheckningController.updateVarukorgFlowpane();
+            closeVarukorg();
+            utcheckningController.openVarukorgPage();
+        }
     }
 
     @FXML //används i varukorgen för att kunna klicka utanför o stänga fönstret
@@ -282,4 +297,16 @@ public class MainViewController implements Initializable {
     }
 
 
+    @Override
+    public void shoppingCartChanged(CartEvent cartEvent) {
+        if(iMatDataHandler.getShoppingCart().getItems().isEmpty()) {
+            toUtcheckningButton.getStyleClass().clear();
+            toUtcheckningButton.getStyleClass().addAll("button", "till-varukogen-button-disabled");
+            tooltipVarukorgPopUP.setText("Inga varor i varukorgen");
+        } else {
+            toUtcheckningButton.getStyleClass().clear();
+            toUtcheckningButton.getStyleClass().addAll("button", "till-varukogen-button");
+            tooltipVarukorgPopUP.setText("Gå till varukorgen");
+        }
+    }
 }

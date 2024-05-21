@@ -64,11 +64,10 @@
                <Cursor fx:constant="DEFAULT" />
             </cursor>
       </Button>
-      <Button fx:id="wizardBackButton" layoutX="33.0" layoutY="18.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="109.0" text="Tillbaka" textFill="WHITE">
+      <Button fx:id="wizardBackButton" layoutX="33.0" layoutY="18.0" mnemonicParsing="false" onMouseClicked="#returnButtonFunc" prefHeight="44.0" prefWidth="109.0" text="Tillbaka" textFill="WHITE">
          <styleClass>
             <String fx:value="wizard-back-next-button" />
             <String fx:value="wizard-back-next-text" />
-               <String fx:value="wizard-back-next-non-clickable" />
          </styleClass>
          <font>
             <Font size="18.0" />
@@ -77,7 +76,7 @@
                <Cursor fx:constant="DEFAULT" />
             </cursor>
       </Button>
-      <Button fx:id="wizardNextButton" layoutX="996.0" layoutY="18.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="109.0" text="Nästa" textFill="WHITE">
+      <Button fx:id="wizardNextButton" layoutX="996.0" layoutY="18.0" mnemonicParsing="false" onMouseClicked="#nextButtonFunc" prefHeight="44.0" prefWidth="109.0" text="Nästa" textFill="WHITE">
          <font>
             <Font size="18.0" />
          </font>
@@ -89,11 +88,11 @@
                <Cursor fx:constant="DEFAULT" />
             </cursor>
       </Button>
-      <Label layoutX="195.0" layoutY="55.0" styleClass="wizard-undertext" text="Varukorg" textFill="#2e3f98" />
-      <Label layoutX="334.0" layoutY="55.0" styleClass="wizard-undertext" text="Personuppgifter" textFill="#2e3f98" />
-      <Label layoutX="531.0" layoutY="55.0" styleClass="wizard-undertext" text="Leverans" textFill="#2e3f98" />
-      <Label layoutX="698.0" layoutY="55.0" styleClass="wizard-undertext" text="Betalning" textFill="#2e3f98" />
-      <Label layoutX="877.0" layoutY="55.0" styleClass="wizard-undertext" text="Slutför" textFill="#2e3f98" />
+      <Label fx:id="varukorgLabel" layoutX="195.0" layoutY="55.0" styleClass="wizard-undertext" text="Varukorg" textFill="#2e3f98" />
+      <Label fx:id="personLabel" layoutX="334.0" layoutY="55.0" styleClass="wizard-undertext" text="Personuppgifter" textFill="#2e3f98" />
+      <Label fx:id="leveransLabel" layoutX="531.0" layoutY="55.0" styleClass="wizard-undertext" text="Leverans" textFill="#2e3f98" />
+      <Label fx:id="betalaLabel" layoutX="698.0" layoutY="55.0" styleClass="wizard-undertext" text="Betalning" textFill="#2e3f98" />
+      <Label fx:id="confirmLabel" layoutX="877.0" layoutY="55.0" styleClass="wizard-undertext" text="Slutför" textFill="#2e3f98" />
    </children>
 </AnchorPane>
 
