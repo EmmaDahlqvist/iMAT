@@ -177,6 +177,14 @@ public class MainViewController implements Initializable, ShoppingCartListener{
         return detailedProductCardHashMap;
     }
 
+    public ProductCard createProductCard(int productId)
+    {
+        ShoppingItem shoppingItem = productCardHashMap.get(productId).getShoppingItem();
+        ProductCard productCard = new ProductCard(this, shoppingItem);
+        iMatDataHandler.getShoppingCart().addShoppingCartListener(productCard);
+        return productCard;
+    }
+
     protected void backToHomePage() {
         this.homePageAnchor.toFront();
         this.anchorHeader.toFront();

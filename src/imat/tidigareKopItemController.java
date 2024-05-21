@@ -70,8 +70,7 @@ public class tidigareKopItemController extends AnchorPane {
         for (ShoppingItem shoppingItem : order.getItems()){
             price += shoppingItem.getTotal();
 
-
-            productCardCarousel.getChildren().add(mainViewController.getProductMap().get(shoppingItem.getProduct().getProductId()));
+            productCardCarousel.getChildren().add(mainViewController.createProductCard(shoppingItem.getProduct().getProductId()));
             productCardCarousel.setMinWidth(350 * productCardCarousel.getChildren().size() + 10*productCardCarousel.getChildren().size());}
 
         priceLabel.setText(price + " kr");
@@ -103,7 +102,7 @@ public class tidigareKopItemController extends AnchorPane {
         productCardCarousel.getChildren().clear();
 
         for (ShoppingItem shoppingItem : order.getItems()){
-            productCardCarousel.getChildren().add(mainViewController.getProductMap().get(shoppingItem.getProduct().getProductId()));
+            productCardCarousel.getChildren().add(mainViewController.createProductCard(shoppingItem.getProduct().getProductId()));
             productCardCarousel.setMinWidth(350 * productCardCarousel.getChildren().size() + 10*productCardCarousel.getChildren().size());}
     }
 
