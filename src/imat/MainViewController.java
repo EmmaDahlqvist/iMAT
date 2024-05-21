@@ -67,7 +67,7 @@ public class MainViewController implements Initializable {
 
     private UppgifterController uppgifterController;
 
-    private UtcheckningController utcheckningController;
+    protected UtcheckningController utcheckningController;
 
 
     public void initialize(URL url, ResourceBundle rb) {
