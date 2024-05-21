@@ -606,3 +606,13 @@
     -fx-text-fill: #FFFFFF;
     -fx-font-size: 28px;
 }
+
+.confirmation-change-button{
+    -fx-font-family: "Amiko";
+    -fx-font-size: 17px;
+    -fx-background-color: #5266D1;
+    -fx-background-radius: 5px;
+    -fx-background-insets: 0;
+    -fx-text-fill: #ffffff;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.15), 5, 0, 0, 5);
+}

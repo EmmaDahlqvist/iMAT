@@ -13,7 +13,7 @@
    <AnchorPane prefHeight="80.0" prefWidth="1140.0">
    <children>
       <Line endX="124.0" layoutX="255.0" layoutY="31.0" stroke="#2e3f98" styleClass="wizard-line" />
-      <Button fx:id="wizardStepFiveButton" layoutX="883.0" layoutY="9.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="44.0" text="5" textFill="#5266d0">
+      <Button fx:id="wizardStepFiveButton" layoutX="883.0" layoutY="9.0" mnemonicParsing="false" onMouseClicked="#openConfirmationPage" prefHeight="44.0" prefWidth="44.0" text="5" textFill="#5266d0">
          <styleClass>
             <String fx:value="wizard-button" />
             <String fx:value="wizard-button-text" />
@@ -22,7 +22,7 @@
                <Cursor fx:constant="DEFAULT" />
             </cursor>
       </Button>
-      <Button fx:id="wizardStepOneButton" layoutX="211.0" layoutY="9.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="44.0" text="1" textFill="#5266d0">
+      <Button fx:id="wizardStepOneButton" layoutX="211.0" layoutY="9.0" mnemonicParsing="false" onMouseClicked="#openVarukorgPage" prefHeight="44.0" prefWidth="44.0" text="1" textFill="#5266d0">
             <styleClass>
                <String fx:value="wizard-button" />
                <String fx:value="wizard-button-filled" />
@@ -34,7 +34,7 @@
             </cursor>
       </Button>
       <Line endX="124.0" layoutX="423.0" layoutY="31.0" stroke="#2e3f98" styleClass="wizard-line" />
-      <Button fx:id="wizardStepTwoButton" layoutX="379.0" layoutY="9.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="44.0" text="2" textFill="#5266d0">
+      <Button fx:id="wizardStepTwoButton" layoutX="379.0" layoutY="9.0" mnemonicParsing="false" onMouseClicked="#openPersonuppgifterPage" prefHeight="44.0" prefWidth="44.0" text="2" textFill="#5266d0">
          <styleClass>
             <String fx:value="wizard-button" />
             <String fx:value="wizard-button-text" />
@@ -45,7 +45,7 @@
             </cursor>
       </Button>
       <Line endX="124.0" layoutX="591.0" layoutY="31.0" stroke="#2e3f98" styleClass="wizard-line" />
-      <Button fx:id="wizardStepThreeButton" layoutX="547.0" layoutY="9.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="44.0" text="3" textFill="#5266d0">
+      <Button fx:id="wizardStepThreeButton" layoutX="547.0" layoutY="9.0" mnemonicParsing="false" onMouseClicked="#openLeveransPage" prefHeight="44.0" prefWidth="44.0" text="3" textFill="#5266d0">
          <styleClass>
             <String fx:value="wizard-button" />
             <String fx:value="wizard-button-text" />
@@ -55,7 +55,7 @@
             </cursor>
       </Button>
       <Line endX="124.0" layoutX="759.0" layoutY="31.0" stroke="#2e3f98" styleClass="wizard-line" />
-      <Button fx:id="wizardStepFourButton" layoutX="715.0" layoutY="9.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="44.0" text="4" textFill="#5266d0">
+      <Button fx:id="wizardStepFourButton" layoutX="715.0" layoutY="9.0" mnemonicParsing="false" onMouseClicked="#openBetalningsPage" prefHeight="44.0" prefWidth="44.0" text="4" textFill="#5266d0">
          <styleClass>
             <String fx:value="wizard-button" />
             <String fx:value="wizard-button-text" />
@@ -68,6 +68,7 @@
          <styleClass>
             <String fx:value="wizard-back-next-button" />
             <String fx:value="wizard-back-next-text" />
+               <String fx:value="wizard-back-next-non-clickable" />
          </styleClass>
          <font>
             <Font size="18.0" />
@@ -81,7 +82,6 @@
             <Font size="18.0" />
          </font>
             <styleClass>
-               <String fx:value="wizard-back-next-non-clickable" />
                <String fx:value="wizard-back-next-text" />
                <String fx:value="wizard-back-next-button" />
             </styleClass>
