@@ -20,24 +20,40 @@ public class WizardController extends AnchorPane {
     //wizardAnchor.getChildren().add(new WizardController());
 
     @FXML
-    private Button wizardBackButton;
+    protected Button wizardBackButton;
     @FXML
-    private Button wizardStepOneButton;
+    protected Button wizardStepOneButton;
     @FXML
-    private Button wizardStepTwoButton;
+    protected Button wizardStepTwoButton;
     @FXML
-    private Button wizardStepThreeButton;
+    protected Button wizardStepThreeButton;
     @FXML
-    private Button wizardStepFourButton;
+    protected Button wizardStepFourButton;
     @FXML
-    private Button wizardStepFiveButton;
+    protected Button wizardStepFiveButton;
     @FXML
-    private Button wizardNextButton;
+    protected Button wizardNextButton;
+
+    @FXML
+    protected Label varukorgLabel;
+    @FXML
+    protected Label personLabel;
+    @FXML
+    protected Label leveransLabel;
+    @FXML
+    protected Label betalaLabel;
+    @FXML
+    protected Label confirmLabel;
+
 
     public Button[] wizardSteps;
     public int step = 1;
 
-    public WizardController(){
+    private UtcheckningController utcheckningController;
+
+    public WizardController(UtcheckningController utcheckningController){
+        this.utcheckningController = utcheckningController;
+
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("wizard.fxml"));
         fxmlLoader.setRoot(this);
         fxmlLoader.setController(this);
@@ -57,10 +73,31 @@ public class WizardController extends AnchorPane {
 
         //kod som gör nästa-knappen icke-klickbar
         wizardNextButton.getStyleClass().clear(); //tar bort allt eeeeeeh
-        wizardNextButton.getStyleClass().addAll("button", "wizard-back-next-non-clickable", "wizard-back-next-text");
+        wizardNextButton.getStyleClass().addAll("button", "wizard-back-next-button", "wizard-back-next-text");
 
         fillWizardCurrentAndPastSteps();
 
+    }
+
+    protected void resetWizardToDefault() {
+        wizardStepOneButton.getStyleClass().clear();
+        wizardStepOneButton.getStyleClass().addAll("button", "wizard-button", "wizard-button-text", "wizard-button-filled", "wizard-button-hoverable");
+        wizardStepTwoButton.getStyleClass().clear();
+        wizardStepTwoButton.getStyleClass().addAll("button", "wizard-button", "wizard-button-text", "wizard-button-hoverable");
+        resetWizardButtonStyle(wizardStepThreeButton);
+        resetWizardButtonStyle(wizardStepFourButton);
+        resetWizardButtonStyle(wizardStepFiveButton);
+
+        wizardBackButton.getStyleClass().clear();
+        wizardBackButton.getStyleClass().addAll("button", "wizard-back-next-button", "wizard-back-next-text");
+
+        wizardNextButton.getStyleClass().clear();
+        wizardNextButton.getStyleClass().addAll("button", "wizard-back-next-button", "wizard-back-next-text");
+    }
+
+    private void resetWizardButtonStyle(Button button) {
+        button.getStyleClass().clear();
+        button.getStyleClass().addAll("button", "wizard-button", "wizard-button-text");
     }
 
     public void fillWizardCurrentAndPastSteps(){
@@ -71,8 +108,72 @@ public class WizardController extends AnchorPane {
             buttonToLightUp.getStyleClass().clear();
             buttonToLightUp.getStyleClass().addAll("button","wizard-button-filled","wizard-button-hoverable");
         }
+    }
 
+    public void hoverableNextStep(){
         wizardSteps[step].getStyleClass().clear();
         wizardSteps[step].getStyleClass().addAll("button","wizard-button","wizard-button-hoverable");
+    }
+
+    public void unhoverNextStep(){
+        wizardSteps[step].getStyleClass().clear();
+        wizardSteps[step].getStyleClass().addAll("button","wizard-button");
+    }
+
+    public void fillWizardButton(Button button){
+        button.getStyleClass().clear();
+        button.getStyleClass().addAll("button","wizard-button-filled","wizard-button-hoverable");
+    }
+
+    public void fillWizardNextButton(){
+        wizardNextButton.getStyleClass().clear();
+        wizardNextButton.getStyleClass().addAll("button", "wizard-back-next-button", "wizard-back-next-text");
+    }
+
+    // Metoder för att öppna de olika stegen i utcheckningen
+    public void openVarukorgPage(){
+        utcheckningController.openVarukorgPage();
+    }
+
+    public void openPersonuppgifterPage(){
+        utcheckningController.openPersonuppgifterPage();
+    }
+    public void openLeveransPage(){
+        utcheckningController.openLeveransPage();
+    }
+    public void openBetalningsPage(){
+        utcheckningController.openBetalningsPage();
+    }
+
+    public void openConfirmationPage(){
+        utcheckningController.openConfirmationPage();
+    }
+
+    public void returnButtonFunc(){
+        if (step == 1){
+            utcheckningController.mainViewController.backToOGPage();
+        } else if (step == 2) {
+            openVarukorgPage();
+        } else if (step == 3) {
+            openPersonuppgifterPage();
+        } else if (step == 4) {
+            openLeveransPage();
+        } else if (step == 5) {
+            openBetalningsPage();
+        }
+    }
+
+    public void nextButtonFunc(){
+        if (step == 1){
+            openPersonuppgifterPage();
+        } else if (step == 2) {
+            openLeveransPage();
+        } else if (step == 3) {
+            openBetalningsPage();
+        } else if (step == 4) {
+            openConfirmationPage();
+        } else if (step == 5) {
+            utcheckningController.openCompletionPage();
+        }
     }
 }
