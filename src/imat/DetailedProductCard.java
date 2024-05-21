@@ -1,5 +1,6 @@
 package imat;
 
+import com.sun.tools.javac.Main;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
@@ -27,14 +28,17 @@ public class DetailedProductCard extends AnchorPane
     private Button closeButton;
     @FXML
     private TextArea infoTextArea;
-
+    @FXML
+    private Button detailPaneCloseButton;
+    @FXML
+    private MainViewController parentController;
 
     private ShoppingItem shoppingItem;
     private Product product;
     private IMatDataHandler imatDataHandler;
 
 
-    public DetailedProductCard(ShoppingItem shoppingItem, ProductCard productCard)
+    public DetailedProductCard(MainViewController parentController, ShoppingItem shoppingItem, ProductCard productCard)
     {
 
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("detailed_product_card.fxml"));
@@ -47,6 +51,7 @@ public class DetailedProductCard extends AnchorPane
             throw new RuntimeException(exception);
         }
 
+        this.parentController = parentController;
         imatDataHandler = IMatDataHandler.getInstance();
         this.shoppingItem = shoppingItem;
         this.product = shoppingItem.getProduct();
@@ -68,6 +73,12 @@ public class DetailedProductCard extends AnchorPane
 
 
 
+    }
+
+    @FXML
+    public void closeDetailPane()
+    {
+        parentController.hideDetailPane();
     }
 
 

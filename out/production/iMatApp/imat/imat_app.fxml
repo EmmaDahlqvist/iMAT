@@ -89,5 +89,10 @@
          </children>
       </AnchorPane>
       <AnchorPane fx:id="showProductsAnchor" layoutX="267.0" layoutY="120.0" prefHeight="894.0" prefWidth="1160.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="280.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="130.0" />
+      <AnchorPane fx:id="detailViewParentAnchorPane" prefHeight="1024.0" prefWidth="1440.0" styleClass="transp-varukorg-pane">
+         <children>
+            <AnchorPane fx:id="detailViewAnchorPane" layoutX="400.0" layoutY="300.0" prefHeight="463.0" prefWidth="734.0" />
+         </children>
+      </AnchorPane>
    </children>
 </AnchorPane>
