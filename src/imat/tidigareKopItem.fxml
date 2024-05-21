@@ -5,6 +5,7 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Tooltip?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.FlowPane?>
 
@@ -17,6 +18,9 @@
             <String fx:value="item-button-text" />
             <String fx:value="hoverable-button-pointer" />
          </styleClass>
+         <tooltip>
+            <Tooltip text="Lägg till denna beställning till din nuvarande varukorg" />
+         </tooltip>
       </Button>
       <Label fx:id="priceLabel" layoutX="534.0" layoutY="10.0" style="-fx-font-family: &quot;Amiko&quot;; -fx-text-fill: #000000; -fx-font-size: 28px;" text="2456 kr" />
       <ScrollPane fx:id="scrollpane" fitToHeight="true" fitToWidth="true" hbarPolicy="ALWAYS" layoutX="-10.0" layoutY="66.0" prefHeight="377.0" prefWidth="1091.0" styleClass="background-color" vbarPolicy="NEVER">
