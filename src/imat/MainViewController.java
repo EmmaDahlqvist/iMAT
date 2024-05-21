@@ -161,6 +161,10 @@ public class MainViewController implements Initializable {
         uppgifterController.fillInDefaults();
     }
 
+    @FXML
+    public void startShoppingOnClick() {
+        showProductController.showProducts("Alla varor");
+    }
     private void setUpShoppingCart() {
 
     }
