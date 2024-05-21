@@ -149,6 +149,11 @@ public class MainViewController implements Initializable {
         this.varukorgPopupAnchor.toFront();
     }
 
+    @FXML
+    public void searchStartButtonOnClick() {
+        backToHomePage();
+    }
+
     protected void headerMenyVarukorgToFront() {
         this.anchorHeader.toFront();
         this.anchorMeny.toFront();
