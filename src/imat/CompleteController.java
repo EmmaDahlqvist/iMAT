@@ -8,7 +8,7 @@ import se.chalmers.cse.dat216.project.ShoppingItem;
 
 import java.io.IOException;
 
-public class CompleteController {
+public class CompleteController extends AnchorPane{
 
     private MainViewController mainViewController;
 
@@ -24,6 +24,7 @@ public class CompleteController {
     @FXML private Label dayLabel;
     @FXML private Label timeLabel;
     @FXML private Label adressLabel;
+
 
     public CompleteController(MainViewController mainViewController, String name, String day, String time, String adress) {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("complete.fxml"));
@@ -42,9 +43,16 @@ public class CompleteController {
             throw new RuntimeException(exception);
         }
 
-        this.anchorHeader.getChildren().add(mainViewController.mainHeader);
+//        this.anchorHeader.getChildren().add(mainViewController.mainHeader);
+        this.mainViewController.anchorHeader.toFront();
+        this.mainViewController.varukorgPopupAnchor.toFront();
 
         initialize();
+    }
+
+    @FXML
+    protected void backToHomePage(){
+        mainViewController.backToHomePage();
     }
 
     private void initialize() {

@@ -34,6 +34,18 @@ public class WizardController extends AnchorPane {
     @FXML
     protected Button wizardNextButton;
 
+    @FXML
+    protected Label varukorgLabel;
+    @FXML
+    protected Label personLabel;
+    @FXML
+    protected Label leveransLabel;
+    @FXML
+    protected Label betalaLabel;
+    @FXML
+    protected Label confirmLabel;
+
+
     public Button[] wizardSteps;
     public int step = 1;
 
@@ -65,6 +77,27 @@ public class WizardController extends AnchorPane {
 
         fillWizardCurrentAndPastSteps();
 
+    }
+
+    protected void resetWizardToDefault() {
+        wizardStepOneButton.getStyleClass().clear();
+        wizardStepOneButton.getStyleClass().addAll("button", "wizard-button", "wizard-button-text", "wizard-button-filled", "wizard-button-hoverable");
+        wizardStepTwoButton.getStyleClass().clear();
+        wizardStepTwoButton.getStyleClass().addAll("button", "wizard-button", "wizard-button-text", "wizard-button-hoverable");
+        resetWizardButtonStyle(wizardStepThreeButton);
+        resetWizardButtonStyle(wizardStepFourButton);
+        resetWizardButtonStyle(wizardStepFiveButton);
+
+        wizardBackButton.getStyleClass().clear();
+        wizardBackButton.getStyleClass().addAll("button", "wizard-back-next-button", "wizard-back-next-text");
+
+        wizardNextButton.getStyleClass().clear();
+        wizardNextButton.getStyleClass().addAll("button", "wizard-back-next-button", "wizard-back-next-text");
+    }
+
+    private void resetWizardButtonStyle(Button button) {
+        button.getStyleClass().clear();
+        button.getStyleClass().addAll("button", "wizard-button", "wizard-button-text");
     }
 
     public void fillWizardCurrentAndPastSteps(){
@@ -114,5 +147,33 @@ public class WizardController extends AnchorPane {
 
     public void openConfirmationPage(){
         utcheckningController.openConfirmationPage();
+    }
+
+    public void returnButtonFunc(){
+        if (step == 1){
+            utcheckningController.mainViewController.backToOGPage();
+        } else if (step == 2) {
+            openVarukorgPage();
+        } else if (step == 3) {
+            openPersonuppgifterPage();
+        } else if (step == 4) {
+            openLeveransPage();
+        } else if (step == 5) {
+            openBetalningsPage();
+        }
+    }
+
+    public void nextButtonFunc(){
+        if (step == 1){
+            openPersonuppgifterPage();
+        } else if (step == 2) {
+            openLeveransPage();
+        } else if (step == 3) {
+            openBetalningsPage();
+        } else if (step == 4) {
+            openConfirmationPage();
+        } else if (step == 5) {
+            utcheckningController.openCompletionPage();
+        }
     }
 }

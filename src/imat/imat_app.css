@@ -217,6 +217,14 @@
     -fx-font-family: "Amiko";
     -fx-background-color: #3125C1;
     -fx-text-fill: #FFFFFF;
+    -fx-cursor: HAND;
+}
+
+.till-varukogen-button-disabled {
+    -fx-font-size: 38px;
+    -fx-font-family: "Amiko";
+    -fx-background-color: #6C7D8D;
+    -fx-text-fill: #FFFFFF;
 }
 
 .till-varukogen-button:hover {
@@ -415,6 +423,7 @@
     -fx-border-color: #2E3F98;
     -fx-border-width: 1px;
     -fx-border-radius: 22px;
+    -fx-cursor: HAND;
 }
 
 .wizard-button-filled {

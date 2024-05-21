@@ -19,7 +19,7 @@ import java.util.ArrayList;
 
 public class UppgifterController extends AnchorPane {
 
-    private ArrayList<UppgifterListener> uppgifterListeners;
+    private ArrayList<UppgifterListener> uppgifterListeners = new ArrayList<>();
 
     protected void addUppgifterListener(UppgifterListener uppgifterListener) {
         uppgifterListeners.add(uppgifterListener);
