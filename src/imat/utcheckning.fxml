@@ -9,6 +9,7 @@
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.Tooltip?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.FlowPane?>
 <?import javafx.scene.layout.Region?>
@@ -19,7 +20,7 @@
    <children>
       <AnchorPane fx:id="headerAnchor" layoutX="96.0" layoutY="1.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
    </children>
-   <AnchorPane fx:id="wizardAnchor" layoutX="137.0" layoutY="176.0" onMouseClicked="#openConfirmationPage" prefHeight="80.0" prefWidth="1140.0" />
+   <AnchorPane fx:id="wizardAnchor" layoutX="137.0" layoutY="176.0" prefHeight="80.0" prefWidth="1140.0" />
    <AnchorPane fx:id="personuppgifterAnchor" layoutX="136.0" layoutY="284.0" prefHeight="613.0" prefWidth="1140.0" styleClass="background-color">
       <children>
          <AnchorPane layoutX="109.0" layoutY="120.0" prefHeight="310.0" prefWidth="438.0">
@@ -45,11 +46,13 @@
             <styleClass>
                <String fx:value="wizard-back-next-non-clickable" />
                <String fx:value="wizard-back-next-text" />
-               <String fx:value="wizard-back-next-button" />
             </styleClass>
             <cursor>
                <Cursor fx:constant="HAND" />
             </cursor>
+            <tooltip>
+               <Tooltip text="Fortsätt till nästa steg" />
+            </tooltip>
          </Button>
          <AnchorPane layoutX="595.0" layoutY="120.0" prefHeight="310.0" prefWidth="438.0">
             <children>
@@ -78,6 +81,9 @@
             <cursor>
                <Cursor fx:constant="HAND" />
             </cursor>
+            <tooltip>
+               <Tooltip text="Slutför köpet om uppgifterna stämmer" />
+            </tooltip>
          </Button>
          <AnchorPane layoutX="597.0" layoutY="233.0" prefHeight="233.0" prefWidth="438.0">
             <styleClass>
@@ -166,127 +172,6 @@
          </AnchorPane>
       </children>
    </AnchorPane>
-   <AnchorPane fx:id="betalningAnchor" layoutX="136.0" layoutY="284.0" prefHeight="613.0" prefWidth="1140.0" styleClass="background-color">
-      <children>
-         <AnchorPane layoutX="109.0" layoutY="120.0" prefHeight="248.0" prefWidth="438.0">
-            <children>
-               <Label layoutX="28.0" layoutY="47.0" text="Kortnummer:" />
-               <Label layoutX="57.0" layoutY="108.0" text="Giltigt till:" />
-               <Label layoutX="102.0" layoutY="169.0" text="CVC:" />
-               <TextField fx:id="dateMonth" layoutX="152.0" layoutY="104.0" prefHeight="40.0" prefWidth="50.0" promptText="04" styleClass="personuppgifter-textfield" />
-               <TextField fx:id="cvc" layoutX="152.0" layoutY="164.0" prefHeight="40.0" prefWidth="58.0" promptText="205" styleClass="personuppgifter-textfield" />
-               <TextField fx:id="dateYear" layoutX="219.0" layoutY="103.0" prefHeight="40.0" prefWidth="50.0" promptText="28" styleClass="personuppgifter-textfield" />
-               <Label layoutX="208.0" layoutY="106.0" text="/" />
-               <TextField fx:id="kortnummer1" layoutX="151.0" layoutY="44.0" prefHeight="35.0" prefWidth="63.0" promptText="1234" styleClass="personuppgifter-textfield" />
-               <TextField fx:id="kortnummer2" layoutX="216.0" layoutY="44.0" prefHeight="35.0" prefWidth="63.0" promptText="1234" styleClass="personuppgifter-textfield" />
-               <TextField fx:id="kortnummer4" layoutX="345.0" layoutY="44.0" prefHeight="35.0" prefWidth="63.0" promptText="1234" styleClass="personuppgifter-textfield" />
-               <TextField fx:id="kortnummer3" layoutX="281.0" layoutY="44.0" prefHeight="35.0" prefWidth="63.0" promptText="1234" styleClass="personuppgifter-textfield" />
-            </children>
-            <styleClass>
-               <String fx:value="ruta-personuppgifter" />
-               <String fx:value="personuppgifter-text" />
-            </styleClass>
-         </AnchorPane>
-         <Button fx:id="betalningNextButton" layoutX="1017.0" layoutY="528.0" mnemonicParsing="false" onMouseClicked="#openConfirmationPage" prefHeight="44.0" prefWidth="109.0" text="Nästa" textFill="WHITE">
-            <font>
-               <Font size="18.0" />
-            </font>
-            <styleClass>
-               <String fx:value="wizard-back-next-non-clickable" />
-               <String fx:value="wizard-back-next-text" />
-               <String fx:value="wizard-back-next-button" />
-            </styleClass>
-            <cursor>
-               <Cursor fx:constant="HAND" />
-            </cursor>
-         </Button>
-         <AnchorPane layoutX="595.0" layoutY="120.0" prefHeight="248.0" prefWidth="438.0">
-            <styleClass>
-               <String fx:value="ruta-personuppgifter" />
-               <String fx:value="personuppgifter-text" />
-            </styleClass>
-            <children>
-               <Label layoutX="31.0" layoutY="37.0" styleClass="betalning-rubrik" text="Summering">
-                  <font>
-                     <Font name="System Bold" size="12.0" />
-                  </font>
-               </Label>
-               <Label layoutX="31.0" layoutY="90.0" styleClass="betalning-vanlig-text" text="Total varukostnad" />
-               <Label layoutX="31.0" layoutY="137.0" styleClass="betalning-vanlig-text" text="Leveransavgift" />
-               <Label layoutX="28.0" layoutY="194.0" styleClass="betalning-rubrik" text="Totalt">
-                  <font>
-                     <Font name="System Bold" size="12.0" />
-                  </font>
-               </Label>
-               <Label fx:id="betalningTotalKostnadLabel" layoutX="341.0" layoutY="195.0" styleClass="betalning-rubrik" text="999kr">
-                  <font>
-                     <Font name="System Bold" size="12.0" />
-                  </font>
-               </Label>
-               <Line endX="402.0" layoutX="18.0" layoutY="185.0" />
-               <Label layoutX="364.0" layoutY="140.0" styleClass="betalning-vanlig-text" text="50kr">
-                  <font>
-                     <Font name="System Bold" size="12.0" />
-                  </font>
-               </Label>
-               <Label fx:id="betalningTotalVarukostnadLabel" layoutX="351.0" layoutY="90.0" styleClass="betalning-vanlig-text" text="949kr">
-                  <font>
-                     <Font name="System Bold" size="12.0" />
-                  </font>
-               </Label>
-            </children>
-         </AnchorPane>
-         <Label layoutX="478.0" layoutY="36.0" prefHeight="59.0" prefWidth="187.0" styleClass="rubriker-i-wizard" text="Betalning" />
-      </children>
-   </AnchorPane>
-   <AnchorPane fx:id="leveransuppgifterAnchor" layoutX="136.0" layoutY="284.0" prefHeight="613.0" prefWidth="1140.0" styleClass="background-color">
-      <children>
-         <AnchorPane layoutX="98.0" layoutY="120.0" prefHeight="255.0" prefWidth="451.0">
-            <styleClass>
-               <String fx:value="ruta-personuppgifter" />
-               <String fx:value="personuppgifter-text" />
-            </styleClass>
-            <children>
-               <Label layoutX="16.0" layoutY="23.0" text="Leveransdag:" />
-               <Label layoutX="16.0" layoutY="72.0" text="Leveranstid:" />
-               <ComboBox fx:id="leveransdagComboBox" layoutX="141.0" layoutY="18.0" prefHeight="40.0" prefWidth="117.0" />
-            </children>
-         </AnchorPane>
-         <Button fx:id="leveransNextButton" layoutX="1017.0" layoutY="528.0" mnemonicParsing="false" onMouseClicked="#openBetalningsPage" prefHeight="44.0" prefWidth="109.0" text="Nästa" textFill="WHITE">
-            <font>
-               <Font size="18.0" />
-            </font>
-            <styleClass>
-               <String fx:value="wizard-back-next-non-clickable" />
-               <String fx:value="wizard-back-next-text" />
-               <String fx:value="wizard-back-next-button" />
-            </styleClass>
-            <cursor>
-               <Cursor fx:constant="HAND" />
-            </cursor>
-         </Button>
-         <AnchorPane layoutX="584.0" layoutY="120.0" prefHeight="255.0" prefWidth="451.0">
-            <styleClass>
-               <String fx:value="ruta-personuppgifter" />
-               <String fx:value="personuppgifter-text" />
-            </styleClass>
-            <children>
-               <TextArea fx:id="meddelandeTextArea" layoutX="37.0" layoutY="62.0" prefHeight="169.0" prefWidth="364.0" />
-               <Label layoutX="37.0" layoutY="25.0" styleClass="personuppgifter-text" text="Meddelande till chauffören:         (valfritt)" />
-            </children>
-         </AnchorPane>
-         <Label layoutX="482.0" layoutY="36.0" prefHeight="59.0" prefWidth="176.0" styleClass="rubriker-i-wizard" text="Leverans" />
-         <Region layoutX="237.0" layoutY="194.0" prefHeight="156.0" prefWidth="290.0" styleClass="leveranstid-box" />
-         <RadioButton fx:id="leveranstidTenRadioButton" layoutX="251.0" layoutY="207.0" mnemonicParsing="false" styleClass="leveranstid-radiobutton" text="10:00-10:30" />
-         <RadioButton fx:id="leveranstidElevenRadioButton" layoutX="392.0" layoutY="207.0" mnemonicParsing="false" styleClass="leveranstid-radiobutton" text="11:00-11:30" />
-         <RadioButton fx:id="leveranstidTwelveRadioButton" layoutX="251.0" layoutY="242.0" mnemonicParsing="false" styleClass="leveranstid-radiobutton" text="12:00-12:30" />
-         <RadioButton fx:id="leveranstidOneRadioButton" layoutX="392.0" layoutY="242.0" mnemonicParsing="false" styleClass="leveranstid-radiobutton" text="13:00-13:30" />
-         <RadioButton fx:id="leveranstidTwoRadioButton" layoutX="251.0" layoutY="277.0" mnemonicParsing="false" styleClass="leveranstid-radiobutton" text="14:00-14:30" />
-         <RadioButton fx:id="leveranstidThreeRadioButton" layoutX="392.0" layoutY="277.0" mnemonicParsing="false" styleClass="leveranstid-radiobutton" text="15:00-15:30" />
-         <RadioButton fx:id="leveranstidFourRadioButton" layoutX="251.0" layoutY="312.0" mnemonicParsing="false" styleClass="leveranstid-radiobutton" text="16:00-16:30" />
-         <RadioButton fx:id="leveranstidFiveRadioButton" layoutX="392.0" layoutY="312.0" mnemonicParsing="false" styleClass="leveranstid-radiobutton" text="17:00-17:30" />
-      </children>
-   </AnchorPane>
    <AnchorPane fx:id="varukorgWizardAnchor" layoutX="136.0" layoutY="284.0" prefHeight="613.0" prefWidth="1140.0" styleClass="background-color">
       <children>
          <AnchorPane layoutX="631.0" layoutY="68.0" prefHeight="233.0" prefWidth="438.0">
@@ -363,9 +248,137 @@
             <cursor>
                <Cursor fx:constant="HAND" />
             </cursor>
+            <tooltip>
+               <Tooltip text="Fortsätt till nästa steg" />
+            </tooltip>
          </Button>
          <Label layoutX="484.0" layoutY="8.0" prefHeight="59.0" prefWidth="180.0" styleClass="rubriker-i-wizard" text="Varukorg" />
       </children>
    </AnchorPane>
    <AnchorPane fx:id="anchorHeader" layoutX="26.0" prefHeight="133.0" prefWidth="1440.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+   <AnchorPane fx:id="betalningAnchor" layoutX="136.0" layoutY="284.0" prefHeight="613.0" prefWidth="1140.0" styleClass="background-color">
+      <children>
+         <AnchorPane layoutX="109.0" layoutY="120.0" prefHeight="248.0" prefWidth="438.0">
+            <children>
+               <Label layoutX="28.0" layoutY="47.0" text="Kortnummer:" />
+               <Label layoutX="57.0" layoutY="108.0" text="Giltigt till:" />
+               <Label layoutX="102.0" layoutY="169.0" text="CVC:" />
+               <TextField fx:id="dateMonth" layoutX="152.0" layoutY="104.0" prefHeight="40.0" prefWidth="50.0" promptText="04" styleClass="personuppgifter-textfield" />
+               <TextField fx:id="cvc" layoutX="152.0" layoutY="164.0" prefHeight="40.0" prefWidth="58.0" promptText="205" styleClass="personuppgifter-textfield" />
+               <TextField fx:id="dateYear" layoutX="219.0" layoutY="103.0" prefHeight="40.0" prefWidth="50.0" promptText="28" styleClass="personuppgifter-textfield" />
+               <Label layoutX="208.0" layoutY="106.0" text="/" />
+               <TextField fx:id="kortnummer1" layoutX="151.0" layoutY="44.0" prefHeight="35.0" prefWidth="63.0" promptText="1234" styleClass="personuppgifter-textfield" />
+               <TextField fx:id="kortnummer2" layoutX="216.0" layoutY="44.0" prefHeight="35.0" prefWidth="63.0" promptText="1234" styleClass="personuppgifter-textfield" />
+               <TextField fx:id="kortnummer4" layoutX="345.0" layoutY="44.0" prefHeight="35.0" prefWidth="63.0" promptText="1234" styleClass="personuppgifter-textfield" />
+               <TextField fx:id="kortnummer3" layoutX="281.0" layoutY="44.0" prefHeight="35.0" prefWidth="63.0" promptText="1234" styleClass="personuppgifter-textfield" />
+            </children>
+            <styleClass>
+               <String fx:value="ruta-personuppgifter" />
+               <String fx:value="personuppgifter-text" />
+            </styleClass>
+         </AnchorPane>
+         <Button fx:id="betalningNextButton" layoutX="1017.0" layoutY="528.0" mnemonicParsing="false" onMouseClicked="#openConfirmationPage" prefHeight="44.0" prefWidth="109.0" text="Nästa" textFill="WHITE">
+            <font>
+               <Font size="18.0" />
+            </font>
+            <styleClass>
+               <String fx:value="wizard-back-next-non-clickable" />
+               <String fx:value="wizard-back-next-text" />
+            </styleClass>
+            <cursor>
+               <Cursor fx:constant="HAND" />
+            </cursor>
+            <tooltip>
+               <Tooltip text="Fortsätt till nästa steg" />
+            </tooltip>
+         </Button>
+         <AnchorPane layoutX="595.0" layoutY="120.0" prefHeight="248.0" prefWidth="438.0">
+            <styleClass>
+               <String fx:value="ruta-personuppgifter" />
+               <String fx:value="personuppgifter-text" />
+            </styleClass>
+            <children>
+               <Label layoutX="31.0" layoutY="37.0" styleClass="betalning-rubrik" text="Summering">
+                  <font>
+                     <Font name="System Bold" size="12.0" />
+                  </font>
+               </Label>
+               <Label layoutX="31.0" layoutY="90.0" styleClass="betalning-vanlig-text" text="Total varukostnad" />
+               <Label layoutX="31.0" layoutY="137.0" styleClass="betalning-vanlig-text" text="Leveransavgift" />
+               <Label layoutX="28.0" layoutY="194.0" styleClass="betalning-rubrik" text="Totalt">
+                  <font>
+                     <Font name="System Bold" size="12.0" />
+                  </font>
+               </Label>
+               <Label fx:id="betalningTotalKostnadLabel" alignment="CENTER_RIGHT" layoutX="248.0" layoutY="195.0" prefHeight="37.0" prefWidth="162.0" styleClass="betalning-rubrik" text="999kr">
+                  <font>
+                     <Font name="System Bold" size="12.0" />
+                  </font>
+               </Label>
+               <Line endX="402.0" layoutX="18.0" layoutY="185.0" />
+               <Label layoutX="364.0" layoutY="140.0" styleClass="betalning-vanlig-text" text="50kr">
+                  <font>
+                     <Font name="System Bold" size="12.0" />
+                  </font>
+               </Label>
+               <Label fx:id="betalningTotalVarukostnadLabel" alignment="CENTER_RIGHT" layoutX="253.0" layoutY="90.0" prefHeight="30.0" prefWidth="156.0" styleClass="betalning-vanlig-text" text="949kr">
+                  <font>
+                     <Font name="System Bold" size="12.0" />
+                  </font>
+               </Label>
+            </children>
+         </AnchorPane>
+         <Label layoutX="478.0" layoutY="36.0" prefHeight="59.0" prefWidth="187.0" styleClass="rubriker-i-wizard" text="Betalning" />
+      </children>
+   </AnchorPane>
+   <AnchorPane fx:id="leveransuppgifterAnchor" layoutX="136.0" layoutY="284.0" prefHeight="613.0" prefWidth="1140.0" styleClass="background-color">
+      <children>
+         <AnchorPane layoutX="98.0" layoutY="120.0" prefHeight="255.0" prefWidth="451.0">
+            <styleClass>
+               <String fx:value="ruta-personuppgifter" />
+               <String fx:value="personuppgifter-text" />
+            </styleClass>
+            <children>
+               <Label layoutX="16.0" layoutY="23.0" text="Leveransdag:" />
+               <Label layoutX="16.0" layoutY="72.0" text="Leveranstid:" />
+               <ComboBox fx:id="leveransdagComboBox" layoutX="141.0" layoutY="18.0" prefHeight="40.0" prefWidth="177.0" styleClass="leveransdag-combobox" />
+            </children>
+         </AnchorPane>
+         <Button fx:id="leveransNextButton" layoutX="1017.0" layoutY="528.0" mnemonicParsing="false" onMouseClicked="#openBetalningsPage" prefHeight="44.0" prefWidth="109.0" text="Nästa" textFill="WHITE">
+            <font>
+               <Font size="18.0" />
+            </font>
+            <styleClass>
+               <String fx:value="wizard-back-next-button" />
+               <String fx:value="wizard-back-next-text" />
+            </styleClass>
+            <cursor>
+               <Cursor fx:constant="HAND" />
+            </cursor>
+            <tooltip>
+               <Tooltip text="Fortsätt till nästa steg" />
+            </tooltip>
+         </Button>
+         <AnchorPane layoutX="584.0" layoutY="120.0" prefHeight="255.0" prefWidth="451.0">
+            <styleClass>
+               <String fx:value="ruta-personuppgifter" />
+               <String fx:value="personuppgifter-text" />
+            </styleClass>
+            <children>
+               <TextArea fx:id="meddelandeTextArea" layoutX="37.0" layoutY="62.0" prefHeight="169.0" prefWidth="364.0" />
+               <Label layoutX="37.0" layoutY="25.0" styleClass="personuppgifter-text" text="Meddelande till chauffören:         (valfritt)" />
+            </children>
+         </AnchorPane>
+         <Label layoutX="482.0" layoutY="36.0" prefHeight="59.0" prefWidth="176.0" styleClass="rubriker-i-wizard" text="Leverans" />
+         <Region layoutX="237.0" layoutY="194.0" prefHeight="156.0" prefWidth="290.0" styleClass="leveranstid-radiobutton" />
+         <RadioButton fx:id="leveranstidTenRadioButton" layoutX="251.0" layoutY="207.0" mnemonicParsing="false" styleClass="leveranstid-radiobutton" text="10:00-10:30" />
+         <RadioButton fx:id="leveranstidElevenRadioButton" layoutX="392.0" layoutY="207.0" mnemonicParsing="false" styleClass="leveranstid-radiobutton" text="11:00-11:30" />
+         <RadioButton fx:id="leveranstidTwelveRadioButton" layoutX="251.0" layoutY="242.0" mnemonicParsing="false" styleClass="leveranstid-radiobutton" text="12:00-12:30" />
+         <RadioButton fx:id="leveranstidOneRadioButton" layoutX="392.0" layoutY="242.0" mnemonicParsing="false" styleClass="leveranstid-radiobutton" text="13:00-13:30" />
+         <RadioButton fx:id="leveranstidTwoRadioButton" layoutX="251.0" layoutY="277.0" mnemonicParsing="false" styleClass="leveranstid-radiobutton" text="14:00-14:30" />
+         <RadioButton fx:id="leveranstidThreeRadioButton" layoutX="392.0" layoutY="277.0" mnemonicParsing="false" styleClass="leveranstid-radiobutton" text="15:00-15:30" />
+         <RadioButton fx:id="leveranstidFourRadioButton" layoutX="251.0" layoutY="312.0" mnemonicParsing="false" styleClass="leveranstid-radiobutton" text="16:00-16:30" />
+         <RadioButton fx:id="leveranstidFiveRadioButton" layoutX="392.0" layoutY="312.0" mnemonicParsing="false" styleClass="leveranstid-radiobutton" text="17:00-17:30" />
+      </children>
+   </AnchorPane>
 </fx:root>

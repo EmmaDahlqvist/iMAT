@@ -56,7 +56,7 @@ public class UtcheckningController extends AnchorPane implements ShoppingCartLis
     @FXML private RadioButton leveranstidFourRadioButton;
     @FXML private RadioButton leveranstidFiveRadioButton;
     String selectedLeveranstid;
-    String leveransdag;
+    String leveransdag = "Idag";
     @FXML private TextArea meddelandeTextArea;
     @FXML private Button leveransNextButton;
 
@@ -149,7 +149,7 @@ public class UtcheckningController extends AnchorPane implements ShoppingCartLis
 
         leveransdagComboBox.getItems().addAll("Idag", "Imorgon", "Övermorgon");
 
-        leveransdagComboBox.getSelectionModel().select("Välj dag");
+        leveransdagComboBox.getSelectionModel().select("Idag");
 
         leveransdagComboBox.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
 
@@ -199,11 +199,11 @@ public class UtcheckningController extends AnchorPane implements ShoppingCartLis
             varukorgFlowPaneUtcheckning.getChildren().add(new VaraAvlang(shoppingItem, mainViewController));
         }
 
-        varukorgTotalVarukostnadLabel.setText(String.valueOf(IMatDataHandler.getInstance().getShoppingCart().getTotal()) + " kr");
+        varukorgTotalVarukostnadLabel.setText(String.valueOf(IMatDataHandler.getInstance().getShoppingCart().getTotal()) + "kr");
         if(IMatDataHandler.getInstance().getShoppingCart().getTotal() == 0) {
             varukorgTotalKostnadLabel.setText( 0 + " kr");
         } else {
-            varukorgTotalKostnadLabel.setText(String.valueOf(IMatDataHandler.getInstance().getShoppingCart().getTotal() + 50) + " kr");
+            varukorgTotalKostnadLabel.setText(String.valueOf(IMatDataHandler.getInstance().getShoppingCart().getTotal() + 50) + "kr");
         }
     }
 
@@ -258,6 +258,9 @@ public class UtcheckningController extends AnchorPane implements ShoppingCartLis
             anchorHeader.getChildren().clear();
             anchorHeader.getChildren().add(mainViewController.iMatButtonHeader);
             setBold(wizardController.personLabel);
+            if (!firstNameTextField.getText().isEmpty() && !lastNameTextField.getText().isEmpty() && !phonenumberTextField.getText().isEmpty()&& !epostTextField.getText().isEmpty() && !adressTextField.getText().isEmpty() && !postnummerTextField.getText().isEmpty() && !portkodTextField.getText().isEmpty()){
+                fillNextButton(personuppgifterNextButton);
+            }
         }
     }
     @FXML
@@ -270,6 +273,7 @@ public class UtcheckningController extends AnchorPane implements ShoppingCartLis
             //unfill next button
             wizardController.step = 3;
             setBold(wizardController.leveransLabel);
+            wizardController.hoverableNextStep();
         }
     }
 
@@ -282,6 +286,12 @@ public class UtcheckningController extends AnchorPane implements ShoppingCartLis
             //unfill next button
             wizardController.step = 4;
             setBold(wizardController.betalaLabel);
+
+            betalningTotalVarukostnadLabel.setText(String.valueOf(IMatDataHandler.getInstance().getShoppingCart().getTotal()) + "kr");
+            betalningTotalKostnadLabel.setText(String.valueOf(IMatDataHandler.getInstance().getShoppingCart().getTotal() + 50) + "kr");
+            if (wizardController.step >= 4 && kortnummer1.getText() != null && kortnummer2.getText() != null && kortnummer3.getText() != null && kortnummer4.getText() != null && dateMonth.getText() != null && dateYear != null && cvc.getText() != null){
+                fillNextButton(betalningNextButton);
+            }
         }
 
 
@@ -289,8 +299,9 @@ public class UtcheckningController extends AnchorPane implements ShoppingCartLis
 
     @FXML
     public void openConfirmationPage(){
-        wizardController.wizardNextButton.setVisible(false);
-        if(wizardController.step >= 4) {
+        if(wizardController.step >= 4 && kortnummer1.getText() != null && kortnummer2.getText() != null && kortnummer3.getText() != null && kortnummer4.getText() != null && dateMonth.getText() != null && dateYear != null && cvc.getText() != null) {
+            wizardController.wizardNextButton.setVisible(false);
+
             confirmationAnchor.toFront();
             wizardController.fillWizardButton(wizardController.wizardStepFiveButton);
             wizardController.step = 5;
@@ -305,8 +316,8 @@ public class UtcheckningController extends AnchorPane implements ShoppingCartLis
             confirmationCardNumberLabel.setText("XXXX-XXXX-" + kortnummer3.getText() + "-" + kortnummer4.getText());
             confirmationCardDateLabel.setText(dateMonth.getText() + "/" + dateYear.getText());
 
-            confirmationTotalVarukostnadLabel.setText(String.valueOf(IMatDataHandler.getInstance().getShoppingCart().getTotal()));
-            confirmationTotalKostnadLabel.setText(String.valueOf(IMatDataHandler.getInstance().getShoppingCart().getTotal() + 50));
+            confirmationTotalVarukostnadLabel.setText(String.valueOf(IMatDataHandler.getInstance().getShoppingCart().getTotal())+ "kr");
+            confirmationTotalKostnadLabel.setText(String.valueOf(IMatDataHandler.getInstance().getShoppingCart().getTotal() + 50) + "kr");
             setBold(wizardController.confirmLabel);
 
 
@@ -314,9 +325,14 @@ public class UtcheckningController extends AnchorPane implements ShoppingCartLis
     }
 
     public void openCompletionPage(){
-        System.out.println("completionnnn");
         mainViewController.completionAnchor.toFront();
         mainViewController.completionAnchor.getChildren().add(new CompleteController(mainViewController, firstNameTextField.getText(),leveransdag, selectedLeveranstid, adressTextField.getText() ));
+
+    }
+
+    public void fillNextButton(Button button){
+        button.getStyleClass().clear();
+        button.getStyleClass().addAll("button", "wizard-back-next-button", "wizard-back-next-text");
 
     }
 
@@ -331,10 +347,6 @@ public class UtcheckningController extends AnchorPane implements ShoppingCartLis
         IMatDataHandler.getInstance().getShoppingCart().clear();
         openCompletionPage();
         resetWizardToDefault();
-    }
-
-    public void backToHomepage(){
-        mainViewController.backToHomePage();
     }
 
     protected void fillInDefaults() {
@@ -438,13 +450,23 @@ public class UtcheckningController extends AnchorPane implements ShoppingCartLis
                     nextField.requestFocus();
                 }
 
-                if(true){}
+                if(firstNameTextField.getText() != null && lastNameTextField.getText() != null && phonenumberTextField.getText() != null && epostTextField.getText() != null && adressTextField.getText() != null && postnummerTextField.getText() != null && portkodTextField.getText() != null){
+                    wizardController.hoverableNextStep();
+                    fillNextButton(personuppgifterNextButton);
+                } else {
+                    wizardController.unhoverNextStep();
+                }
+
+                if(leveransdag != null && selectedLeveranstid != null){
+                    wizardController.hoverableNextStep();
+                    fillNextButton(leveransNextButton);
+                } else {
+                    wizardController.unhoverNextStep();
+                }
 
                 if(kortnummer1.getText() != null && kortnummer2.getText() != null && kortnummer3.getText() != null && kortnummer4.getText() != null && dateMonth.getText() != null && dateYear.getText() != null && cvc.getText() != null) {
                     wizardController.hoverableNextStep();
-                        // wizardController.step += 1;
-                        //wizardController.fillWizardNextButton();
-                        //fillPagesNextButton();
+                    fillNextButton(betalningNextButton);
                 }else{
                     wizardController.unhoverNextStep();
                 }

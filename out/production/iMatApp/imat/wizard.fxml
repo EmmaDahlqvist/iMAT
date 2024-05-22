@@ -4,6 +4,7 @@
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Tooltip?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
@@ -75,6 +76,9 @@
             <cursor>
                <Cursor fx:constant="DEFAULT" />
             </cursor>
+            <tooltip>
+               <Tooltip fx:id="wizardBackTooltip" text="Återvänd till föregående sida" />
+            </tooltip>
       </Button>
       <Button fx:id="wizardNextButton" layoutX="996.0" layoutY="18.0" mnemonicParsing="false" onMouseClicked="#nextButtonFunc" prefHeight="44.0" prefWidth="109.0" text="Nästa" textFill="WHITE">
          <font>
@@ -87,6 +91,9 @@
             <cursor>
                <Cursor fx:constant="DEFAULT" />
             </cursor>
+            <tooltip>
+               <Tooltip fx:id="wizardNextTooltip" text="Fortsätt till nästa steg" />
+            </tooltip>
       </Button>
       <Label fx:id="varukorgLabel" layoutX="195.0" layoutY="55.0" styleClass="wizard-undertext" text="Varukorg" textFill="#2e3f98" />
       <Label fx:id="personLabel" layoutX="334.0" layoutY="55.0" styleClass="wizard-undertext" text="Personuppgifter" textFill="#2e3f98" />
