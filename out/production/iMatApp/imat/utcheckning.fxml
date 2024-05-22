@@ -9,6 +9,7 @@
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.Tooltip?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.FlowPane?>
 <?import javafx.scene.layout.Region?>
@@ -49,6 +50,9 @@
             <cursor>
                <Cursor fx:constant="HAND" />
             </cursor>
+            <tooltip>
+               <Tooltip text="Fortsätt till nästa steg" />
+            </tooltip>
          </Button>
          <AnchorPane layoutX="595.0" layoutY="120.0" prefHeight="310.0" prefWidth="438.0">
             <children>
@@ -77,6 +81,9 @@
             <cursor>
                <Cursor fx:constant="HAND" />
             </cursor>
+            <tooltip>
+               <Tooltip text="Slutför köpet om uppgifterna stämmer" />
+            </tooltip>
          </Button>
          <AnchorPane layoutX="597.0" layoutY="233.0" prefHeight="233.0" prefWidth="438.0">
             <styleClass>
@@ -241,6 +248,9 @@
             <cursor>
                <Cursor fx:constant="HAND" />
             </cursor>
+            <tooltip>
+               <Tooltip text="Fortsätt till nästa steg" />
+            </tooltip>
          </Button>
          <Label layoutX="484.0" layoutY="8.0" prefHeight="59.0" prefWidth="180.0" styleClass="rubriker-i-wizard" text="Varukorg" />
       </children>
@@ -278,6 +288,9 @@
             <cursor>
                <Cursor fx:constant="HAND" />
             </cursor>
+            <tooltip>
+               <Tooltip text="Fortsätt till nästa steg" />
+            </tooltip>
          </Button>
          <AnchorPane layoutX="595.0" layoutY="120.0" prefHeight="248.0" prefWidth="438.0">
             <styleClass>
@@ -342,6 +355,9 @@
             <cursor>
                <Cursor fx:constant="HAND" />
             </cursor>
+            <tooltip>
+               <Tooltip text="Fortsätt till nästa steg" />
+            </tooltip>
          </Button>
          <AnchorPane layoutX="584.0" layoutY="120.0" prefHeight="255.0" prefWidth="451.0">
             <styleClass>

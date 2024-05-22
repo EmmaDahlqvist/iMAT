@@ -111,8 +111,7 @@ public class WizardController extends AnchorPane {
     }
 
     public void hoverableNextStep(){
-        wizardSteps[step].getStyleClass().clear();
-        wizardSteps[step].getStyleClass().addAll("button","wizard-button","wizard-button-hoverable");
+        wizardSteps[step].getStyleClass().add("wizard-button-hoverable");
     }
 
     public void unhoverNextStep(){
@@ -129,6 +128,12 @@ public class WizardController extends AnchorPane {
         wizardNextButton.getStyleClass().clear();
         wizardNextButton.getStyleClass().addAll("button", "wizard-back-next-button", "wizard-back-next-text");
     }
+
+    public void unfillNextButton(){
+        wizardNextButton.getStyleClass().clear();
+        wizardNextButton.getStyleClass().addAll("button", "wizard-back-next-non-clickable", "wizard-back-next-text");
+
+}
 
     // Metoder för att öppna de olika stegen i utcheckningen
     public void openVarukorgPage(){
