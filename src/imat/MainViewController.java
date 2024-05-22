@@ -2,6 +2,7 @@
 package imat;
 
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
@@ -13,13 +14,14 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
+import javafx.scene.control.Tooltip;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.FlowPane;
 import javafx.util.Duration;
 import se.chalmers.cse.dat216.project.*;
 import java.util.HashMap;
 
-public class MainViewController implements Initializable {
+public class MainViewController implements Initializable, ShoppingCartListener{
 
     @FXML Label pathLabel;
     @FXML protected AnchorPane anchorHeader;
@@ -61,7 +63,11 @@ public class MainViewController implements Initializable {
 
     @FXML protected AnchorPane tidigareKopAnchor;
 
+    @FXML protected AnchorPane detailViewAnchorPane;
+    @FXML protected AnchorPane detailViewParentAnchorPane;
+
     private HashMap<Integer, ProductCard> productCardHashMap;
+    private HashMap<Integer, DetailedProductCard> detailedProductCardHashMap;
 
     IMatDataHandler iMatDataHandler = IMatDataHandler.getInstance();
 
@@ -69,6 +75,10 @@ public class MainViewController implements Initializable {
 
     protected UtcheckningController utcheckningController;
 
+    @FXML protected AnchorPane completionAnchor;
+
+    @FXML protected Button toUtcheckningButton;
+    @FXML protected Tooltip tooltipVarukorgPopUP;
 
     public void initialize(URL url, ResourceBundle rb) {
 
@@ -91,7 +101,9 @@ public class MainViewController implements Initializable {
 
 
 
+
 //        productCardTest.getChildren().add(productCardHashMap.get(1)); // test
+        // productCardTest.getChildren().add(detailedProductCardHashMap.get(1)); // test
 
 
 
@@ -103,6 +115,8 @@ public class MainViewController implements Initializable {
         utcheckningController = new UtcheckningController(this);
         utcheckningAnchor.getChildren().add(utcheckningController);
 
+        uppgifterController.addUppgifterListener(utcheckningController);
+
         setUpShoppingCart();
         updateVaraAvlang();
         updateTotalPrice();
@@ -113,26 +127,42 @@ public class MainViewController implements Initializable {
         this.anchorHeader.toFront();
         this.anchorMeny.toFront();
         this.varukorgPopupAnchor.toFront();
+
+        iMatDataHandler.getShoppingCart().addShoppingCartListener(this);
     }
 
+    public void backToOGPage(){
+        utcheckningAnchor.toBack();
+    }
 
     private void initProductCardHashMap()
     {
         productCardHashMap = new HashMap<Integer, ProductCard>();
+        detailedProductCardHashMap = new HashMap<Integer, DetailedProductCard>();
+
 
         for(Product product : iMatDataHandler.getProducts())
         {
+            ShoppingItem shoppingItem = new ShoppingItem(product, 0);
+            ProductCard productCard = new ProductCard(this, shoppingItem);
+            ProductCard tmpProductCard = new ProductCard(this, shoppingItem);
 
-            ProductCard productCard = new ProductCard(this, new ShoppingItem(product, 0));
+            DetailedProductCard detailedProductCard = new DetailedProductCard(this, shoppingItem, tmpProductCard);
             productCardHashMap.put(product.getProductId(), productCard);
+            detailedProductCardHashMap.put(product.getProductId(), detailedProductCard);
             iMatDataHandler.getShoppingCart().addShoppingCartListener(productCard);
+            iMatDataHandler.getShoppingCart().addShoppingCartListener(tmpProductCard);
 
         }
         for (ShoppingItem shoppingItem : iMatDataHandler.getShoppingCart().getItems())
         {
             ProductCard productCard = new ProductCard(this, shoppingItem);
+            ProductCard tmpProductCard = new ProductCard(this, shoppingItem);
+            DetailedProductCard detailedProductCard = new DetailedProductCard(this, shoppingItem, tmpProductCard);
             productCardHashMap.put(shoppingItem.getProduct().getProductId(), productCard);
+            detailedProductCardHashMap.put(shoppingItem.getProduct().getProductId(), detailedProductCard);
             iMatDataHandler.getShoppingCart().addShoppingCartListener(productCard);
+            iMatDataHandler.getShoppingCart().addShoppingCartListener(tmpProductCard);
         }
 
     }
@@ -140,6 +170,19 @@ public class MainViewController implements Initializable {
     public HashMap<Integer, ProductCard> getProductMap()
     {
         return productCardHashMap;
+    }
+
+    public HashMap<Integer, DetailedProductCard> getDetailedProductMap()
+    {
+        return detailedProductCardHashMap;
+    }
+
+    public ProductCard createProductCard(int productId)
+    {
+        ShoppingItem shoppingItem = productCardHashMap.get(productId).getShoppingItem();
+        ProductCard productCard = new ProductCard(this, shoppingItem);
+        iMatDataHandler.getShoppingCart().addShoppingCartListener(productCard);
+        return productCard;
     }
 
     protected void backToHomePage() {
@@ -161,18 +204,32 @@ public class MainViewController implements Initializable {
         uppgifterController.fillInDefaults();
     }
 
+    @FXML
+    public void startShoppingOnClick() {
+        showProductController.showProducts("Alla varor");
+    }
     private void setUpShoppingCart() {
-
     }
 
     public void showDetailPane(ProductCard productCard)
     {
         // kod för att lägga fram detailplanen
+        int index = productCard.getShoppingItem().getProduct().getProductId();
+        detailViewParentAnchorPane.toFront();
+        detailViewParentAnchorPane.setDisable(false);
+        detailViewParentAnchorPane.setVisible(true);
+        detailViewAnchorPane.getChildren().add(detailedProductCardHashMap.get(index));
+
     }
 
     public void hideDetailPane()
     {
         // kod för att ta bort detailplanen
+        detailViewParentAnchorPane.toBack();
+        detailViewParentAnchorPane.setDisable(true);
+        detailViewParentAnchorPane.setVisible(false);
+        detailViewAnchorPane.getChildren().clear();
+
     }
 
     //körs för att uppdatera vara avlång listan
@@ -212,9 +269,12 @@ public class MainViewController implements Initializable {
 
     @FXML
     public void openUtcheckning() {
-        utcheckningAnchor.toFront();
-        utcheckningController.updateVarukorgFlowpane();
-        closeVarukorg();
+        if(!iMatDataHandler.getShoppingCart().getItems().isEmpty()) {
+            utcheckningAnchor.toFront();
+            utcheckningController.updateVarukorgFlowpane();
+            closeVarukorg();
+            utcheckningController.openVarukorgPage();
+        }
     }
 
     @FXML //används i varukorgen för att kunna klicka utanför o stänga fönstret
@@ -278,4 +338,16 @@ public class MainViewController implements Initializable {
     }
 
 
+    @Override
+    public void shoppingCartChanged(CartEvent cartEvent) {
+        if(iMatDataHandler.getShoppingCart().getItems().isEmpty()) {
+            toUtcheckningButton.getStyleClass().clear();
+            toUtcheckningButton.getStyleClass().addAll("button", "till-varukogen-button-disabled");
+            tooltipVarukorgPopUP.setText("Inga varor i varukorgen");
+        } else {
+            toUtcheckningButton.getStyleClass().clear();
+            toUtcheckningButton.getStyleClass().addAll("button", "till-varukogen-button");
+            tooltipVarukorgPopUP.setText("Gå till varukorgen");
+        }
+    }
 }
