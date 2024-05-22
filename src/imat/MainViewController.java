@@ -197,6 +197,11 @@ public class MainViewController implements Initializable, ShoppingCartListener{
         this.varukorgPopupAnchor.toFront();
     }
 
+    @FXML
+    public void toStartSearchButton() {
+        backToHomePage();
+    }
+
     protected void headerMenyVarukorgToFront() {
         this.anchorHeader.toFront();
         this.anchorMeny.toFront();
