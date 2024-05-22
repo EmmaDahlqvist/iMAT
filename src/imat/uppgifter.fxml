@@ -1,10 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import java.lang.String?>
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.Tooltip?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
 <fx:root prefHeight="1024.0" prefWidth="1440.0" stylesheets="@imat_app.css" type="javafx.scene.layout.AnchorPane" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
    <children>
@@ -73,6 +76,21 @@
                   <TextField fx:id="portkod" layoutX="164.0" layoutY="247.0" styleClass="personuppgifter-textfield" AnchorPane.leftAnchor="160.0" AnchorPane.topAnchor="150.0" />
                </children></AnchorPane>
             <Label fx:id="errorMsg" alignment="TOP_LEFT" layoutX="744.0" layoutY="602.0" prefHeight="186.0" prefWidth="438.0" styleClass="error-msg" visible="false" wrapText="true" />
+            <Button layoutX="872.0" layoutY="798.0" mnemonicParsing="false" onMouseClicked="#closeButton" prefHeight="44.0" prefWidth="99.0" text="Stäng" textFill="WHITE">
+               <styleClass>
+                  <String fx:value="spara-inte-button" />
+                  <String fx:value="item-button-text" />
+               </styleClass>
+               <font>
+                  <Font size="18.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="DEFAULT" />
+               </cursor>
+               <tooltip>
+                  <Tooltip fx:id="wizardBackTooltip" text="Stäng utan att spra" />
+               </tooltip>
+            </Button>
          </children>
       </AnchorPane>
       <AnchorPane fx:id="anchorHeader" prefHeight="118.0" prefWidth="1440.0" />

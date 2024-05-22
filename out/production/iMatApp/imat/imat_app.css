@@ -78,6 +78,13 @@
     -fx-background-insets: 0;
 }
 
+.item-button-red{
+    -fx-background-color: #F17373;
+    -fx-background-radius: 30px;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.17), 10, 0, 0, 10);
+    -fx-background-insets: 0;
+}
+
 .spara-inte-button {
     -fx-background-color: #93A0CF;
     -fx-background-radius: 30px;
