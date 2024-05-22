@@ -54,7 +54,7 @@ public class ProductCard extends AnchorPane implements ShoppingCartListener
         updateShoppingItem();
 
         productNameLabel.setText(product.getName());
-        priceLabel.setText(String.format("%.2f", product.getPrice()) + " kr");
+        priceLabel.setText(String.format("%.2f", product.getPrice()) + product.getUnit());
 
         Image image = iMatDataHandler.getFXImage(product, 207, 193);
         productImage.setImage(image);
