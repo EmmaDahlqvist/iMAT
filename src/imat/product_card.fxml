@@ -44,5 +44,14 @@
          </tooltip>
       </Button>
       <TextField fx:id="numberOfItemsTextField" alignment="CENTER" layoutX="113.0" layoutY="302.0" prefHeight="36.0" prefWidth="65.0" styleClass="amount-textfield-big" text="3" />
+      <Button fx:id="infoIconButton" layoutX="231.0" layoutY="14.0" mnemonicParsing="false" onMouseClicked="#showDetailPane" prefHeight="35.0" prefWidth="35.0" text="i">
+         <styleClass>
+            <String fx:value="infoicon" />
+            <String fx:value="info-text" />
+         </styleClass>
+         <tooltip>
+            <Tooltip text="information om produkt" />
+         </tooltip>
+      </Button>
    </children>
 </fx:root>

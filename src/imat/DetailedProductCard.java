@@ -34,7 +34,7 @@ public class DetailedProductCard extends AnchorPane
     private ShoppingItem shoppingItem;
     private Product product;
     private IMatDataHandler imatDataHandler;
-
+    private ProductCard productCard;
 
     public DetailedProductCard(MainViewController parentController, ShoppingItem shoppingItem, ProductCard productCard)
     {
@@ -53,6 +53,7 @@ public class DetailedProductCard extends AnchorPane
         imatDataHandler = IMatDataHandler.getInstance();
         this.shoppingItem = shoppingItem;
         this.product = shoppingItem.getProduct();
+        this.productCard = productCard;
 
         productCardFlowPane.getChildren().add(productCard);
         initialize();
@@ -70,6 +71,11 @@ public class DetailedProductCard extends AnchorPane
 
 
 
+    }
+
+    public ProductCard getProductCard()
+    {
+        return productCard;
     }
 
     @FXML

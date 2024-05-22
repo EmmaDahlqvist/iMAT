@@ -26,6 +26,7 @@ public class ProductCard extends AnchorPane implements ShoppingCartListener
     @FXML private Button purchaseButton;
     @FXML private Button incrementButton;
     @FXML private Button decrementButton;
+    @FXML private Button infoIconButton;
 
     private ShoppingItem shoppingItem;
     private Product product;
@@ -74,6 +75,10 @@ public class ProductCard extends AnchorPane implements ShoppingCartListener
         decrementButton.setShape(new Circle(r));
         decrementButton.setMinSize(2*r, 2*r);
         decrementButton.setMaxSize(2*r, 2*r);
+
+        infoIconButton.setShape(new Circle(r));
+        infoIconButton.setMinSize(2*24, 2*24);
+        infoIconButton.setMaxSize(2*24, 2*24);
     }
 
     private void showPurchaseButton()
@@ -189,6 +194,18 @@ public class ProductCard extends AnchorPane implements ShoppingCartListener
     public void showDetailPane()
     {
         parentController.showDetailPane(this);
+    }
+
+    public void hideInfoButton()
+    {
+        infoIconButton.setDisable(true);
+        infoIconButton.setVisible(false);
+    }
+
+    public void showInfoButton()
+    {
+        infoIconButton.setDisable(false);
+        infoIconButton.setVisible(true);
     }
 
     @FXML
