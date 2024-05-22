@@ -303,6 +303,9 @@ public class MainViewController implements Initializable, ShoppingCartListener{
     @FXML private AnchorPane varukorgPopup;
 
 
+    @FXML private void goToBread() {
+        menyController.menyListItemClicked("Skafferi", "Bröd");
+    }
 
 
     private boolean firstPrepare = true;
