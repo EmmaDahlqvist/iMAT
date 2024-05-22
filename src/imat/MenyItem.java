@@ -74,6 +74,10 @@ public class MenyItem extends AnchorPane {
     @FXML
     public void buttonOnClick() {
         parentController.menyItemClicked(category);
+        if (!menyItemToggle.isSelected()) {
+            menyItemToggle.setSelected(true);
+            populateMenyListItemVBox();
+        }
     }
 
 
