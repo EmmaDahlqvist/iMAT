@@ -1,10 +1,16 @@
 package imat;
 
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.control.Button;
 import javafx.scene.shape.Circle;
@@ -16,7 +22,7 @@ public class ProductCard extends AnchorPane implements ShoppingCartListener
     @FXML private ImageView productImage;
     @FXML private Label productNameLabel;
     @FXML private Label priceLabel;
-    @FXML private Label numberOfItemsLabel;
+    @FXML private TextField numberOfItemsTextField;
     @FXML private Button purchaseButton;
     @FXML private Button incrementButton;
     @FXML private Button decrementButton;
@@ -52,6 +58,7 @@ public class ProductCard extends AnchorPane implements ShoppingCartListener
     private void initializeProduct()
     {
         updateShoppingItem();
+        updateAmountTextField();
 
         productNameLabel.setText(product.getName());
         priceLabel.setText(String.format("%.2f", product.getPrice()) + product.getUnit());
@@ -77,8 +84,8 @@ public class ProductCard extends AnchorPane implements ShoppingCartListener
         incrementButton.setOpacity(0);
         decrementButton.setDisable(true);
         decrementButton.setOpacity(0);
-        numberOfItemsLabel.setDisable(true);
-        numberOfItemsLabel.setOpacity(0);
+        numberOfItemsTextField.setDisable(true);
+        numberOfItemsTextField.setOpacity(0);
     }
 
     private void showIncrementButtons()
@@ -89,8 +96,8 @@ public class ProductCard extends AnchorPane implements ShoppingCartListener
         incrementButton.setOpacity(1);
         decrementButton.setDisable(false);
         decrementButton.setOpacity(1);
-        numberOfItemsLabel.setDisable(false);
-        numberOfItemsLabel.setOpacity(1);
+        numberOfItemsTextField.setDisable(false);
+        numberOfItemsTextField.setOpacity(1);
     }
 
     @FXML
@@ -98,7 +105,7 @@ public class ProductCard extends AnchorPane implements ShoppingCartListener
     {
         addToShoppingCart();
         showIncrementButtons();
-        numberOfItemsLabel.setText(String.valueOf((int) shoppingItem.getAmount()));
+        numberOfItemsTextField.setText(String.valueOf((int) shoppingItem.getAmount()));
     }
 
     @FXML
@@ -110,7 +117,7 @@ public class ProductCard extends AnchorPane implements ShoppingCartListener
         {
             showPurchaseButton();
         }
-        numberOfItemsLabel.setText(String.valueOf((int) shoppingItem.getAmount()));
+        numberOfItemsTextField.setText(String.valueOf((int) shoppingItem.getAmount()));
 
     }
 
@@ -156,7 +163,7 @@ public class ProductCard extends AnchorPane implements ShoppingCartListener
         else
         {
             showIncrementButtons();
-            numberOfItemsLabel.setText(String.valueOf((int) shoppingItem.getAmount()));
+            numberOfItemsTextField.setText(String.valueOf((int) shoppingItem.getAmount()));
         }
     }
 
@@ -169,7 +176,7 @@ public class ProductCard extends AnchorPane implements ShoppingCartListener
         else
         {
             showIncrementButtons();
-            numberOfItemsLabel.setText(String.valueOf((int) shoppingItem.getAmount()));
+            numberOfItemsTextField.setText(String.valueOf((int) shoppingItem.getAmount()));
         }
     }
 
@@ -184,7 +191,48 @@ public class ProductCard extends AnchorPane implements ShoppingCartListener
         parentController.showDetailPane(this);
     }
 
+    @FXML
+    private void updateAmountTextField() {
+        numberOfItemsTextField.focusedProperty().addListener(new ChangeListener<Boolean>() {
 
+            @Override
+            public void changed(ObservableValue<? extends Boolean> observableValue, Boolean aBoolean, Boolean t1) {
+                if(t1) {
+
+                } else {
+                    try { // testa om de är en int
+                        Integer value = Integer.valueOf(numberOfItemsTextField.getText());
+                        if(value >= 0) {
+                            shoppingItem.setAmount(value);
+                            iMatDataHandler.getShoppingCart().removeItem(shoppingItem);
+                            iMatDataHandler.getShoppingCart().addItem(shoppingItem);
+                        }
+                        if(value == 0) {
+                            shoppingItem.setAmount(1);
+                            removeFromShoppingCart();
+                        }
+
+                        // updateAmount();
+                        updateShoppingItem();
+                    } catch (Exception ex) {
+                        System.out.println("det är ine en int hörru");
+                        // updateAmount();
+                        updateShoppingItem();
+                    }
+                }
+
+            }
+        });
+
+        numberOfItemsTextField.setOnKeyPressed(new EventHandler<KeyEvent>() {
+            @Override
+            public void handle(KeyEvent keyEvent) {
+                if(keyEvent.getCode().equals(KeyCode.ENTER)) {
+                    incrementButton.requestFocus();
+                }
+            }
+        });
+    }
 
 
 

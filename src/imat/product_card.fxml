@@ -4,6 +4,7 @@
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.Tooltip?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -23,7 +24,7 @@
             <Tooltip text="Lägg till vara" />
          </tooltip>
       </Button>
-      <Button fx:id="decrementButton" alignment="CENTER" contentDisplay="CENTER" graphicTextGap="0.0" layoutX="52.0" layoutY="302.0" mnemonicParsing="false" onMouseClicked="#decrementNumberOfItems" styleClass="plus-minus-button" text=" - " textAlignment="CENTER">
+      <Button fx:id="decrementButton" alignment="CENTER" contentDisplay="CENTER" graphicTextGap="0.0" layoutX="67.0" layoutY="302.0" mnemonicParsing="false" onMouseClicked="#decrementNumberOfItems" styleClass="plus-minus-button" text=" - " textAlignment="CENTER">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>
@@ -31,7 +32,7 @@
             <Tooltip text="Ta bort vara" />
          </tooltip>
       </Button>
-      <Button fx:id="incrementButton" alignment="CENTER" contentDisplay="CENTER" graphicTextGap="0.0" layoutX="199.0" layoutY="302.0" mnemonicParsing="false" onMouseClicked="#incrementNumberOfItems" styleClass="plus-minus-button" text="+" textAlignment="CENTER">
+      <Button fx:id="incrementButton" alignment="CENTER" contentDisplay="CENTER" graphicTextGap="0.0" layoutX="184.0" layoutY="302.0" mnemonicParsing="false" onMouseClicked="#incrementNumberOfItems" styleClass="plus-minus-button" text="+" textAlignment="CENTER">
          <font>
             <Font name="Amiko Bold" size="12.0" />
          </font>
@@ -42,6 +43,6 @@
             <Tooltip text="Addera vara" />
          </tooltip>
       </Button>
-      <Label fx:id="numberOfItemsLabel" alignment="CENTER" layoutX="114.0" layoutY="304.0" prefHeight="34.0" prefWidth="62.0" styleClass="item-main-text" text="17 st" />
+      <TextField fx:id="numberOfItemsTextField" alignment="CENTER" layoutX="113.0" layoutY="302.0" prefHeight="36.0" prefWidth="65.0" styleClass="amount-textfield-big" text="3" />
    </children>
 </fx:root>
