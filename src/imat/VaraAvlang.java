@@ -18,6 +18,7 @@ import javafx.scene.shape.Circle;
 import se.chalmers.cse.dat216.project.*;
 
 import java.io.IOException;
+import java.math.BigDecimal;
 
 public class VaraAvlang extends AnchorPane{
 
@@ -80,7 +81,14 @@ public class VaraAvlang extends AnchorPane{
     }
 
     private void setProductPrice() {
-        this.productPrice.setText(product.getPrice() + " " + product.getUnit());
+        this.productPrice.setText(round2(product.getPrice(), 2)+ " " + product.getUnit());
+    }
+    public static float round2(double number, int scale) {
+        int pow = 10;
+        for (int i = 1; i < scale; i++)
+            pow *= 10;
+        double tmp = number * pow;
+        return ( (float) ( (int) ((tmp - (int) tmp) >= 0.5f ? tmp + 1 : tmp) ) ) / pow;
     }
     private void setProductImage() {
         this.productImage.setImage(iMatDataHandler.getFXImage(iMatDataHandler.getProduct(product.getProductId())));
@@ -98,7 +106,7 @@ public class VaraAvlang extends AnchorPane{
     }
 
     private void setTotalPrice() {
-        this.totalPrice.setText(String.valueOf(shoppingItem.getAmount()*product.getPrice() + " kr"));
+        this.totalPrice.setText(String.valueOf(round2(shoppingItem.getAmount()*product.getPrice(), 2) + " kr"));
     }
 
     @FXML

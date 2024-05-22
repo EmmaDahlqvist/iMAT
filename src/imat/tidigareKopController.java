@@ -13,6 +13,8 @@ import se.chalmers.cse.dat216.project.ShoppingItem;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
+import java.util.ListIterator;
 import java.util.concurrent.Flow;
 
 public class tidigareKopController extends AnchorPane {
@@ -51,7 +53,7 @@ public class tidigareKopController extends AnchorPane {
 
 
 
-    private void initalize() {
+    protected void initalize() {
 
         tidigareKopItemList = new ArrayList<>();
 
@@ -61,7 +63,10 @@ public class tidigareKopController extends AnchorPane {
 
 
 //        this.menuAnchor.getChildren().add(new MenyController(this.mainViewController));
-          for (Order order : iMatDataHandler.getOrders()){
+        List<Order> orders = new ArrayList<>(iMatDataHandler.getOrders());
+        orders.sort((o1, o2) -> o2.getDate().compareTo(o1.getDate()));
+
+        for (Order order : orders) {
               tidigareKopItemController itemController = new tidigareKopItemController(this.mainViewController, order);
               this.tidigareKopItemList.add(itemController);
               this.flowpane.getChildren().add(itemController);
@@ -69,6 +74,12 @@ public class tidigareKopController extends AnchorPane {
         }
 
     }
+
+//    protected void addNewOrder(Order order) {
+//        tidigareKopItemController itemController = new tidigareKopItemController(this.mainViewController, order);
+//        this.tidigareKopItemList.add(itemController);
+//        this.flowpane.getChildren().(itemController);
+//    }
 
     public void updateTidigareKop()
     {

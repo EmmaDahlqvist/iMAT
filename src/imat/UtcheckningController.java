@@ -341,12 +341,16 @@ public class UtcheckningController extends AnchorPane implements ShoppingCartLis
 
     }
 
+
     @FXML
     public void placeOrder() {
-        IMatDataHandler.getInstance().placeOrder();
-        IMatDataHandler.getInstance().getShoppingCart().clear();
+        Order order = IMatDataHandler.getInstance().placeOrder();
+        mainViewController.initProductCardHashMap();
         openCompletionPage();
         resetWizardToDefault();
+        IMatDataHandler.getInstance().shutDown();
+        mainViewController.tidigareKopController.flowpane.getChildren().clear();
+        mainViewController.tidigareKopController.initalize();
     }
 
     protected void fillInDefaults() {

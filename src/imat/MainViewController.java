@@ -50,7 +50,7 @@ public class MainViewController implements Initializable, ShoppingCartListener{
     @FXML protected AnchorPane homePageAnchor;
     @FXML private FlowPane productCardTest;
 
-    @FXML private AnchorPane uppgifterAnchor;
+    @FXML protected AnchorPane uppgifterAnchor;
 
     protected HeaderController mainHeader;
     protected HeaderController iMatButtonHeader;
@@ -80,6 +80,8 @@ public class MainViewController implements Initializable, ShoppingCartListener{
     @FXML protected Button toUtcheckningButton;
     @FXML protected Tooltip tooltipVarukorgPopUP;
 
+    protected tidigareKopController tidigareKopController;
+
     public void initialize(URL url, ResourceBundle rb) {
 
         String iMatDirectory = iMatDataHandler.imatDirectory();
@@ -106,8 +108,9 @@ public class MainViewController implements Initializable, ShoppingCartListener{
         // productCardTest.getChildren().add(detailedProductCardHashMap.get(1)); // test
 
 
+        this.tidigareKopController = new tidigareKopController(this);
 
-        this.tidigareKopAnchor.getChildren().add(new tidigareKopController(this));
+        this.tidigareKopAnchor.getChildren().add(tidigareKopController);
 
 
         uppgifterAnchor.getChildren().add(uppgifterController);
@@ -129,13 +132,15 @@ public class MainViewController implements Initializable, ShoppingCartListener{
         this.varukorgPopupAnchor.toFront();
 
         iMatDataHandler.getShoppingCart().addShoppingCartListener(this);
+
+        updateVarukorgenButton();
     }
 
     public void backToOGPage(){
         utcheckningAnchor.toBack();
     }
 
-    private void initProductCardHashMap()
+    protected void initProductCardHashMap()
     {
         productCardHashMap = new HashMap<Integer, ProductCard>();
         detailedProductCardHashMap = new HashMap<Integer, DetailedProductCard>();
@@ -242,7 +247,15 @@ public class MainViewController implements Initializable, ShoppingCartListener{
 
     //kalla den för att uppdatera totalpriset i varukorgen
     protected void updateTotalPrice() {
-        totalPrice.setText(String.valueOf(iMatDataHandler.getShoppingCart().getTotal() + " kr"));
+        totalPrice.setText(String.valueOf(round2(iMatDataHandler.getShoppingCart().getTotal(),2) + " kr"));
+    }
+
+    public static float round2(double number, int scale) {
+        int pow = 10;
+        for (int i = 1; i < scale; i++)
+            pow *= 10;
+        double tmp = number * pow;
+        return ( (float) ( (int) ((tmp - (int) tmp) >= 0.5f ? tmp + 1 : tmp) ) ) / pow;
     }
 
     @FXML //stäng varukorgen
@@ -337,9 +350,7 @@ public class MainViewController implements Initializable, ShoppingCartListener{
         homePageAnchor.toBack();
     }
 
-
-    @Override
-    public void shoppingCartChanged(CartEvent cartEvent) {
+    private void updateVarukorgenButton() {
         if(iMatDataHandler.getShoppingCart().getItems().isEmpty()) {
             toUtcheckningButton.getStyleClass().clear();
             toUtcheckningButton.getStyleClass().addAll("button", "till-varukogen-button-disabled");
@@ -349,5 +360,10 @@ public class MainViewController implements Initializable, ShoppingCartListener{
             toUtcheckningButton.getStyleClass().addAll("button", "till-varukogen-button");
             tooltipVarukorgPopUP.setText("Gå till varukorgen");
         }
+    }
+
+    @Override
+    public void shoppingCartChanged(CartEvent cartEvent) {
+        updateVarukorgenButton();
     }
 }

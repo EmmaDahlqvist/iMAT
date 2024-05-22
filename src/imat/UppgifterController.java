@@ -98,8 +98,8 @@ public class UppgifterController extends AnchorPane {
 
     @FXML
     private void saveAndClose() {
-        mainViewController.backToHomePage();
         saveUppgifter();
+        mainViewController.uppgifterAnchor.toBack();
     }
 
     protected void villDuSpara() {

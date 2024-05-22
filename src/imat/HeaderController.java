@@ -201,7 +201,9 @@ public class HeaderController extends AnchorPane implements ShoppingCartListener
 
     @FXML
     private void openUppgifter() {
-        mainViewController.openUppgifter();
+        if(!this.equals(mainViewController.withoutVarukorgHeaderUppgifter)) {
+            mainViewController.openUppgifter();
+        }
     }
 
 
