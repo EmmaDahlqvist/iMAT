@@ -207,6 +207,34 @@
     -fx-font-family: "Amiko";
 }
 
+.amount-textfield-big {
+    -fx-background-color: transparent;
+    -fx-font-size: 18px;
+    -fx-font-family: "Amiko";
+}
+
+.infoicon {
+    -fx-background-color: #5266D1;
+    -fx-background-radius: 50px;
+    -fx-border-radius: 50px;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.1), 10, 0, 0, 10);
+    -fx-background-insets: 0;
+}
+
+.infoicon:hover {
+    -fx-background-color: #6F7DEA;
+    -fx-cursor: hand;
+}
+
+.info-text {
+    -fx-font-color: #FFFFFF;
+    -fx-text-fill : #FFFFFF;
+    -fx-font-size: 20px;
+    -fx-font-family: "Amiko";
+    -fx-font-weight: bold;
+
+}
+
 .trettitvopx {
     -fx-font-size: 32px;
     -fx-font-family: "Amiko";

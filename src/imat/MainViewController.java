@@ -228,6 +228,7 @@ public class MainViewController implements Initializable, ShoppingCartListener{
         detailViewParentAnchorPane.toFront();
         detailViewParentAnchorPane.setDisable(false);
         detailViewParentAnchorPane.setVisible(true);
+        detailedProductCardHashMap.get(index).getProductCard().hideInfoButton();
         detailViewAnchorPane.getChildren().add(detailedProductCardHashMap.get(index));
 
     }
@@ -239,7 +240,6 @@ public class MainViewController implements Initializable, ShoppingCartListener{
         detailViewParentAnchorPane.setDisable(true);
         detailViewParentAnchorPane.setVisible(false);
         detailViewAnchorPane.getChildren().clear();
-
     }
 
     //körs för att uppdatera vara avlång listan
