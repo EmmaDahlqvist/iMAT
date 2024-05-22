@@ -140,6 +140,11 @@ public class UppgifterController extends AnchorPane {
 
     private Customer customer = iMatDataHandler.getCustomer();
 
+
+    @FXML
+    private void closeButton() {
+        mainViewController.uppgifterAnchor.toBack();
+    }
     private CreditCard creditCard = iMatDataHandler.getCreditCard();
     protected void fillInDefaults() {
         if(customer.getFirstName() != null) {

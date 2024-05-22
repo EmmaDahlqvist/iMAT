@@ -302,34 +302,36 @@ public class MainViewController implements Initializable, ShoppingCartListener{
 
     private boolean firstPrepare = true;
     protected void prepareSlideMenuAnimation(Button closeButton, Button openButton) {
-        TranslateTransition openNav=new TranslateTransition(new Duration(350), varukorgPopup);
+        TranslateTransition openNav = new TranslateTransition(new Duration(350), varukorgPopup);
         openNav.setToX(0);
-        TranslateTransition closeNav=new TranslateTransition(new Duration(350), varukorgPopup);
+        TranslateTransition closeNav = new TranslateTransition(new Duration(350), varukorgPopup);
 
-        if(firstPrepare) {
+        if (firstPrepare) {
             varukorgPopup.setTranslateX(554); //behöver ändras första gången
             firstPrepare = false;
         }
 
-        closeButton.setOnAction((ActionEvent evt) ->{
-            if(!(varukorgPopup.getTranslateX() != 0)) {
+        closeButton.setOnAction((ActionEvent evt) -> {
+            if (!(varukorgPopup.getTranslateX() != 0)) {
                 closeNav.setToX(+(varukorgPopup.getWidth()));
                 closeNav.setOnFinished(event -> closeVarukorg());
                 closeNav.play();
             }
-        }) ;
+        });
 
-        if (openButton != null){
-            openButton.setOnAction((ActionEvent evt)->{
+        if (openButton != null) {
+            openButton.setOnAction((ActionEvent evt) -> {
                 System.out.println(varukorgPopup.getTranslateX());
                 openVarukorg();
-                if(varukorgPopup.getTranslateX()!=0){
+                if (varukorgPopup.getTranslateX() != 0) {
                     System.out.println("opening");
                     openVarukorg();
                     openNav.play();
                 }
-        });
-    }}
+            });
+
+        }
+    }
 
 
     protected void sokPageToFront(){
