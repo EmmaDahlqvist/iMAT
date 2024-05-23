@@ -108,10 +108,10 @@ public class UtcheckningController extends AnchorPane implements ShoppingCartLis
 
         //fillInDefaults();
 
-        kortnummerFocus(kortnummer1, kortnummer2);
-        kortnummerFocus(kortnummer2, kortnummer3);
-        kortnummerFocus(kortnummer3, kortnummer4);
-        kortnummerFocus(kortnummer4, dateMonth);
+//        kortnummerFocus(kortnummer1, kortnummer2);
+//        kortnummerFocus(kortnummer2, kortnummer3);
+//        kortnummerFocus(kortnummer3, kortnummer4);
+//        kortnummerFocus(kortnummer4, dateMonth);
 
         monthYearFocus(dateMonth, dateYear);
         monthYearFocus(dateYear, cvc);
@@ -230,6 +230,7 @@ public class UtcheckningController extends AnchorPane implements ShoppingCartLis
     @FXML
     public void openVarukorgPage(){
         if(!IMatDataHandler.getInstance().getShoppingCart().getItems().isEmpty()) {
+            fillInDefaults();
             wizardController.step = 0;
             wizardController.wizardNextButton.setVisible(true);
             wizardController.hoverableNextStep(wizardController.wizardStepTwoButton);
@@ -258,7 +259,6 @@ public class UtcheckningController extends AnchorPane implements ShoppingCartLis
     public void openPersonuppgifterPage(){
         wizardController.wizardNextButton.setVisible(true);
         if (!IMatDataHandler.getInstance().getShoppingCart().getItems().isEmpty()) {
-            fillInDefaults();
             wizardController.step = 1;
             wizardController.fillWizardStep(wizardController.wizardStepTwoButton);
             anchorHeader.getChildren().clear();
@@ -346,7 +346,7 @@ public class UtcheckningController extends AnchorPane implements ShoppingCartLis
     public void fillNextButton(Button button){
         button.getStyleClass().clear();
         button.getStyleClass().addAll("button", "wizard-back-next-button", "wizard-back-next-text");
-        System.out.println("printing the next button: " + button.getText());
+        //System.out.println("printing the next button: " + button.getText());
     }
 
     public void resetWizardToDefault() {
@@ -449,6 +449,7 @@ public class UtcheckningController extends AnchorPane implements ShoppingCartLis
                     try { // testa om de är en int
                         Integer value = Integer.valueOf(textField.getText());
                         if (value >= 1000) { //4siffrigt
+
                             nextTextField.requestFocus();
                         }
                     } catch (Exception ex) {}
@@ -462,6 +463,49 @@ public class UtcheckningController extends AnchorPane implements ShoppingCartLis
         field.setOnKeyReleased(new EventHandler<KeyEvent>() {
             @Override
             public void handle(KeyEvent keyEvent) {
+
+                if(((keyEvent.getCode().isDigitKey()) && kortnummer1.isFocused())) {
+                    try { // testa om de är en int
+                        Integer value = Integer.valueOf(kortnummer1.getText());
+                        if (value >= 1000) { //4siffrigt
+
+                            kortnummer2.requestFocus();
+                        }
+                    } catch (Exception ex) {}
+                }
+
+                if(((keyEvent.getCode().isDigitKey()) && kortnummer2.isFocused())) {
+                    try { // testa om de är en int
+                        Integer value = Integer.valueOf(kortnummer2.getText());
+                        if (value >= 1000) { //4siffrigt
+
+                            kortnummer3.requestFocus();
+                        }
+                    } catch (Exception ex) {}
+                }
+
+                if(((keyEvent.getCode().isDigitKey()) && kortnummer3.isFocused())) {
+                    try { // testa om de är en int
+                        Integer value = Integer.valueOf(kortnummer3.getText());
+                        if (value >= 1000) { //4siffrigt
+
+                            kortnummer4.requestFocus();
+                        }
+                    } catch (Exception ex) {}
+                }
+
+                if(((keyEvent.getCode().isDigitKey()) && kortnummer4.isFocused())) {
+                    try { // testa om de är en int
+                        Integer value = Integer.valueOf(kortnummer4.getText());
+                        if (value >= 1000) { //4siffrigt
+
+                            dateMonth.requestFocus();
+                        }
+                    } catch (Exception ex) {}
+                }
+
+
+
                 //kortnummerFocus(kortnummer1, kortnummer2, keyEvent);
                 //kortnummerFocus(kortnummer2, kortnummer3, keyEvent);
                 //kortnummerFocus(kortnummer3, kortnummer4, keyEvent);
