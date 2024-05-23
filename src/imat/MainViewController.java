@@ -2,9 +2,7 @@
 package imat;
 
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.ResourceBundle;
+import java.util.*;
 
 import javafx.animation.TranslateTransition;
 import javafx.event.ActionEvent;
@@ -19,7 +17,6 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.FlowPane;
 import javafx.util.Duration;
 import se.chalmers.cse.dat216.project.*;
-import java.util.HashMap;
 
 public class MainViewController implements Initializable, ShoppingCartListener{
 
@@ -245,9 +242,23 @@ public class MainViewController implements Initializable, ShoppingCartListener{
     //körs för att uppdatera vara avlång listan
     protected void updateVaraAvlang() {
         varaAvlangFlowPane.getChildren().clear();
-        for (ShoppingItem shoppingItem : iMatDataHandler.getShoppingCart().getItems()) {
+        for (ShoppingItem shoppingItem : reverseArrayList(iMatDataHandler.getShoppingCart().getItems())) {
             varaAvlangFlowPane.getChildren().add(new VaraAvlang(shoppingItem, this));
         }
+    }
+
+    private ArrayList<ShoppingItem> reverseArrayList(List<ShoppingItem> alist)
+    {
+        // Arraylist for storing reversed elements
+        ArrayList<ShoppingItem> revArrayList = new ArrayList<ShoppingItem>();
+        for (int i = alist.size() - 1; i >= 0; i--) {
+
+            // Append the elements in reverse order
+            revArrayList.add(alist.get(i));
+        }
+
+        // Return the reversed arraylist
+        return revArrayList;
     }
 
     //kalla den för att uppdatera totalpriset i varukorgen
