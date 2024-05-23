@@ -15,6 +15,8 @@ import se.chalmers.cse.dat216.project.Product;
 import se.chalmers.cse.dat216.project.ShoppingItem;
 
 import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Locale;
 
 public class tidigareKopItemController extends AnchorPane {
 
@@ -60,9 +62,11 @@ public class tidigareKopItemController extends AnchorPane {
     private void initalize(Order order) {
         productCardCarousel.setOrientation(Orientation.HORIZONTAL);
 
-        String dateStr = order.getDate().toString();
-        String formattedDate = dateStr.substring(0, dateStr.length() - 13);
-        datumLabel.setText(formattedDate);
+        SimpleDateFormat sdf = new SimpleDateFormat("EEEE dd MMMM HH:mm", new Locale("sv", "SE"));
+        String formattedDate = sdf.format(order.getDate());
+int monthStart = formattedDate.indexOf(' ', formattedDate.indexOf(' ') + 1) + 1;
+formattedDate = formattedDate.substring(0, 1).toUpperCase() + formattedDate.substring(1, monthStart) + formattedDate.substring(monthStart, monthStart + 1).toUpperCase() + formattedDate.substring(monthStart + 1);
+datumLabel.setText(formattedDate);
         int price = 0;
 
 
@@ -91,7 +95,6 @@ public class tidigareKopItemController extends AnchorPane {
         });
 
 
-        //TODO gör så att den öppnas vid klick av tidigare köp
 
 
 //        this.productCardCarousel.getChildren().add(new ProductScrollpaneController(
