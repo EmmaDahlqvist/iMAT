@@ -4,9 +4,15 @@
       <root url="file://$USER_HOME$/java_libraries/javafx-sdk-22.0.1/lib" />
       <root url="file://$USER_HOME$/java_libraries/javafx-sdk-22.0.1/lib" />
       <root url="file://$USER_HOME$/java_libraries/javafx-sdk-22.0.1/lib" />
+      <root url="file://$USER_HOME$/java_libraries/javafx-sdk-22.0.1/lib" />
+      <root url="file://$USER_HOME$/java_libraries/javafx-sdk-22.0.1/lib" />
+      <root url="file://$USER_HOME$/java_libraries/javafx-sdk-22.0.1/lib" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />
+    <jarDirectory url="file://$USER_HOME$/java_libraries/javafx-sdk-22.0.1/lib" recursive="false" />
+    <jarDirectory url="file://$USER_HOME$/java_libraries/javafx-sdk-22.0.1/lib" recursive="false" />
+    <jarDirectory url="file://$USER_HOME$/java_libraries/javafx-sdk-22.0.1/lib" recursive="false" />
     <jarDirectory url="file://$USER_HOME$/java_libraries/javafx-sdk-22.0.1/lib" recursive="false" />
     <jarDirectory url="file://$USER_HOME$/java_libraries/javafx-sdk-22.0.1/lib" recursive="false" />
     <jarDirectory url="file://$USER_HOME$/java_libraries/javafx-sdk-22.0.1/lib" recursive="false" />

@@ -4,9 +4,11 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
 import javafx.scene.control.ToggleButton;
+import javafx.scene.control.Tooltip;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.VBox;
+import javafx.util.Duration;
 import se.chalmers.cse.dat216.project.ProductCategory;
 
 import java.io.IOException;
@@ -18,6 +20,8 @@ public class MenyItem extends AnchorPane {
     @FXML VBox menyListItemsVBox;
     @FXML ToggleButton menyItemToggle;
     @FXML Button menyItemButton;
+    @FXML Tooltip toggleArrowTooltip;
+    @FXML Tooltip menyButtonTooltip;
 
     private MenyController parentController;
     private String category;
@@ -50,6 +54,7 @@ public class MenyItem extends AnchorPane {
         }
 
         this.menyItemButton.setText(category);
+        this.toggleArrowTooltip.setShowDelay(Duration.seconds(0.01));
 //        populateMenyListItemVBox();
     }
 
@@ -66,14 +71,21 @@ public class MenyItem extends AnchorPane {
     public void toggleOnClick() {
         if (menyItemToggle.isSelected()) {
             populateMenyListItemVBox();
+            toggleArrowTooltip.setText("Göm underkategorier");
         } else {
             clearMenyListItemVBox();
+            toggleArrowTooltip.setText("Visa underkategorier");
         }
     }
 
     @FXML
     public void buttonOnClick() {
         parentController.menyItemClicked(category);
+        if (!menyItemToggle.isSelected()) {
+            menyItemToggle.setSelected(true);
+            populateMenyListItemVBox();
+            toggleArrowTooltip.setText("Göm underkategorier");
+        }
     }
 
 

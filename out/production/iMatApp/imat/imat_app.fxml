@@ -11,6 +11,7 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.FlowPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.shape.Rectangle?>
 
@@ -22,32 +23,19 @@
       <AnchorPane fx:id="uppgifterAnchor" prefHeight="1024.0" prefWidth="1440.0" styleClass="background-color" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
       <AnchorPane fx:id="sokResultatAnchor" layoutY="118.0" prefHeight="906.0" prefWidth="1440.0" styleClass="background-color" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="118.0">
          <children>
+            <HBox alignment="CENTER_LEFT" layoutX="290.0" layoutY="22.0">
+               <children>
+                  <Button mnemonicParsing="false" onMouseClicked="#toStartSearchButton" text="Start &gt;">
+                     <styleClass>
+                        <String fx:value="breadCrumbButton" />
+                        <String fx:value="hoverable-button-pointer" />
+                     </styleClass>
+                  </Button>
+                  <Label styleClass="breadCrumbText" text="Sökresultat" />
+               </children>
+            </HBox>
             <AnchorPane fx:id="searchAnchor" layoutX="384.0" layoutY="206.0" prefHeight="829.0" prefWidth="958.0" styleClass="background-color" />
             <Label fx:id="sokResultatLabel" layoutX="373.0" layoutY="107.0" styleClass="sok-resultat-kategori-label" />
-         </children>
-      </AnchorPane>
-      <AnchorPane fx:id="homePageAnchor" layoutY="-9.0" prefHeight="1024.0" prefWidth="1440.0" styleClass="background-color" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-         <children>
-
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#5266d0" height="350.0" layoutX="404.0" layoutY="148.0" stroke="#2e3f98" strokeType="INSIDE" width="980.0" />
-            <Label layoutX="411.0" layoutY="156.0" prefHeight="76.0" prefWidth="702.0" styleClass="big-title-white" text="Olja, kraften bakom rörelse" />
-            <ImageView fitHeight="176.0" fitWidth="143.0" layoutX="411.0" layoutY="315.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@fxmlPictures/feature_asset_1.png" />
-               </image>
-            </ImageView>
-            <ImageView fitHeight="381.0" fitWidth="475.0" layoutX="909.0" layoutY="133.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@fxmlPictures/feature_asset_2.png" />
-               </image>
-            </ImageView>
-            <Button fx:id="beginShoppingButton" layoutX="404.0" layoutY="562.0" mnemonicParsing="false" onMouseClicked="#startShoppingOnClick" prefHeight="99.0" prefWidth="980.0" text="Börja handla">
-               <styleClass>
-                  <String fx:value="big-button" />
-                  <String fx:value="title-text" />
-               </styleClass>
-            </Button>
-            <FlowPane fx:id="productCardTest" layoutX="39.0" layoutY="167.0" prefHeight="474.0" prefWidth="342.0" />
          </children>
       </AnchorPane>
       <AnchorPane fx:id="anchorHeader" prefHeight="113.0" prefWidth="1437.0" />
@@ -95,6 +83,28 @@
       <AnchorPane fx:id="detailViewParentAnchorPane" onMouseClicked="#hideDetailPane" prefHeight="1024.0" prefWidth="1440.0" styleClass="transp-varukorg-pane">
          <children>
             <AnchorPane fx:id="detailViewAnchorPane" layoutX="351.0" layoutY="254.0" onMouseClicked="#mouseTrap" prefHeight="463.0" prefWidth="734.0" />
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="homePageAnchor" layoutY="-9.0" prefHeight="1024.0" prefWidth="1440.0" styleClass="background-color" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <Button fx:id="beginShoppingButton" layoutX="366.0" layoutY="562.0" mnemonicParsing="false" onMouseClicked="#startShoppingOnClick" prefHeight="99.0" prefWidth="980.0" text="Börja handla">
+               <styleClass>
+                  <String fx:value="big-button" />
+                  <String fx:value="title-text" />
+               </styleClass>
+            </Button>
+            <AnchorPane layoutX="366.0" layoutY="148.0" onMouseClicked="#goToBread" prefHeight="350.0" prefWidth="980.0" styleClass="hoverable-button-pointer">
+               <children>
+      
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#5266d0" height="350.0" stroke="#2e3f98" strokeType="INSIDE" width="980.0" />
+                  <ImageView fitHeight="381.0" fitWidth="475.0" layoutX="498.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@resources/baguette.png" />
+                     </image>
+                  </ImageView>
+                  <Label alignment="TOP_CENTER" layoutX="14.0" layoutY="94.0" prefHeight="164.0" prefWidth="540.0" styleClass="big-title-white" text="Ett bröd om dagen är bra för magen" wrapText="true" />
+               </children>
+            </AnchorPane>
          </children>
       </AnchorPane>
    </children>
