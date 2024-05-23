@@ -693,3 +693,10 @@
     -fx-text-fill: #ffffff;
     -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.15), 5, 0, 0, 5);
 }
+
+.confirmation-change-button:hover{
+    -fx-background-color: #6877E4;
+    -fx-border-radius: 5px;
+    -fx-border: 2px;
+    -fx-border-color: #111111;
+}

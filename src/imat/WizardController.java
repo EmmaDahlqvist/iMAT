@@ -1,23 +1,15 @@
 package imat;
 
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
-import javafx.scene.input.KeyEvent;
+import javafx.scene.control.Tooltip;
 import javafx.scene.layout.AnchorPane;
-import se.chalmers.cse.dat216.project.CreditCard;
-import se.chalmers.cse.dat216.project.Customer;
-import se.chalmers.cse.dat216.project.IMatDataHandler;
 
 import java.io.IOException;
 
 public class WizardController extends AnchorPane {
-
-    //@FXML private AnchorPane wizardAnchor;
-    //wizardAnchor.getChildren().add(new WizardController());
 
     @FXML
     protected Button wizardBackButton;
@@ -45,9 +37,12 @@ public class WizardController extends AnchorPane {
     @FXML
     protected Label confirmLabel;
 
+    @FXML protected Tooltip wizardBackTooltip;
+    @FXML protected Tooltip wizardNextTooltip;
+
 
     public Button[] wizardSteps;
-    public int step = 1;
+    public int step = 0;
 
     private UtcheckningController utcheckningController;
 
@@ -64,19 +59,16 @@ public class WizardController extends AnchorPane {
         }
 
         //lägg till wizard-knapparna i listan
-        wizardSteps = new Button[5];
-        wizardSteps[0] = wizardStepOneButton;
-        wizardSteps[1] = wizardStepTwoButton;
-        wizardSteps[2] = wizardStepThreeButton;
-        wizardSteps[3] = wizardStepFourButton;
-        wizardSteps[4] = wizardStepFiveButton;
+        //wizardSteps = new Button[5];
+        //wizardSteps[0] = wizardStepOneButton;
+        //wizardSteps[1] = wizardStepTwoButton;
+        //wizardSteps[2] = wizardStepThreeButton;
+        //wizardSteps[3] = wizardStepFourButton;
+        //wizardSteps[4] = wizardStepFiveButton;
 
         //kod som gör nästa-knappen icke-klickbar
-        wizardNextButton.getStyleClass().clear(); //tar bort allt eeeeeeh
+        wizardNextButton.getStyleClass().clear();
         wizardNextButton.getStyleClass().addAll("button", "wizard-back-next-button", "wizard-back-next-text");
-
-        fillWizardCurrentAndPastSteps();
-
     }
 
     protected void resetWizardToDefault() {
@@ -100,27 +92,16 @@ public class WizardController extends AnchorPane {
         button.getStyleClass().addAll("button", "wizard-button", "wizard-button-text");
     }
 
-    public void fillWizardCurrentAndPastSteps(){
-
-        for (int i = 0; i < step; i++){
-            Button buttonToLightUp = wizardSteps[i];
-
-            buttonToLightUp.getStyleClass().clear();
-            buttonToLightUp.getStyleClass().addAll("button","wizard-button-filled","wizard-button-hoverable");
-        }
+    public void hoverableNextStep(Button button){
+        button.getStyleClass().add("wizard-button-hoverable");
     }
 
-    public void hoverableNextStep(){
-        wizardSteps[step].getStyleClass().clear();
-        wizardSteps[step].getStyleClass().addAll("button","wizard-button","wizard-button-hoverable");
+    public void unhoverNextStep(Button button){
+        button.getStyleClass().clear();
+        button.getStyleClass().addAll("button","wizard-button");
     }
 
-    public void unhoverNextStep(){
-        wizardSteps[step].getStyleClass().clear();
-        wizardSteps[step].getStyleClass().addAll("button","wizard-button");
-    }
-
-    public void fillWizardButton(Button button){
+    public void fillWizardStep(Button button){
         button.getStyleClass().clear();
         button.getStyleClass().addAll("button","wizard-button-filled","wizard-button-hoverable");
     }
@@ -129,6 +110,12 @@ public class WizardController extends AnchorPane {
         wizardNextButton.getStyleClass().clear();
         wizardNextButton.getStyleClass().addAll("button", "wizard-back-next-button", "wizard-back-next-text");
     }
+
+    public void unfillNextButton(){
+        wizardNextButton.getStyleClass().clear();
+        wizardNextButton.getStyleClass().addAll("button", "wizard-back-next-non-clickable", "wizard-back-next-text");
+
+}
 
     // Metoder för att öppna de olika stegen i utcheckningen
     public void openVarukorgPage(){
@@ -150,29 +137,29 @@ public class WizardController extends AnchorPane {
     }
 
     public void returnButtonFunc(){
-        if (step == 1){
+        if (step == 0){
             utcheckningController.mainViewController.backToOGPage();
-        } else if (step == 2) {
+        } else if (step == 1) {
             openVarukorgPage();
-        } else if (step == 3) {
+        } else if (step == 2) {
             openPersonuppgifterPage();
-        } else if (step == 4) {
+        } else if (step == 3) {
             openLeveransPage();
-        } else if (step == 5) {
+        } else if (step == 4) {
             openBetalningsPage();
         }
     }
 
     public void nextButtonFunc(){
-        if (step == 1){
+        if (step == 0){
             openPersonuppgifterPage();
-        } else if (step == 2) {
+        } else if (step == 1) {
             openLeveransPage();
-        } else if (step == 3) {
+        } else if (step == 2) {
             openBetalningsPage();
-        } else if (step == 4) {
+        } else if (step == 3) {
             openConfirmationPage();
-        } else if (step == 5) {
+        } else if (step == 4) {
             utcheckningController.openCompletionPage();
         }
     }
