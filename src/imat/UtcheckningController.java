@@ -13,11 +13,6 @@ import javafx.scene.layout.FlowPane;
 import se.chalmers.cse.dat216.project.*;
 
 import java.io.IOException;
-import java.math.BigDecimal;
-import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.util.Calendar;
-import java.util.Date;
 
 public class UtcheckningController extends AnchorPane implements ShoppingCartListener, UppgifterListener{
 
@@ -111,11 +106,12 @@ public class UtcheckningController extends AnchorPane implements ShoppingCartLis
         wizardAnchor.getChildren().add(wizardController);
         this.anchorHeader.getChildren().add(mainViewController.withoutVarukorgHeaderUtcheckning);
 
-        fillInDefaults();
+        //fillInDefaults();
 
         kortnummerFocus(kortnummer1, kortnummer2);
         kortnummerFocus(kortnummer2, kortnummer3);
         kortnummerFocus(kortnummer3, kortnummer4);
+        kortnummerFocus(kortnummer4, dateMonth);
 
         monthYearFocus(dateMonth, dateYear);
         monthYearFocus(dateYear, cvc);
@@ -126,6 +122,7 @@ public class UtcheckningController extends AnchorPane implements ShoppingCartLis
         setFocusNextButton(epostTextField, adressTextField);
         setFocusNextButton(adressTextField, postnummerTextField);
         setFocusNextButton(postnummerTextField, portkodTextField);
+        setFocusNextButton(portkodTextField, firstNameTextField);
 
         setFocusNextButton(kortnummer1, kortnummer2);
         setFocusNextButton(kortnummer2, kortnummer3);
@@ -133,6 +130,7 @@ public class UtcheckningController extends AnchorPane implements ShoppingCartLis
         setFocusNextButton(kortnummer4, dateMonth);
         setFocusNextButton(dateMonth, dateYear);
         setFocusNextButton(dateYear, cvc);
+        setFocusNextButton(cvc, kortnummer1);
         IMatDataHandler.getInstance().getShoppingCart().addShoppingCartListener(this);
 
         utcheckningNextButtons = new Button[5];
@@ -187,6 +185,12 @@ public class UtcheckningController extends AnchorPane implements ShoppingCartLis
     public void shoppingCartChanged(CartEvent evt)
     {
         updateVarukorgFlowpane();
+
+        if(IMatDataHandler.getInstance().getShoppingCart().getItems().isEmpty()) {
+            wizardController.unhoverNextStep(wizardController.wizardStepTwoButton);
+            unfillNextButton(varukorgNextButton);
+            wizardController.unfillNextButton();
+        }
     }
 
     private void addToVarukorgFlowpane(ShoppingItem shoppingItem) {
@@ -211,29 +215,32 @@ public class UtcheckningController extends AnchorPane implements ShoppingCartLis
     private Customer customer = IMatDataHandler.getInstance().getCustomer();
     private CreditCard creditCard = IMatDataHandler.getInstance().getCreditCard();
 
-    public void fillPagesNextButton(){
-        Button nextButtonToLightUp = utcheckningNextButtons[wizardController.step];
+    //public void fillPagesNextButton(){
+      //  Button nextButtonToLightUp = utcheckningNextButtons[wizardController.step];
 
-        nextButtonToLightUp.getStyleClass().clear();
-        nextButtonToLightUp.getStyleClass().addAll("button", "wizard-back-next-button", "wizard-back-next-text");
-    }
+        //nextButtonToLightUp.getStyleClass().clear();
+        //nextButtonToLightUp.getStyleClass().addAll("button", "wizard-back-next-button", "wizard-back-next-text");
+    //}
 
-    public void unfillPagesNextButton(){
-        Button nextButtonToTurnOff = utcheckningNextButtons[wizardController.step];
-
-        nextButtonToTurnOff.getStyleClass().clear();
-        nextButtonToTurnOff.getStyleClass().addAll("button", "wizard-back-next-non-clickable", "wizard-back-next-text");
+    public void unfillNextButton(Button button){
+        button.getStyleClass().clear();
+        button.getStyleClass().addAll("button", "wizard-back-next-non-clickable", "wizard-back-next-text");
     }
 
     @FXML
     public void openVarukorgPage(){
-        wizardController.wizardNextButton.setVisible(true);
-        varukorgWizardAnchor.toFront();
-        wizardController.step = 1;
-        anchorHeader.getChildren().clear();
-        anchorHeader.getChildren().add(mainViewController.withoutVarukorgHeaderUtcheckning);
-        setBold(wizardController.varukorgLabel);
-
+        if(!IMatDataHandler.getInstance().getShoppingCart().getItems().isEmpty()) {
+            wizardController.step = 0;
+            wizardController.wizardNextButton.setVisible(true);
+            wizardController.hoverableNextStep(wizardController.wizardStepTwoButton);
+            fillNextButton(varukorgNextButton);
+            wizardController.fillWizardNextButton();
+            anchorHeader.getChildren().clear();
+            anchorHeader.getChildren().add(mainViewController.withoutVarukorgHeaderUtcheckning);
+            setBold(wizardController.varukorgLabel);
+            wizardController.wizardBackTooltip.setText("Återvänd till föregående sida");
+            varukorgWizardAnchor.toFront();
+        }
     }
 
     private void setBold(Label label) {
@@ -251,47 +258,54 @@ public class UtcheckningController extends AnchorPane implements ShoppingCartLis
     public void openPersonuppgifterPage(){
         wizardController.wizardNextButton.setVisible(true);
         if (!IMatDataHandler.getInstance().getShoppingCart().getItems().isEmpty()) {
-            personuppgifterAnchor.toFront();
-            wizardController.fillWizardButton(wizardController.wizardStepTwoButton);
-            //unfill next button
-            wizardController.step = 2;
+            fillInDefaults();
+            wizardController.step = 1;
+            wizardController.fillWizardStep(wizardController.wizardStepTwoButton);
             anchorHeader.getChildren().clear();
             anchorHeader.getChildren().add(mainViewController.iMatButtonHeader);
             setBold(wizardController.personLabel);
             if (!firstNameTextField.getText().isEmpty() && !lastNameTextField.getText().isEmpty() && !phonenumberTextField.getText().isEmpty()&& !epostTextField.getText().isEmpty() && !adressTextField.getText().isEmpty() && !postnummerTextField.getText().isEmpty() && !portkodTextField.getText().isEmpty()){
                 fillNextButton(personuppgifterNextButton);
+                wizardController.hoverableNextStep(wizardController.wizardStepThreeButton);
+                wizardController.fillWizardNextButton();
+            } else {
+                wizardController.unfillNextButton();
             }
+            wizardController.wizardBackTooltip.setText("Återvänd till föregående steg");
+            personuppgifterAnchor.toFront();
         }
     }
     @FXML
     public void openLeveransPage(){
         wizardController.wizardNextButton.setVisible(true);
         //wizardController.wizardStepThreeButton.getStyleClass().add("wizard-button-hoverable");
-        if(wizardController.step >= 2 && !firstNameTextField.getText().isEmpty() && !lastNameTextField.getText().isEmpty() && !phonenumberTextField.getText().isEmpty()&& !epostTextField.getText().isEmpty() && !adressTextField.getText().isEmpty() && !postnummerTextField.getText().isEmpty() && !portkodTextField.getText().isEmpty()) {
-            leveransuppgifterAnchor.toFront();
-            wizardController.fillWizardButton(wizardController.wizardStepThreeButton);
-            //unfill next button
-            wizardController.step = 3;
+        if(wizardController.step >= 1 && !firstNameTextField.getText().isEmpty() && !lastNameTextField.getText().isEmpty() && !phonenumberTextField.getText().isEmpty()&& !epostTextField.getText().isEmpty() && !adressTextField.getText().isEmpty() && !postnummerTextField.getText().isEmpty() && !portkodTextField.getText().isEmpty()) {
+            wizardController.step = 2;
+            wizardController.fillWizardStep(wizardController.wizardStepThreeButton);
             setBold(wizardController.leveransLabel);
-            wizardController.hoverableNextStep();
+            wizardController.hoverableNextStep(wizardController.wizardStepFourButton);
+            wizardController.fillWizardNextButton();
+            leveransuppgifterAnchor.toFront();
         }
     }
 
     @FXML
     public void openBetalningsPage(){
         wizardController.wizardNextButton.setVisible(true);
-        if (wizardController.step >= 3 && leveransdag != null) { // todo: lägg till krav som checkar att man valt ett alternativ från comboboxen
-            betalningAnchor.toFront();
-            wizardController.fillWizardButton(wizardController.wizardStepFourButton);
-            //unfill next button
-            wizardController.step = 4;
+        if (wizardController.step >= 2 && leveransdag != null) { // todo: lägg till krav som checkar att man valt ett alternativ från comboboxen
+            wizardController.step = 3;
+            wizardController.fillWizardStep(wizardController.wizardStepFourButton);
             setBold(wizardController.betalaLabel);
 
             betalningTotalVarukostnadLabel.setText(String.valueOf(IMatDataHandler.getInstance().getShoppingCart().getTotal()) + "kr");
             betalningTotalKostnadLabel.setText(String.valueOf(IMatDataHandler.getInstance().getShoppingCart().getTotal() + 50) + "kr");
-            if (wizardController.step >= 4 && kortnummer1.getText() != null && kortnummer2.getText() != null && kortnummer3.getText() != null && kortnummer4.getText() != null && dateMonth.getText() != null && dateYear != null && cvc.getText() != null){
+            if (!kortnummer1.getText().isEmpty() && !kortnummer2.getText().isEmpty() && !kortnummer3.getText().isEmpty() && !kortnummer4.getText().isEmpty() && !dateMonth.getText().isEmpty() && !dateYear.getText().isEmpty() && !cvc.getText().isEmpty()){
                 fillNextButton(betalningNextButton);
+                wizardController.hoverableNextStep(wizardController.wizardStepFiveButton);
+            } else {
+                wizardController.unfillNextButton();
             }
+            betalningAnchor.toFront();
         }
 
 
@@ -299,12 +313,11 @@ public class UtcheckningController extends AnchorPane implements ShoppingCartLis
 
     @FXML
     public void openConfirmationPage(){
-        if(wizardController.step >= 4 && kortnummer1.getText() != null && kortnummer2.getText() != null && kortnummer3.getText() != null && kortnummer4.getText() != null && dateMonth.getText() != null && dateYear != null && cvc.getText() != null) {
+        if(wizardController.step >= 3 && !kortnummer1.getText().isEmpty() && !kortnummer2.getText().isEmpty() && !kortnummer3.getText().isEmpty() && !kortnummer4.getText().isEmpty() && !dateMonth.getText().isEmpty() && !dateYear.getText().isEmpty() && !cvc.getText().isEmpty()) {
+            wizardController.step = 4;
             wizardController.wizardNextButton.setVisible(false);
 
-            confirmationAnchor.toFront();
-            wizardController.fillWizardButton(wizardController.wizardStepFiveButton);
-            wizardController.step = 5;
+            wizardController.fillWizardStep(wizardController.wizardStepFiveButton);
 
             confirmationNameLabel.setText(firstNameTextField.getText() + " " + lastNameTextField.getText());
             confirmationPhoneNumberLabel.setText(phonenumberTextField.getText());
@@ -320,7 +333,7 @@ public class UtcheckningController extends AnchorPane implements ShoppingCartLis
             confirmationTotalKostnadLabel.setText(String.valueOf(IMatDataHandler.getInstance().getShoppingCart().getTotal() + 50) + "kr");
             setBold(wizardController.confirmLabel);
 
-
+            confirmationAnchor.toFront();
         }
     }
 
@@ -333,7 +346,7 @@ public class UtcheckningController extends AnchorPane implements ShoppingCartLis
     public void fillNextButton(Button button){
         button.getStyleClass().clear();
         button.getStyleClass().addAll("button", "wizard-back-next-button", "wizard-back-next-text");
-
+        System.out.println("printing the next button: " + button.getText());
     }
 
     public void resetWizardToDefault() {
@@ -411,7 +424,7 @@ public class UtcheckningController extends AnchorPane implements ShoppingCartLis
     }
 
     private void monthYearFocus(TextField textField, TextField nextTextField) {
-        textField.setOnKeyReleased(new EventHandler<KeyEvent>() {
+        textField.setOnKeyPressed(new EventHandler<KeyEvent>() {
             @Override
             public void handle(KeyEvent keyEvent) {
                 if(((keyEvent.getCode().isDigitKey()))) {
@@ -429,50 +442,64 @@ public class UtcheckningController extends AnchorPane implements ShoppingCartLis
     }
 
     private void kortnummerFocus(TextField textField, TextField nextTextField) {
-        textField.setOnKeyReleased(new EventHandler<KeyEvent>() {
+        textField.setOnKeyPressed(new EventHandler<KeyEvent>() {
             @Override
-            public void handle(KeyEvent keyEvent) {
-                if(((keyEvent.getCode().isDigitKey()))) {
+            public void handle(KeyEvent event) {
+                if(((event.getCode().isDigitKey()))) {
                     try { // testa om de är en int
                         Integer value = Integer.valueOf(textField.getText());
                         if (value >= 1000) { //4siffrigt
                             nextTextField.requestFocus();
                         }
-                    } catch (Exception ex) {
-                        System.out.println("det är ine en int hörru");
-                    }
+                    } catch (Exception ex) {}
                 }
             }
         });
+
     }
 
     private void setFocusNextButton(TextField field, TextField nextField) {
-        field.setOnKeyPressed(new EventHandler<KeyEvent>() {
+        field.setOnKeyReleased(new EventHandler<KeyEvent>() {
             @Override
             public void handle(KeyEvent keyEvent) {
+                //kortnummerFocus(kortnummer1, kortnummer2, keyEvent);
+                //kortnummerFocus(kortnummer2, kortnummer3, keyEvent);
+                //kortnummerFocus(kortnummer3, kortnummer4, keyEvent);
+
                 if (keyEvent.getCode().equals(KeyCode.ENTER)) {
                     nextField.requestFocus();
                 }
 
-                if(firstNameTextField.getText() != null && lastNameTextField.getText() != null && phonenumberTextField.getText() != null && epostTextField.getText() != null && adressTextField.getText() != null && postnummerTextField.getText() != null && portkodTextField.getText() != null){
-                    wizardController.hoverableNextStep();
+                if( wizardController.step == 1 && !firstNameTextField.getText().isEmpty() && !lastNameTextField.getText().isEmpty() && !phonenumberTextField.getText().isEmpty() && !epostTextField.getText().isEmpty() && !adressTextField.getText().isEmpty() && !postnummerTextField.getText().isEmpty() && !portkodTextField.getText().isEmpty()){
+                    wizardController.hoverableNextStep(wizardController.wizardStepThreeButton);
                     fillNextButton(personuppgifterNextButton);
-                } else {
-                    wizardController.unhoverNextStep();
+                    wizardController.fillWizardNextButton();
                 }
 
-                if(leveransdag != null && selectedLeveranstid != null){
-                    wizardController.hoverableNextStep();
+                if(wizardController.step == 2 && !leveransdag.isEmpty() && !selectedLeveranstid.isEmpty()){
+                    wizardController.hoverableNextStep(wizardController.wizardStepFourButton);
                     fillNextButton(leveransNextButton);
-                } else {
-                    wizardController.unhoverNextStep();
+                    wizardController.fillWizardNextButton();
                 }
 
-                if(kortnummer1.getText() != null && kortnummer2.getText() != null && kortnummer3.getText() != null && kortnummer4.getText() != null && dateMonth.getText() != null && dateYear.getText() != null && cvc.getText() != null) {
-                    wizardController.hoverableNextStep();
+                if(wizardController.step == 3 && !kortnummer1.getText().isEmpty() && !kortnummer2.getText().isEmpty() && !kortnummer3.getText().isEmpty() && !kortnummer4.getText().isEmpty() && !dateMonth.getText().isEmpty() && !dateYear.getText().isEmpty() && !cvc.getText().isEmpty()) {
+                    wizardController.hoverableNextStep(wizardController.wizardStepFiveButton);
                     fillNextButton(betalningNextButton);
-                }else{
-                    wizardController.unhoverNextStep();
+                    wizardController.fillWizardNextButton();
+                }
+
+                // kolla att man inte råkat ta bort en hel field i personupg
+                if( wizardController.step == 1 && (firstNameTextField.getText().isEmpty() || lastNameTextField.getText().isEmpty() || phonenumberTextField.getText().isEmpty() || epostTextField.getText().isEmpty() || adressTextField.getText().isEmpty() || postnummerTextField.getText().isEmpty() || portkodTextField.getText().isEmpty())){
+                    wizardController.unhoverNextStep(wizardController.wizardStepThreeButton);
+                    unfillNextButton(personuppgifterNextButton);
+                    wizardController.unfillNextButton();
+                }
+
+                // kolla att man inte råkat ta bort en hel field i betalning
+                if(wizardController.step == 3 && (kortnummer1.getText().isEmpty() || kortnummer2.getText().isEmpty() || kortnummer3.getText().isEmpty() || kortnummer4.getText().isEmpty() || dateMonth.getText().isEmpty() || dateYear.getText().isEmpty() || cvc.getText().isEmpty())){
+                    wizardController.unhoverNextStep(wizardController.wizardStepFiveButton);
+                    unfillNextButton(betalningNextButton);
+                    wizardController.unfillNextButton();
                 }
             }
         });
