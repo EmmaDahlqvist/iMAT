@@ -43,13 +43,10 @@ public class UtcheckningController extends AnchorPane implements ShoppingCartLis
     @FXML private ComboBox leveransdagComboBox;
 
     @FXML private RadioButton leveranstidTenRadioButton;
-    @FXML private RadioButton leveranstidElevenRadioButton;
+
     @FXML private RadioButton leveranstidTwelveRadioButton;
-    @FXML private RadioButton leveranstidOneRadioButton;
     @FXML private RadioButton leveranstidTwoRadioButton;
-    @FXML private RadioButton leveranstidThreeRadioButton;
     @FXML private RadioButton leveranstidFourRadioButton;
-    @FXML private RadioButton leveranstidFiveRadioButton;
     String selectedLeveranstid;
     String leveransdag = "Idag";
     @FXML private TextArea meddelandeTextArea;
@@ -160,13 +157,9 @@ public class UtcheckningController extends AnchorPane implements ShoppingCartLis
         ToggleGroup leveranstidToggleGroup = new ToggleGroup();
 
         leveranstidTenRadioButton.setToggleGroup(leveranstidToggleGroup);
-        leveranstidElevenRadioButton.setToggleGroup(leveranstidToggleGroup);
         leveranstidTwelveRadioButton.setToggleGroup(leveranstidToggleGroup);
-        leveranstidOneRadioButton.setToggleGroup(leveranstidToggleGroup);
         leveranstidTwoRadioButton.setToggleGroup(leveranstidToggleGroup);
-        leveranstidThreeRadioButton.setToggleGroup(leveranstidToggleGroup);
         leveranstidFourRadioButton.setToggleGroup(leveranstidToggleGroup);
-        leveranstidFiveRadioButton.setToggleGroup(leveranstidToggleGroup);
 
         leveranstidTenRadioButton.setSelected(true);
         selectedLeveranstid = leveranstidTenRadioButton.getText();
@@ -338,6 +331,9 @@ public class UtcheckningController extends AnchorPane implements ShoppingCartLis
     }
 
     public void openCompletionPage(){
+
+
+
         mainViewController.completionAnchor.toFront();
         mainViewController.completionAnchor.getChildren().add(new CompleteController(mainViewController, firstNameTextField.getText(),leveransdag, selectedLeveranstid, adressTextField.getText() ));
 
