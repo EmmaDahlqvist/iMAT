@@ -333,7 +333,7 @@
    </AnchorPane>
    <AnchorPane fx:id="leveransuppgifterAnchor" layoutX="136.0" layoutY="284.0" prefHeight="613.0" prefWidth="1140.0" styleClass="background-color">
       <children>
-         <AnchorPane layoutX="92.0" layoutY="120.0" prefHeight="310.0" prefWidth="438.0">
+         <AnchorPane layoutX="74.0" layoutY="120.0" prefHeight="310.0" prefWidth="438.0">
             <styleClass>
                <String fx:value="ruta-personuppgifter" />
                <String fx:value="personuppgifter-text" />
@@ -359,7 +359,7 @@
                <Tooltip text="Fortsätt till nästa steg" />
             </tooltip>
          </Button>
-         <AnchorPane layoutX="565.0" layoutY="120.0" prefHeight="266.0" prefWidth="530.0">
+         <AnchorPane layoutX="547.0" layoutY="120.0" prefHeight="266.0" prefWidth="530.0">
             <styleClass>
                <String fx:value="ruta-personuppgifter" />
                <String fx:value="personuppgifter-text" />
@@ -370,11 +370,11 @@
             </children>
          </AnchorPane>
          <Label layoutX="482.0" layoutY="36.0" prefHeight="59.0" prefWidth="176.0" styleClass="rubriker-i-wizard" text="Leverans" />
-         <Region layoutX="284.0" layoutY="210.0" prefHeight="196.0" prefWidth="208.0" styleClass="leveranstid-radiobutton" />
-         <RadioButton fx:id="leveranstidTenRadioButton" layoutX="303.0" layoutY="224.0" mnemonicParsing="false" styleClass="leveranstid-radiobutton" text="10:00-11:00" />
-         <RadioButton fx:id="leveranstidTwelveRadioButton" layoutX="303.0" layoutY="268.0" mnemonicParsing="false" styleClass="leveranstid-radiobutton" text="12:00-13:00" />
-         <RadioButton fx:id="leveranstidTwoRadioButton" layoutX="303.0" layoutY="312.0" mnemonicParsing="false" styleClass="leveranstid-radiobutton" text="14:00-15:00" />
-         <RadioButton fx:id="leveranstidFourRadioButton" layoutX="303.0" layoutY="356.0" mnemonicParsing="false" styleClass="leveranstid-radiobutton" text="16:00-17:00" />
+         <Region layoutX="266.0" layoutY="210.0" prefHeight="196.0" prefWidth="208.0" styleClass="leveranstid-radiobutton" />
+         <RadioButton fx:id="leveranstidTenRadioButton" layoutX="285.0" layoutY="224.0" mnemonicParsing="false" styleClass="leveranstid-radiobutton" text="10:00-11:00" />
+         <RadioButton fx:id="leveranstidTwelveRadioButton" layoutX="285.0" layoutY="268.0" mnemonicParsing="false" styleClass="leveranstid-radiobutton" text="12:00-13:00" />
+         <RadioButton fx:id="leveranstidTwoRadioButton" layoutX="285.0" layoutY="312.0" mnemonicParsing="false" styleClass="leveranstid-radiobutton" text="14:00-15:00" />
+         <RadioButton fx:id="leveranstidFourRadioButton" layoutX="285.0" layoutY="356.0" mnemonicParsing="false" styleClass="leveranstid-radiobutton" text="16:00-17:00" />
       </children>
    </AnchorPane>
 </fx:root>
