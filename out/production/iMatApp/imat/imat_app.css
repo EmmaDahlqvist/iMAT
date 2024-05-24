@@ -580,12 +580,25 @@
     -fx-font-size: 18px;
 }
 
+.personuppgifter-text-stor {
+    -fx-font-family: "Amiko";
+    -fx-font-size: 24px;
+}
+
 .personuppgifter-textfield {
     -fx-font-family: "Amiko";
     -fx-background-radius: 1px;
     -fx-background-insets: 0, 0 0 1 0;
     -fx-background-color: #B0D3F2, white;
     -fx-font-size: 16px;
+}
+
+.personuppgifter-textfield-stor {
+    -fx-font-family: "Amiko";
+    -fx-background-radius: 1px;
+    -fx-background-insets: 0, 0 0 1 0;
+    -fx-background-color: #B0D3F2, white;
+    -fx-font-size: 24px;
 }
 
 .personuppgifter-textfield-error {
@@ -607,15 +620,16 @@
 }
 
 .leveransdag-combobox{
-    -fx-font-size: 16px;
+    -fx-font-size: 26px;
     -fx-background-color: #ffffff;
     -fx-background-radius: 5px;
 }
 
 .leveranstid-radiobutton{
-    -fx-font-size: 16px;
+    -fx-font-size: 26px;
     -fx-background-color: #FFFFFF;
     -fx-background-radius: 10px;
+    -fx-font-family: "Amiko";
 }
 
 .betalning-rubrik {
@@ -699,4 +713,5 @@
     -fx-border-radius: 5px;
     -fx-border: 2px;
     -fx-border-color: #111111;
+    -fx-cursor: HAND;
 }
