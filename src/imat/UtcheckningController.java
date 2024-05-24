@@ -14,6 +14,8 @@ import se.chalmers.cse.dat216.project.*;
 
 import java.io.IOException;
 
+import static imat.MainViewController.round2;
+
 public class UtcheckningController extends AnchorPane implements ShoppingCartListener, UppgifterListener{
 
     @FXML private AnchorPane anchorHeader;
@@ -195,11 +197,11 @@ public class UtcheckningController extends AnchorPane implements ShoppingCartLis
             varukorgFlowPaneUtcheckning.getChildren().add(new VaraAvlang(shoppingItem, mainViewController));
         }
 
-        varukorgTotalVarukostnadLabel.setText(String.valueOf(IMatDataHandler.getInstance().getShoppingCart().getTotal()) + "kr");
+        varukorgTotalVarukostnadLabel.setText(String.valueOf(round2(IMatDataHandler.getInstance().getShoppingCart().getTotal() + 0, 2))+ "kr");
         if(IMatDataHandler.getInstance().getShoppingCart().getTotal() == 0) {
             varukorgTotalKostnadLabel.setText( 0 + " kr");
         } else {
-            varukorgTotalKostnadLabel.setText(String.valueOf(IMatDataHandler.getInstance().getShoppingCart().getTotal() + 50) + "kr");
+            varukorgTotalKostnadLabel.setText(String.valueOf(round2(IMatDataHandler.getInstance().getShoppingCart().getTotal() + 50, 2))+ "kr");
         }
     }
 
@@ -288,8 +290,8 @@ public class UtcheckningController extends AnchorPane implements ShoppingCartLis
             wizardController.fillWizardStep(wizardController.wizardStepFourButton);
             setBold(wizardController.betalaLabel);
 
-            betalningTotalVarukostnadLabel.setText(String.valueOf(IMatDataHandler.getInstance().getShoppingCart().getTotal()) + "kr");
-            betalningTotalKostnadLabel.setText(String.valueOf(IMatDataHandler.getInstance().getShoppingCart().getTotal() + 50) + "kr");
+            betalningTotalVarukostnadLabel.setText(String.valueOf(round2(IMatDataHandler.getInstance().getShoppingCart().getTotal() + 0, 2))+ "kr");
+            betalningTotalKostnadLabel.setText(String.valueOf(round2(IMatDataHandler.getInstance().getShoppingCart().getTotal() + 50, 2))+ "kr");
             if (!kortnummer1.getText().isEmpty() && !kortnummer2.getText().isEmpty() && !kortnummer3.getText().isEmpty() && !kortnummer4.getText().isEmpty() && !dateMonth.getText().isEmpty() && !dateYear.getText().isEmpty() && !cvc.getText().isEmpty()){
                 fillNextButton(betalningNextButton);
                 wizardController.hoverableNextStep(wizardController.wizardStepFiveButton);
@@ -320,8 +322,8 @@ public class UtcheckningController extends AnchorPane implements ShoppingCartLis
             confirmationCardNumberLabel.setText("XXXX-XXXX-" + kortnummer3.getText() + "-" + kortnummer4.getText());
             confirmationCardDateLabel.setText(dateMonth.getText() + "/" + dateYear.getText());
 
-            confirmationTotalVarukostnadLabel.setText(String.valueOf(IMatDataHandler.getInstance().getShoppingCart().getTotal())+ "kr");
-            confirmationTotalKostnadLabel.setText(String.valueOf(IMatDataHandler.getInstance().getShoppingCart().getTotal() + 50) + "kr");
+            confirmationTotalVarukostnadLabel.setText(String.valueOf(round2(IMatDataHandler.getInstance().getShoppingCart().getTotal() + 0, 2))+ "kr");
+            confirmationTotalKostnadLabel.setText(String.valueOf(round2(IMatDataHandler.getInstance().getShoppingCart().getTotal() + 50, 2)) + "kr");
             setBold(wizardController.confirmLabel);
 
             confirmationAnchor.toFront();
