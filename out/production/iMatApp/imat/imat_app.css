@@ -607,13 +607,18 @@
 }
 
 .leveransdag-combobox{
-    -fx-font-size: 16px;
+    -fx-font-size: 20px;
     -fx-background-color: #ffffff;
     -fx-background-radius: 5px;
 }
 
+.leverans-text{
+    -fx-font-size: 24px;
+    -fx-font-family: "Amiko";
+}
+
 .leveranstid-radiobutton{
-    -fx-font-size: 16px;
+    -fx-font-size: 24px;
     -fx-background-color: #FFFFFF;
     -fx-background-radius: 10px;
 }
