@@ -25,7 +25,7 @@
       <Label fx:id="priceLabel" layoutX="607.0" layoutY="10.0" style="-fx-font-family: &quot;Amiko&quot;; -fx-text-fill: #000000; -fx-font-size: 28px;" text="2456 kr" />
       <ScrollPane fx:id="scrollpane" fitToHeight="true" fitToWidth="true" hbarPolicy="ALWAYS" layoutX="-10.0" layoutY="66.0" prefHeight="377.0" prefWidth="1091.0" styleClass="background-color" vbarPolicy="NEVER">
          <content>
-            <FlowPane fx:id="productCardCarousel" hgap="60.0" prefHeight="717.0" prefWidth="1081.0" styleClass="background-color" vgap="30.0">
+            <FlowPane fx:id="productCardCarousel" hgap="50.0" prefHeight="717.0" prefWidth="1081.0" styleClass="background-color" vgap="30.0">
                <opaqueInsets>
                   <Insets left="20.0" />
                </opaqueInsets>

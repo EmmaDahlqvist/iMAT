@@ -303,6 +303,7 @@ public class MainViewController implements Initializable, ShoppingCartListener{
             utcheckningController.updateVarukorgFlowpane();
             closeVarukorg();
             utcheckningController.openVarukorgPage();
+            utcheckningController.fillInDefaults();
         }
     }
 
@@ -376,6 +377,7 @@ public class MainViewController implements Initializable, ShoppingCartListener{
             toUtcheckningButton.getStyleClass().clear();
             toUtcheckningButton.getStyleClass().addAll("button", "till-varukogen-button-disabled");
             tooltipVarukorgPopUP.setText("Inga varor i varukorgen");
+
         } else {
             toUtcheckningButton.getStyleClass().clear();
             toUtcheckningButton.getStyleClass().addAll("button", "till-varukogen-button");

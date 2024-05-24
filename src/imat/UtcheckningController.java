@@ -230,7 +230,6 @@ public class UtcheckningController extends AnchorPane implements ShoppingCartLis
     @FXML
     public void openVarukorgPage(){
         if(!IMatDataHandler.getInstance().getShoppingCart().getItems().isEmpty()) {
-            fillInDefaults();
             wizardController.step = 0;
             wizardController.wizardNextButton.setVisible(true);
             wizardController.hoverableNextStep(wizardController.wizardStepTwoButton);
