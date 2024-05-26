@@ -20,7 +20,6 @@
    <children>
       <AnchorPane fx:id="headerAnchor" layoutX="96.0" layoutY="1.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
    </children>
-   <AnchorPane fx:id="wizardAnchor" layoutX="137.0" layoutY="176.0" prefHeight="80.0" prefWidth="1140.0" />
    <AnchorPane fx:id="personuppgifterAnchor" layoutX="136.0" layoutY="284.0" prefHeight="613.0" prefWidth="1140.0" styleClass="background-color">
       <children>
          <AnchorPane layoutX="109.0" layoutY="120.0" prefHeight="310.0" prefWidth="438.0">
@@ -60,7 +59,7 @@
                <Label layoutX="141.0" layoutY="44.0" text="Adress:" />
                <Label layoutX="86.0" layoutY="107.0" text="Postnummer:" />
                <TextField fx:id="postnummerTextField" layoutX="212.0" layoutY="103.0" prefHeight="40.0" prefWidth="193.0" styleClass="personuppgifter-textfield" />
-               <Label layoutX="133.0" layoutY="168.0" text="Portkod:" />
+               <Label layoutX="55.0" layoutY="168.0" text="Portkod (valfritt):" />
                <TextField fx:id="portkodTextField" layoutX="213.0" layoutY="164.0" prefHeight="40.0" prefWidth="193.0" styleClass="personuppgifter-textfield" />
             </children>
             <styleClass>
@@ -71,107 +70,7 @@
          <Label layoutX="438.0" layoutY="36.0" prefHeight="59.0" prefWidth="314.0" styleClass="rubriker-i-wizard" text="Personuppgifter" />
       </children>
    </AnchorPane>
-   <AnchorPane fx:id="confirmationAnchor" layoutX="136.0" layoutY="284.0" prefHeight="613.0" prefWidth="1140.0" styleClass="background-color">
-      <children>
-         <Label layoutX="504.0" layoutY="8.0" prefHeight="59.0" prefWidth="135.0" styleClass="rubriker-i-wizard" text="Slutför" />
-         <Button fx:id="confirmationButton" layoutX="431.0" layoutY="504.0" mnemonicParsing="false" onMouseClicked="#placeOrder" prefHeight="83.0" prefWidth="278.0" style="-fx-font-size: 30px;" styleClass="wizard-back-next-button" text="Slutför köp" textFill="WHITE">
-            <font>
-               <Font size="18.0" />
-            </font>
-            <cursor>
-               <Cursor fx:constant="HAND" />
-            </cursor>
-            <tooltip>
-               <Tooltip text="Slutför köpet om uppgifterna stämmer" />
-            </tooltip>
-         </Button>
-         <AnchorPane layoutX="597.0" layoutY="233.0" prefHeight="233.0" prefWidth="438.0">
-            <styleClass>
-               <String fx:value="ruta-personuppgifter" />
-               <String fx:value="personuppgifter-text" />
-            </styleClass>
-            <children>
-               <Label layoutX="31.0" layoutY="15.0" styleClass="betalning-rubrik" text="Summering">
-                  <font>
-                     <Font name="System Bold" size="12.0" />
-                  </font>
-               </Label>
-               <Label layoutX="31.0" layoutY="68.0" styleClass="betalning-vanlig-text" text="Total varukostnad" />
-               <Label layoutX="31.0" layoutY="115.0" styleClass="betalning-vanlig-text" text="Leveransavgift" />
-               <Label layoutX="28.0" layoutY="172.0" styleClass="betalning-rubrik" text="Totalt">
-                  <font>
-                     <Font name="System Bold" size="12.0" />
-                  </font>
-               </Label>
-               <Label fx:id="confirmationTotalKostnadLabel" alignment="CENTER_RIGHT" layoutX="279.0" layoutY="173.0" prefHeight="37.0" prefWidth="131.0" styleClass="betalning-rubrik" text="999kr">
-                  <font>
-                     <Font name="System Bold" size="12.0" />
-                  </font>
-               </Label>
-               <Line endX="402.0" layoutX="18.0" layoutY="163.0" />
-               <Label layoutX="364.0" layoutY="118.0" styleClass="betalning-vanlig-text" text="50kr">
-                  <font>
-                     <Font name="System Bold" size="12.0" />
-                  </font>
-               </Label>
-               <Label fx:id="confirmationTotalVarukostnadLabel" alignment="CENTER_RIGHT" layoutX="298.0" layoutY="68.0" prefHeight="30.0" prefWidth="111.0" styleClass="betalning-vanlig-text" text="949kr">
-                  <font>
-                     <Font name="System Bold" size="12.0" />
-                  </font>
-               </Label>
-            </children>
-         </AnchorPane>
-         <AnchorPane layoutX="597.0" layoutY="79.0" prefHeight="127.0" prefWidth="438.0">
-            <styleClass>
-               <String fx:value="ruta-personuppgifter" />
-               <String fx:value="personuppgifter-text" />
-            </styleClass>
-            <children>
-               <Label layoutX="31.0" layoutY="20.0" styleClass="betalning-rubrik" text="Betalning">
-                  <font>
-                     <Font name="System Bold" size="12.0" />
-                  </font>
-               </Label>
-               <Label fx:id="confirmationCardNumberLabel" layoutX="31.0" layoutY="74.0" styleClass="betalning-vanlig-text" text="XXXX-XXXX-1234-5678" />
-               <Label fx:id="confirmationCardDateLabel" layoutX="311.0" layoutY="74.0" styleClass="betalning-vanlig-text" text="04/25" />
-               <Button fx:id="changeBetalningButton" layoutX="351.0" layoutY="14.0" mnemonicParsing="false" onMouseClicked="#openBetalningsPage" styleClass="confirmation-change-button" text="Ändra" />
-            </children>
-         </AnchorPane>
-         <AnchorPane layoutX="116.0" layoutY="80.0" prefHeight="233.0" prefWidth="438.0">
-            <styleClass>
-               <String fx:value="ruta-personuppgifter" />
-               <String fx:value="personuppgifter-text" />
-            </styleClass>
-            <children>
-               <Label layoutX="31.0" layoutY="20.0" styleClass="betalning-rubrik" text="Personuppgifter">
-                  <font>
-                     <Font name="System Bold" size="12.0" />
-                  </font>
-               </Label>
-               <Label fx:id="confirmationNameLabel" layoutX="31.0" layoutY="73.0" prefHeight="30.0" prefWidth="315.0" styleClass="betalning-vanlig-text" text="Shifaa Mahmoud" />
-               <Button fx:id="changePersonuppgifterButton" layoutX="355.0" layoutY="14.0" mnemonicParsing="false" onMouseClicked="#openPersonuppgifterPage" styleClass="confirmation-change-button" text="Ändra" />
-               <Label fx:id="confirmationPhoneNumberLabel" layoutX="31.0" layoutY="108.0" prefHeight="30.0" prefWidth="302.0" styleClass="betalning-vanlig-text" text="071 23 456 78" />
-               <Label fx:id="confirmationEpostLabel" layoutX="31.0" layoutY="143.0" prefHeight="30.0" prefWidth="317.0" styleClass="betalning-vanlig-text" text="rune@gmail.com" />
-               <Label fx:id="confirmationAdressLabel" layoutX="31.0" layoutY="178.0" prefHeight="30.0" prefWidth="317.0" styleClass="betalning-vanlig-text" text="peppargatan 3" />
-            </children>
-         </AnchorPane>
-         <AnchorPane layoutX="116.0" layoutY="339.0" prefHeight="127.0" prefWidth="438.0">
-            <styleClass>
-               <String fx:value="ruta-personuppgifter" />
-               <String fx:value="personuppgifter-text" />
-            </styleClass>
-            <children>
-               <Label layoutX="31.0" layoutY="20.0" styleClass="betalning-rubrik" text="Leverans">
-                  <font>
-                     <Font name="System Bold" size="12.0" />
-                  </font>
-               </Label>
-               <Label fx:id="confirmationLeveransLabel" layoutX="31.0" layoutY="74.0" styleClass="betalning-vanlig-text" text="Imorgon 17:00-17:30" />
-               <Button fx:id="changeLeveransButton" layoutX="351.0" layoutY="14.0" mnemonicParsing="false" onMouseClicked="#openLeveransPage" styleClass="confirmation-change-button" text="Ändra" />
-            </children>
-         </AnchorPane>
-      </children>
-   </AnchorPane>
+   <AnchorPane fx:id="wizardAnchor" layoutX="137.0" layoutY="176.0" prefHeight="80.0" prefWidth="1140.0" />
    <AnchorPane fx:id="varukorgWizardAnchor" layoutX="136.0" layoutY="284.0" prefHeight="613.0" prefWidth="1140.0" styleClass="background-color">
       <children>
          <AnchorPane layoutX="631.0" layoutY="68.0" prefHeight="233.0" prefWidth="438.0">
@@ -375,6 +274,116 @@
          <RadioButton fx:id="leveranstidTwelveRadioButton" layoutX="285.0" layoutY="268.0" mnemonicParsing="false" styleClass="leveranstid-radiobutton" text="12:00-13:00" />
          <RadioButton fx:id="leveranstidTwoRadioButton" layoutX="285.0" layoutY="312.0" mnemonicParsing="false" styleClass="leveranstid-radiobutton" text="14:00-15:00" />
          <RadioButton fx:id="leveranstidFourRadioButton" layoutX="285.0" layoutY="356.0" mnemonicParsing="false" styleClass="leveranstid-radiobutton" text="16:00-17:00" />
+      </children>
+   </AnchorPane>
+   <AnchorPane fx:id="confirmationAnchor" layoutX="136.0" layoutY="284.0" prefHeight="613.0" prefWidth="1140.0" styleClass="background-color">
+      <children>
+         <Label layoutX="504.0" layoutY="8.0" prefHeight="59.0" prefWidth="135.0" styleClass="rubriker-i-wizard" text="Slutför" />
+         <Button fx:id="confirmationButton" layoutX="431.0" layoutY="504.0" mnemonicParsing="false" onMouseClicked="#placeOrder" prefHeight="83.0" prefWidth="278.0" style="-fx-font-size: 30px;" styleClass="wizard-back-next-button" text="Slutför köp" textFill="WHITE">
+            <font>
+               <Font size="18.0" />
+            </font>
+            <cursor>
+               <Cursor fx:constant="HAND" />
+            </cursor>
+            <tooltip>
+               <Tooltip text="Slutför köpet om uppgifterna stämmer" />
+            </tooltip>
+         </Button>
+         <AnchorPane layoutX="597.0" layoutY="233.0" prefHeight="233.0" prefWidth="438.0">
+            <styleClass>
+               <String fx:value="ruta-personuppgifter" />
+               <String fx:value="personuppgifter-text" />
+            </styleClass>
+            <children>
+               <Label layoutX="31.0" layoutY="15.0" styleClass="betalning-rubrik" text="Summering">
+                  <font>
+                     <Font name="System Bold" size="12.0" />
+                  </font>
+               </Label>
+               <Label layoutX="31.0" layoutY="68.0" styleClass="betalning-vanlig-text" text="Total varukostnad" />
+               <Label layoutX="31.0" layoutY="115.0" styleClass="betalning-vanlig-text" text="Leveransavgift" />
+               <Label layoutX="28.0" layoutY="172.0" styleClass="betalning-rubrik" text="Totalt">
+                  <font>
+                     <Font name="System Bold" size="12.0" />
+                  </font>
+               </Label>
+               <Label fx:id="confirmationTotalKostnadLabel" alignment="CENTER_RIGHT" layoutX="279.0" layoutY="173.0" prefHeight="37.0" prefWidth="131.0" styleClass="betalning-rubrik" text="999kr">
+                  <font>
+                     <Font name="System Bold" size="12.0" />
+                  </font>
+               </Label>
+               <Line endX="402.0" layoutX="18.0" layoutY="163.0" />
+               <Label layoutX="364.0" layoutY="118.0" styleClass="betalning-vanlig-text" text="50kr">
+                  <font>
+                     <Font name="System Bold" size="12.0" />
+                  </font>
+               </Label>
+               <Label fx:id="confirmationTotalVarukostnadLabel" alignment="CENTER_RIGHT" layoutX="298.0" layoutY="68.0" prefHeight="30.0" prefWidth="111.0" styleClass="betalning-vanlig-text" text="949kr">
+                  <font>
+                     <Font name="System Bold" size="12.0" />
+                  </font>
+               </Label>
+            </children>
+         </AnchorPane>
+         <AnchorPane layoutX="597.0" layoutY="79.0" prefHeight="127.0" prefWidth="438.0">
+            <styleClass>
+               <String fx:value="ruta-personuppgifter" />
+               <String fx:value="personuppgifter-text" />
+            </styleClass>
+            <children>
+               <Label layoutX="31.0" layoutY="20.0" styleClass="betalning-rubrik" text="Betalning">
+                  <font>
+                     <Font name="System Bold" size="12.0" />
+                  </font>
+               </Label>
+               <Label fx:id="confirmationCardNumberLabel" layoutX="31.0" layoutY="74.0" styleClass="betalning-vanlig-text" text="XXXX-XXXX-1234-5678" />
+               <Label fx:id="confirmationCardDateLabel" layoutX="311.0" layoutY="74.0" styleClass="betalning-vanlig-text" text="04/25" />
+               <Button fx:id="changeBetalningButton" layoutX="351.0" layoutY="14.0" mnemonicParsing="false" onMouseClicked="#openBetalningsPage" styleClass="confirmation-change-button" text="Ändra">
+                  <cursor>
+                     <Cursor fx:constant="HAND" />
+                  </cursor></Button>
+            </children>
+         </AnchorPane>
+         <AnchorPane layoutX="116.0" layoutY="80.0" prefHeight="233.0" prefWidth="438.0">
+            <styleClass>
+               <String fx:value="ruta-personuppgifter" />
+               <String fx:value="personuppgifter-text" />
+            </styleClass>
+            <children>
+               <Label layoutX="31.0" layoutY="20.0" styleClass="betalning-rubrik" text="Personuppgifter">
+                  <font>
+                     <Font name="System Bold" size="12.0" />
+                  </font>
+               </Label>
+               <Label fx:id="confirmationNameLabel" layoutX="31.0" layoutY="73.0" prefHeight="30.0" prefWidth="315.0" styleClass="betalning-vanlig-text" text="Shifaa Mahmoud" />
+               <Button fx:id="changePersonuppgifterButton" layoutX="355.0" layoutY="14.0" mnemonicParsing="false" onMouseClicked="#openPersonuppgifterPage" styleClass="confirmation-change-button" text="Ändra">
+                  <cursor>
+                     <Cursor fx:constant="HAND" />
+                  </cursor></Button>
+               <Label fx:id="confirmationPhoneNumberLabel" layoutX="31.0" layoutY="108.0" prefHeight="30.0" prefWidth="302.0" styleClass="betalning-vanlig-text" text="071 23 456 78" />
+               <Label fx:id="confirmationEpostLabel" layoutX="31.0" layoutY="143.0" prefHeight="30.0" prefWidth="317.0" styleClass="betalning-vanlig-text" text="rune@gmail.com" />
+               <Label fx:id="confirmationAdressLabel" layoutX="31.0" layoutY="178.0" prefHeight="30.0" prefWidth="317.0" styleClass="betalning-vanlig-text" text="peppargatan 3" />
+            </children>
+         </AnchorPane>
+         <AnchorPane layoutX="116.0" layoutY="339.0" prefHeight="127.0" prefWidth="438.0">
+            <styleClass>
+               <String fx:value="ruta-personuppgifter" />
+               <String fx:value="personuppgifter-text" />
+            </styleClass>
+            <children>
+               <Label layoutX="31.0" layoutY="20.0" styleClass="betalning-rubrik" text="Leverans">
+                  <font>
+                     <Font name="System Bold" size="12.0" />
+                  </font>
+               </Label>
+               <Label fx:id="confirmationLeveransLabel" layoutX="31.0" layoutY="74.0" styleClass="betalning-vanlig-text" text="Imorgon 17:00-17:30" />
+               <Button fx:id="changeLeveransButton" layoutX="351.0" layoutY="14.0" mnemonicParsing="false" onMouseClicked="#openLeveransPage" styleClass="confirmation-change-button" text="Ändra">
+                  <cursor>
+                     <Cursor fx:constant="HAND" />
+                  </cursor></Button>
+            </children>
+         </AnchorPane>
       </children>
    </AnchorPane>
 </fx:root>

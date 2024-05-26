@@ -102,7 +102,13 @@
                         <Image url="@resources/baguette.png" />
                      </image>
                   </ImageView>
-                  <Label alignment="TOP_CENTER" layoutX="14.0" layoutY="94.0" prefHeight="164.0" prefWidth="540.0" styleClass="big-title-white" text="Ett bröd om dagen är bra för magen" wrapText="true" />
+                  <Label alignment="TOP_CENTER" layoutX="13.0" layoutY="74.0" prefHeight="164.0" prefWidth="540.0" styleClass="big-title-white" text="Specialerbjudande på bröd!" wrapText="true" />
+                  <Button fx:id="beginShoppingButton1" layoutX="10.0" layoutY="252.0" mnemonicParsing="false" onMouseClicked="#goToBread" prefHeight="84.0" prefWidth="275.0" text="Gå till bröd">
+                     <styleClass>
+                        <String fx:value="big-button" />
+                        <String fx:value="title-text" />
+                     </styleClass>
+                  </Button>
                </children>
             </AnchorPane>
          </children>

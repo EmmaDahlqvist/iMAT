@@ -257,7 +257,7 @@ public class UtcheckningController extends AnchorPane implements ShoppingCartLis
             anchorHeader.getChildren().clear();
             anchorHeader.getChildren().add(mainViewController.iMatButtonHeader);
             setBold(wizardController.personLabel);
-            if (!firstNameTextField.getText().isEmpty() && !lastNameTextField.getText().isEmpty() && !phonenumberTextField.getText().isEmpty()&& !epostTextField.getText().isEmpty() && !adressTextField.getText().isEmpty() && !postnummerTextField.getText().isEmpty() && !portkodTextField.getText().isEmpty()){
+            if (!firstNameTextField.getText().isEmpty() && !lastNameTextField.getText().isEmpty() && !phonenumberTextField.getText().isEmpty()&& !epostTextField.getText().isEmpty() && !adressTextField.getText().isEmpty() && !postnummerTextField.getText().isEmpty() ){
                 fillNextButton(personuppgifterNextButton);
                 wizardController.hoverableNextStep(wizardController.wizardStepThreeButton);
                 wizardController.fillWizardNextButton();
@@ -272,7 +272,7 @@ public class UtcheckningController extends AnchorPane implements ShoppingCartLis
     public void openLeveransPage(){
         wizardController.wizardNextButton.setVisible(true);
         //wizardController.wizardStepThreeButton.getStyleClass().add("wizard-button-hoverable");
-        if(wizardController.step >= 1 && !firstNameTextField.getText().isEmpty() && !lastNameTextField.getText().isEmpty() && !phonenumberTextField.getText().isEmpty()&& !epostTextField.getText().isEmpty() && !adressTextField.getText().isEmpty() && !postnummerTextField.getText().isEmpty() && !portkodTextField.getText().isEmpty()) {
+        if(wizardController.step >= 1 && !firstNameTextField.getText().isEmpty() && !lastNameTextField.getText().isEmpty() && !phonenumberTextField.getText().isEmpty()&& !epostTextField.getText().isEmpty() && !adressTextField.getText().isEmpty() && !postnummerTextField.getText().isEmpty()) {
             wizardController.step = 2;
             wizardController.fillWizardStep(wizardController.wizardStepThreeButton);
             setBold(wizardController.leveransLabel);
@@ -507,7 +507,7 @@ public class UtcheckningController extends AnchorPane implements ShoppingCartLis
                     nextField.requestFocus();
                 }
 
-                if( wizardController.step == 1 && !firstNameTextField.getText().isEmpty() && !lastNameTextField.getText().isEmpty() && !phonenumberTextField.getText().isEmpty() && !epostTextField.getText().isEmpty() && !adressTextField.getText().isEmpty() && !postnummerTextField.getText().isEmpty() && !portkodTextField.getText().isEmpty()){
+                if( wizardController.step == 1 && !firstNameTextField.getText().isEmpty() && !lastNameTextField.getText().isEmpty() && !phonenumberTextField.getText().isEmpty() && !epostTextField.getText().isEmpty() && !adressTextField.getText().isEmpty() && !postnummerTextField.getText().isEmpty()){
                     wizardController.hoverableNextStep(wizardController.wizardStepThreeButton);
                     fillNextButton(personuppgifterNextButton);
                     wizardController.fillWizardNextButton();
@@ -526,7 +526,7 @@ public class UtcheckningController extends AnchorPane implements ShoppingCartLis
                 }
 
                 // kolla att man inte råkat ta bort en hel field i personupg
-                if( wizardController.step == 1 && (firstNameTextField.getText().isEmpty() || lastNameTextField.getText().isEmpty() || phonenumberTextField.getText().isEmpty() || epostTextField.getText().isEmpty() || adressTextField.getText().isEmpty() || postnummerTextField.getText().isEmpty() || portkodTextField.getText().isEmpty())){
+                if( wizardController.step == 1 && (firstNameTextField.getText().isEmpty() || lastNameTextField.getText().isEmpty() || phonenumberTextField.getText().isEmpty() || epostTextField.getText().isEmpty() || adressTextField.getText().isEmpty() || postnummerTextField.getText().isEmpty())){
                     wizardController.unhoverNextStep(wizardController.wizardStepThreeButton);
                     unfillNextButton(personuppgifterNextButton);
                     wizardController.unfillNextButton();
