@@ -402,16 +402,37 @@ public class UtcheckningController extends AnchorPane implements ShoppingCartLis
             }
         }
 
+//        if(String.valueOf(creditCard.getValidMonth()) != null) {
+//            dateMonth.setText(String.valueOf(creditCard.getValidMonth()));
+//        }
+//
+//        if(String.valueOf(creditCard.getValidYear()) != null) {
+//            dateYear.setText(String.valueOf(creditCard.getValidYear()));
+//        }
+//
+//        if(String.valueOf(creditCard.getVerificationCode()) != null) {
+//            cvc.setText(String.valueOf(creditCard.getVerificationCode()));
+//        }
+
         if(String.valueOf(creditCard.getValidMonth()) != null) {
             dateMonth.setText(String.valueOf(creditCard.getValidMonth()));
+            if(creditCard.getValidMonth() == -1) {
+                dateMonth.setText("");
+            }
         }
 
         if(String.valueOf(creditCard.getValidYear()) != null) {
             dateYear.setText(String.valueOf(creditCard.getValidYear()));
+            if(creditCard.getValidYear() == -1) {
+                dateYear.setText("");
+            }
         }
 
         if(String.valueOf(creditCard.getVerificationCode()) != null) {
             cvc.setText(String.valueOf(creditCard.getVerificationCode()));
+            if(creditCard.getVerificationCode() == -1) {
+                cvc.setText("");
+            }
         }
 
     }
