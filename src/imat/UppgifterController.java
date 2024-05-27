@@ -189,14 +189,23 @@ public class UppgifterController extends AnchorPane {
 
         if(String.valueOf(creditCard.getValidMonth()) != null) {
             datemonth.setText(String.valueOf(creditCard.getValidMonth()));
+            if(creditCard.getValidMonth() == -1) {
+                datemonth.setText("");
+            }
         }
 
         if(String.valueOf(creditCard.getValidYear()) != null) {
             dateyear.setText(String.valueOf(creditCard.getValidYear()));
+            if(creditCard.getValidYear() == -1) {
+                dateyear.setText("");
+            }
         }
 
         if(String.valueOf(creditCard.getVerificationCode()) != null) {
             cvc.setText(String.valueOf(creditCard.getVerificationCode()));
+            if(creditCard.getVerificationCode() == -1) {
+                cvc.setText("");
+            }
         }
 
     }
@@ -212,9 +221,28 @@ public class UppgifterController extends AnchorPane {
 
 
         creditCard.setCardNumber(kortnummer1.getText() + " " + kortnummer2.getText() + " " + kortnummer3.getText() + " " + kortnummer4.getText());
-        creditCard.setValidMonth(Integer.parseInt(datemonth.getText()));
-        creditCard.setValidYear(Integer.parseInt(dateyear.getText()));
-        creditCard.setVerificationCode(Integer.parseInt(cvc.getText()));
+
+        if(!datemonth.getText().isEmpty()) {
+            creditCard.setValidMonth(Integer.parseInt(datemonth.getText()));
+        } else {
+            System.out.println("empty");
+            creditCard.setValidMonth(-1);
+        }
+
+        if(!dateyear.getText().isEmpty()) {
+            creditCard.setValidYear(Integer.parseInt(datemonth.getText()));
+        } else {
+            creditCard.setValidYear(-1);
+        }
+
+        if(!cvc.getText().isEmpty()) {
+            creditCard.setVerificationCode(Integer.parseInt(cvc.getText()));
+        } else {
+            creditCard.setVerificationCode(-1);
+        }
+
+
+        //creditCard.setValidYear(Integer.parseInt(dateyear.getText()));
 
         for(UppgifterListener uppgifterListener : uppgifterListeners) {
             uppgifterListener.updateUppgifter();
